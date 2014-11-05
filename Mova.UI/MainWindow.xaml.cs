@@ -46,7 +46,9 @@ namespace Mova.UI
 
         private void Configure()
         {
+            ServiceFactory.Instance.Register<IUtilisateurVetementService, MySqlUtilisateursVetements>(new MySqlUtilisateursVetements());
             ServiceFactory.Instance.Register<IMomentService, MySqlMomentService>(new MySqlMomentService());
+            ServiceFactory.Instance.Register<IUtilisateurEnsembleService, MySqlUtilisateurEnsemble>(new MySqlUtilisateurEnsemble());
             ServiceFactory.Instance.Register<IEnsembleService, MySqlEnsembleService>(new MySqlEnsembleService());
             ServiceFactory.Instance.Register<IUtilisateurService, MySqlUtilisateurService>(new MySqlUtilisateurService());
             ServiceFactory.Instance.Register<IActiviteService, MySqlActiviteService>(new MySqlActiviteService());
@@ -55,7 +57,6 @@ namespace Mova.UI
             ServiceFactory.Instance.Register<IVetementService, MySqlVetementService>(new MySqlVetementService());
             ServiceFactory.Instance.Register<ICouleurService, MySqlCouleurService>(new MySqlCouleurService());
             ServiceFactory.Instance.Register<IApplicationService, MainViewModel>(ViewModel);
-
         }
 
         /// <summary>

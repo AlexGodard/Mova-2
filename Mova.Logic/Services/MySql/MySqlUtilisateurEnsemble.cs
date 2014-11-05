@@ -42,6 +42,33 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
+
+        public IList<UtilisateurEnsemble> RetrieveEnsembleUtilisateurPrecis()
+        {
+            IList<UtilisateurEnsemble> result = new List<UtilisateurEnsemble>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "SELECT idUtilisateurEnsemble FROM UtilisateursEnsembles WHERE idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow utilisateurensemble in table.Rows)
+                {
+                    result.Add(ConstructUtilisateurEnsemble(utilisateurensemble));
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         private UtilisateurEnsemble ConstructUtilisateurEnsemble(DataRow row)
         {
             return new UtilisateurEnsemble()

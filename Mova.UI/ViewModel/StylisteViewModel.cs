@@ -11,6 +11,7 @@ using Mova.Logic;
 using Mova.Logic.Models;
 using Mova.Logic.Services.Definitions;
 using Mova.Logic.Models.Args;
+using Mova.Logic.Models.Entities;
 
 namespace Mova.UI.ViewModel
 {
@@ -18,9 +19,14 @@ namespace Mova.UI.ViewModel
     {
         private IActiviteService _activiteService;
         private IStyleService _styleService;
+        private IUtilisateurEnsembleService _utilisateurEnsembleService;
+        private IUtilisateurVetementService _utilisateurVetementService;
 
         private ObservableCollection<StyleVetement> _styles = new ObservableCollection<StyleVetement>();
         private ObservableCollection<Activite> _activites = new ObservableCollection<Activite>();
+        private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsemble = new ObservableCollection<UtilisateurEnsemble>();
+        private ObservableCollection<UtilisateurVetements>  _utilisateurVetement = new ObservableCollection<UtilisateurVetements>();
+
         //private static InfoStylisteArgs _infoTemp = new InfoStylisteArgs();
 
         /// <summary>
@@ -32,7 +38,9 @@ namespace Mova.UI.ViewModel
 			{
 				Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrievePourMoment(Moment.GetIDMomentNow()));
 				Styles = new ObservableCollection<StyleVetement>(ServiceFactory.Instance.GetService<IStyleService>().RetrieveAll());
-                //InitListeMoments();
+                UtilisateursEnsembles =  new ObservableCollection<UtilisateurEnsemble>(ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>().RetrieveEnsembleUtilisateurPrecis());
+                UtilisateursVetements = new ObservableCollection<UtilisateurVetements>(ServiceFactory.Instance.GetService<IUtilisateurVetementService>().RetrieveAll());
+
 			}
 			catch(Exception)
 			{
@@ -45,11 +53,13 @@ namespace Mova.UI.ViewModel
 
             Listes.ListeActivites = Activites.ToList<Activite>();
             Listes.ListeStyles = Styles.ToList<StyleVetement>();
-            
+            Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
+            Listes.NbEnsembleUtilisateur = UtilisateursEnsembles.Count();
 
             _activiteService = ServiceFactory.Instance.GetService<IActiviteService>();
             _styleService = ServiceFactory.Instance.GetService<IStyleService>();
-           
+            _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
+            
         }
 
         /// <summary>
@@ -93,6 +103,44 @@ namespace Mova.UI.ViewModel
 
                 _styles
                  = value;
+            }
+        }
+
+
+        public ObservableCollection<UtilisateurEnsemble> UtilisateursEnsembles
+        {
+            get
+            {
+                return _utilisateurEnsemble;
+            }
+
+            set
+            {
+                if (_utilisateurEnsemble == value)
+                {
+                    return;
+                }
+
+                _utilisateurEnsemble = value;
+            }
+        }
+
+
+        public ObservableCollection<UtilisateurVetements> UtilisateursVetements
+        {
+            get
+            {
+                return _utilisateurVetement;
+            }
+
+            set
+            {
+                if (_utilisateurVetement == value)
+                {
+                    return;
+                }
+
+                _utilisateurVetement = value;
             }
         }
 
