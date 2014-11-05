@@ -1,0 +1,13 @@
+Bonjour messieurs, en ce qui concerne les commentaires est-ce qu'on s'entend pour utiliser un
+des formats suivants pour montrer dans le code les ajouts, modifications ou suppressions que 
+l'on aura fait.
+
+Exemple sur une ligne
+// 2014-06-20 - Prenom Nom
+
+Exemple sur plusieurs ligne
+/*
+2014-06-20
+Prenom Nom
+Commentaire sur ce qui a été effectué
+*/

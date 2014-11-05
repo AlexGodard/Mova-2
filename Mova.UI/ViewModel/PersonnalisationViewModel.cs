@@ -1,0 +1,156 @@
+﻿using Cstj.MvvmToolkit;
+using Cstj.MvvmToolkit.Services;
+using Mova.Logic;
+using Mova.Logic.Models;
+using Mova.Logic.Models.Entities;
+using Mova.Logic.Services.Definitions;
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Mova.UI.ViewModel
+{
+    class PersonnalisationViewModel : BaseViewModel
+    {
+        public int i = 0, j = 0, k = 0;
+
+
+        internal List<Image> afficherEnsemble()
+        {
+            // Pour chaque EnsembleVetement, on extract la liste de Vetements
+
+            //Écrire le torso
+            Vetement torso = Listes.ensembleChoisi.ListeVetements[0];
+            Vetement pants = Listes.ensembleChoisi.ListeVetements[1];
+            Vetement shoes = Listes.ensembleChoisi.ListeVetements[2];
+            //On dessine le vetement
+            List<Image> listeImages = new List<Image>();
+            listeImages.Add(DessinerVetement(torso, 0));
+            listeImages.Add(DessinerVetement(pants, 1));
+            listeImages.Add(DessinerVetement(shoes, 2));
+
+            return listeImages;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="rangee"></param>
+        internal Image DessinerVetement(Vetement v, int rangee)
+        {
+            Image i = new Image();
+            i.Width = 200;
+            i.Height = 200;
+            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+            Grid.SetColumn(i, 2);
+            Grid.SetRow(i, rangee);
+
+            return i;
+        }
+
+        internal Image changerVetement(int rangee, string direction)
+        {
+            // On ajoute tout les vêtements dans des listes de vêtements temporaires
+            List<Vetement> listeHauts = new List<Vetement>();
+            List<Vetement> listeBas = new List<Vetement>();
+            List<Vetement> listeChaussures = new List<Vetement>();
+
+            // Avant de commencer, on ajoute les vêtements qu'on a choisi pour qu'ils soient en premier de liste.
+
+            listeHauts.Add(Listes.ensembleChoisi.ListeVetements[0]);
+            listeBas.Add(Listes.ensembleChoisi.ListeVetements[1]);
+            listeChaussures.Add(Listes.ensembleChoisi.ListeVetements[2]);
+
+            foreach (EnsembleVetement ensembleVetement in Listes.ListeEnsembles)
+            {
+                // On doit trouver un moyen de vérifier si le haut est déjà dedans la liste, il ne faut pas l'ajouter.
+                bool hautExiste = false, basExiste = false, chaussureExiste = false;
+
+                foreach (Vetement haut in listeHauts)
+                    if (haut.IdVetement == ensembleVetement.ListeVetements[0].IdVetement)
+                        hautExiste = true;
+                if (!hautExiste)
+                    listeHauts.Add(ensembleVetement.ListeVetements[0]);
+
+                foreach (Vetement bas in listeBas)
+                    if (bas.IdVetement == ensembleVetement.ListeVetements[1].IdVetement)
+                        basExiste = true;
+                if (!basExiste)
+                    listeBas.Add(ensembleVetement.ListeVetements[1]);
+
+                foreach (Vetement chaussure in listeChaussures)
+                    if (chaussure.IdVetement == ensembleVetement.ListeVetements[2].IdVetement)
+                        chaussureExiste = true;
+                if (!chaussureExiste)
+                    listeChaussures.Add(ensembleVetement.ListeVetements[2]);
+            }
+
+            if (direction == "Suivant")
+            {
+                switch (rangee)
+                {
+                    case 0: i++;
+                        if (i < listeHauts.Count())
+                        {
+                            Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
+                            return DessinerVetement(listeHauts[i], 0);
+                        }
+                        else
+                        {
+                            i--;
+                            // On disable le bouton suivant des hauts
+                           break; 
+                        }
+                    case 1: j++;
+                        Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
+                        return DessinerVetement(listeBas[j], 1);
+                    case 2: k++;
+                        Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
+                        return DessinerVetement(listeChaussures[k], 2);
+                }
+            }
+            else
+            {
+                switch (rangee)
+                {
+                    case 0:
+                        if (i != 0)
+                        {
+                            i--; // On décrémente le compteur des hauts pour la liste
+                            Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
+                            return DessinerVetement(listeHauts[i], 0);
+                        }
+                        else
+                        {
+                            
+                            break;
+                        }        // On disable le bouton précédent des hauts
+                    case 1: j--;
+                        Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
+                        return DessinerVetement(listeBas[j], 1);
+                    case 2: k--;
+                        Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
+                        return DessinerVetement(listeChaussures[k], 2);
+                }
+            }
+
+            // On retourne un image vide (null)
+            return new Image();
+        }
+
+        //internal void next(List<EnsembleVetement>)
+    }
+}

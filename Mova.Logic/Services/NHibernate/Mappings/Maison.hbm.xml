@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping assembly="Mova.Logic"
+                   namespace="Mova.Logic.Models.Entities"
+                   xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Utilisateur" table="Utilisateurs">
+    <id name="idUtilisateur">
+      <column name="idUtilisateur" not-null="true" sql-type="INTEGER" />
+      <generator class="identity" />
+    </id>
+    <property name="prenom">
+      <column name="prenom" not-null="true" sql-type="VARCHAR" />
+    </property>
+    <property name="nom">
+      <column name="nom" not-null="true" sql-type="VARCHAR" />
+    </property>
+    <property name="nomUtilisateur">
+      <column name="nomUtilisateur" not-null="true" sql-type="VARCHAR" />
+    </property>
+    <property name="motPasse">
+      <column name="motPasse" not-null="true" sql-type="VARCHAR" />
+    </property>
+    <property name="courriel">
+      <column name="courriel" not-null="true" sql-type="VARCHAR" />
+      <property name="sexe">
+        <column name="sexe" not-null="true" sql-type="VARCHAR" />
+      </property>
+    </property>
+  </class>
+</hibernate-mapping>
