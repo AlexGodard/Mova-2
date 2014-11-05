@@ -139,11 +139,11 @@
                         <Image Source="pack://application:,,,/Resources/wardrobe.png" Width="40" Margin="10" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Style="{StaticResource petitItem}" Height="40" Focusable="False"  />
-                <MenuItem Header="Parcourir" Style="{StaticResource petitItem}"/>
+                <MenuItem Style="{StaticResource petitItem}" Height="40" Focusable="False" IsEnabled="False" />
+                <MenuItem Header="Parcourir" Style="{StaticResource petitItem}" />
                 <MenuItem Header="Activités" Click="MenuActivites_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="50,0,0,0" />
                 <MenuItem Header="Styles" Click="MenuStyles_Click" Style="{StaticResource petitItem}" Padding="50,0,0,0"  />
-                <MenuItem Style="{StaticResource petitItem}" Height="50" Focusable="False" />
+                <MenuItem Header="" x:Name="btnAdmin" Style="{StaticResource petitItem}" Height="50" IsEnabled="False" Click="btnAdmin_Click" />
                 <MenuItem Header="Connexion / Déconnexion" Click="MenuConnDeconn_Click" Style="{StaticResource petitItem}" />
                 <MenuItem Header="Quitter" Click="MenuItem_Click" Style="{StaticResource petitItem}" Padding="0,0,0,20" />
             </MenuItem>

@@ -114,12 +114,6 @@ namespace Mova.UI
             mainVM.ChangeView<StyleView>(new StyleView());
         }
 
-        private void MenuAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<AdminView>(new AdminView());
-        }
-
         private void MenuConnDeconn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -128,6 +122,11 @@ namespace Mova.UI
             
             //On cache le menu
             ViewModel.MenuVisibility = Visibility.Hidden;
+
+            //Gabriel Piché Cloutier - 2014-11-05
+            //On cache le bouton administrateur à la déconnexion
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnAdmin.Header = "";
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnAdmin.IsEnabled = false;
 
             //Modification pour réinitialiser l'utilisateur global - Gabriel Piché Cloutier - 2014-10-28
             Listes.UtilisateurConnecte = new Utilisateur();
@@ -143,6 +142,12 @@ namespace Mova.UI
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Shutdown();
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<AdminView>(new AdminView());
         }
     }
 }

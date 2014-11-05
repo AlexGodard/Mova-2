@@ -73,24 +73,14 @@ namespace Mova.UI.Views
             // On affiche l'option admin dans le menu s'il est un admin
             if (ViewModel.UtilisateurConnecte.EstAdmin)
             {
-                MenuItem btnAdmin = new MenuItem();
-                btnAdmin.Name = "btnAdmin";
-                btnAdmin.Header = "Administrateur";
-                btnAdmin.Click += btnAdmin_Click;
-                btnAdmin.Style = (Style)this.FindResource("petitItem");
-                ((MainWindow)System.Windows.Application.Current.MainWindow).menuMova.Items.Add(btnAdmin);
+                ((MainWindow)System.Windows.Application.Current.MainWindow).btnAdmin.Header = "Administrateur";
+                ((MainWindow)System.Windows.Application.Current.MainWindow).btnAdmin.IsEnabled = true;
             }
 
 			IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
 			mainVM.ChangeView<StylisteView>(new StylisteView());
 		}
-
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<AdminView>(new AdminView());
-        }
 
         private void Quitter(object sender, RoutedEventArgs e)
         {
