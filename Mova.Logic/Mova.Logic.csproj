@@ -77,6 +77,7 @@
     <Compile Include="Models\Entities\TypeVetement.cs" />
     <Compile Include="Models\Entities\Utilisateur.cs" />
     <Compile Include="Models\Entities\UtilisateurEnsemble.cs" />
+    <Compile Include="Models\Entities\UtilisateurVetements.cs" />
     <Compile Include="Models\Entities\Validation.cs" />
     <Compile Include="Models\Entities\History.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Services\Definitions\ITemperatureService.cs" />
     <Compile Include="Services\Definitions\IUtilisateurEnsembleService.cs" />
     <Compile Include="Services\Definitions\IUtilisateurService.cs" />
+    <Compile Include="Services\Definitions\IUtilisateurVetementService.cs" />
     <Compile Include="Services\Definitions\IVetementService.cs" />
     <Compile Include="Services\Helpers\MySqlConnexion.cs" />
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Services\MySql\MySqlTemperatureService.cs" />
     <Compile Include="Services\MySql\MySqlUtilisateurEnsemble.cs" />
     <Compile Include="Services\MySql\MySqlUtilisateurService.cs" />
+    <Compile Include="Services\MySql\MySqlUtilisateursVetements.cs" />
     <Compile Include="Services\MySql\MySqlVetementService.cs" />
     <Compile Include="Services\NHibernate\NHibernateUtilisateurService.cs" />
   </ItemGroup>
