@@ -17,7 +17,6 @@ namespace Mova.Logic
         public static List<Moment> ListeMoments;
         public static List<Temperature> ListeTemperatures;
         public static List<TypeVetement> ListeTypes;
-        public static List<UtilisateurEnsemble> ListeEnsemblesUtilisateur;
 
         public static List<EnsembleVetement> ListeEnsembles;
 
@@ -31,8 +30,6 @@ namespace Mova.Logic
         public static string pwd;
 
         public static EnsembleVetement ensembleChoisi;
-
-        public static int NbEnsembleUtilisateur;
 
         public static List<T> RetourneAleatoire<T>(int nombreMaxRandom, List<T> listeSource)
         {

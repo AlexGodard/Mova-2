@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Cstj.MvvmToolkit;
 using Cstj.MvvmToolkit.Services;
-using Mova.Logic.Models;
 using Mova.Logic.Models.Entities;
 using Mova.Logic.Services.Definitions;
 
@@ -14,31 +13,31 @@ namespace Mova.UI.ViewModel
 {
     public class MaGardeRobeViewModel : BaseViewModel
     {
-        private IUtilisateurEnsembleService _utilisateurEnsembleService;
-        private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
-        private UtilisateurEnsemble _utilisateurEnsemble = new UtilisateurEnsemble();
+        private IUtilisateurService _utilisateurService;
+        private ObservableCollection<Utilisateur> _utilisateurs = new ObservableCollection<Utilisateur>();
+        private Utilisateur _utilisateur = new Utilisateur();
 
         public MaGardeRobeViewModel()
         {
-            _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
+            _utilisateurService = ServiceFactory.Instance.GetService<IUtilisateurService>();
         }
 
-        public UtilisateurEnsemble UtilisateurEnsembleConnecte
+        public Utilisateur UtilisateurConnecte
         {
             get
             {
-                return _utilisateurEnsemble;
+                return _utilisateur;
             }
 
             set
             {
-                if (_utilisateurEnsemble == value)
+                if (_utilisateur == value)
                 {
                     return;
                 }
 
                 RaisePropertyChanging();
-                _utilisateurEnsemble = value;
+                _utilisateur = value;
                 RaisePropertyChanged();
             }
         }

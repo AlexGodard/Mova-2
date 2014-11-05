@@ -164,6 +164,11 @@ namespace Mova.Logic.Services.MySql
               }
            }
 
+           List<EnsembleVetement> source = lstEnsemble;
+           var rnd = new Random();
+           var result = source.OrderBy(item => rnd.Next());
+           lstEnsemble = result.ToList<EnsembleVetement>();
+
            return lstEnsemble;
         
         }

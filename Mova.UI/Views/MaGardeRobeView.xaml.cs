@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Mova.Logic;
-using Mova.UI.ViewModel;
 
 namespace Mova.UI.Views
 {
@@ -25,11 +23,6 @@ namespace Mova.UI.Views
         public MaGardeRobeView()
         {
             InitializeComponent();
-            DataContext = new MaGardeRobeViewModel();
-            lblNbEnsemble.Content = "Vous avez " + Listes.NbEnsembleUtilisateur + " ensembles";
-            
         }
-
-        
     }
 }
