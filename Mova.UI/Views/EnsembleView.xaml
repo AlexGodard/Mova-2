@@ -8,21 +8,50 @@
 
     <Grid x:Name="DynamicGrid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="20*" />
-            <RowDefinition Height="5*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="100" />
+            <RowDefinition />
         </Grid.RowDefinitions>
-        <Button x:Name="btnSuivant" Visibility="Hidden" Content="Suivant" Grid.Column="4" HorizontalAlignment="Left" Margin="55,126,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" Height="50" RenderTransformOrigin="0.537,0.123" Click="btnSuivant_Click"/>
-        <Button x:Name="btnPrecedent" Visibility="Hidden" Content="Précédent" HorizontalAlignment="Left" Margin="55,126,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" Height="50" Click="Button_Click"/>
 
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi un ensemble" FontFamily="Calibri" FontSize="62" />
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" x:Name="btnSuivant" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="pack://application:,,,/../Resources/suivant.png" Width="100" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" x:Name="btnPrecedent" Visibility="Hidden" Content="Précédent" Click="Button_Click" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="pack://application:,,,/../Resources/precedent.png" Width="100" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" />
+        <Label Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" />
+        <Label Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" />
+        <Button Grid.Column="0" Grid.Row="5" Name="btnEcranPrecedent" Click="btnEcranPrecedent_Click" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="pack://application:,,,/../Resources/back.png" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
 
     </Grid>
 

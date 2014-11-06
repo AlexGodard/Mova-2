@@ -12,26 +12,22 @@
 			<Setter Property="Foreground" Value="White" />
 
 			<!-- Coins rond -->
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="Button">
-						<Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="8" >
-							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
-						</Border>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-			
-			
-
-			
-		</Style>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="White" BorderThickness="8" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 	</UserControl.Resources>
 
 	<Grid Name="gridPrincipale">
 
 		<Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="50" />
             <RowDefinition Height="200" />
             <RowDefinition Height="200" />
             <RowDefinition Height="200" />
