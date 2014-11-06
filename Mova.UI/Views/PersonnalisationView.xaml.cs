@@ -28,8 +28,6 @@ namespace Mova.UI.Views
     public partial class PersonnalisationView : UserControl
     {
         private PersonnalisationViewModel ViewModel { get { return (PersonnalisationViewModel)DataContext; } }
-        public static History<UserControl> _historique = new History<UserControl>();
-        private const int _maxStack = 4;
         private List<Image> listeImages;
 
         public PersonnalisationView()
@@ -43,8 +41,6 @@ namespace Mova.UI.Views
             DynamicGrid.Children.Add(listeImages[0]);
             DynamicGrid.Children.Add(listeImages[1]);
             DynamicGrid.Children.Add(listeImages[2]);
-
-            _historique.Ajouter(this);
 
         }
 

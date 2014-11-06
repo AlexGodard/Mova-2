@@ -207,14 +207,17 @@ namespace Mova.UI.Views
             DessinerVetement(pants, colonne, 3);
             DessinerVetement(shoes, colonne, 4);
 
+            //On génère le bon numéro d'ensemble -> Maxime Laramee 2014-11-06
+            int noEnsemble = ((_historique.GetNumberOfPage(this)*3) + (colonne/2));
+
             //On ajoute le bouton Choisir en bas de l'ensemble
             Button button = new Button();
-            button.Content = "Choisir #" + colonne.ToString();
+            button.Content = "Choisir #" + noEnsemble.ToString();
             button.Margin = new Thickness(20);
             Grid.SetColumn(button,colonne);
             Grid.SetRow(button,5);
             // On ajoute un nom au bouton
-            button.Name = "btnChoisir" + colonne.ToString();
+            button.Name = "btnChoisir" + noEnsemble.ToString();
             // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
             button.Click += new RoutedEventHandler(btnChoisir_Click);
 
@@ -236,7 +239,7 @@ namespace Mova.UI.Views
         /// 
         /// </summary>
         /// <param name="sender"></param>
-        private void registerButtonInput(object sender, int indexPage) //Alexandre Godard 2014-10-30
+        private void RegisterButtonInput(object sender, int indexPage) //Alexandre Godard 2014-10-30
         {
             //On commence par obtenir l'objet
             Button bTemp = (Button)sender;
@@ -257,7 +260,7 @@ namespace Mova.UI.Views
         protected void btnChoisir_Click(object sender, EventArgs e)
         {
             // On doit changer d'écran et afficher l'ensemble choisi pour ensuite permettre à l'utilisateur de faire des modifications
-            registerButtonInput(sender, _historique.Compte());
+            RegisterButtonInput(sender, _historique.Compte());
 
             ChangeView();
         }
