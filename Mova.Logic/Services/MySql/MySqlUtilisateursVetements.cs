@@ -44,34 +44,6 @@ namespace Mova.Logic.Services.MySql
         }
 
 
-        public IList<Vetement> RetrieveVetementTypeSpecific(int type)
-        {
-            IList<Vetement> result = new List<Vetement>();
-            try
-            {
-                connexion = new MySqlConnexion();
-
-                //string requete = "SELECT * FROM UtilisateursVetements WHERE idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
-                string requete = "SELECT * FROM Vetements WHERE idTypeVetement = " + type + 
-                "INNER JOIN UtilisateursVetements uv ";
-                DataSet dataset = connexion.Query(requete);
-                DataTable table = dataset.Tables[0];
-
-                foreach (DataRow vetement in table.Rows)
-                {
-                    result.Add(ConstructVetement(vetement));
-                }
-
-            }
-            catch (MySqlException)
-            {
-                throw;
-            }
-
-            //Si on se rend ici, on retourne un utilisateur vide
-            return result;
-        }
-
         private UtilisateurVetements ConstructUtilisateurVetement(DataRow row)
         {
             return new UtilisateurVetements()
@@ -89,7 +61,7 @@ namespace Mova.Logic.Services.MySql
                 IdVetement = (int)row["idUtilisateurVetement"],
                 NomVetement = (string)row["idUtilisateur"],
                 ImageURL = (string)row["idVetement"],
-                Prix = (float)row["idUtilisateurVetement"],
+                Prix = (int)row["idUtilisateurVetement"],
                 EstHomme = (bool)row["idUtilisateur"],
                 EstFemme = (bool)row["idVetement"],
                 TypeVetement = (TypeVetement)row["idTypeVetement"],

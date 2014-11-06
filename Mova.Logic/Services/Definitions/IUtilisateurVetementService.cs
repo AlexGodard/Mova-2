@@ -12,6 +12,5 @@ namespace Mova.Logic.Services.Definitions
     public interface IUtilisateurVetementService
     {
        IList<UtilisateurVetements> RetrieveAll();
-       IList<Vetement> RetrieveVetementTypeSpecific(int type);
     }
 }

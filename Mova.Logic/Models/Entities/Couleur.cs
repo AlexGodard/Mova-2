@@ -32,5 +32,11 @@ namespace Mova.Logic.Models
             IdCouleur = null;
             NomCouleur = nomCouleur;
         }
+        public Couleur(int idCouleur)
+        {
+            IdCouleur = idCouleur;
+            NomCouleur = null;
+        }
+
     }
 }
