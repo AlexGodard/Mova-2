@@ -46,6 +46,8 @@ namespace Mova.UI
 
         private void Configure()
         {
+            ServiceFactory.Instance.Register<IUtilisateurVetementService, MySqlUtilisateursVetements>(new MySqlUtilisateursVetements());
+            ServiceFactory.Instance.Register<IUtilisateurEnsembleService, MySqlUtilisateurEnsemble>(new MySqlUtilisateurEnsemble());
             ServiceFactory.Instance.Register<IMomentService, MySqlMomentService>(new MySqlMomentService());
             ServiceFactory.Instance.Register<IEnsembleService, MySqlEnsembleService>(new MySqlEnsembleService());
             ServiceFactory.Instance.Register<IUtilisateurService, MySqlUtilisateurService>(new MySqlUtilisateurService());
@@ -71,10 +73,7 @@ namespace Mova.UI
             ViewModel.AfficheMenu();
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
-            //On restart l'historique
-            StylisteView._historique = new History<UserControl>();
-
-            mainVM.ChangeView<StylisteView>(new StylisteView());
+            mainVM.ChangeView<StylisteActiviteView>(new StylisteActiviteView());
         }
 
         private void MenuRecents_Click(object sender, RoutedEventArgs e)
@@ -115,9 +114,6 @@ namespace Mova.UI
 
         private void MenuConnDeconn_Click(object sender, RoutedEventArgs e)
         {
-
-            //Disconnect
-            StylisteView._historique = new History<UserControl>();
             
             //On cache le menu
             ViewModel.MenuVisibility = Visibility.Hidden;

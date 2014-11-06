@@ -18,5 +18,12 @@ namespace Mova.Logic.Models.Args
             IdMoment = 0;
             IdStyle = 0;
         }
+
+        public void Reset()
+        {
+            IdMoment = 0;
+            IdStyle = 0;
+            IdActivite = 0;
+        }
     }
 }

@@ -51,6 +51,9 @@ namespace Mova.UI.Views
 
             _historique.Ajouter(this);
 
+            //On réinitialise la variable qui contient les données pour trouver les ensembles correspondant
+            Listes.InfoStyliste.Reset();
+
             listeEnsemblesTrouves = GetEnsemblesPourFenetre();
 
             AfficherBoutonsAppropries();
@@ -290,13 +293,10 @@ namespace Mova.UI.Views
         /// </summary>
         private void RetournerEcranStyliste()
         {
-            //On efface ce qu'on avait avant dans l'historique
-            StylisteView._historique = new History<UserControl>();
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            StylisteView._historique = new History<UserControl>();
 
-            mainVM.ChangeView<UserControl>(new StylisteView());
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
         }
 
         /// <summary>

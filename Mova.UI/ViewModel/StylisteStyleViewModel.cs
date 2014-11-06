@@ -1,33 +1,33 @@
-﻿using Cstj.MvvmToolkit;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mova.Logic.Services.Definitions;
-using System.Collections.ObjectModel;
-using Mova.Logic.Models;
+using Cstj.MvvmToolkit;
 using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Mova.Logic;
+using Mova.Logic.Models;
+using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {
-    public class StyleViewModel : BaseViewModel
+    class StylisteStyleViewModel : BaseViewModel
     {
-
-    private IStyleService _styleService;
+        private IStyleService _styleService;
 
         private ObservableCollection<StyleVetement> _styles = new ObservableCollection<StyleVetement>();
 
         /// <summary>
         /// 
         /// </summary>
-        public StyleViewModel()
+        public StylisteStyleViewModel()
         {
             try
             {
                 Styles = new ObservableCollection<StyleVetement>(ServiceFactory.Instance.GetService<IStyleService>().RetrieveAll());
+                //InitListeMoments();
             }
             catch (Exception)
             {
@@ -94,6 +94,33 @@ namespace Mova.UI.ViewModel
             return liste;
 
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="contenu"></param>
+        public static void SetChoix(string contenu)
+        {
+
+            //On fait une requête à notre liste globale
+            var query = from style in Listes.ListeStyles
+                        where style.NomStyle == contenu
+                        select style.IdStyle;
+
+            try
+            {
+                Listes.InfoStyliste.IdStyle = Convert.ToInt32(query.FirstOrDefault().ToString());
+            }
+            catch (Exception e)
+            {
+                Listes.InfoStyliste.IdStyle = 1;
+            }
+
+
+        }
+
 
     }
 }

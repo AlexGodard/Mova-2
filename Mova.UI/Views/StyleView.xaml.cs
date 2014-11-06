@@ -25,15 +25,29 @@ namespace Mova.UI.Views
     {
         int iNbStylesCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iStylesDepart = 0;                 //On affiche des activités à partir de cette valeur
-        int iNbStylesTotal = Listes.ListeStyles.Count();            //Le nombre total d'activités
+        int iNbStylesTotal;                     //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbStylesPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
         bool bPremiereVueStyles = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
 
+        private StyleViewModel ViewModelStyle { get { return (StyleViewModel)DataContext; } }
+
         public StyleView()
         {
             InitializeComponent();
+
+            try
+            {
+                DataContext = new StyleViewModel();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+
             bPremiereVueStyles = false;
+            iNbStylesTotal = Listes.ListeStyles.Count();    
             //On crée des boutons pour les premiers 12 activités
             foreach (StyleVetement a in Listes.ListeStyles)
             {
@@ -68,7 +82,7 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-     
+
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             WrapPanelStyles.Children.Clear();
 
@@ -79,7 +93,7 @@ namespace Mova.UI.Views
             }
             else
             {
-               btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
 
@@ -132,11 +146,11 @@ namespace Mova.UI.Views
                 btnPrecedent.Visibility = Visibility.Visible;
             }
 
-            if(iNbStylesCourant == iNbStylesTotal)  //Nous sommes à la fin de notre liste
+            if (iNbStylesCourant == iNbStylesTotal)  //Nous sommes à la fin de notre liste
             {
                 iNbStylesCourant = iNbStylesCourant - iNbStylesPrecedent - iNombreDeBoutonsDesires;
             }
-            else 
+            else
             {
                 iNbStylesCourant = iNbStylesCourant - iNbStylesPrecedent - iNbStylesPrecedent;
             }
