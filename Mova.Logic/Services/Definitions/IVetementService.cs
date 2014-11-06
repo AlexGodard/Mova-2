@@ -17,5 +17,6 @@ namespace Mova.Logic.Services.Definitions
         int RetrieveIdType(string nomType);
         int RetrieveIdCouleur(string nomCouleur);
         IList<int> RetrieveIdTypeAll();
+        IList<Vetement> RetrieveVetementTypeSpecific(int type);
     }
 }

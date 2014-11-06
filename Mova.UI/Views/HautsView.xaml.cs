@@ -23,6 +23,8 @@ namespace Mova.UI.ViewModel
         public HautsView()
         {
             InitializeComponent();
+
+            DataContext = new HautsViewModel();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mova.Logic.Models;
 
 namespace Mova.Logic.Services.MySql
 {
@@ -155,6 +156,53 @@ namespace Mova.Logic.Services.MySql
 
             //Si on se rend ici, on retourne un utilisateur vide
             return result;
+        }
+
+
+        public IList<Vetement> RetrieveVetementTypeSpecific(int type)
+        {
+            IList<Vetement> result = new List<Vetement>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                //string requete = "SELECT * FROM UtilisateursVetements WHERE idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
+                string requete = "SELECT * FROM Vetements v INNER JOIN UtilisateursVetements uv ON  v.idVetement = uv.idVetement" +
+                " WHERE v.idTypeVetement = " + type + " AND uv.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow vetement in table.Rows)
+                {
+                    result.Add(ConstructVetement(vetement));
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            //Si on se rend ici, on retourne un utilisateur vide
+            return result;
+        }
+
+        private Vetement ConstructVetement(DataRow row)
+        {
+            return new Vetement()
+            {
+                IdVetement = (int?)row["idVetement"],
+                TypeVetement = new TypeVetement((int)row["idTypeVetement"]),
+                CouleurVetement = new Couleur((int)row["idCouleur"]),
+                NomVetement = (string)row["nomVetement"],
+                ImageURL = (string)row["imageUrl"],
+                Prix = (int)row["prix"],
+                EstHomme = (bool)row["estHomme"],
+                EstFemme = (bool)row["estFemme"]
+                /*ListeTemperatures = null,
+                ListeStyles = null,
+                ListeActivites = null*/
+            };
         }
     }
 }

@@ -34,5 +34,11 @@ namespace Mova.Logic.Models.Entities
             IdType = null;
             NomType = nomType;
         }
+
+        public TypeVetement(int idType)
+        {
+            IdType = idType;
+            NomType = null;
+        }
     }
 }

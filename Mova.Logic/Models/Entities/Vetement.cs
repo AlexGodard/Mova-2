@@ -28,7 +28,7 @@ namespace Mova.Logic.Models.Entities
         /// <summary>
         /// Le prix du vêtement.
         /// </summary>
-        public double Prix { get; set; }
+        public int Prix { get; set; }
 
         /// <summary>
         /// True si le vêtement est fair pour un homme.
@@ -72,7 +72,7 @@ namespace Mova.Logic.Models.Entities
             IdVetement = 0;
             NomVetement = "Inconnu";
             ImageURL = "default.jpg";
-            Prix = 10.86;
+            Prix = 10;
             EstHomme = true;
             EstFemme = false;
             TypeVetement = null;
