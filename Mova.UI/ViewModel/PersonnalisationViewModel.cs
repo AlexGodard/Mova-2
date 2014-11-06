@@ -24,12 +24,50 @@ namespace Mova.UI.ViewModel
 {
     class PersonnalisationViewModel : BaseViewModel
     {
+
+        private IEnsembleService _ensembleService;
+        private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
+
         public int i = 0, j = 0, k = 0;
 
         // On ajoute tout les vêtements dans des listes de vêtements temporaires
         List<Vetement> listeHauts = new List<Vetement>();
         List<Vetement> listeBas = new List<Vetement>();
         List<Vetement> listeChaussures = new List<Vetement>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PersonnalisationViewModel()
+        {
+            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+
+            Ensembles = new ObservableCollection<Ensemble>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveAll());
+
+            // On place dans la liste globale, la liste d'ensembles reçue
+            Listes.ListeEnsembles = Ensembles.ToList<Ensemble>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ObservableCollection<Ensemble> Ensembles
+        {
+            get
+            {
+                return _ensembles;
+            }
+
+            set
+            {
+                if (_ensembles == value)
+                {
+                    return;
+                }
+
+                _ensembles = value;
+            }
+        }
 
         internal List<Image> afficherEnsemble()
         {
@@ -52,7 +90,7 @@ namespace Mova.UI.ViewModel
             listeChaussures.Add(Listes.ensembleChoisi.ListeVetements[2]);
             // On prépare les listes pour les changements de vêtement (suivant, précédent)
 
-            foreach (EnsembleVetement ensembleVetement in Listes.ListeEnsembles)
+            foreach (EnsembleVetement ensembleVetement in Listes.ListeEnsemblesVetements)
             {
                 // On doit trouver un moyen de vérifier si le haut est déjà dedans la liste, il ne faut pas l'ajouter.
                 bool hautExiste = false, basExiste = false, chaussureExiste = false;
@@ -184,6 +222,12 @@ namespace Mova.UI.ViewModel
             Image image = new Image();
             image.Visibility = Visibility.Collapsed;
             return image;
+        }
+
+        internal void ajouterEnsemble(string nomEnsemble)
+        {
+            Ensemble ensembleAAjouter = new Ensemble(nomEnsemble);
+            _ensembleService.Create(ensembleAAjouter);
         }
     }
 }

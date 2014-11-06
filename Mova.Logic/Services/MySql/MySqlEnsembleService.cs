@@ -29,6 +29,7 @@ namespace Mova.Logic.Services.MySql
 
                 string debutRequete = "INSERT IGNORE INTO Ensembles (nomEnsemble) VALUES ";
 
+
                 string valeurs = "('" + ensemble.NomEnsemble.Replace("'", "''") + "')";
                 string requete = debutRequete + valeurs;
 
@@ -38,6 +39,42 @@ namespace Mova.Logic.Services.MySql
             {
                 throw;
             }
+        }
+
+        public IList<Ensemble> RetrieveAll()
+        {
+            IList<Ensemble> result = new List<Ensemble>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "SELECT * FROM Ensembles";
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow ensemble in table.Rows)
+                {
+                    result.Add(ConstructEnsemble(ensemble));
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
+        private Ensemble ConstructEnsemble(DataRow row)
+        {
+            return new Ensemble()
+            {
+                IdEnsemble = (int)row["idEnsemble"],
+                NomEnsemble = (string)row["nomEnsemble"]
+            };
+
         }
     }
 }

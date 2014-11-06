@@ -115,10 +115,11 @@ namespace Mova.UI.Views
 
             if (txtNomEnsemble.Text != "")
             {
-                //_ensembleService
+                ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
 
             }
         }
+
 
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {

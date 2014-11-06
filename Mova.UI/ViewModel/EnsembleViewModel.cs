@@ -28,13 +28,12 @@ namespace Mova.UI.ViewModel
         /// </summary>
         public EnsembleVetementViewModel()
         {
-
             _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
 
             EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste));
 
             // On place dans la liste globale, la liste d'ensembles reçue
-            Listes.ListeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
+            Listes.ListeEnsemblesVetements = EnsemblesVetements.ToList<EnsembleVetement>();
             if (EnsembleView._historique.IsEmpty()){
 
                 _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
@@ -42,7 +41,7 @@ namespace Mova.UI.ViewModel
                 EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste));
 
                 // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
+                Listes.ListeEnsemblesVetements = EnsemblesVetements.ToList<EnsembleVetement>();
             }
         }
 

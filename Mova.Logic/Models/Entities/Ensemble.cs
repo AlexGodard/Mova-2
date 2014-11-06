@@ -17,5 +17,16 @@ namespace Mova.Logic.Models
         public virtual string NomEnsemble {  get; set; }
 
         #endregion
+
+        public Ensemble()
+        {
+            IdEnsemble = null;
+            NomEnsemble = "Inconnu";
+        }
+
+        public Ensemble(string nomEnsemble)
+        {
+            this.NomEnsemble = nomEnsemble;
+        }
     }
 }

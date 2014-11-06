@@ -77,7 +77,7 @@ namespace Mova.UI.Views
             }
 
             //Si le dernier ensemble de la liste globale n'est pas affiché
-            if (nombreDeVetementAfficheJusquaDate < Listes.ListeEnsembles.Count)
+            if (nombreDeVetementAfficheJusquaDate < Listes.ListeEnsemblesVetements.Count)
             {
                 btnSuivant.Visibility = Visibility.Visible;
             }
@@ -98,10 +98,10 @@ namespace Mova.UI.Views
             List<EnsembleVetement> listeTemp = new List<EnsembleVetement>();
 
 
-            for (int i = noPremierEnsembleAPrendre; i < Listes.ListeEnsembles.Count; i++)
+            for (int i = noPremierEnsembleAPrendre; i < Listes.ListeEnsemblesVetements.Count; i++)
             {
         
-                listeTemp.Add(Listes.ListeEnsembles[i]);
+                listeTemp.Add(Listes.ListeEnsemblesVetements[i]);
 
                 nombreDeVetementAfficheJusquaDate = i + 1;
 

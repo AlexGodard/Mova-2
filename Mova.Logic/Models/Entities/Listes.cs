@@ -19,7 +19,8 @@ namespace Mova.Logic
         public static List<TypeVetement> ListeTypes;
         public static List<UtilisateurEnsemble> ListeEnsemblesUtilisateur;
         public static List<UtilisateurVetements> ListeVetementsUtilisateur;
-        public static List<EnsembleVetement> ListeEnsembles;
+        public static List<EnsembleVetement> ListeEnsemblesVetements;
+        public static List<Ensemble> ListeEnsembles;
         public static Utilisateur UtilisateurConnecte;
 
         //Concernant les choix faits dans l'écran styliste
