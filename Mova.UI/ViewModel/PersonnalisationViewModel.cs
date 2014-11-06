@@ -26,6 +26,10 @@ namespace Mova.UI.ViewModel
     {
         public int i = 0, j = 0, k = 0;
 
+        // On ajoute tout les vêtements dans des listes de vêtements temporaires
+        List<Vetement> listeHauts = new List<Vetement>();
+        List<Vetement> listeBas = new List<Vetement>();
+        List<Vetement> listeChaussures = new List<Vetement>();
 
         internal List<Image> afficherEnsemble()
         {
@@ -41,38 +45,12 @@ namespace Mova.UI.ViewModel
             listeImages.Add(DessinerVetement(pants, 1));
             listeImages.Add(DessinerVetement(shoes, 2));
 
-            return listeImages;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="v"></param>
-        /// <param name="rangee"></param>
-        internal Image DessinerVetement(Vetement v, int rangee)
-        {
-            Image i = new Image();
-            i.Width = 200;
-            i.Height = 200;
-            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
-            Grid.SetColumn(i, 2);
-            Grid.SetRow(i, rangee);
-
-            return i;
-        }
-
-        internal Image changerVetement(int rangee, string direction)
-        {
-            // On ajoute tout les vêtements dans des listes de vêtements temporaires
-            List<Vetement> listeHauts = new List<Vetement>();
-            List<Vetement> listeBas = new List<Vetement>();
-            List<Vetement> listeChaussures = new List<Vetement>();
-
             // Avant de commencer, on ajoute les vêtements qu'on a choisi pour qu'ils soient en premier de liste.
 
             listeHauts.Add(Listes.ensembleChoisi.ListeVetements[0]);
             listeBas.Add(Listes.ensembleChoisi.ListeVetements[1]);
             listeChaussures.Add(Listes.ensembleChoisi.ListeVetements[2]);
+            // On prépare les listes pour les changements de vêtement (suivant, précédent)
 
             foreach (EnsembleVetement ensembleVetement in Listes.ListeEnsembles)
             {
@@ -97,7 +75,30 @@ namespace Mova.UI.ViewModel
                 if (!chaussureExiste)
                     listeChaussures.Add(ensembleVetement.ListeVetements[2]);
             }
+            
 
+            return listeImages;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="rangee"></param>
+        internal Image DessinerVetement(Vetement v, int rangee)
+        {
+            Image i = new Image();
+            i.Width = 200;
+            i.Height = 200;
+            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+            Grid.SetColumn(i, 2);
+            Grid.SetRow(i, rangee);
+
+            return i;
+        }
+
+        internal Image changerVetement(int rangee, string direction)
+        {
             if (direction == "Suivant")
             {
                 switch (rangee)
@@ -115,42 +116,74 @@ namespace Mova.UI.ViewModel
                            break; 
                         }
                     case 1: j++;
-                        Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                        return DessinerVetement(listeBas[j], 1);
+                        if (j < listeBas.Count())
+                        {
+                            Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
+                            return DessinerVetement(listeBas[j], 1);
+                        }
+                        else
+                        {
+                            j--;
+                            break;
+                        }
                     case 2: k++;
-                        Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                        return DessinerVetement(listeChaussures[k], 2);
+                        if (k < listeChaussures.Count())
+                        {
+                            Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
+                            return DessinerVetement(listeChaussures[k], 2);
+                        }
+                        else
+                        {
+                            k--;
+                            break;
+                        }
                 }
             }
             else
             {
                 switch (rangee)
                 {
-                    case 0:
-                        if (i != 0)
+                    case 0: i--;
+                        if (i != -1)
                         {
-                            i--; // On décrémente le compteur des hauts pour la liste
+                             // On décrémente le compteur des hauts pour la liste
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
                             return DessinerVetement(listeHauts[i], 0);
                         }
                         else
                         {
-                            
+                            i++;
                             break;
                         }        // On disable le bouton précédent des hauts
                     case 1: j--;
-                        Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                        return DessinerVetement(listeBas[j], 1);
+                        if (j != -1)
+                        {
+                            Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
+                            return DessinerVetement(listeBas[j], 1);
+                        }
+                        else
+                        {
+                            j++;
+                            break;
+                        }
                     case 2: k--;
-                        Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                        return DessinerVetement(listeChaussures[k], 2);
+                        if (k != -1)
+                        {
+                            Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
+                            return DessinerVetement(listeChaussures[k], 2);
+                        }
+                        else
+                        {
+                            k++;
+                            break;
+                        }
                 }
             }
 
             // On retourne un image vide (null)
-            return new Image();
+            Image image = new Image();
+            image.Visibility = Visibility.Collapsed;
+            return image;
         }
-
-        //internal void next(List<EnsembleVetement>)
     }
 }

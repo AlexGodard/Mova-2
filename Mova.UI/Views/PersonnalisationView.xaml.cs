@@ -56,8 +56,25 @@ namespace Mova.UI.Views
             // On veut obtenir la rangée dans laquelle le bouton se trouve
             int rangee = (int)bTemp.GetValue(Grid.RowProperty);
 
-            // On lui passe la rangée pour savoir quel type de vêtement il faut changer (torso, pantalons ou chaussures)
-            DynamicGrid.Children.Add(ViewModel.changerVetement(rangee, "Precedent"));
+            Image i = new Image();
+            i = ViewModel.changerVetement(rangee, "Precedent");
+
+            // LE PIRE CODE EVER BY GODARD
+
+            if (i.Visibility != Visibility.Collapsed)   // Si on affiche une nouvelle image
+            {
+                // On efface l'image
+                foreach (UIElement control in DynamicGrid.Children)
+                {
+                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2)
+                    {
+                        DynamicGrid.Children.Remove(control);
+                        break;
+                    }
+                }
+                txtNomChandail.Text = i.Source.ToString();
+                DynamicGrid.Children.Add(i);
+            }
         }
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
@@ -69,15 +86,28 @@ namespace Mova.UI.Views
             int rangee = (int)bTemp.GetValue(Grid.RowProperty);
 
             // On lui passe la rangée pour savoir quel type de vêtement il faut changer (torso, pantalons ou chaussures)
-            // On efface l'image
+            
+            
+
             Image i = new Image();
+            i = ViewModel.changerVetement(rangee, "Suivant");
 
-            Grid.SetColumn(i, 2);
-            Grid.SetRow(i, rangee);
+            // LE PIRE CODE EVER BY GODARD
 
-            DynamicGrid.Children.Remove(i);
-
-            DynamicGrid.Children.Add(ViewModel.changerVetement(rangee, "Suivant"));
+            if (i.Visibility != Visibility.Collapsed)   // Si on affiche une nouvelle image
+            {   
+                // On efface l'image
+                foreach (UIElement control in DynamicGrid.Children)
+                {
+                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2)
+                    {
+                        DynamicGrid.Children.Remove(control);
+                        break;
+                    }
+                }
+                txtNomChandail.Text = i.Source.ToString();
+                DynamicGrid.Children.Add(i);
+            }
         }
 
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
