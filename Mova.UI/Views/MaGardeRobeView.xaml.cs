@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using Mova.Logic;
 using Mova.UI.ViewModel;
 
@@ -22,12 +24,23 @@ namespace Mova.UI.Views
     /// </summary>
     public partial class MaGardeRobeView : UserControl
     {
+        private MaGardeRobeView ViewModel { get { return (MaGardeRobeView)DataContext; } }
+
         public MaGardeRobeView()
-        {
+        {        
             InitializeComponent();
             DataContext = new MaGardeRobeViewModel();
             lblNbEnsemble.Content = "Vous avez " + Listes.NbEnsembleUtilisateur + " ensembles";
-            
+            lblNbHauts.Content = "Vous avez " + Listes.NbHauts + " hauts";
+            lblNbBas.Content = "Vous avez " + Listes.NbBas + " bas";
+            lblNbSouliers.Content = "Vous avez " + Listes.NbSouliers + " souliers";
+
+        }
+
+        private void btnvoirHauts_Click(object sender, RoutedEventArgs e)
+        {
+            /*IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<>(new MaGardeRobeViewModel());*/
         }
 
         

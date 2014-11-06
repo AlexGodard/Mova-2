@@ -18,9 +18,8 @@ namespace Mova.Logic
         public static List<Temperature> ListeTemperatures;
         public static List<TypeVetement> ListeTypes;
         public static List<UtilisateurEnsemble> ListeEnsemblesUtilisateur;
-
+        public static List<UtilisateurVetements> ListeVetementsUtilisateur;
         public static List<EnsembleVetement> ListeEnsembles;
-
         public static Utilisateur UtilisateurConnecte;
 
         //Concernant les choix faits dans l'écran styliste
@@ -28,11 +27,17 @@ namespace Mova.Logic
 
         public static InfoStylisteArgs InfoStyliste;
 
+        //Mot de passe utilisateur
         public static string pwd;
 
         public static EnsembleVetement ensembleChoisi;
 
+        //Le nombre d<ensemble que lutilisateur possede dans son garderobe
         public static int NbEnsembleUtilisateur;
+
+        public static int NbHauts;
+        public static int NbBas;
+        public static int NbSouliers;
 
         public static List<T> RetourneAleatoire<T>(int nombreMaxRandom, List<T> listeSource)
         {

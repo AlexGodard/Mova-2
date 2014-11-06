@@ -128,5 +128,35 @@ namespace Mova.Logic.Services.MySql
             return 0;
         }
 
+        public IList<int> RetrieveIdTypeAll()
+        {
+          IList<UtilisateurVetements> listeTemp = Listes.ListeVetementsUtilisateur;
+          IList<int> result = new List<int>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                foreach(UtilisateurVetements v in listeTemp)
+                {
+                   string requete = "SELECT idTypeVetement FROM Vetements WHERE idVetement = '" + v.IdVetement + "'";
+                   DataSet dataset = connexion.Query(requete);
+                   DataTable table = dataset.Tables[0];
+                   foreach (DataRow vetement in table.Rows)
+                   {
+                       result.Add((int)vetement["idTypeVetement"]);
+                   }
+                }             
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            //Si on se rend ici, on retourne un utilisateur vide
+            return result;
+        }
+
+
     }
 }

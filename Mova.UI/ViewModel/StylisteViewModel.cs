@@ -59,10 +59,12 @@ namespace Mova.UI.ViewModel
             Listes.ListeStyles = Styles.ToList<StyleVetement>();
             Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
             Listes.NbEnsembleUtilisateur = UtilisateursEnsembles.Count();
+            Listes.ListeVetementsUtilisateur = UtilisateursVetements.ToList<UtilisateurVetements>();
 
             _activiteService = ServiceFactory.Instance.GetService<IActiviteService>();
             _styleService = ServiceFactory.Instance.GetService<IStyleService>();
             _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
+            _utilisateurVetementService = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
             
         }
 

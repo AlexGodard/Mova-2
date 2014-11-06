@@ -11,7 +11,6 @@ namespace Mova.Logic.Services.Helpers
 {
     public class MySqlConnexion
     {
-        private static readonly string CONNECTION_STRING;
         private MySqlConnection connection;
         private MySqlTransaction transaction;
         
