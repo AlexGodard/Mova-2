@@ -27,6 +27,7 @@ namespace Mova.Logic.Services.MySql
 
             List<Vetement> lstVetements = new List<Vetement>();
             IList<EnsembleVetement> result = new List<EnsembleVetement>();
+            int nbArgumentsValides = 0;
 
                 try
                 {
@@ -35,12 +36,38 @@ namespace Mova.Logic.Services.MySql
                     StringBuilder sb = new StringBuilder();
 
                     sb.Append("SELECT DISTINCT(v.idVetement), v.idTypeVetement, v.nomVetement, v.imageURL, v.estHomme, v.estFemme, v.prix FROM Vetements v INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement INNER JOIN Activites a ON a.idActivite = av.idActivite INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN StylesVetements sv ON sv.idVetement = v.idVetement INNER JOIN Styles s ON s.idStyle = sv.idStyle INNER JOIN VetementsTemperatures vt ON vt.idVetement = v.idVetement INNER JOIN Temperatures t ON t.idTemperature ");
-                    sb.Append("WHERE a.idActivite=");
-                    sb.Append(args.IdActivite.ToString());
-                    sb.Append(" AND s.idStyle=");
-                    sb.Append(args.IdStyle.ToString());
-                    sb.Append(" AND m.idMoment=");
-                    sb.Append(args.IdMoment.ToString());
+
+                    //Pour Activité
+                    if (args.IdActivite > 0){
+                        sb.Append("WHERE a.idActivite=");
+                        sb.Append(args.IdActivite.ToString());
+                        nbArgumentsValides++;
+                    }
+
+                    //Pour Style
+                    if (args.IdStyle > 0 && nbArgumentsValides == 0){
+                        sb.Append(" WHERE s.idStyle=");
+                        sb.Append(args.IdStyle.ToString());
+                        nbArgumentsValides++;
+                    }
+                    else if (args.IdStyle > 0)
+                    {
+                        sb.Append(" AND s.idStyle=");
+                        sb.Append(args.IdStyle.ToString());
+                        nbArgumentsValides++;
+                    }
+                    
+                    //Pour Moment
+                    if (args.IdMoment > 0 && nbArgumentsValides == 0)
+                    {
+                        sb.Append(" WHERE s.idMoment=");
+                        sb.Append(args.IdStyle.ToString());
+                    }
+                    else if (args.IdMoment > 0)
+                    {
+                        sb.Append(" AND s.idMoment=");
+                        sb.Append(args.IdStyle.ToString());
+                    }
                     string requete = sb.ToString();
 	                                
 
