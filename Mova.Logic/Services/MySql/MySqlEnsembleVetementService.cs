@@ -60,12 +60,12 @@ namespace Mova.Logic.Services.MySql
                     //Pour Moment
                     if (args.IdMoment > 0 && nbArgumentsValides == 0)
                     {
-                        sb.Append(" WHERE s.idMoment=");
+                        sb.Append(" WHERE m.idMoment=");
                         sb.Append(args.IdStyle.ToString());
                     }
                     else if (args.IdMoment > 0)
                     {
-                        sb.Append(" AND s.idMoment=");
+                        sb.Append(" AND m.idMoment=");
                         sb.Append(args.IdStyle.ToString());
                     }
                     string requete = sb.ToString();
