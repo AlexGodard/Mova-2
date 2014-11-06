@@ -79,7 +79,7 @@ namespace Mova.UI.Views
 
 			IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
-			mainVM.ChangeView<StylisteView>(new StylisteView());
+            mainVM.ChangeView<StylisteActiviteView>(new StylisteActiviteView());
 		}
 
         private void Quitter(object sender, RoutedEventArgs e)
@@ -108,9 +108,8 @@ namespace Mova.UI.Views
 			//Avant de passer à l'écran Styliste, on vérifie si la BD est disponiblie
 			try
 			{
-                StylisteView._historique = new History<UserControl>();
 
-				mainVM.ChangeView<StylisteView>(new StylisteView());
+                mainVM.ChangeView<StylisteActiviteView>(new StylisteActiviteView());
 			}
 			catch(Exception)
 			{

@@ -73,7 +73,8 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PersonnalisationViewModel.cs" />
     <Compile Include="ViewModel\StyleViewModel.cs" />
-    <Compile Include="ViewModel\StylisteViewModel.cs" />
+    <Compile Include="ViewModel\StylisteActiviteViewModel.cs" />
+    <Compile Include="ViewModel\StylisteStyleViewModel.cs" />
     <Compile Include="Views\ActiviteView.xaml.cs">
       <DependentUpon>ActiviteView.xaml</DependentUpon>
     </Compile>
@@ -101,8 +102,11 @@
     <Compile Include="Views\StyleView.xaml.cs">
       <DependentUpon>StyleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\StylisteView.xaml.cs">
-      <DependentUpon>StylisteView.xaml</DependentUpon>
+    <Compile Include="Views\StylisteActiviteView.xaml.cs">
+      <DependentUpon>StylisteActiviteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StylisteStyleView.xaml.cs">
+      <DependentUpon>StylisteStyleView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -152,7 +156,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\StylisteView.xaml">
+    <Page Include="Views\StylisteActiviteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StylisteStyleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +241,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\thumbsUp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\precedent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\suivant.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

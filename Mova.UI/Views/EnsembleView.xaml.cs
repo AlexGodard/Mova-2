@@ -51,6 +51,9 @@ namespace Mova.UI.Views
 
             _historique.Ajouter(this);
 
+            //On réinitialise la variable qui contient les données pour trouver les ensembles correspondant
+            Listes.InfoStyliste.Reset();
+
             listeEnsemblesTrouves = GetEnsemblesPourFenetre();
 
             AfficherBoutonsAppropries();
@@ -184,7 +187,7 @@ namespace Mova.UI.Views
                 listeEnsemblesTrouves.Add(l[i]);
 
                 //On dessine le vetement
-                EcrireVetementViaListe(listeVetements, i + 1); //On a un maximum de 3 ensembles par pages et nous avons 5 colonnes, nous voulons écrire les ensembles dans les 3 du milieu
+                EcrireVetementViaListe(listeVetements, i + (2 + (1*i))); //On a un maximum de 3 ensembles par pages et nous avons 5 colonnes, nous voulons écrire les ensembles dans les 3 du milieu
 
             }
 
@@ -202,15 +205,15 @@ namespace Mova.UI.Views
             Vetement pants = l[1];
             Vetement shoes = l[2];
 
-            DessinerVetement(torso, colonne, 0);
-            DessinerVetement(pants, colonne, 1);
-            DessinerVetement(shoes, colonne, 2);
+            DessinerVetement(torso, colonne, 2);
+            DessinerVetement(pants, colonne, 3);
+            DessinerVetement(shoes, colonne, 4);
 
             //On ajoute le bouton Choisir en bas de l'ensemble
             Button button = new Button();
             button.Content = "Choisir #" + colonne.ToString();
             Grid.SetColumn(button,colonne);
-            Grid.SetRow(button,3);
+            Grid.SetRow(button,5);
             // On ajoute un nom au bouton
             button.Name = "btnChoisir" + colonne.ToString();
             // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
@@ -269,8 +272,6 @@ namespace Mova.UI.Views
         private void DessinerVetement(Vetement v, int colonne, int rangee)
         {
             Image i = new Image();
-            i.Width = 200;
-            i.Height = 200;
             i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
             Grid.SetColumn(i, colonne);
             Grid.SetRow(i, rangee);
@@ -292,13 +293,10 @@ namespace Mova.UI.Views
         /// </summary>
         private void RetournerEcranStyliste()
         {
-            //On efface ce qu'on avait avant dans l'historique
-            StylisteView._historique = new History<UserControl>();
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            StylisteView._historique = new History<UserControl>();
 
-            mainVM.ChangeView<UserControl>(new StylisteView());
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
         }
 
         /// <summary>
@@ -323,6 +321,21 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
             mainVM.ChangeView<UserControl>(_historique.Last());
+        }
+
+        private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
+        {
+            //Si il y a des éléments dans la liste
+            if (!_historique.IsEmpty())
+            {
+                UserControl uc = _historique.Last(); //On va chercher le dernier UserControl
+
+                if (uc != null)
+                {
+                    IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+                    mainVM.ChangeView<UserControl>(uc);
+                }
+            }
         }
 
 
