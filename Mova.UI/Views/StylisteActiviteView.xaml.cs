@@ -30,7 +30,9 @@ namespace Mova.UI.Views
         /// <summary>
         /// Variables
         /// </summary>
+        
         private StylisteActiviteViewModel ViewModel { get { return (StylisteActiviteViewModel)DataContext; } }
+        
         private const int _maxStack = 2;
         private const int _maxBoutons = 4;	//Nombre maximum de boutons d'activités
 
@@ -113,7 +115,7 @@ namespace Mova.UI.Views
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
-            mainVM.ChangeView<UserControl>(new StylisteViewStyle());
+            mainVM.ChangeView<UserControl>(new StylisteStyleView());
 
         }
 
@@ -129,7 +131,7 @@ namespace Mova.UI.Views
             //On obtient son contenu
             string contenu = bTemp.Content.ToString();
 
-            ViewModel.SetChoix(contenu);
+            StylisteActiviteViewModel.SetChoix(contenu);
 
         }
 

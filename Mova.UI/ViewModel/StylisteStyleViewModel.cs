@@ -101,7 +101,7 @@ namespace Mova.UI.ViewModel
         /// </summary>
         /// <param name="index"></param>
         /// <param name="contenu"></param>
-        public void SetChoix(string contenu)
+        public static void SetChoix(string contenu)
         {
 
             //On fait une requête à notre liste globale

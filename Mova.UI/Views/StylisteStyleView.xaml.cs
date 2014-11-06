@@ -25,7 +25,7 @@ namespace Mova.UI.Views
     /// <summary>
     /// Logique d'interaction pour StylisteViewStyle.xaml
     /// </summary>
-    public partial class StylisteViewStyle : UserControl
+    public partial class StylisteStyleView : UserControl
     {
         /// <summary>
         /// Variables
@@ -36,7 +36,7 @@ namespace Mova.UI.Views
         /// <summary>
         /// Constructeur
         /// </summary>
-        public StylisteViewStyle()
+        public StylisteStyleView()
         {
             InitializeComponent();
             try
@@ -113,7 +113,7 @@ namespace Mova.UI.Views
         {
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<UserControl>(new StylisteViewStyle());
+            mainVM.ChangeView<UserControl>(new StylisteStyleView());
 
         }
 
@@ -130,8 +130,6 @@ namespace Mova.UI.Views
 
             mainVM.ChangeView<UserControl>(new EnsembleView());
 
-
-
         }
 
         /// <summary>
@@ -146,7 +144,7 @@ namespace Mova.UI.Views
             //On obtient son contenu
             string contenu = bTemp.Content.ToString();
 
-            ViewModel.SetChoix(contenu);
+            StylisteStyleViewModel.SetChoix(contenu);
 
         }
 

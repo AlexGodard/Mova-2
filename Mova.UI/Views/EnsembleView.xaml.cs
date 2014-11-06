@@ -51,6 +51,9 @@ namespace Mova.UI.Views
 
             _historique.Ajouter(this);
 
+            //On réinitialise la variable qui contient les données pour trouver les ensembles correspondant
+            Listes.InfoStyliste.Reset();
+
             listeEnsemblesTrouves = GetEnsemblesPourFenetre();
 
             AfficherBoutonsAppropries();
