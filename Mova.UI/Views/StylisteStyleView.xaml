@@ -4,14 +4,14 @@
         SnapsToDevicePixels="True" >
 
 	<UserControl.Resources>
-		<Style TargetType="Button" x:Key="btnActivite">
-			<Setter Property="Margin" Value="15" />
-			<Setter Property="Background" Value="Transparent" />
-			<Setter Property="FontFamily" Value="Calibri" />
-			<Setter Property="FontSize" Value="30" />
-			<Setter Property="Foreground" Value="White" />
+        <Style TargetType="Button" x:Key="btnActivite">
+            <Setter Property="Margin" Value="15" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="Foreground" Value="White" />
 
-			<!-- Coins rond -->
+            <!-- Coins rond -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -33,7 +33,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-	</UserControl.Resources>
+    </UserControl.Resources>
 
 	<Grid Name="gridPrincipale">
 
@@ -56,10 +56,20 @@
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblMoment" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Top" />
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblShabiller" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Center" />
 
-        <Button Grid.Row="3" Grid.Column="1" x:Name="btnBack" Click="btnBack_Click" >
+        <!-- Bouton précédent qui change lorsqu'on passe la souris dessus. -->
+        <Button Grid.Row="3" Grid.Column="1" x:Name="btnBack" Click="btnBack_Click" VerticalAlignment="Bottom" Width="100">
             <Button.Template>
-                <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/back.png" />
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/back.png" Visibility="Visible" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/backHover.png" Visibility="Collapsed" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
         </Button>
