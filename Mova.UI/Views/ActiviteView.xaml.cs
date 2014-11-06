@@ -204,6 +204,10 @@ namespace Mova.UI.Views
             //On reset la liste des ensembles
             EnsembleView._historique.Reset();
 
+            //On signale qu'on est le delegate du EnsembleView
+            EnsembleView.derniereFenetre = this;
+
+
             //On commence par obtenir l'objet
             Button bTemp = (Button)sender;
 

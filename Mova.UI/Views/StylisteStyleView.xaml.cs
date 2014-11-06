@@ -131,6 +131,9 @@ namespace Mova.UI.Views
             //On reset la liste
             EnsembleView._historique.Reset();
 
+            //On signale qu'on est le delegate du EnsembleView
+            EnsembleView.derniereFenetre = this;
+
             mainVM.ChangeView<UserControl>(new EnsembleView());
 
         }
