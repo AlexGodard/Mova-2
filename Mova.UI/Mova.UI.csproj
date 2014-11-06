@@ -102,6 +102,9 @@
     <Compile Include="Views\PersonnalisationView.xaml.cs">
       <DependentUpon>PersonnalisationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RecentsView.xaml.cs">
+      <DependentUpon>RecentsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StyleView.xaml.cs">
       <DependentUpon>StyleView.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonnalisationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -49,7 +49,7 @@ namespace Mova.UI
             ServiceFactory.Instance.Register<IUtilisateurVetementService, MySqlUtilisateursVetements>(new MySqlUtilisateursVetements());
             ServiceFactory.Instance.Register<IUtilisateurEnsembleService, MySqlUtilisateurEnsemble>(new MySqlUtilisateurEnsemble());
             ServiceFactory.Instance.Register<IMomentService, MySqlMomentService>(new MySqlMomentService());
-            ServiceFactory.Instance.Register<IEnsembleService, MySqlEnsembleService>(new MySqlEnsembleService());
+            ServiceFactory.Instance.Register<IEnsembleVetementService, MySqlEnsembleVetementService>(new MySqlEnsembleVetementService());
             ServiceFactory.Instance.Register<IUtilisateurService, MySqlUtilisateurService>(new MySqlUtilisateurService());
             ServiceFactory.Instance.Register<IActiviteService, MySqlActiviteService>(new MySqlActiviteService());
             ServiceFactory.Instance.Register<IStyleService, MySqlStyleService>(new MySqlStyleService());

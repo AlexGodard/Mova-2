@@ -84,7 +84,7 @@
     <Compile Include="Models\Entities\Vetement.cs" />
     <Compile Include="Services\Definitions\IActiviteService.cs" />
     <Compile Include="Services\Definitions\ICouleurService.cs" />
-    <Compile Include="Services\Definitions\IEnsembleService.cs" />
+    <Compile Include="Services\Definitions\IEnsembleVetementService.cs" />
     <Compile Include="Services\Definitions\IMomentService.cs" />
     <Compile Include="Services\Definitions\IStyleService.cs" />
     <Compile Include="Services\Definitions\ITemperatureService.cs" />
@@ -96,7 +96,7 @@
     <Compile Include="Services\Helpers\NHibernateConnexion.cs" />
     <Compile Include="Services\MySql\MySqlActiviteService.cs" />
     <Compile Include="Services\MySql\MySqlCouleurService.cs" />
-    <Compile Include="Services\MySql\MySqlEnsembleService.cs" />
+    <Compile Include="Services\MySql\MySqlEnsembleVetementService.cs" />
     <Compile Include="Services\MySql\MySqlMomentService.cs" />
     <Compile Include="Services\MySql\MySqlStyleService.cs" />
     <Compile Include="Services\MySql\MySqlTemperatureService.cs" />

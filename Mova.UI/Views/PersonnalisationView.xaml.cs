@@ -72,7 +72,6 @@ namespace Mova.UI.Views
                         break;
                     }
                 }
-                txtNomChandail.Text = i.Source.ToString();
                 DynamicGrid.Children.Add(i);
             }
         }
@@ -105,20 +104,25 @@ namespace Mova.UI.Views
                         break;
                     }
                 }
-                txtNomChandail.Text = i.Source.ToString();
+
                 DynamicGrid.Children.Add(i);
             }
         }
 
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
         {
+            // On vérifie si l'utilisateur a entrer un nom à son ensemble
 
+            if (txtNomEnsemble.Text != "")
+            {
+                //_ensembleService
+
+            }
         }
 
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
            
         }
-
     }
 }

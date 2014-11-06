@@ -45,7 +45,7 @@
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblMoment" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Top" />
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblShabiller" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Center" />
 
-        <Button Grid.Row="3" Grid.Column="1" x:Name="btnBack" Visibility="Hidden" Click="btnBack_Click" >
+        <Button Grid.Row="3" Grid.Column="1" x:Name="btnBack" Click="btnBack_Click" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/back.png" />
