@@ -22,9 +22,16 @@
                 </Setter.Value>
             </Setter>
 
-
-
-
+            <!-- Change le comportement du bouton lorsqu'on passe la souris dessus -->
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <ImageBrush ImageSource="pack://application:,,,/../Resources/buttonFond.png" />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </UserControl.Resources>
 
