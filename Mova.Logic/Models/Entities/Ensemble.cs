@@ -14,6 +14,7 @@ namespace Mova.Logic.Models
         #region Propriétés
 
         public virtual int? IdEnsemble { get; set; }
+        public virtual string NomEnsemble {  get; set; }
 
         #endregion
     }
