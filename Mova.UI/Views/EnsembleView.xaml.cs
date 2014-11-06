@@ -32,7 +32,7 @@ namespace Mova.UI.Views
         /// Variables
         /// </summary>
         private EnsembleViewModel ViewModel { get { return (EnsembleViewModel)DataContext; } }
-        private static History<UserControl> _historique = new History<UserControl>();
+        public static History<UserControl> _historique = new History<UserControl>();
 
         //Variables constantes pour la définition de la Grid
         private const int nbColumns = 3;
@@ -50,9 +50,6 @@ namespace Mova.UI.Views
             DataContext = new EnsembleViewModel();
 
             _historique.Ajouter(this);
-
-            //On réinitialise la variable qui contient les données pour trouver les ensembles correspondant
-            Listes.InfoStyliste.Reset();
 
             listeEnsemblesTrouves = GetEnsemblesPourFenetre();
 

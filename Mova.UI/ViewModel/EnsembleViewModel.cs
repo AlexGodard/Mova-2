@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mova.UI.Views;
 
 namespace Mova.UI.ViewModel
 {
@@ -28,13 +29,15 @@ namespace Mova.UI.ViewModel
         public EnsembleViewModel()
         {
 
-            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            if (EnsembleView._historique.IsEmpty()){
 
-            Ensembles = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveSelection(Listes.InfoStyliste));
+                _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
 
-            // On place dans la liste globale, la liste d'ensembles reçue
-            Listes.ListeEnsembles = Ensembles.ToList<EnsembleVetement>();
+                Ensembles = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveSelection(Listes.InfoStyliste));
 
+                // On place dans la liste globale, la liste d'ensembles reçue
+                Listes.ListeEnsembles = Ensembles.ToList<EnsembleVetement>();
+            }
         }
 
         /// <summary>

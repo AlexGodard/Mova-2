@@ -128,6 +128,9 @@ namespace Mova.UI.Views
             //Avant de changer de fenêtre on place un ID utile dans les args InfoStyliste
             Listes.InfoStyliste.IdMoment = Moment.GetIDMomentNow();
 
+            //On reset la liste
+            EnsembleView._historique.Reset();
+
             mainVM.ChangeView<UserControl>(new EnsembleView());
 
         }

@@ -115,5 +115,12 @@ namespace Mova.UI
         
         }
 
+        public void Reset()
+        {
+
+            _listeView = new List<T>();
+
+        }
+
     }
 }
