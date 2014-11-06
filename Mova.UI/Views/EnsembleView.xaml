@@ -28,14 +28,14 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi un ensemble" FontFamily="Calibri" FontSize="62" />
-        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" x:Name="btnSuivant" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click" >
+        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" x:Name="btnSuivant" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/suivant.png" Width="100" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" x:Name="btnPrecedent" Visibility="Hidden" Content="Précédent" Click="Button_Click" >
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" x:Name="btnPrecedent" Visibility="Hidden" Content="Précédent" Click="Button_Click" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/precedent.png" Width="100" />

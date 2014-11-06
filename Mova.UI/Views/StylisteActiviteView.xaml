@@ -31,7 +31,7 @@
     <Grid Name="gridPrincipale">
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="200" />
             <RowDefinition Height="200" />
             <RowDefinition Height="200" />
