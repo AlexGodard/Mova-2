@@ -17,44 +17,44 @@ namespace Mova.UI.ViewModel
     /// <summary>
     /// 
     /// </summary>
-    class EnsembleViewModel : BaseViewModel
+    class EnsembleVetementViewModel : BaseViewModel
     {
-        private IEnsembleService _ensembleService;
-        private ObservableCollection<EnsembleVetement> _ensembles = new ObservableCollection<EnsembleVetement>();
+        private IEnsembleVetementService _ensembleVetementService;
+        private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
 
         /// <summary>
         /// 
         /// </summary>
-        public EnsembleViewModel()
+        public EnsembleVetementViewModel()
         {
 
-            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
 
-            Ensembles = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveSelection(Listes.InfoStyliste));
+            EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste));
 
             // On place dans la liste globale, la liste d'ensembles reçue
-            Listes.ListeEnsembles = Ensembles.ToList<EnsembleVetement>();
+            Listes.ListeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
 
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public ObservableCollection<EnsembleVetement> Ensembles
+        public ObservableCollection<EnsembleVetement> EnsemblesVetements
         {
             get
             {
-                return _ensembles;
+                return _ensemblesVetements;
             }
 
             set
             {
-                if (_ensembles == value)
+                if (_ensemblesVetements == value)
                 {
                     return;
                 }
 
-                _ensembles = value;
+                _ensemblesVetements = value;
             }
         }
 

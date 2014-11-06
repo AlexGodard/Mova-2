@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace Mova.Logic.Services.Definitions
 {
-    public interface IEnsembleService
+    public interface IEnsembleVetementService
     {
 
         IList<EnsembleVetement> RetrieveSelection(InfoStylisteArgs args);
-
 
     }
 }

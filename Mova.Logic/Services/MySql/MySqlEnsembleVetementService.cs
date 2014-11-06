@@ -17,7 +17,7 @@ namespace Mova.Logic.Services.MySql
     /// <summary>
     /// Classe MySql pour les ensembles
     /// </summary>
-    public class MySqlEnsembleService : IEnsembleService
+    public class MySqlEnsembleVetementService : IEnsembleVetementService
     {
 
         private MySqlConnexion connexion;
@@ -60,13 +60,13 @@ namespace Mova.Logic.Services.MySql
                     //Pour Moment
                     if (args.IdMoment > 0 && nbArgumentsValides == 0)
                     {
-                        sb.Append(" WHERE m.idMoment=");
-                        sb.Append(args.IdMoment.ToString());
+                        sb.Append(" WHERE s.idMoment=");
+                        sb.Append(args.IdStyle.ToString());
                     }
                     else if (args.IdMoment > 0)
                     {
-                        sb.Append(" AND m.idMoment=");
-                        sb.Append(args.IdMoment.ToString());
+                        sb.Append(" AND s.idMoment=");
+                        sb.Append(args.IdStyle.ToString());
                     }
                     string requete = sb.ToString();
 	                                
@@ -78,7 +78,6 @@ namespace Mova.Logic.Services.MySql
                     {
                         lstVetements.Add(ConstructVetement(vetement));
                     }
-
                 }
                 catch (MySqlException)
                 {
@@ -87,7 +86,7 @@ namespace Mova.Logic.Services.MySql
 
 
                 //On construit des ensembles avec la liste de vêtements
-                result = CreerEnsembles(lstVetements);
+                result = CreerEnsemblesVetements(lstVetements);
 
 
                 //return result;
@@ -100,7 +99,7 @@ namespace Mova.Logic.Services.MySql
         /// </summary>
         /// <param name="ensemble"></param>
         /// <returns></returns>
-        private EnsembleVetement ConstructEnsemble(DataRow ensemble)
+        private EnsembleVetement ConstructEnsembleVetement(DataRow ensembleVetement)
         {
             return new EnsembleVetement();
         
@@ -139,14 +138,14 @@ namespace Mova.Logic.Services.MySql
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
-        private List<EnsembleVetement> CreerEnsembles(List<Vetement> l)
+        private List<EnsembleVetement> CreerEnsemblesVetements(List<Vetement> l)
         {
         
             //Les listes suivantes sont utiles
             List<Vetement> lstChest = new List<Vetement>();
             List<Vetement> lstLeg = new List<Vetement>();
             List<Vetement> lstFeet = new List<Vetement>();
-            List<EnsembleVetement> lstEnsemble = new List<EnsembleVetement>();
+            List<EnsembleVetement> lstEnsembleVetement = new List<EnsembleVetement>();
 
             //Exploded view of the problem
             foreach (Vetement v in l)
@@ -181,7 +180,7 @@ namespace Mova.Logic.Services.MySql
                     lstTemp.Add(vs);
 
                     //On ajoute un nouvel EnsembleVetement à la liste
-                    lstEnsemble.Add(new EnsembleVetement(){
+                    lstEnsembleVetement.Add(new EnsembleVetement(){
                     
                         ListeVetements = lstTemp
 
@@ -191,13 +190,12 @@ namespace Mova.Logic.Services.MySql
               }
            }
 
-           List<EnsembleVetement> source = lstEnsemble;
+           List<EnsembleVetement> source = lstEnsembleVetement;
            var rnd = new Random();
            var result = source.OrderBy(item => rnd.Next());
-           lstEnsemble = result.ToList<EnsembleVetement>();
+           lstEnsembleVetement = result.ToList<EnsembleVetement>();
 
-           return lstEnsemble;
-        
+           return lstEnsembleVetement;
         }
     }
 }

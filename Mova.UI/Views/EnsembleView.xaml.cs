@@ -31,7 +31,7 @@ namespace Mova.UI.Views
         /// <summary>
         /// Variables
         /// </summary>
-        private EnsembleViewModel ViewModel { get { return (EnsembleViewModel)DataContext; } }
+        private EnsembleVetementViewModel ViewModel { get { return (EnsembleVetementViewModel)DataContext; } }
         private static History<UserControl> _historique = new History<UserControl>();
 
         //Variables constantes pour la définition de la Grid
@@ -47,7 +47,7 @@ namespace Mova.UI.Views
         {
             InitializeComponent();
 
-            DataContext = new EnsembleViewModel();
+            DataContext = new EnsembleVetementViewModel();
 
             _historique.Ajouter(this);
 
