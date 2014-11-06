@@ -113,7 +113,7 @@ namespace Mova.UI.Views
         {
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<UserControl>(new StylisteStyleView());
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
 
         }
 
