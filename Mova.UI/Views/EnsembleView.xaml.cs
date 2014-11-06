@@ -212,6 +212,7 @@ namespace Mova.UI.Views
             //On ajoute le bouton Choisir en bas de l'ensemble
             Button button = new Button();
             button.Content = "Choisir #" + colonne.ToString();
+            button.Margin = new Thickness(20);
             Grid.SetColumn(button,colonne);
             Grid.SetRow(button,5);
             // On ajoute un nom au bouton
@@ -325,17 +326,8 @@ namespace Mova.UI.Views
 
         private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
         {
-            //Si il y a des éléments dans la liste
-            if (!_historique.IsEmpty())
-            {
-                UserControl uc = _historique.Last(); //On va chercher le dernier UserControl
-
-                if (uc != null)
-                {
-                    IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-                    mainVM.ChangeView<UserControl>(uc);
-                }
-            }
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new StylisteStyleView());
         }
 
 
