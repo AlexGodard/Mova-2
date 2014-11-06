@@ -39,8 +39,8 @@ namespace Mova.UI.Views
 
         private void btnvoirHauts_Click(object sender, RoutedEventArgs e)
         {
-            /*IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<>(new MaGardeRobeViewModel());*/
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<HautsView>(new HautsView());
         }
 
         

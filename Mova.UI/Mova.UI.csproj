@@ -68,6 +68,9 @@
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\ConnexionViewModel.cs" />
     <Compile Include="ViewModel\EnsembleViewModel.cs" />
+    <Compile Include="Views\HautsView.xaml.cs">
+      <DependentUpon>HautsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\InscriptionViewModel.cs" />
     <Compile Include="ViewModel\MaGardeRobeViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -120,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\HautsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ActiviteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

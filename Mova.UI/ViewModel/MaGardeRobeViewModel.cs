@@ -19,14 +19,26 @@ namespace Mova.UI.ViewModel
         private IUtilisateurVetementService _utilisateurVetementservice;
         private IVetementService _vetementService;
 
-        private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
         private UtilisateurEnsemble _utilisateurEnsemble = new UtilisateurEnsemble();
+
+        private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
+        private ObservableCollection<UtilisateurVetements> _utilisateurVetement = new ObservableCollection<UtilisateurVetements>();
 
         public MaGardeRobeViewModel()
         {
+            UtilisateursEnsembles = new ObservableCollection<UtilisateurEnsemble>(ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>().RetrieveEnsembleUtilisateurPrecis());
+            UtilisateursVetements = new ObservableCollection<UtilisateurVetements>(ServiceFactory.Instance.GetService<IUtilisateurVetementService>().RetrieveAll());
+
+            Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
+
+            Listes.NbEnsembleUtilisateur = UtilisateursEnsembles.Count();
+
+            Listes.ListeVetementsUtilisateur = UtilisateursVetements.ToList<UtilisateurVetements>();
+
+            countTypeVetement();    
+                   
             _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
-            _utilisateurVetementservice = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
-            countTypeVetement();           
+            _utilisateurVetementservice = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();        
         }
 
         public UtilisateurEnsemble UtilisateurEnsembleConnecte
@@ -48,6 +60,45 @@ namespace Mova.UI.ViewModel
                 RaisePropertyChanged();
             }
         }
+
+        public ObservableCollection<UtilisateurEnsemble> UtilisateursEnsembles
+        {
+            get
+            {
+                return _utilisateurEnsembles;
+            }
+
+            set
+            {
+                if (_utilisateurEnsembles == value)
+                {
+                    return;
+                }
+
+                _utilisateurEnsembles = value;
+            }
+        }
+
+
+        public ObservableCollection<UtilisateurVetements> UtilisateursVetements
+        {
+            get
+            {
+                return _utilisateurVetement;
+            }
+
+            set
+            {
+                if (_utilisateurVetement == value)
+                {
+                    return;
+                }
+
+                _utilisateurVetement = value;
+            }
+        }
+
+
 
         public void countTypeVetement()
         {

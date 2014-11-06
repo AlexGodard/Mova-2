@@ -68,6 +68,7 @@ namespace Mova.Logic.Services.MySql
 
             return result;
         }
+ 
 
         private UtilisateurEnsemble ConstructUtilisateurEnsemble(DataRow row)
         {

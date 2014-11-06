@@ -138,7 +138,7 @@ namespace Mova.Logic.Services.MySql
 
                 foreach(UtilisateurVetements v in listeTemp)
                 {
-                   string requete = "SELECT idTypeVetement FROM Vetements WHERE idVetement = '" + v.IdVetement + "'";
+                    string requete = "SELECT idTypeVetement FROM Vetements WHERE idVetement = '" + v.IdVetement + "'";
                    DataSet dataset = connexion.Query(requete);
                    DataTable table = dataset.Tables[0];
                    foreach (DataRow vetement in table.Rows)
@@ -156,7 +156,5 @@ namespace Mova.Logic.Services.MySql
             //Si on se rend ici, on retourne un utilisateur vide
             return result;
         }
-
-
     }
 }
