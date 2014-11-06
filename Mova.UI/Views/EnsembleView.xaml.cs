@@ -32,7 +32,8 @@ namespace Mova.UI.Views
         /// Variables
         /// </summary>
         private EnsembleVetementViewModel ViewModel { get { return (EnsembleVetementViewModel)DataContext; } }
-        private static History<UserControl> _historique = new History<UserControl>();
+        public static History<UserControl> _historique = new History<UserControl>();
+        public static UserControl derniereFenetre = null;
 
         //Variables constantes pour la définition de la Grid
         private const int nbColumns = 3;
@@ -50,9 +51,6 @@ namespace Mova.UI.Views
             DataContext = new EnsembleVetementViewModel();
 
             _historique.Ajouter(this);
-
-            //On réinitialise la variable qui contient les données pour trouver les ensembles correspondant
-            Listes.InfoStyliste.Reset();
 
             listeEnsemblesTrouves = GetEnsemblesPourFenetre();
 
@@ -327,7 +325,17 @@ namespace Mova.UI.Views
         private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<UserControl>(new StylisteStyleView());
+
+            if (derniereFenetre != null)
+            {
+
+                mainVM.ChangeView<UserControl>(derniereFenetre);
+            }
+            else
+            {
+                mainVM.ChangeView<UserControl>(new StylisteActiviteView());
+            }
+            
         }
 
 

@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mova.UI.Views;
 
 namespace Mova.UI.ViewModel
 {
@@ -34,7 +35,15 @@ namespace Mova.UI.ViewModel
 
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
+            if (EnsembleView._historique.IsEmpty()){
 
+                _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
+
+                EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste));
+
+                // On place dans la liste globale, la liste d'ensembles reçue
+                Listes.ListeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
+            }
         }
 
         /// <summary>
