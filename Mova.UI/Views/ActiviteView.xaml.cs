@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using Mova.Logic;
 using Mova.Logic.Models;
 using Mova.UI.ViewModel;
@@ -58,6 +60,7 @@ namespace Mova.UI.Views
                 btn.Height = 100;
                 btn.Margin = new Thickness(10, 0, 0, 0);
                 btn.Padding = new Thickness(10, 0, 0, 0);
+                btn.Click += AllerAEnsembles;
                 WrapPanelActivite.Children.Add(btn);
 
                 iNbActiviteCourant++;     //Nombre de activités affichées au total
@@ -108,6 +111,7 @@ namespace Mova.UI.Views
                 btn.Width = 100;
                 btn.Height = 100;
                 btn.HorizontalAlignment = HorizontalAlignment.Left;
+                btn.Click += AllerAEnsembles;
                 WrapPanelActivite.Children.Add(btn);
 
                 iNbActiviteCourant++;
@@ -167,6 +171,7 @@ namespace Mova.UI.Views
                 btn.Width = 100;
                 btn.Height = 100;
                 btn.HorizontalAlignment = HorizontalAlignment.Left;
+                btn.Click += AllerAEnsembles;
                 WrapPanelActivite.Children.Add(btn);
 
                 iNbActiviteCourant++;
@@ -187,6 +192,28 @@ namespace Mova.UI.Views
             {
                 btnSuivant.Visibility = Visibility.Hidden;
             }
+
+        }
+
+        private void AllerAEnsembles(object sender, RoutedEventArgs e)
+        {
+
+            //On reset la variable des Args
+            Listes.InfoStyliste.Reset();
+
+            //On reset la liste des ensembles
+            EnsembleView._historique.Reset();
+
+            //On commence par obtenir l'objet
+            Button bTemp = (Button)sender;
+
+            //On obtient son contenu
+            string contenu = bTemp.Content.ToString();
+
+            StylisteActiviteViewModel.SetChoix(contenu);
+
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new EnsembleView());
 
         }
     }
