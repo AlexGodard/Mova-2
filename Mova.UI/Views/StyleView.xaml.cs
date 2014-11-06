@@ -68,7 +68,7 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-     
+
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             WrapPanelStyles.Children.Clear();
 
@@ -79,7 +79,7 @@ namespace Mova.UI.Views
             }
             else
             {
-               btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
 
@@ -132,11 +132,11 @@ namespace Mova.UI.Views
                 btnPrecedent.Visibility = Visibility.Visible;
             }
 
-            if(iNbStylesCourant == iNbStylesTotal)  //Nous sommes à la fin de notre liste
+            if (iNbStylesCourant == iNbStylesTotal)  //Nous sommes à la fin de notre liste
             {
                 iNbStylesCourant = iNbStylesCourant - iNbStylesPrecedent - iNombreDeBoutonsDesires;
             }
-            else 
+            else
             {
                 iNbStylesCourant = iNbStylesCourant - iNbStylesPrecedent - iNbStylesPrecedent;
             }

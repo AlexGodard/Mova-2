@@ -292,13 +292,10 @@ namespace Mova.UI.Views
         /// </summary>
         private void RetournerEcranStyliste()
         {
-            //On efface ce qu'on avait avant dans l'historique
-            StylisteView._historique = new History<UserControl>();
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            StylisteView._historique = new History<UserControl>();
 
-            mainVM.ChangeView<UserControl>(new StylisteView());
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
         }
 
         /// <summary>

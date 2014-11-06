@@ -233,7 +233,7 @@ namespace Mova.UI.Views
                 // Ensuite, on se rend à l'écran styliste
                 IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
-                mainVM.ChangeView<StylisteView>(new StylisteView());
+                mainVM.ChangeView<StylisteActiviteView>(new StylisteActiviteView());
             }
 
 

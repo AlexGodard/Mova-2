@@ -9,6 +9,6 @@ namespace Mova.UI.ViewModel
 {
     public class StyleViewModel : BaseViewModel
     {
-        
+
     }
 }
