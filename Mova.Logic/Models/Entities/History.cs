@@ -55,6 +55,22 @@ namespace Mova.UI
         }
 
         /// <summary>
+        /// Méthode qui retourne le dernier UserControl de l'historique
+        /// </summary>
+        /// <returns>UserControl : Le dernier UserControl</returns>
+        public T ReturnLast()
+        {
+
+            //S'il y a des éléments dans la liste, on retourne le dernier
+            if (_listeView.Count > 0)
+            {
+                return _listeView[_listeView.Count - 1];
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
         /// Méthode qui supprime le dernier UserControl ajouter (quand l'utilisateur appuie sur Retour)
         /// </summary>
         public void DeleteLast()

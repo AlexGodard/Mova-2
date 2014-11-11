@@ -14,7 +14,8 @@ namespace Mova.Logic.Services.Definitions
 
         IList<EnsembleVetement> RetrieveSelection(InfoStylisteArgs args);
 
-        bool InsererEnsemble(EnsembleVetement ev);
+
         void Create(EnsembleVetement ensembleVetement);
+        int InsererEnsemble(EnsembleVetement ev);
     }
 }

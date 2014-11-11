@@ -26,6 +26,7 @@ namespace Mova.UI.ViewModel
     {
 
         private IEnsembleService _ensembleService;
+        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private IEnsembleVetementService _ensembleVetementService;
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
@@ -45,10 +46,21 @@ namespace Mova.UI.ViewModel
         public PersonnalisationViewModel()
         {
             _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
+
             Ensembles = new ObservableCollection<Ensemble>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveAll());
             _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsembles = Ensembles.ToList<Ensemble>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ev"></param>
+        public void AjouterEnsemble(EnsembleVetement ev)
+        {
+            //_utilisateurEnsembleService.AjouterFavori(ev);
         }
 
         /// <summary>
@@ -144,11 +156,11 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 0: i++;
+                    case 2: i++;
                         if (i < listeHauts.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
-                            return DessinerVetement(listeHauts[i], 0);
+                            return DessinerVetement(listeHauts[i], 2);
                         }
                         else
                         {
@@ -156,22 +168,22 @@ namespace Mova.UI.ViewModel
                             // On disable le bouton suivant des hauts
                            break; 
                         }
-                    case 1: j++;
+                    case 3: j++;
                         if (j < listeBas.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                            return DessinerVetement(listeBas[j], 1);
+                            return DessinerVetement(listeBas[j], 3);
                         }
                         else
                         {
                             j--;
                             break;
                         }
-                    case 2: k++;
+                    case 4: k++;
                         if (k < listeChaussures.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                            return DessinerVetement(listeChaussures[k], 2);
+                            return DessinerVetement(listeChaussures[k], 4);
                         }
                         else
                         {
@@ -184,34 +196,34 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 0: i--;
+                    case 2: i--;
                         if (i != -1)
                         {
                              // On décrémente le compteur des hauts pour la liste
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
-                            return DessinerVetement(listeHauts[i], 0);
+                            return DessinerVetement(listeHauts[i], 2);
                         }
                         else
                         {
                             i++;
                             break;
                         }        // On disable le bouton précédent des hauts
-                    case 1: j--;
+                    case 3: j--;
                         if (j != -1)
                         {
                             Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                            return DessinerVetement(listeBas[j], 1);
+                            return DessinerVetement(listeBas[j], 3);
                         }
                         else
                         {
                             j++;
                             break;
                         }
-                    case 2: k--;
+                    case 4: k--;
                         if (k != -1)
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                            return DessinerVetement(listeChaussures[k], 2);
+                            return DessinerVetement(listeChaussures[k], 4);
                         }
                         else
                         {

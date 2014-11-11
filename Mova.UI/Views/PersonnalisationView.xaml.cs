@@ -19,6 +19,7 @@ using Mova.Logic.Models.Entities;
 using System.Threading;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
+using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.Views
 {
@@ -38,9 +39,21 @@ namespace Mova.UI.Views
             // On retourne la liste d'images à afficher
             listeImages = ViewModel.afficherEnsemble();
 
-            DynamicGrid.Children.Add(listeImages[0]);
-            DynamicGrid.Children.Add(listeImages[1]);
-            DynamicGrid.Children.Add(listeImages[2]);
+            //Gabriel Piché Cloutier - 2014-11-11
+            //On affiche les vêtements dans les bonnes images déjà dans la grid.
+            Torse.Source = listeImages[0].Source;
+            Bas.Source = listeImages[1].Source;
+            Chaussures.Source = listeImages[2].Source;
+
+            //Grid.SetRow(listeImages[0], 2);
+            //Grid.SetColumn(listeImages[0], 2);
+            //Grid.SetRow(listeImages[1], 3);
+            //Grid.SetColumn(listeImages[1], 2);
+            //Grid.SetRow(listeImages[2], 4);
+            //Grid.SetColumn(listeImages[2], 2);
+            //DynamicGrid.Children.Add(listeImages[0]);
+            //DynamicGrid.Children.Add(listeImages[1]);
+            //DynamicGrid.Children.Add(listeImages[2]);
 
         }
 
@@ -63,7 +76,7 @@ namespace Mova.UI.Views
                 // On efface l'image
                 foreach (UIElement control in DynamicGrid.Children)
                 {
-                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2)
+                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2 && control is Image)
                     {
                         DynamicGrid.Children.Remove(control);
                         break;
@@ -82,9 +95,6 @@ namespace Mova.UI.Views
             int rangee = (int)bTemp.GetValue(Grid.RowProperty);
 
             // On lui passe la rangée pour savoir quel type de vêtement il faut changer (torso, pantalons ou chaussures)
-            
-            
-
             Image i = new Image();
             i = ViewModel.changerVetement(rangee, "Suivant");
 
@@ -95,7 +105,7 @@ namespace Mova.UI.Views
                 // On efface l'image
                 foreach (UIElement control in DynamicGrid.Children)
                 {
-                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2)
+                    if (Grid.GetRow(control) == rangee && Grid.GetColumn(control) == 2 && control is Image)
                     {
                         DynamicGrid.Children.Remove(control);
                         break;
@@ -122,6 +132,11 @@ namespace Mova.UI.Views
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
            EnsembleVetement ensembleChoisi = GetEnsemble();
+
+
+           //On ajoute l'ensemble
+           ViewModel.AjouterEnsemble(ensembleChoisi);
+
         }
 
         private EnsembleVetement GetEnsemble()
@@ -139,6 +154,12 @@ namespace Mova.UI.Views
             }
 
             return v;
+        }
+
+        private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(EnsembleView._historique.ReturnLast());
         }
     }
 }

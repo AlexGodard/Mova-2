@@ -5,6 +5,47 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              SnapsToDevicePixels="True" Name="ucEnsemble">
 
+    <UserControl.Resources>
+        <!-- Image du bouton suivant -->
+        <Style TargetType="Button" x:Key="btnSuivant">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <Image Name="fond1" Source="pack://application:,,,/../Resources/suivant.png" Width="100" Visibility="Visible" />
+                            <Image Name="fond2" Source="pack://application:,,,/../Resources/suivantHover.png" Width="100" Visibility="Collapsed" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Image du bouton précédent -->
+        <Style TargetType="Button" x:Key="btnPrecedent">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <Image Name="fond1" Source="pack://application:,,,/../Resources/precedent.png" Width="100" Visibility="Visible" />
+                            <Image Name="fond2" Source="pack://application:,,,/../Resources/precedentHover.png" Width="100" Visibility="Collapsed" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
     <Grid x:Name="DynamicGrid">
         <Grid.ColumnDefinitions>
@@ -30,46 +71,16 @@
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi un ensemble" FontFamily="Calibri" FontSize="62" />
 
         <!-- Bouton pour afficher les ensembles suivants qui change lorsqu'on passe la souris dessus. -->
-        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <StackPanel>
-                        <Image Name="fond1" Source="pack://application:,,,/../Resources/suivant.png" Width="100" Visibility="Visible" />
-                        <Image Name="fond2" Source="pack://application:,,,/../Resources/suivantHover.png" Width="100" Visibility="Collapsed" />
-                    </StackPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Style="{StaticResource btnSuivant}" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click" />
 
         <!-- Bouton pour afficher les ensembles précédents qui change lorsqu'on passe la souris dessus. -->
-        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Visibility="Hidden" Content="Précédent" Click="Button_Click">
-            <Button.Template>
-                <ControlTemplate TargetType="Button">
-                    <StackPanel>
-                        <Image Name="fond1" Source="pack://application:,,,/../Resources/precedent.png" Width="100" Visibility="Visible" />
-                        <Image Name="fond2" Source="pack://application:,,,/../Resources/precedentHover.png" Width="100" Visibility="Collapsed" />
-                    </StackPanel>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
-                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Visibility="Hidden" Content="Précédent" Click="btnPrecedent_Click" />
 
         <Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" />
         <Label Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" />
         <Label Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" />
 
-        <!-- Bouton précédent qui change lorsqu'on passe la souris dessus. -->
+        <!-- Bouton pour revenir à l'écran précédent qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Row="5" Grid.Column="1" x:Name="btnEcranPrecedent" Click="btnEcranPrecedent_Click" VerticalAlignment="top" Width="100">
             <Button.Template>
                 <ControlTemplate TargetType="Button">

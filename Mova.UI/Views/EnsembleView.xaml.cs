@@ -308,7 +308,6 @@ namespace Mova.UI.Views
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-
             mainVM.ChangeView<UserControl>(new EnsembleView());
         }
 
@@ -317,10 +316,9 @@ namespace Mova.UI.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-
             mainVM.ChangeView<UserControl>(_historique.Last());
         }
 
