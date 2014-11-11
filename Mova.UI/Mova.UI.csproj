@@ -66,10 +66,14 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\ActiviteViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\BasViewModel.cs" />
     <Compile Include="ViewModel\ConnexionViewModel.cs" />
     <Compile Include="ViewModel\EnsembleViewModel.cs" />
     <Compile Include="ViewModel\HautsViewModel.cs" />
     <Compile Include="ViewModel\RecentsViewModel.cs" />
+    <Compile Include="Views\BasView.xaml.cs">
+      <DependentUpon>BasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HautsView.xaml.cs">
       <DependentUpon>HautsView.xaml</DependentUpon>
     </Compile>
@@ -128,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\BasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HautsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
