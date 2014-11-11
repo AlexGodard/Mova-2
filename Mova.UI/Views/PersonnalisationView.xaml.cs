@@ -152,7 +152,7 @@ namespace Mova.UI.Views
         private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<UserControl>(new EnsembleView());
+            mainVM.ChangeView<UserControl>(EnsembleView._historique.ReturnLast());
         }
     }
 }
