@@ -29,12 +29,12 @@ namespace Mova.Logic.Models
         /// <summary>
         /// Permet de savoir à quel utilisateur l'ensemble appartient.
         /// </summary>
-        public virtual Utilisateur IdUtilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
 
         /// <summary>
         /// Permet de savoir l'ensemble détenu par l'utilisateur.
         /// </summary>
-        public virtual Ensemble IdEnsemble { get; set; }
+        public virtual Ensemble ensemble { get; set; }
 
         #endregion
     }

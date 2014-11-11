@@ -70,12 +70,23 @@ namespace Mova.UI.ViewModel
         }
 
         internal List<Image> afficherEnsemblesRecents()
-        {
-            /*// Pour chaque EnsembleVetement, on extract la liste de Vetements
+        {/*
+            // Pour chaque EnsembleVetement, on extract la liste de Vetements
             foreach (UtilisateurEnsemble utilisateurEnsemble in Listes.ListeEnsemblesUtilisateur)
             {
-            //Écrire le torso
-                Vetement torso = utilisateurEnsemble.;
+                //Écrire le torso
+                //On ajoute le bouton Choisir en bas de l'ensemble
+                Label label = new Label();
+                label.Content = utilisateurEnsemble.ensemble.NomEnsemble;
+                Grid.SetColumn(label,colonne);
+                Grid.SetRow(label, 0);
+                // On ajoute un nom au bouton
+                button.Name = "btnChoisir" + noEnsemble.ToString();
+                // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
+                button.Click += new RoutedEventHandler(btnChoisir_Click);
+
+                DynamicGrid.Children.Add(button);
+                utilisateurEnsemble.ensemble.NomEnsemble
                 Vetement pants = Listes.ensembleChoisi.ListeVetements[1];
                 Vetement shoes = Listes.ensembleChoisi.ListeVetements[2];
                 //On dessine le vetement

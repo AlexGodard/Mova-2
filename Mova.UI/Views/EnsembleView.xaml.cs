@@ -57,7 +57,6 @@ namespace Mova.UI.Views
             AfficherBoutonsAppropries();
 
             PlacerEnsembles();
-            
         }
 
         /// <summary>
