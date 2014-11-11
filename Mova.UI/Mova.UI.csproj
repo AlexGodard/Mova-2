@@ -69,6 +69,7 @@
     <Compile Include="ViewModel\ConnexionViewModel.cs" />
     <Compile Include="ViewModel\EnsembleViewModel.cs" />
     <Compile Include="ViewModel\HautsViewModel.cs" />
+    <Compile Include="ViewModel\RecentsViewModel.cs" />
     <Compile Include="Views\HautsView.xaml.cs">
       <DependentUpon>HautsView.xaml</DependentUpon>
     </Compile>
