@@ -94,7 +94,7 @@ namespace Mova.Logic.Services.MySql
 
         }
 
-        bool InsererEnsemble(EnsembleVetement ev)
+        public bool InsererEnsemble(EnsembleVetement ev)
         {
 
             //On commence par créer un ensemble vide (pour avoir le ID)
