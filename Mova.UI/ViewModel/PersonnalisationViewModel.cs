@@ -26,6 +26,7 @@ namespace Mova.UI.ViewModel
     {
 
         private IEnsembleService _ensembleService;
+        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
 
         public int i = 0, j = 0, k = 0;
@@ -41,11 +42,21 @@ namespace Mova.UI.ViewModel
         public PersonnalisationViewModel()
         {
             _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
 
             Ensembles = new ObservableCollection<Ensemble>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveAll());
 
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsembles = Ensembles.ToList<Ensemble>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ev"></param>
+        public void AjouterEnsemble(EnsembleVetement ev)
+        {
+            _utilisateurEnsembleService.AjouterFavori(ev);
         }
 
         /// <summary>
