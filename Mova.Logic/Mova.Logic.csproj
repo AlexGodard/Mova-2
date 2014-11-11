@@ -106,7 +106,6 @@
     <Compile Include="Services\MySql\MySqlUtilisateurService.cs" />
     <Compile Include="Services\MySql\MySqlUtilisateursVetements.cs" />
     <Compile Include="Services\MySql\MySqlVetementService.cs" />
-    <Compile Include="Services\NHibernate\NHibernateUtilisateurService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cstj.MvvmToolkit\Cstj.MvvmToolkit.csproj">
@@ -116,9 +115,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Services\NHibernate\Mappings\Utilisateur.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

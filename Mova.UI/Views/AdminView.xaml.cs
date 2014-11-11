@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
 using Mova.Logic.Models;
-using Mova.Logic.Services.NHibernate;
 using Mova.Logic.Services.Definitions;
 using Mova.Logic.Models.Entities;
 using Mova.UI.ViewModel;

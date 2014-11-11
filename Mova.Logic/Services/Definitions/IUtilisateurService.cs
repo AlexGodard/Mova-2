@@ -11,12 +11,14 @@ namespace Mova.Logic.Services.Definitions
 {
     public interface IUtilisateurService
     {
-       IList<Utilisateur> RetrieveAll();
+        IList<Utilisateur> RetrieveAll();
 
-       Utilisateur Retrieve(RetrieveUtilisateurArgs args);
-       Utilisateur RetrieveIdentifiant(RetrieveUtilisateurArgs args);
-       Utilisateur RetrieveCourriel(RetrieveUtilisateurArgs args);
+        Utilisateur Retrieve(RetrieveUtilisateurArgs args);
+        Utilisateur RetrieveIdentifiant(RetrieveUtilisateurArgs args);
+        Utilisateur RetrieveCourriel(RetrieveUtilisateurArgs args);
 
-       void Create(Utilisateur utilisateur);       // Retourne true si ajouté, false si il y a eu un erreur
+        void Create(Utilisateur utilisateur);       // Retourne true si ajouté, false si il y a eu un erreur
+
+        bool AjouterFavori(EnsembleVetement ev);
     }
 }

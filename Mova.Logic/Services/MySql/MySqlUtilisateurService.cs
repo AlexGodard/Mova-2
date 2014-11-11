@@ -9,6 +9,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Mova.Logic.Models;
+using Cstj.MvvmToolkit.Services;
 
 namespace Mova.Logic.Services.MySql
 {
@@ -148,6 +150,38 @@ namespace Mova.Logic.Services.MySql
             {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ev"></param>
+        /// <returns></returns>
+        public bool AjouterFavori(EnsembleVetement ev)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                //IEnsembleVetementService _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
+
+
+
+               // string debutRequete = "INSERT INTO UtilisateursEnsembles (idUtilisateur,idEnsemble,dateCreation,estFavori,estDansGardeRobe) VALUES ";
+                //string valeurs = "('" + utilisateur.Nom.Replace("'", "''") + "','" + utilisateur.Prenom.Replace("'", "''") + "','" + utilisateur.NomUtilisateur.Replace("'", "''") + "','" + utilisateur.Courriel + "','" + utilisateur.MotDePasse.Replace("'", "''") + "','" + utilisateur.Sexe + "', FALSE )";
+
+                //string requete = debutRequete + valeurs;
+
+                //DataSet dataset = connexion.Query(requete);
+
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return true;
         }
 
         private Utilisateur ConstructUtilisateur(DataRow row)

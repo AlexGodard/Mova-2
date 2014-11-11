@@ -19,7 +19,6 @@ using Cstj.MvvmToolkit.Services;
 using Mova.UI.ViewModel;
 using Mova.UI.Views;
 using Cstj.MvvmToolkit.Services.Definitions;
-using Mova.Logic.Services.NHibernate;
 using Mova.Logic.Services.MySql;
 using Mova.Logic;
 using Mova.Logic.Models.Entities;

@@ -94,6 +94,17 @@ namespace Mova.Logic.Services.MySql
 
         }
 
+        bool InsererEnsemble(EnsembleVetement ev)
+        {
+
+            //On commence par créer un ensemble vide (pour avoir le ID)
+            string query = "INSERT INTO Ensembles()";
+            
+
+            
+            return true;
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -197,5 +208,15 @@ namespace Mova.Logic.Services.MySql
 
            return lstEnsembleVetement;
         }
+
+        #region IEnsembleVetementService Membres
+
+
+        bool IEnsembleVetementService.InsererEnsemble(EnsembleVetement ev)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
