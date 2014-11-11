@@ -12,8 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit.Services;
+using Cstj.MvvmToolkit.Services.Definitions;
 using Mova.Logic;
 using Mova.Logic.Models.Entities;
+using Mova.UI.Views;
 
 namespace Mova.UI.ViewModel
 {
@@ -203,6 +206,14 @@ namespace Mova.UI.ViewModel
                 btnSuivant.Visibility = Visibility.Hidden;
             }
 
-        }  
+        }
+
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
+        }
+          
     }
 }

@@ -21,12 +21,11 @@ using Mova.UI.ViewModel;
 namespace Mova.UI.Views
 {
     /// <summary>
-    /// Logique d'interaction pour BasView.xaml
+    /// Logique d'interaction pour SouliersView.xaml
     /// </summary>
-    public partial class BasView : UserControl
+    public partial class SouliersView : UserControl
     {
-
-        private BasViewModel ViewModel { get { return (BasViewModel)DataContext; } }
+        private SouliersViewModel ViewModel { get { return (SouliersViewModel)DataContext; } }
         int iNbVetementCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iVetementDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iVetementTotal;       //Le nombre total d'activités
@@ -36,25 +35,25 @@ namespace Mova.UI.Views
         int iColonne = 1;
         int iRow = 1;
 
-        public BasView()
+        public SouliersView()
         {
             InitializeComponent();
+            
+            DataContext = new SouliersViewModel();
 
-            DataContext = new BasViewModel();
-
-            iVetementTotal = Listes.ListeBasUtilisateur.Count();
+            iVetementTotal = Listes.ListeSouliersUtilisateur.Count();
 
             bPremiereVueVetement = false;
 
             //On crée des boutons pour les premiers 12 activités
-            foreach (Vetement v in Listes.ListeBasUtilisateur)
+            foreach (Vetement v in Listes.ListeSouliersUtilisateur)
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
+                GridSouliersVetement.Children.Add(i);
                 
                 iColonne++;           
 
@@ -86,11 +85,11 @@ namespace Mova.UI.Views
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             iColonne = 1;
 
-            var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var imageasupprimer = GridSouliersVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
-                GridHautVetement.Children.Remove(image);
+                GridSouliersVetement.Children.Remove(image);
             }
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
@@ -108,14 +107,14 @@ namespace Mova.UI.Views
             iNbVetementPrecedent = 0;   //On efface le nombre d'activités passées pour garder trace des nouveaux
 
             /*Affiche les activités à partir du point de départ donnée*/
-            foreach (Vetement v in Listes.ListeBasUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeSouliersUtilisateur.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
+                GridSouliersVetement.Children.Add(i);
 
                 iColonne++;
 
@@ -145,11 +144,11 @@ namespace Mova.UI.Views
             int iNombreDeBoutonAfficher = 0;
             iColonne = 1;
 
-            var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var imageasupprimer = GridSouliersVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
-                GridHautVetement.Children.Remove(image);
+                GridSouliersVetement.Children.Remove(image);
             }
 
             if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
@@ -175,14 +174,14 @@ namespace Mova.UI.Views
             iVetementDepart = iNbVetementCourant;
 
             //Affiche le nombre les activités à partir du début proposé
-            foreach (Vetement v in Listes.ListeBasUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeSouliersUtilisateur.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
+                GridSouliersVetement.Children.Add(i);
 
                 iColonne++;   
 
@@ -211,6 +210,8 @@ namespace Mova.UI.Views
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
-        } 
+        }
+
+
     }
 }

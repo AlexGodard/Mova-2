@@ -47,6 +47,12 @@ namespace Mova.UI.Views
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<BasView>(new BasView());
-        }      
+        }
+
+        private void btnvoirSouliers_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<SouliersView>(new SouliersView());
+        }  
     }
 }
