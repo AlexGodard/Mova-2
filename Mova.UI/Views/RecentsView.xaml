@@ -19,8 +19,11 @@
             <RowDefinition Height="20*" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
-        <Label x:Name="lbl1" Height="30" Grid.Column="1" Margin="31,4,31,10" Grid.Row="3"/>
-        <Label x:Name="lbl1_Copy" Height="30" Grid.Column="2" Margin="31,4,31,10" Grid.Row="3"/>
-        <Label x:Name="lbl1_Copy1" Height="30" Grid.Column="3" Margin="31,4,32,10" Grid.Row="3"/>
+        <Label x:Name="lblDate1" Height="30" Grid.Column="1" Margin="31,4,31,10" Grid.Row="4"/>
+        <Label x:Name="lblDate2" Height="30" Grid.Column="2" Margin="31,4,31,10" Grid.Row="4"/>
+        <Label x:Name="lblDate3" Height="30" Grid.Column="3" Margin="31,4,32,10" Grid.Row="4"/>
+        <Label x:Name="lblNomEnsemble1" Height="30" Grid.Column="1" Margin="31,23"/>
+        <Label x:Name="lblNomEnsemble2" Height="30" Grid.Column="2" Margin="31,23"/>
+        <Label x:Name="lblNomEnsemble3" Height="30" Grid.Column="3" Margin="31,23,32,23"/>
     </Grid>
 </UserControl>

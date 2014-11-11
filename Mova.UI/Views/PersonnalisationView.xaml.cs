@@ -112,8 +112,9 @@ namespace Mova.UI.Views
 
             if (txtNomEnsemble.Text != "")
             {
-                ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
-
+                int idEnsemble = ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
+                ViewModel.ajouterUtilisateurEnsemble();
+                ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
             }
         }
 

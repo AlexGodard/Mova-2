@@ -21,7 +21,7 @@ namespace Mova.Logic.Services.MySql
     {
         private MySqlConnexion connexion;
 
-        public void Create(Ensemble ensemble)
+        public int Create(Ensemble ensemble)
         {
             try
             {
@@ -30,14 +30,17 @@ namespace Mova.Logic.Services.MySql
                 string debutRequete = "INSERT IGNORE INTO Ensembles (nomEnsemble) VALUES ";
 
 
-                string valeurs = "('" + ensemble.NomEnsemble.Replace("'", "''") + "')";
+                string valeurs = "('" + ensemble.NomEnsemble.Replace("'", "''") + "');";
                 string requete = debutRequete + valeurs;
+                
+                connexion.Query(requete);
+                DataSet dataset = connexion.Query("SELECT MAX(idEnsemble) FROM Ensembles");
 
-                DataSet dataset = connexion.Query(requete);
+                return (int)dataset.Tables[0].Rows[0].ItemArray[0];
             }
-            catch (MySqlException)
+            catch (MySqlException e)
             {
-                throw;
+                throw e;
             }
         }
 

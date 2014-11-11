@@ -105,6 +105,19 @@ namespace Mova.Logic.Services.MySql
             return true;
         }
 
+        public void Create(EnsembleVetement ensembleVetement)
+        {
+            foreach(Vetement vetement in ensembleVetement.ListeVetements)
+            {
+                //On commence par créer un ensemble vide (pour avoir le ID)
+                string debutRequete = "INSERT IGNORE INTO Ensembles (idEnsemble, idVetement) VALUES ";
+                string valeurs = "(" + ensembleVetement.IdEnsemble + ", " + vetement.IdVetement + ")";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>

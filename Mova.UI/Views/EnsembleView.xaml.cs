@@ -64,7 +64,6 @@ namespace Mova.UI.Views
         /// </summary>
         private void AfficherBoutonsAppropries()
         {
-            
             //On commence avec tous les boutons cachés
             btnPrecedent.Visibility = Visibility.Hidden;
             btnSuivant.Visibility = Visibility.Hidden;
