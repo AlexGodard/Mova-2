@@ -246,10 +246,14 @@ namespace Mova.UI.Views
 
 
             //On veut obtenir la colonne dans laquelle le bouton a été choisi
-            string sNumero = bTemp.Content.ToString().Substring(bTemp.Content.ToString().Length-1, 1);
-            int numero = Convert.ToInt32(sNumero);
+            //string sNumero = bTemp.Content.ToString().Substring(bTemp.Content.ToString().Length-1, 1);
+            //int numero = Convert.ToInt32(sNumero);
 
-            Listes.ensembleChoisi = listeEnsemblesTrouves[numero-1];
+            int numero = GetFirstIntInString(bTemp.Content.ToString());
+
+            //Listes.ensembleChoisi = ListeslisteEnsemblesTrouves[numero-1];
+
+            Listes.ensembleChoisi = Listes.ListeEnsemblesVetements[numero - 1];
         }
 
         /// <summary>
@@ -341,6 +345,39 @@ namespace Mova.UI.Views
             
         }
 
+        private int GetFirstIntInString(string s)
+        {
+
+            int intARetourner = 0;
+            bool isNumber = true;
+
+            for (int i = 0; i < s.Length; i++)
+            {
+
+                isNumber = true;
+
+                try {
+
+                    string t = s.Substring(i);
+
+                    intARetourner = Convert.ToInt32(t);
+
+                }
+                catch (Exception e) {
+                
+                    isNumber = false;
+                }
+
+                if (isNumber) {
+                    return intARetourner;
+                }
+
+            
+            }
+
+            return -1;
+        
+        }
 
     }
 }
