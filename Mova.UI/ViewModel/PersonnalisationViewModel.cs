@@ -141,11 +141,11 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 0: i++;
+                    case 2: i++;
                         if (i < listeHauts.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
-                            return DessinerVetement(listeHauts[i], 0);
+                            return DessinerVetement(listeHauts[i], 2);
                         }
                         else
                         {
@@ -153,22 +153,22 @@ namespace Mova.UI.ViewModel
                             // On disable le bouton suivant des hauts
                            break; 
                         }
-                    case 1: j++;
+                    case 3: j++;
                         if (j < listeBas.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                            return DessinerVetement(listeBas[j], 1);
+                            return DessinerVetement(listeBas[j], 3);
                         }
                         else
                         {
                             j--;
                             break;
                         }
-                    case 2: k++;
+                    case 4: k++;
                         if (k < listeChaussures.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                            return DessinerVetement(listeChaussures[k], 2);
+                            return DessinerVetement(listeChaussures[k], 4);
                         }
                         else
                         {
@@ -181,34 +181,34 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 0: i--;
+                    case 2: i--;
                         if (i != -1)
                         {
                              // On décrémente le compteur des hauts pour la liste
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
-                            return DessinerVetement(listeHauts[i], 0);
+                            return DessinerVetement(listeHauts[i], 2);
                         }
                         else
                         {
                             i++;
                             break;
                         }        // On disable le bouton précédent des hauts
-                    case 1: j--;
+                    case 3: j--;
                         if (j != -1)
                         {
                             Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
-                            return DessinerVetement(listeBas[j], 1);
+                            return DessinerVetement(listeBas[j], 3);
                         }
                         else
                         {
                             j++;
                             break;
                         }
-                    case 2: k--;
+                    case 4: k--;
                         if (k != -1)
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
-                            return DessinerVetement(listeChaussures[k], 2);
+                            return DessinerVetement(listeChaussures[k], 4);
                         }
                         else
                         {

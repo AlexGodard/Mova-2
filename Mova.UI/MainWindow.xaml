@@ -140,7 +140,7 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Style="{StaticResource petitItem}" Height="40" Focusable="False" IsEnabled="False" />
-                <MenuItem Header="Parcourir" Style="{StaticResource petitItem}" />
+                <MenuItem Header="Parcourir" Style="{StaticResource petitItem}" Focusable="False" IsEnabled="False" />
                 <MenuItem Header="Activités" Click="MenuActivites_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="50,0,0,0" />
                 <MenuItem Header="Styles" Click="MenuStyles_Click" Style="{StaticResource petitItem}" Padding="50,0,0,0"  />
                 <MenuItem Header="" x:Name="btnAdmin" Style="{StaticResource petitItem}" Height="50" IsEnabled="False" Click="btnAdmin_Click" />
