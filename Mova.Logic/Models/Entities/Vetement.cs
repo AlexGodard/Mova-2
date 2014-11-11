@@ -28,7 +28,7 @@ namespace Mova.Logic.Models.Entities
         /// <summary>
         /// Le prix du vêtement.
         /// </summary>
-        public int Prix { get; set; }
+        public float Prix { get; set; }
 
         /// <summary>
         /// True si le vêtement est fair pour un homme.
@@ -96,7 +96,7 @@ namespace Mova.Logic.Models.Entities
         /// <param name="listeActivites">Liste des activités que l'on peut faire en portant le vêtement</param>
         /// <param name="listeStyles">Liste des styles auxquels le vêtement appartient</param>
         /// <param name="listeTemperature">Liste des températures dans lesquelles on peut porter le vêtement</param>
-        public Vetement(TypeVetement typeVetement, Couleur couleur, string nomVetement, string imageURL, int prix, bool estHomme, bool estFemme, List<Activite> listeActivites, List<StyleVetement> listeStyles, List<Temperature> listeTemperatures)
+        public Vetement(TypeVetement typeVetement, Couleur couleur, string nomVetement, string imageURL, float prix, bool estHomme, bool estFemme, List<Activite> listeActivites, List<StyleVetement> listeStyles, List<Temperature> listeTemperatures)
         {
             //IdVetement = idVetement;
             TypeVetement = typeVetement;

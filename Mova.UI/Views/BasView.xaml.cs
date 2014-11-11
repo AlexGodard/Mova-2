@@ -14,15 +14,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Mova.Logic;
 using Mova.Logic.Models.Entities;
+using Mova.UI.ViewModel;
 
-namespace Mova.UI.ViewModel
+namespace Mova.UI.Views
 {
     /// <summary>
-    /// Logique d'interaction pour HautsView.xaml
+    /// Logique d'interaction pour BasView.xaml
     /// </summary>
-    public partial class HautsView : UserControl
+    public partial class BasView : UserControl
     {
-        private HautsViewModel ViewModel { get { return (HautsViewModel)DataContext; } }
+
+        private BasViewModel ViewModel { get { return (BasViewModel)DataContext; } }
         int iNbVetementCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iVetementDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iVetementTotal;       //Le nombre total d'activités
@@ -32,18 +34,19 @@ namespace Mova.UI.ViewModel
         int iColonne = 1;
         int iRow = 1;
 
-        public HautsView()
+        public BasView()
         {
             InitializeComponent();
 
-            DataContext = new HautsViewModel();
+            DataContext = new BasViewModel();
 
-            iVetementTotal = Listes.ListeHautsUtilisateur.Count();
+
+            iVetementTotal = Listes.ListeBasUtilisateur.Count();
 
             bPremiereVueVetement = false;
 
             //On crée des boutons pour les premiers 12 activités
-            foreach (Vetement v in Listes.ListeHautsUtilisateur)
+            foreach (Vetement v in Listes.ListeBasUtilisateur)
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
@@ -81,13 +84,12 @@ namespace Mova.UI.ViewModel
      
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             iColonne = 1;
-            iRow = 1;
 
             var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
-            foreach(var image in imageasupprimer.ToList())
-            { 
-               GridHautVetement.Children.Remove(image);
+            foreach (var image in imageasupprimer.ToList())
+            {
+                GridHautVetement.Children.Remove(image);
             }
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
@@ -105,7 +107,7 @@ namespace Mova.UI.ViewModel
             iNbVetementPrecedent = 0;   //On efface le nombre d'activités passées pour garder trace des nouveaux
 
             /*Affiche les activités à partir du point de départ donnée*/
-            foreach (Vetement v in Listes.ListeHautsUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeBasUtilisateur.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
@@ -140,8 +142,7 @@ namespace Mova.UI.ViewModel
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
             int iNombreDeBoutonAfficher = 0;
-            iColonne = 1;
-            iRow = 1;
+            iColonne = 0;
 
             var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -173,7 +174,7 @@ namespace Mova.UI.ViewModel
             iVetementDepart = iNbVetementCourant;
 
             //Affiche le nombre les activités à partir du début proposé
-            foreach (Vetement v in Listes.ListeHautsUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeBasUtilisateur.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
@@ -203,6 +204,6 @@ namespace Mova.UI.ViewModel
                 btnSuivant.Visibility = Visibility.Hidden;
             }
 
-        }  
+        } 
     }
 }

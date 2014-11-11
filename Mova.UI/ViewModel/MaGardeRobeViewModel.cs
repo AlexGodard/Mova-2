@@ -102,7 +102,9 @@ namespace Mova.UI.ViewModel
 
         public void countTypeVetement()
         {
-
+             Listes.NbHauts = 0;
+             Listes.NbBas = 0;
+             Listes.NbSouliers = 0;
              _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
              IList<int> listeType = _vetementService.RetrieveIdTypeAll();
              

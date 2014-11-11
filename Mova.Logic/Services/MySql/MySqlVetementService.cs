@@ -196,7 +196,7 @@ namespace Mova.Logic.Services.MySql
                 CouleurVetement = new Couleur((int)row["idCouleur"]),
                 NomVetement = (string)row["nomVetement"],
                 ImageURL = (string)row["imageUrl"],
-                Prix = (int)row["prix"],
+                Prix = (float)row["prix"],
                 EstHomme = (bool)row["estHomme"],
                 EstFemme = (bool)row["estFemme"]
                 /*ListeTemperatures = null,
