@@ -80,6 +80,13 @@ namespace Mova.Logic.Services.MySql
 
         }
 
+        public bool Insert(EnsembleVetement ev)
+        {
+            
+        
+        
+        }
+
 
 
     }

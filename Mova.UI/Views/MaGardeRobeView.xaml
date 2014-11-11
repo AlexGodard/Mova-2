@@ -21,13 +21,20 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Button HorizontalAlignment="Left" Height="85" Margin="357,211,0,0" VerticalAlignment="Top" Width="152" Name="voirSouliers" Click="btnvoirSouliers_Click" RenderTransformOrigin="0.36,0.289" >
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="pack://application:,,,/../Resources/Soulier.png" />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
         <Image Name="ajouterEnsemble" HorizontalAlignment="Left" Source="pack://application:,,,/../Resources/Plus.png" Height="62" Margin="27,130,0,0" VerticalAlignment="Top" Width="64"/>
         <Image Name="ajouterHaut" HorizontalAlignment="Left" Source="pack://application:,,,/../Resources/Plus.png" Height="50" Margin="301,58,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.564,0.988"/>
         <Image Name="ajouterBas" HorizontalAlignment="Left" Source="pack://application:,,,/../Resources/Plus.png" Height="52" Margin="301,140,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.419,-1.03"/>
         <Image Name="ajouterSouliers" HorizontalAlignment="Left" Source="pack://application:,,,/../Resources/Plus.png" Height="47" Margin="301,237,0,0" VerticalAlignment="Top" Width="51"/>
         <Label Name="lblNbEnsemble" Content="Vous avez 0 ensembles" HorizontalAlignment="Left" Margin="83,289,0,0" VerticalAlignment="Top" Width="166"/>
         <Label Name="lblNbHauts" Content="Vous avez 0 hauts" HorizontalAlignment="Left" Margin="387,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.053,0.731" Width="153"/>
-        <Label Name="lblNbBas" Content="Vous avez 0 bas" HorizontalAlignment="Left" Margin="387,206,0,0" VerticalAlignment="Top" Width="153"/>
-        <Label Name="lblNbSouliers" Content="Vous avez 0 souliers" HorizontalAlignment="Left" Margin="387,289,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="lblNbBas" Content="Vous avez 0 bas" HorizontalAlignment="Left" Margin="369,206,0,0" VerticalAlignment="Top" Width="153"/>
+        <Label Name="lblNbSouliers" Content="Vous avez 0 souliers" HorizontalAlignment="Left" Margin="370,301,0,0" VerticalAlignment="Top" Width="153"/>
     </Grid>
 </UserControl>

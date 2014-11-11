@@ -94,15 +94,39 @@ namespace Mova.Logic.Services.MySql
 
         }
 
-        public bool InsererEnsemble(EnsembleVetement ev)
+        //Retourne le id d'un ensemble correctement inséré
+        public int InsererEnsemble(EnsembleVetement ev)
         {
 
-            //On commence par créer un ensemble vide (pour avoir le ID)
-            string query = "INSERT INTO Ensembles()";
-            
+            int noEnsemble = 0;
 
-            
-            return true;
+            //On commence par créer un ensemble vide (pour avoir le ID)
+            string query = "INSERT INTO Ensembles()VALUES()";
+            string query2 = "SELECT idEnsemble FROM Ensembles ORDER BY idEnsemble DESC LIMIT 1";
+
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                //On ajoute un Ensemble normal sans rien parce qu'on a pas le choix
+                DataSet dataset = connexion.Query(query);
+                dataset = connexion.Query(query2);
+                DataTable table = dataset.Tables[0];
+                DataRow dr = table.Rows[0];
+                noEnsemble = Convert.ToInt32(dr["idEnsemble"]);
+
+                //Maintenant qu'on a le numéro d'ensemble, on est heureux
+                //On insère maintenant les EnsemblesVetements
+                
+                string query3 = new StringBuilder().Append("INSERT INTO EnsemblesVetements(idEnsemble,idVetement) VALUES (").Append(noEnsemble).Append(",").Append(ev.ListeVetements[0].IdVetement).Append("),(").Append(noEnsemble).Append(",").Append(ev.ListeVetements[1].IdVetement).Append("),(").Append(noEnsemble).Append(",").Append(ev.ListeVetements[2].IdVetement).Append(")").ToString();
+                dataset = connexion.Query(query3);
+            }
+            catch (MySqlException)
+            {
+                return -1;
+            }
+
+            return noEnsemble;
         }
 
         /// <summary>
@@ -209,14 +233,5 @@ namespace Mova.Logic.Services.MySql
            return lstEnsembleVetement;
         }
 
-        #region IEnsembleVetementService Membres
-
-
-        bool IEnsembleVetementService.InsererEnsemble(EnsembleVetement ev)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
     }
 }

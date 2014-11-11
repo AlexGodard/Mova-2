@@ -163,8 +163,17 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                //IEnsembleVetementService _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
+                IEnsembleVetementService _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
 
+                try {
+                    _ensembleVetementService.InsererEnsemble(ev);
+                }
+                catch (MySqlException)
+                {
+                    throw;
+                }
+
+                
 
 
                // string debutRequete = "INSERT INTO UtilisateursEnsembles (idUtilisateur,idEnsemble,dateCreation,estFavori,estDansGardeRobe) VALUES ";

@@ -19,6 +19,7 @@ using Mova.Logic.Models.Entities;
 using System.Threading;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
+using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.Views
 {
@@ -130,6 +131,11 @@ namespace Mova.UI.Views
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
            EnsembleVetement ensembleChoisi = GetEnsemble();
+
+
+           //On ajoute l'ensemble
+           ViewModel.AjouterEnsemble(ensembleChoisi);
+
         }
 
         private EnsembleVetement GetEnsemble()
