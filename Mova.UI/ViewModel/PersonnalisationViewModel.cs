@@ -56,7 +56,7 @@ namespace Mova.UI.ViewModel
         /// <param name="ev"></param>
         public void AjouterEnsemble(EnsembleVetement ev)
         {
-            _utilisateurEnsembleService.AjouterFavori(ev);
+            //_utilisateurEnsembleService.AjouterFavori(ev);
         }
 
         /// <summary>
