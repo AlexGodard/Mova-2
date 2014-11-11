@@ -53,6 +53,7 @@ namespace Mova.UI.Views
             int rangee = (int)bTemp.GetValue(Grid.RowProperty);
 
             Image i = new Image();
+
             i = ViewModel.changerVetement(rangee, "Precedent");
 
             // LE PIRE CODE EVER BY GODARD
@@ -116,10 +117,27 @@ namespace Mova.UI.Views
             }
         }
 
-
+        //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
-           
+           EnsembleVetement ensembleChoisi = GetEnsemble();
+        }
+
+        private EnsembleVetement GetEnsemble()
+        {
+
+            EnsembleVetement v;
+
+            try
+            {
+                 v = Listes.ensembleChoisi;
+            }
+            catch (Exception e)
+            {
+                return new EnsembleVetement();
+            }
+
+            return v;
         }
     }
 }
