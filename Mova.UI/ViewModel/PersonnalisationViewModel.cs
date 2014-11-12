@@ -30,7 +30,6 @@ namespace Mova.UI.ViewModel
         private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private IEnsembleVetementService _ensembleVetementService;
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
-        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
         public int i = 0, j = 0, k = 0;
@@ -58,9 +57,9 @@ namespace Mova.UI.ViewModel
         /// 
         /// </summary>
         /// <param name="ev"></param>
-        public void AjouterEnsemble(EnsembleVetement ev)
+        public bool AjouterEnsemble(EnsembleVetement ev)
         {
-            //_utilisateurEnsembleService.AjouterFavori(ev);
+            return _utilisateurEnsembleService.Insert(ev);
         }
 
         /// <summary>

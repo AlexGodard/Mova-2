@@ -135,7 +135,12 @@ namespace Mova.UI.Views
 
 
            //On ajoute l'ensemble
-           ViewModel.AjouterEnsemble(ensembleChoisi);
+           if (ViewModel.AjouterEnsemble(ensembleChoisi))
+           {
+            MessageBox.Show("Ajouté au favori");
+            ((Button)sender).Content = "Ajouté";
+            ((Button)sender).IsEnabled = false;
+           }
 
         }
 
