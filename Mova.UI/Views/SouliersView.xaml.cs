@@ -31,6 +31,7 @@ namespace Mova.UI.Views
         int iVetementTotal;       //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 3;       //Combien d'activité on désire afficher à l'écran
         int iNbVetementPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
+        bool bPremiereVueVetement = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
         int iColonne = 1;
         int iRow = 1;
 
@@ -41,6 +42,8 @@ namespace Mova.UI.Views
             DataContext = new SouliersViewModel();
 
             iVetementTotal = Listes.ListeSouliersUtilisateur.Count();
+
+            bPremiereVueVetement = false;
 
             //On crée des boutons pour les premiers 12 activités
             foreach (Vetement v in Listes.ListeSouliersUtilisateur)
@@ -148,15 +151,14 @@ namespace Mova.UI.Views
                 GridSouliersVetement.Children.Remove(image);
             }
 
-            if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal && iNbVetementCourant - iNbVetementPrecedent - iNbVetementPrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
-            {
-                btnPrecedent.Visibility = Visibility.Visible;
-            }
-            else
+            if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
                 btnPrecedent.Visibility = Visibility.Hidden;
             }
-
+            else
+            {
+                btnPrecedent.Visibility = Visibility.Visible;
+            }
 
             if(iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
             {
