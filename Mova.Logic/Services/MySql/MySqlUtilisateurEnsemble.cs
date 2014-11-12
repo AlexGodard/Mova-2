@@ -115,6 +115,30 @@ namespace Mova.Logic.Services.MySql
         }
 
 
+        public int Create(UtilisateurEnsemble utilisateurEnsemble)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO UtilisateursEnsembles (idUtilisateur, idEnsemble, dateCreation, estFavori, estDansGardeRobe) VALUES ";
+
+
+                string valeurs = "(" + utilisateurEnsemble.Utilisateur.IdUtilisateur + ", " + utilisateurEnsemble.Ensemble.IdEnsemble + ", '" + utilisateurEnsemble.DateCreation + "', " + utilisateurEnsemble.EstFavori + ", " + utilisateurEnsemble.EstDansGardeRobe + ");";
+                string requete = debutRequete + valeurs;
+
+                connexion.Query(requete);
+                DataSet dataset = connexion.Query("SELECT MAX(idUtilisateurEnsemble) FROM UtilisateursEnsembles");
+
+                return (int)dataset.Tables[0].Rows[0].ItemArray[0];
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
+
 
     }
 }

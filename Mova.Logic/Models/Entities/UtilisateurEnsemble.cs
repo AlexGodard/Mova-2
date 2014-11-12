@@ -34,7 +34,12 @@ namespace Mova.Logic.Models
         /// <summary>
         /// Permet de savoir l'ensemble détenu par l'utilisateur.
         /// </summary>
-        public virtual Ensemble ensemble { get; set; }
+        public virtual Ensemble Ensemble { get; set; }
+
+        /// <summary>
+        /// Permet de savoir si l'ensemble se retrouve dans le garde robe de l'utilisateur
+        /// </summary>
+        public virtual bool EstDansGardeRobe { get; set; }
 
         #endregion
     }
