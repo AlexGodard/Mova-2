@@ -30,7 +30,6 @@ namespace Mova.UI.Views
         int iNbStylesTotal;                     //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbStylesPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
-        bool bPremiereVueStyles = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
 
         private StyleViewModel ViewModelStyle { get { return (StyleViewModel)DataContext; } }
 
@@ -47,8 +46,6 @@ namespace Mova.UI.Views
                 throw;
             }
 
-
-            bPremiereVueStyles = false;
             iNbStylesTotal = Listes.ListeStyles.Count();    
             //On crée des boutons pour les premiers 12 activités
             foreach (StyleVetement a in Listes.ListeStyles)
@@ -141,13 +138,13 @@ namespace Mova.UI.Views
 
             WrapPanelStyles.Children.Clear();     //On efface le contenu de l'écran
 
-            if (iNbStylesCourant - iNbStylesPrecedent < iNbStylesTotal)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
+            if (iNbStylesCourant - iNbStylesPrecedent < iNbStylesTotal && iNbStylesCourant - iNbStylesPrecedent - iNbStylesPrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
-                btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Visible;
             }
             else
             {
-                btnPrecedent.Visibility = Visibility.Visible;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
             if (iNbStylesCourant == iNbStylesTotal)  //Nous sommes à la fin de notre liste

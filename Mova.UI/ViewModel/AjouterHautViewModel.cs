@@ -1,3 +1,9 @@
+﻿using Cstj.MvvmToolkit;
+using Cstj.MvvmToolkit.Services;
+using Mova.Logic;
+using Mova.Logic.Models.Entities;
+using Mova.Logic.Services.Definitions;
+using System.Collections.ObjectModel;
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +18,7 @@ using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {
-    class BasViewModel: BaseViewModel
+    class AjouterHautViewModel: BaseViewModel
     {
 
             private IVetementService _vetementService;
@@ -21,14 +27,14 @@ namespace Mova.UI.ViewModel
             /// <summary>
             /// 
             /// </summary>
-            public BasViewModel()
+            public AjouterHautViewModel()
             {
                 _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
 
-                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecificUtilisateur(2));
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
 
                 // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeBasUtilisateur = Vetements.ToList<Vetement>();
+                Listes.ListeHautsComplet = Vetements.ToList<Vetement>();
             }
 
             /// <summary>
@@ -51,6 +57,5 @@ namespace Mova.UI.ViewModel
                     _vetements = value;
                 }
             }
-
-      }
- }
+    }
+}

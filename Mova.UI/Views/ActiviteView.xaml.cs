@@ -30,13 +30,14 @@ namespace Mova.UI.Views
         int iActiviteDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iNbActiviteTotal;       //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
-        int iNbActivitePrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
-        bool bPremiereVueActivite = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
+        int iNbActivitePrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran        //Gabriel Piché CLoutier - 2014-11-12
+        //Sert à déterminer la position du bouton dans la grid. Celle-ci commence à la colonne 2 et la ligne 2.
+        int iColonne = 2;
+        int iLigne = 2;
 
         public ActiviteView()
         {
             InitializeComponent();
-
 
             try
             {
@@ -49,22 +50,21 @@ namespace Mova.UI.Views
 
             iNbActiviteTotal = Listes.ListeActivites.Count(); 
 
-            bPremiereVueActivite = false;
-
             //On crée des boutons pour les premiers 12 activités
             foreach (Activite a in Listes.ListeActivites)
             {
-                Button btn = new Button();
+                /*Button btn = new Button();
                 btn.Content = a.NomActivite.ToString();
                 btn.Width = 100;
                 btn.Height = 100;
                 btn.Margin = new Thickness(10, 0, 0, 0);
                 btn.Padding = new Thickness(10, 0, 0, 0);
                 btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn);
-
+                WrapPanelActivite.Children.Add(btn)
                 iNbActiviteCourant++;     //Nombre de activités affichées au total
-                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
+                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
+
+                afficherBtnActivite(a);
 
                 if (iNbActiviteCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
                 {
@@ -85,9 +85,11 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-     
+
+            iColonne = 2;
+            iLigne = 2;
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
-            WrapPanelActivite.Children.Clear();
+            GridActivite.Children.Clear();     //On efface le contenu de l'écran
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
             if (iNbActivitePrecedent != 0)
@@ -106,17 +108,18 @@ namespace Mova.UI.Views
             /*Affiche les activités à partir du point de départ donnée*/
             foreach (Activite a in Listes.ListeActivites.Skip(iActiviteDepart))
             {
-                Button btn = new Button();
+                /*Button btn = new Button();
                 btn.Content = a.NomActivite.ToString();
                 btn.Width = 100;
                 btn.Height = 100;
-                btn.HorizontalAlignment = HorizontalAlignment.Left;
+                btn.Margin = new Thickness(10, 0, 0, 0);
+                btn.Padding = new Thickness(10, 0, 0, 0);
                 btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn);
+                WrapPanelActivite.Children.Add(btn)
+                iNbActiviteCourant++;     //Nombre de activités affichées au total
+                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
 
-                iNbActiviteCourant++;
-                iNbActivitePrecedent++;
-                iNombreDeBoutonAfficher++;
+                afficherBtnActivite(a);
 
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
@@ -137,17 +140,19 @@ namespace Mova.UI.Views
 
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
-            int iNombreDeBoutonAfficher = 0;     
+            int iNombreDeBoutonAfficher = 0;
+            iColonne = 2;
+            iLigne = 2;
 
-            WrapPanelActivite.Children.Clear();     //On efface le contenu de l'écran
+            GridActivite.Children.Clear();     //On efface le contenu de l'écran
 
-            if (iNbActiviteCourant - iNbActivitePrecedent < iNbActiviteTotal)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
+            if (iNbActiviteCourant - iNbActivitePrecedent < iNbActiviteTotal && iNbActiviteCourant - iNbActivitePrecedent - iNbActivitePrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
-                btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Visible;
             }
             else
             {
-                btnPrecedent.Visibility = Visibility.Visible;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
             if(iNbActiviteCourant == iNbActiviteTotal)  //Nous sommes à la fin de notre liste
@@ -166,17 +171,19 @@ namespace Mova.UI.Views
             //Affiche le nombre les activités à partir du début proposé
             foreach (Activite a in Listes.ListeActivites.Skip(iActiviteDepart))
             {
-                Button btn = new Button();
+                /*Button btn = new Button();
                 btn.Content = a.NomActivite.ToString();
                 btn.Width = 100;
                 btn.Height = 100;
-                btn.HorizontalAlignment = HorizontalAlignment.Left;
+                btn.Margin = new Thickness(10, 0, 0, 0);
+                btn.Padding = new Thickness(10, 0, 0, 0);
                 btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn);
+                WrapPanelActivite.Children.Add(btn)
+                iNbActiviteCourant++;     //Nombre de activités affichées au total
+                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
 
-                iNbActiviteCourant++;
-                iNbActivitePrecedent++;
-                iNombreDeBoutonAfficher++;
+                afficherBtnActivite(a);
+
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
                     break;
@@ -219,6 +226,42 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<UserControl>(new EnsembleView());
 
+        }
+
+        /// <summary>
+        /// Gabriel Piché Cloutier - 2014-11-12
+        /// Permet d'afficher un bouton au bon endroit dans l'écran.
+        /// </summary>
+        /// <param name="a">Activité à afficher dans le bouton.</param>
+        private void afficherBtnActivite(Activite a)
+        {
+            Button btn = new Button();
+            btn.Content = a.NomActivite.ToString();
+            btn.Style = (Style)FindResource("btnActivite");
+            btn.Click += AllerAEnsembles;
+
+            Grid.SetColumn(btn, iColonne);
+            Grid.SetRow(btn, iLigne);
+            GridActivite.Children.Add(btn);
+
+            iNbActiviteCourant++;     //Nombre de activités affichées au total
+            iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
+
+            //Gabriel Piché Cloutier - 2014-11-12
+            //On change les coordonées de la position du bouton pour le porchain.
+            if (iColonne - 2 >= iNombreDeBoutonsDesires / 4)
+            {
+                iColonne = 2;
+                iLigne++;
+            }
+            else
+                iColonne++;
+
+
+            if (iNbActiviteCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
+            {
+                return;
+            }
         }
     }
 }

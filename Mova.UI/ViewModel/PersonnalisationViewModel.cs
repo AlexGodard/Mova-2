@@ -30,7 +30,6 @@ namespace Mova.UI.ViewModel
         private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private IEnsembleVetementService _ensembleVetementService;
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
-        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
         public int i = 0, j = 0, k = 0;
@@ -250,9 +249,17 @@ namespace Mova.UI.ViewModel
             _ensembleVetementService.Create(ensembleVetement);
         }
 
-        internal void ajouterUtilisateurEnsemble()
+        internal int ajouterUtilisateurEnsemble(int idEnsemble, bool estFavori)
         {
             //throw new NotImplementedException();
+            UtilisateurEnsemble utilisateurEnsembleAAjouter = new UtilisateurEnsemble();
+            utilisateurEnsembleAAjouter.Ensemble = new Ensemble();
+            utilisateurEnsembleAAjouter.Ensemble.IdEnsemble = idEnsemble;
+            utilisateurEnsembleAAjouter.Utilisateur = Listes.UtilisateurConnecte;
+            utilisateurEnsembleAAjouter.DateCreation = DateTime.Now;
+            utilisateurEnsembleAAjouter.EstDansGardeRobe = false;
+            utilisateurEnsembleAAjouter.EstFavori = estFavori;
+            return _utilisateurEnsembleService.Create(utilisateurEnsembleAAjouter);
         }
     }
 }

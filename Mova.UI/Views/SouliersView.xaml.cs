@@ -151,13 +151,13 @@ namespace Mova.UI.Views
                 GridSouliersVetement.Children.Remove(image);
             }
 
-            if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
+            if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal && iNbVetementCourant - iNbVetementPrecedent - iNbVetementPrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
-                btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Visible;
             }
             else
             {
-                btnPrecedent.Visibility = Visibility.Visible;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
             if(iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
