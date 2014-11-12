@@ -128,7 +128,14 @@ namespace Mova.Logic.Services.MySql
 
             return noEnsemble;
         }
+        /*
+        private int FindIDEnsemble(EnsembleVetement ev)
+        {
+        
+            string select = "SELECT DISTINCT(idEnsemble) FROM EnsemblesVetements WHERE idVetement IN"
 
+        }
+        */
         public void Create(EnsembleVetement ensembleVetement)
         {
             foreach(Vetement vetement in ensembleVetement.ListeVetements)

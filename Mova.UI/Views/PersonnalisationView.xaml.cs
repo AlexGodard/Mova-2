@@ -30,7 +30,7 @@ namespace Mova.UI.Views
     {
         private PersonnalisationViewModel ViewModel { get { return (PersonnalisationViewModel)DataContext; } }
         private List<Image> listeImages;
-
+        private bool estFavori = false;
         public PersonnalisationView()
         {
             InitializeComponent();
@@ -123,7 +123,7 @@ namespace Mova.UI.Views
             if (txtNomEnsemble.Text != "")
             {
                 int idEnsemble = ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
-                ViewModel.ajouterUtilisateurEnsemble();
+                int idUtilisateur = ViewModel.ajouterUtilisateurEnsemble(idEnsemble, estFavori);
                 ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
             }
         }
@@ -131,12 +131,8 @@ namespace Mova.UI.Views
         //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
-           EnsembleVetement ensembleChoisi = GetEnsemble();
 
-
-           //On ajoute l'ensemble
-           ViewModel.AjouterEnsemble(ensembleChoisi);
-
+           estFavori = true;
         }
 
         private EnsembleVetement GetEnsemble()
@@ -160,6 +156,14 @@ namespace Mova.UI.Views
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<UserControl>(EnsembleView._historique.ReturnLast());
+        }
+
+        private void txtNomEnsemble_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= txtNomEnsemble_GotFocus;
+            tb.BorderBrush = Brushes.Transparent;
         }
     }
 }
