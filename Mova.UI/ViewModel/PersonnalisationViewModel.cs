@@ -29,6 +29,8 @@ namespace Mova.UI.ViewModel
         private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private IEnsembleVetementService _ensembleVetementService;
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
+
+        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
         public int i = 0, j = 0, k = 0;
