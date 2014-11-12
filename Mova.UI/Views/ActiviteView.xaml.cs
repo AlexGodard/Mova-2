@@ -31,12 +31,10 @@ namespace Mova.UI.Views
         int iNbActiviteTotal;       //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbActivitePrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
-        bool bPremiereVueActivite = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
 
         public ActiviteView()
         {
             InitializeComponent();
-
 
             try
             {
@@ -49,7 +47,6 @@ namespace Mova.UI.Views
 
             iNbActiviteTotal = Listes.ListeActivites.Count(); 
 
-            bPremiereVueActivite = false;
 
             //On crée des boutons pour les premiers 12 activités
             foreach (Activite a in Listes.ListeActivites)
