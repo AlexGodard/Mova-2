@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Icon="/Resources/hangerIcon_noir.png"
-        Title="Mova" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="700" MinWidth="1100" >
+        Title="Mova" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" WindowState="Maximized" MinHeight="900" MinWidth="1100" >
 
     <Window.Resources>
         <Style TargetType="MenuItem" x:Key="petitItem" x:Name="petitItem">

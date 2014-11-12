@@ -45,6 +45,83 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Bouton vert -->
+        <Style TargetType="Button" x:Key="btnVert" x:Name="btnVert">
+            <Setter Property="Background" Value="#70ad47" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="20" />
+
+            <!-- Change le comportement du bouton lorsqu'on passe la souris dessus -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#9bbb59" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Bouton orange -->
+        <Style TargetType="Button" x:Key="btnOrange">
+            <Setter Property="Background" Value="#c55a11" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="20" />
+
+            <!-- Change le comportement du bouton lorsqu'on passe la souris dessus -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#f79545" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style du txtNomEnsemble -->
+        <Style TargetType="TextBox" x:Key="txtBox">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border" Padding="2" Background="Transparent" BorderBrush="Transparent" >
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" Property="Background" Value="Transparent"/>
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </UserControl.Resources>
 
     <Grid x:Name="DynamicGrid">
@@ -58,15 +135,15 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="100" />
-            <RowDefinition Height="200" />
+            <RowDefinition Height="175" />
             <RowDefinition Height="250" />
-            <RowDefinition Height="75" />
+            <RowDefinition Height="115" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Habille-toi !" FontFamily="Calibri" FontSize="62" />
+        <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="txtNomEnsemble" Text="Clique ici et nomme ton ensemble !" FontFamily="Calibri" FontSize="62" Background="Transparent" BorderBrush="Transparent" Style="{StaticResource txtBox}" GotFocus="txtNomEnsemble_GotFocus" />
 
         <!-- Fond blanc derrière les vêtements -->
         <Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" />
@@ -76,15 +153,15 @@
         <Image Name="Bas" Grid.Column="2" Grid.Row="3" Height="250" />
         <Image Name="Chaussures" Grid.Column="2" Grid.Row="4" Height="75" />
 
-        <Button x:Name="btnSuivantTorso" Style="{StaticResource btnSuivant}" Grid.Column="3" Grid.Row="2" Click="btnSuivant_Click" />
-        <Button x:Name="btnPrecedentTorso" Style="{StaticResource btnPrecedent}" Grid.Column="1" Grid.Row="2" Click="btnPrecedent_Click" />
-        <Button x:Name="btnSuivantPants" Style="{StaticResource btnSuivant}" Grid.Column="3" Grid.Row="3" Click="btnSuivant_Click"/>
-        <Button x:Name="btnPrecedentPants" Style="{StaticResource btnPrecedent}"  Grid.Column="1" Grid.Row="3" Click="btnPrecedent_Click"/>
+        <Button x:Name="btnSuivantTorso" Style="{StaticResource btnSuivant}" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Click="btnSuivant_Click" />
+        <Button x:Name="btnPrecedentTorso" Style="{StaticResource btnPrecedent}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Click="btnPrecedent_Click" />
+        <Button x:Name="btnSuivantPants" Style="{StaticResource btnSuivant}" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" Click="btnSuivant_Click"/>
+        <Button x:Name="btnPrecedentPants" Style="{StaticResource btnPrecedent}"  Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Click="btnPrecedent_Click"/>
         <Button x:Name="btnSuivantShoes" Style="{StaticResource btnSuivant}" Grid.Column="3" Grid.Row="4" VerticalAlignment="Top" Click="btnSuivant_Click"/>
         <Button x:Name="btnPrecedentShoes" Style="{StaticResource btnPrecedent}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Click="btnPrecedent_Click"/>
-        <TextBox x:Name="txtNomEnsemble" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Text="Donnez un nom à votre ensemble!" />
-        <Button x:Name="btnFavori" Content="Favori" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Click="btnFavori_Click"/>
-        <Button x:Name="btnChoisir" Content="Choisir" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Click="btnChoisir_Click"/>
+        
+        <Button x:Name="btnFavori" Content="Favori" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnOrange}" Click="btnFavori_Click"/>
+        <Button x:Name="btnChoisir" Content="Choisir" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnVert}" Click="btnChoisir_Click"/>
         
         <!-- Bouton pour revenir à l'écran précédent qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Row="5" Grid.Column="0" Grid.RowSpan="3" x:Name="btnEcranPrecedent" Click="btnEcranPrecedent_Click" VerticalAlignment="top" HorizontalAlignment="Right" Width="100">
