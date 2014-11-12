@@ -166,5 +166,13 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<UserControl>(EnsembleView._historique.ReturnLast());
         }
+
+        private void txtNomEnsemble_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= txtNomEnsemble_GotFocus;
+            tb.BorderBrush = Brushes.Transparent;
+        }
     }
 }
