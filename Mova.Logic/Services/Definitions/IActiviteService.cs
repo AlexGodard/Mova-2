@@ -16,5 +16,7 @@ namespace Mova.Logic.Services.Definitions
        IList<Activite> RetrievePourMoment(int idMoment);
 
        void Create(Activite activite);
+       void Update(Activite activite, string newActivite);
+       void Delete(Activite activite);
     }
 }

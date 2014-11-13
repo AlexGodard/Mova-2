@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Mova.UI.Views.MenuAdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="580" Margin="10" Width="780">
+        <TextBlock x:Name="txbErreurNom" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="38,50,639,520" TextWrapping="Wrap"><Run Text="Vous devez entrer un nom"/></TextBlock>
+        <TextBlock x:Name="txbErreurPrix" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="305,36,337,521" TextWrapping="Wrap"><Run Text="Vous devez entrer un prix valide (nombre entier seulement)"/></TextBlock>
+        <TextBlock x:Name="txbErreurCouleur" FontSize="8" Foreground="Red" Margin="443,50,199,507" TextWrapping="Wrap" Visibility="Hidden"><Run Text="Vous devez entrer une couleur"/></TextBlock>
+        <TextBlock x:Name="txbErreurActivites" FontSize="8" Foreground="Red" Margin="49,320,593,237" TextWrapping="Wrap" Visibility="Hidden"><Run Text="Vous devez sélectionner au moins une activité"/></TextBlock>
+        <TextBlock x:Name="txbErreurStyles" FontSize="8" Foreground="Red" Margin="223,320,419,237" TextWrapping="Wrap" Visibility="Hidden"><Run Text="Vous devez sélectionner au moins un style"/></TextBlock>
+        <TextBlock x:Name="txbErreurTemperatures" FontSize="8" Foreground="Red" Margin="404,320,238,237" TextWrapping="Wrap" Visibility="Hidden"><Run Text="Vous devez sélectionner au moins une température"/></TextBlock>
+        <TextBlock x:Name="txbErreurImageURL" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="577,336,65,221" TextWrapping="Wrap"><Run Text="Le lien vers l'image doit être valide."/></TextBlock>
+        <Label x:Name="lblActivite" Content="Activités" Margin="51,32,0,522" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Label x:Name="lblStyles" Content="Styles" Margin="49,212,0,342" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Label x:Name="lblTemperature" Content="Température" Margin="49,333,0,221" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        <Label x:Name="lblCouleur" Content="Couleur" Margin="51,455,0,90" HorizontalAlignment="Left" RenderTransformOrigin="0.451,-0.484"/>
+        <ListBox x:Name="lstActivites" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="154" Margin="51,63,0,0" SelectionMode="Multiple"/>
+        <ListBox x:Name="lstStyles" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="154" Margin="51,238,0,0" SelectionMode="Multiple"/>
+        <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,364,0,0" SelectionMode="Multiple"/>
+        <TextBlock x:Name="txbErreurType" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="430,370,212,198" TextWrapping="Wrap"><Run Text="Vous devez choisir le type de vêtement"/></TextBlock>
+        <TextBlock x:Name="txbErreurSexe" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="49,391,593,166" TextWrapping="Wrap"><Run Text="Vous devez choisir au moins un sexe qui peut porter le vêtement"/></TextBlock>
+        <Button x:Name="btnAjouterStyle" Margin="223,227,449,327" FontSize="10"  Content="Ajouter" Click="btnAjouterStyle_Click"/>
+        <TextBox x:Name="txtAjouterTemperature" FontSize="9" Margin="336,348,0,213" Width="125" HorizontalAlignment="Left"/>
+        <Button x:Name="btnAjouterTemperature" Margin="223,341,449,207" FontSize="10" Content="Ajouter" Click="btnAjouterTemperature_Click"/>
+        <Button x:Name="btnModifierStyle" Margin="223,258,449,296" FontSize="10"  Content="Modifier" Click="btnModifierStyle_Click"/>
+        <Button x:Name="btnSupprimerStyle" Margin="223,289,449,265" FontSize="10"  Content="Supprimer" Click="btnSupprimerStyle_Click"/>
+        <Button x:Name="btnModifierTemperature" Margin="223,378,449,170" FontSize="10" Content="Modifier" Click="btnModifierTemperature_Click"/>
+        <Button x:Name="btnSupprimerTemperature" Margin="223,415,449,133" FontSize="10" Content="Supprimer" Click="btnSupprimerTemperature_Click"/>
+        <TextBox x:Name="txtModifierTemperature" FontSize="9" Margin="336,382,0,179" Width="125" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtAjouterStyle" FontSize="9" Margin="336,238,0,323" Width="125" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtModifierStyle" FontSize="9" Margin="336,272,0,289" Width="125" HorizontalAlignment="Left"/>
+        <ListBox x:Name="lstCouleurs" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,484,0,0"/>
+        <TextBox x:Name="txtAjouterCouleur" FontSize="9" Margin="336,470,0,91" Width="125" HorizontalAlignment="Left"/>
+        <Button x:Name="btnAjouterCouleur" Margin="223,463,449,85" FontSize="10" Content="Ajouter" Click="btnAjouterCouleur_Click"/>
+        <Button x:Name="btnModifierCouleur" Margin="223,500,449,48" FontSize="10" Content="Modifier" Click="btnModifierCouleur_Click"/>
+        <Button x:Name="btnSupprimerCouleur" Margin="223,537,449,11" FontSize="10" Content="Supprimer" Click="btnSupprimerCouleur_Click"/>
+        <TextBox x:Name="txtModifierCouleur" FontSize="9" Margin="336,504,0,57" Width="125" HorizontalAlignment="Left" Visibility="Hidden" />
+        <TextBox x:Name="txtAjouterActivite" FontSize="9" Margin="336,71,0,490" Width="125" HorizontalAlignment="Left" Visibility="Hidden" TextWrapping="Wrap" />
+        <Button x:Name="btnAjouterActivite" Margin="223,64,449,484" FontSize="10" Content="Ajouter" Click="btnAjouterActivite_Click" />
+        <Button x:Name="btnModifierActivite" Margin="223,101,449,447" FontSize="10" Content="Modifier" Click="btnModifierActivite_Click"/>
+        <Button x:Name="btnSupprimerActivite" Margin="223,138,449,410" FontSize="10" Content="Supprimer" Click="btnSupprimerActivite_Click"/>
+        <TextBox x:Name="txtModifierActivite" FontSize="9" Margin="336,105,0,456" Width="125" HorizontalAlignment="Left" Visibility="Hidden" />
+    </Grid>
+</UserControl>

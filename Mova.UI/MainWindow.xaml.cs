@@ -141,7 +141,7 @@ namespace Mova.UI
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<AdminView>(new AdminView());
+            mainVM.ChangeView<MenuAdminView>(new MenuAdminView());
         }
     }
 }

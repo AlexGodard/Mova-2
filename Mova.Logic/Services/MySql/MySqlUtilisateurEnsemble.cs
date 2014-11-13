@@ -182,7 +182,6 @@ namespace Mova.Logic.Services.MySql
                 /*IdTemperature = (int)row["idTemperature"],
                 NomClimat = (string)row["nomClimat"]*/
             };
-
         }
 
         /// <summary>

@@ -70,5 +70,45 @@ namespace Mova.Logic.Services.MySql
                 throw;
             }
         }
+
+        public void Update(Couleur couleur, string Couleur)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Couleurs (nomCouleur) VALUES ";
+
+
+                string valeurs = "('" + couleur.NomCouleur.Replace("'", "''") + "')";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(Couleur couleur)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Couleurs (nomCouleur) VALUES ";
+
+
+                string valeurs = "('" + couleur.NomCouleur.Replace("'", "''") + "')";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
     }
 }

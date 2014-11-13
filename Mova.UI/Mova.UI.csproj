@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ActiviteViewModel.cs" />
+    <Compile Include="ViewModel\MenuAdminViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\AjouterHautViewModel.cs" />
     <Compile Include="ViewModel\BasViewModel.cs" />
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="Views\MaGardeRobeView.xaml.cs">
       <DependentUpon>MaGardeRobeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuAdminView.xaml.cs">
+      <DependentUpon>MenuAdminView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MenuView.xaml.cs">
       <DependentUpon>MenuView.xaml</DependentUpon>
@@ -173,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MaGardeRobeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MenuAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
