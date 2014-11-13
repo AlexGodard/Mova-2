@@ -28,13 +28,11 @@ namespace Mova.UI.Views
     public partial class RecentsView : UserControl
     {
         private RecentsViewModel ViewModel { get { return (RecentsViewModel)DataContext; } }
-        public static History<UserControl> _historique = new History<UserControl>();
-        public static UserControl derniereFenetre = null;
 
         private const int nbColumns = 3;
         private const int nbRows = 3;
 
-        List<UtilisateurEnsemble> listeUtilisateurEnsemblesTrouves = new List<UtilisateurEnsemble>();
+        List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
         List<string> listeNomsEnsemble = new List<string>();
         public RecentsView()
         {
@@ -42,46 +40,9 @@ namespace Mova.UI.Views
 
             DataContext = new RecentsViewModel();
 
-            _historique.Ajouter(this);
 
-            
-            //listeUtilisateurEnsemblesTrouves = ViewModel.chargerEnsemblesRecents();
 
-            //ViewModel.afficherEnsemblesRecents();
         }
 
-        /*internal List<UtilisateurEnsemble> chargerEnsemblesRecents()
-        {
-            //On va chercher le numéro de fenêtre que l'on est (toujours le dernier car la fenêtre affichée sera toujours la dernière
-            int noFenetre = _historique.GetNumberOfPage(this);
-            int noPremierEnsembleAPrendre = (noFenetre) * nbColumns;
-            List<EnsembleVetement> listeTemp = new List<EnsembleVetement>();
-
-            // On va chercher tout les ensembles récents de l'utilisateur
-
-            foreach (UtilisateurEnsemble utilisateurEnsemble in Listes.ListeEnsemblesUtilisateur)
-            {
-                // On crée une liste des noms 
-                List<String> listeNomEnsembles = 
-            }
-
-            return listeTemp;
-        }
-
-        internal List<UtilisateurEnsemble> chargerEnsemblesRecents()
-        {
-            //On va chercher le numéro de fenêtre que l'on est (toujours le dernier car la fenêtre affichée sera toujours la dernière
-            List<string> listeTemp = new List<string>();
-
-            // On va chercher tout les ensembles récents de l'utilisateur
-
-            foreach (UtilisateurEnsemble utilisateurEnsemble in Listes.ListeEnsemblesUtilisateur)
-            {
-                // On crée une liste des noms 
-                listeTemp.Add(utilisateurEnsemble)
-            }
-
-            return listeTemp;
-        }*/
     }
 }
