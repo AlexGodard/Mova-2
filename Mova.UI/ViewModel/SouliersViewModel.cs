@@ -17,31 +17,31 @@ namespace Mova.UI.ViewModel
         private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
 
         public SouliersViewModel()
-        { 
-             _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
+        {
+            _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
 
-             Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecificUtilisateur(3));
+            Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecificUtilisateur(3));
 
-             // On place dans la liste globale, la liste d'ensembles reçue
-             Listes.ListeSouliersUtilisateur = Vetements.ToList<Vetement>();
+            // On place dans la liste globale, la liste d'ensembles reçue
+            Listes.ListeSouliersUtilisateur = Vetements.ToList<Vetement>();
         }
 
         public ObservableCollection<Vetement> Vetements
         {
-                get
+            get
+            {
+                return _vetements;
+            }
+
+            set
+            {
+                if (_vetements == value)
                 {
-                    return _vetements;
+                    return;
                 }
 
-                set
-                {
-                    if (_vetements == value)
-                    {
-                        return;
-                    }
-
-                    _vetements = value;
-                }
-          }     
+                _vetements = value;
+            }
+        }
     }
 }

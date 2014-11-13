@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Mova.UI.Views.SouliersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="649.358" Height="376">
+    <Grid x:Name="GridSouliersVetement">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="151" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91" />
+            <RowDefinition Height="176" />
+            <RowDefinition Height="108" />
+        </Grid.RowDefinitions>
+        <Button Name="btnSuivant" Visibility="Hidden" Content="Suivant" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Height="156" Grid.Column="4"  Click="btnSuivant_Click"/>
+        <Button Name="btnPrecedent" Visibility="Hidden" Content="Precedent" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="156"  Click="btnPrecedent_Click"/>
+        <Button Name="btnBack" Content="Back" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Height="88" Click="btnBack_Click"/>
+    </Grid>
+</UserControl>

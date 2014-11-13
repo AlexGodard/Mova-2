@@ -16,6 +16,7 @@ namespace Mova.UI.ViewModel
     {
 
             private IVetementService _vetementService;
+
             private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
 
             /// <summary>
@@ -25,10 +26,10 @@ namespace Mova.UI.ViewModel
             {
                 _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
 
-                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecificUtilisateur(2));
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
 
                 // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeBasUtilisateur = Vetements.ToList<Vetement>();
+                Listes.ListeBasUtilisateurComplet = Vetements.ToList<Vetement>();
             }
 
             /// <summary>
@@ -51,6 +52,5 @@ namespace Mova.UI.ViewModel
                     _vetements = value;
                 }
             }
-
-      }
- }
+    }
+}

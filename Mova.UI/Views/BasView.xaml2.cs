@@ -55,8 +55,8 @@ namespace Mova.UI.Views
                 Grid.SetRow(i, iRow);
 
                 GridHautVetement.Children.Add(i);
-
-                iColonne++;
+                
+                iColonne++;           
 
                 iNbVetementCourant++;     //Nombre de activités affichées au total
                 iNbVetementPrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
@@ -82,7 +82,7 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-
+     
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             iColonne = 1;
 
@@ -100,7 +100,7 @@ namespace Mova.UI.Views
             }
             else
             {
-                btnPrecedent.Visibility = Visibility.Hidden;
+               btnPrecedent.Visibility = Visibility.Hidden;
             }
 
 
@@ -161,11 +161,11 @@ namespace Mova.UI.Views
                 btnPrecedent.Visibility = Visibility.Hidden;
             }
 
-            if (iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
+            if(iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
             {
                 iNbVetementCourant = iNbVetementCourant - iNbVetementPrecedent - iNombreDeBoutonsDesires;
             }
-            else
+            else 
             {
                 iNbVetementCourant = iNbVetementCourant - iNbVetementPrecedent - iNbVetementPrecedent;
             }
@@ -184,7 +184,7 @@ namespace Mova.UI.Views
 
                 GridHautVetement.Children.Add(i);
 
-                iColonne++;
+                iColonne++;   
 
                 iNbVetementCourant++;
                 iNbVetementPrecedent++;
@@ -211,6 +211,6 @@ namespace Mova.UI.Views
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
-        }
+        } 
     }
 }

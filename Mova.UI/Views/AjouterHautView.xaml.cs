@@ -59,21 +59,21 @@ namespace Mova.UI.Views
                 Grid.SetRow(i, iRow);
                 GridHautVetement.Children.Add(i);
 
-                switch(iColonne)
-                { 
-                   case 1:
+                switch (iColonne)
+                {
+                    case 1:
                         btn1.Visibility = Visibility.Visible;
                         break;
-                   case 2:
+                    case 2:
                         btn2.Visibility = Visibility.Visible;
-                       break;
-                   case 3:
-                       btn3.Visibility = Visibility.Visible;
-                       break;
+                        break;
+                    case 3:
+                        btn3.Visibility = Visibility.Visible;
+                        break;
                 }
-                
-                 iColonne++; 
-                                                     
+
+                iColonne++;
+
                 iNbVetementCourant++;     //Nombre de activités affichées au total
                 iNbVetementPrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
 
@@ -119,7 +119,7 @@ namespace Mova.UI.Views
             }
             else
             {
-               btnPrecedent.Visibility = Visibility.Hidden;
+                btnPrecedent.Visibility = Visibility.Hidden;
             }
 
 
@@ -195,11 +195,11 @@ namespace Mova.UI.Views
                 btnPrecedent.Visibility = Visibility.Hidden;
             }
 
-            if(iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
+            if (iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
             {
                 iNbVetementCourant = iNbVetementCourant - iNbVetementPrecedent - iNombreDeBoutonsDesires;
             }
-            else 
+            else
             {
                 iNbVetementCourant = iNbVetementCourant - iNbVetementPrecedent - iNbVetementPrecedent;
             }
@@ -215,8 +215,8 @@ namespace Mova.UI.Views
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
-                GridHautVetement.Children.Add(i);                
-                
+                GridHautVetement.Children.Add(i);
+
                 switch (iColonne)
                 {
                     case 1:
@@ -262,17 +262,17 @@ namespace Mova.UI.Views
 
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
         {
-           Button b = (Button) sender;
-           int Column = Grid.GetColumn(b);
-           int Row = Grid.GetRow(b);
-           Row = Row- 1;
+            Button b = (Button)sender;
+            int Column = Grid.GetColumn(b);
+            int Row = Grid.GetRow(b);
+            Row = Row - 1;
 
-           var element = GridHautVetement.Children.Cast<UIElement>().
-                         First(z => Grid.GetColumn(z) == Column && Grid.GetRow(z) == Row);
+            var element = GridHautVetement.Children.Cast<UIElement>().
+                          First(z => Grid.GetColumn(z) == Column && Grid.GetRow(z) == Row);
 
-           Image i = (Image)element;
+            Image i = (Image)element;
 
-           string href = i.Source.ToString();          
+            string href = i.Source.ToString();
         }
     }
 }

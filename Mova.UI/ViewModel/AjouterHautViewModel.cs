@@ -18,44 +18,44 @@ using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {
-    class AjouterHautViewModel: BaseViewModel
+    class AjouterHautViewModel : BaseViewModel
     {
 
-            private IVetementService _vetementService;
-            private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
+        private IVetementService _vetementService;
+        private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
 
-            /// <summary>
-            /// 
-            /// </summary>
-            public AjouterHautViewModel()
+        /// <summary>
+        /// 
+        /// </summary>
+        public AjouterHautViewModel()
+        {
+            _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
+
+            Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
+
+            // On place dans la liste globale, la liste d'ensembles reçue
+            Listes.ListeHautsComplet = Vetements.ToList<Vetement>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ObservableCollection<Vetement> Vetements
+        {
+            get
             {
-                _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
-
-                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
-
-                // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeHautsComplet = Vetements.ToList<Vetement>();
+                return _vetements;
             }
 
-            /// <summary>
-            /// 
-            /// </summary>
-            public ObservableCollection<Vetement> Vetements
+            set
             {
-                get
+                if (_vetements == value)
                 {
-                    return _vetements;
+                    return;
                 }
 
-                set
-                {
-                    if (_vetements == value)
-                    {
-                        return;
-                    }
-
-                    _vetements = value;
-                }
+                _vetements = value;
             }
+        }
     }
 }
