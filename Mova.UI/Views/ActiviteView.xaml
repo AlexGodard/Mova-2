@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" SnapsToDevicePixels="True">
+             
         <UserControl.Resources>
             <!-- Style des boutons blancs des activités -->
             <Style TargetType="Button" x:Key="btnActivite">
@@ -77,31 +78,43 @@
             </Style>
         </UserControl.Resources>
 
-        <Grid Name="GridActivite">
+    <Grid Name="GridPrincipale">
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="1000" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="525" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Column="2" Grid.Row="2" Name="gridActivite">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="250" />
-                <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-
+            
             <Grid.RowDefinitions>
-                <RowDefinition Height="50" />
-                <RowDefinition Height="100" />
-                <RowDefinition Height="150" />
-                <RowDefinition Height="150" />
-                <RowDefinition Height="150" />
-                <RowDefinition />
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
             </Grid.RowDefinitions>
-
-            <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi une activité" FontFamily="Calibri" FontSize="62" />
-            <Button Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Name="btnSuivant" Visibility="Hidden" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" />
-            <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Name="btnPrecedent" Visibility="Hidden" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" />
-
         </Grid>
+            
+       
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi une activité" FontFamily="Calibri" FontSize="62" />
+        <Button Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Name="btnSuivant" Visibility="Hidden" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" />
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Name="btnPrecedent" Visibility="Hidden" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" />
+
+    </Grid>
 </UserControl>
