@@ -78,9 +78,8 @@ namespace Mova.UI
 
         private void MenuRecents_Click(object sender, RoutedEventArgs e)
         {
-            //À faire...
-            //IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            //mainVM.ChangeView<StylisteView>(new StylisteView());
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<RecentsView>(new RecentsView());
         }
 
         private void MenuFavoris_Click(object sender, RoutedEventArgs e)

@@ -124,6 +124,7 @@ namespace Mova.UI.Views
             {
                 int idEnsemble = ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
                 int idUtilisateur = ViewModel.ajouterUtilisateurEnsemble(idEnsemble, estFavori);
+                Listes.ensembleChoisi.IdEnsemble = idEnsemble;
                 ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
             }
         }

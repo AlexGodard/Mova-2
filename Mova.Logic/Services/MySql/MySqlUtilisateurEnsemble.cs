@@ -56,9 +56,9 @@ namespace Mova.Logic.Services.MySql
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];
 
-                foreach (DataRow utilisateurensemble in table.Rows)
+                foreach (DataRow utilisateurEnsemble in table.Rows)
                 {
-                    result.Add(ConstructUtilisateurEnsemble(utilisateurensemble));
+                    result.Add(ConstructUtilisateurEnsemble(utilisateurEnsemble));
                 }
 
             }
@@ -73,6 +73,7 @@ namespace Mova.Logic.Services.MySql
 
         private UtilisateurEnsemble ConstructUtilisateurEnsemble(DataRow row)
         {
+            // TODO: THIS PART
             return new UtilisateurEnsemble()
             {
                 /*IdTemperature = (int)row["idTemperature"],

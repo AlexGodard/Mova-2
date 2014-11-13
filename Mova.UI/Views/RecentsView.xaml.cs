@@ -34,7 +34,7 @@ namespace Mova.UI.Views
         private const int nbColumns = 3;
         private const int nbRows = 3;
 
-        List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
+        List<UtilisateurEnsemble> listeUtilisateurEnsemblesTrouves = new List<UtilisateurEnsemble>();
         List<string> listeNomsEnsemble = new List<string>();
         public RecentsView()
         {
@@ -45,9 +45,9 @@ namespace Mova.UI.Views
             _historique.Ajouter(this);
 
             
-            /*listeEnsemblesUtilisateurTrouves = ViewModel.chargerEnsemblesRecents();
+            //listeUtilisateurEnsemblesTrouves = ViewModel.chargerEnsemblesRecents();
 
-            ViewModel.afficherEnsemblesRecents();*/
+            //ViewModel.afficherEnsemblesRecents();
         }
 
         /*internal List<UtilisateurEnsemble> chargerEnsemblesRecents()

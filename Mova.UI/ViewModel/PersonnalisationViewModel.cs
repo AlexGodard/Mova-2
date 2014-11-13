@@ -27,8 +27,8 @@ namespace Mova.UI.ViewModel
 
         private IEnsembleService _ensembleService;
         private IUtilisateurEnsembleService _utilisateurEnsembleService;
-        private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private IEnsembleVetementService _ensembleVetementService;
+        private ObservableCollection<Ensemble> _ensembles = new ObservableCollection<Ensemble>();
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
         private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
@@ -45,10 +45,14 @@ namespace Mova.UI.ViewModel
         public PersonnalisationViewModel()
         {
             _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            Ensembles = new ObservableCollection<Ensemble>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveAll());
             _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
 
-            Ensembles = new ObservableCollection<Ensemble>(ServiceFactory.Instance.GetService<IEnsembleService>().RetrieveAll());
+            
+
+            //EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveAll());
             _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
+
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsembles = Ensembles.ToList<Ensemble>();
         }

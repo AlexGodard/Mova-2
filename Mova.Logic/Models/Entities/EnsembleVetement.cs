@@ -30,11 +30,9 @@ namespace Mova.Logic.Models
 
         public EnsembleVetement()
         {
-
             IdEnsembleVetement = 0;
             IdEnsemble = 0;
             ListeVetements = new List<Vetement>();
-        
         }
     }
 }

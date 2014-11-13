@@ -24,7 +24,6 @@ namespace Mova.UI.ViewModel
 {
     class RecentsViewModel : BaseViewModel
     {
-
         private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<UtilisateurEnsemble> _utilisateursEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
@@ -46,6 +45,8 @@ namespace Mova.UI.ViewModel
 
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
+
+
         }
 
         /// <summary>

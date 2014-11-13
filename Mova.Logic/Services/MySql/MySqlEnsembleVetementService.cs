@@ -22,6 +22,31 @@ namespace Mova.Logic.Services.MySql
 
         private MySqlConnexion connexion;
 
+        /*public IList<EnsembleVetement> RetrieveAll()
+        {
+            IList<EnsembleVetement> result = new List<EnsembleVetement>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "SELECT * FROM EnsemblesVetements";
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow ensembleVetement in table.Rows)
+                {
+                    result.Add(ConstructEnsembleVetement(ensembleVetement));
+                }
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }*/
+
         public IList<EnsembleVetement> RetrieveSelection(InfoStylisteArgs args)
         {
 
@@ -138,10 +163,12 @@ namespace Mova.Logic.Services.MySql
         */
         public void Create(EnsembleVetement ensembleVetement)
         {
+            connexion = new MySqlConnexion();
+
             foreach(Vetement vetement in ensembleVetement.ListeVetements)
             {
                 //On commence par créer un ensemble vide (pour avoir le ID)
-                string debutRequete = "INSERT IGNORE INTO Ensembles (idEnsemble, idVetement) VALUES ";
+                string debutRequete = "INSERT IGNORE INTO EnsemblesVetements (idEnsemble, idVetement) VALUES ";
                 string valeurs = "(" + ensembleVetement.IdEnsemble + ", " + vetement.IdVetement + ")";
                 string requete = debutRequete + valeurs;
 
@@ -154,10 +181,14 @@ namespace Mova.Logic.Services.MySql
         /// </summary>
         /// <param name="ensemble"></param>
         /// <returns></returns>
-        private EnsembleVetement ConstructEnsembleVetement(DataRow ensembleVetement)
+        private EnsembleVetement ConstructEnsembleVetement(DataRow row)
         {
-            return new EnsembleVetement();
-        
+            return new EnsembleVetement()
+            {
+                IdEnsembleVetement = (int)row["idEnsembleVetement"],
+                IdEnsemble = (int)row["idEnsemble"],
+                ListeVetements = new List<Vetement>((int)row["idVetement"])
+            };
         }
 
         /// <summary>
