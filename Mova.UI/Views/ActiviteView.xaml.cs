@@ -77,7 +77,6 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-
             iColonne = 0;
             iLigne = 0;
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
@@ -124,7 +123,6 @@ namespace Mova.UI.Views
             int iNombreDeBoutonAfficher = 0;
             iColonne = 0;
             iLigne = 0;
-
             gridActivite.Children.Clear();     //On efface le contenu de l'écran
 
             if (iNbActiviteCourant - iNbActivitePrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste

@@ -78,15 +78,42 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Name="GridStyles" Margin="10,10,10,0" Height="280" VerticalAlignment="Top">
-        <WrapPanel Name="WrapPanelStyles" HorizontalAlignment="Stretch" Height="270" Margin="10,10,10,0" VerticalAlignment="Top">
+    <Grid Name="GridPrincipale">
 
-        </WrapPanel>
-        <Button Content="Suivant" Name="btnSuivant" Visibility="Hidden" HorizontalAlignment="Left" Margin="509,332,-91,0" VerticalAlignment="Top" Width="75" Click="btnSuivant_Click" RenderTransformOrigin="0.507,0.545"/>
-        <Button Name="btnPrecedent" Visibility="Hidden" HorizontalAlignment="Left" Margin="509,292,-91,0" VerticalAlignment="Top" Width="75" Click="btnPrecedent_Click" RenderTransformOrigin="0.507,0.545" >
-            <Button.Background>
-                <ImageBrush ImageSource="pack://application:,,,/../Resources/back.png" />
-            </Button.Background>
-        </Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="1000" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="525" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Column="2" Grid.Row="2" Name="gridStyle">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
+                <RowDefinition Height="175" />
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisi un style" FontFamily="Calibri" FontSize="62" />
+        <Button Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Name="btnSuivant" Visibility="Hidden" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" />
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" Name="btnPrecedent" Visibility="Hidden" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" />
+
     </Grid>
 </UserControl>
