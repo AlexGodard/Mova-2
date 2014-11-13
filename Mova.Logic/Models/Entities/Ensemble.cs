@@ -11,6 +11,8 @@ namespace Mova.Logic.Models
     /// </summary>
     public class Ensemble
     {
+        private int p;
+
         #region Propriétés
 
         public virtual int? IdEnsemble { get; set; }
@@ -27,6 +29,13 @@ namespace Mova.Logic.Models
         public Ensemble(string nomEnsemble)
         {
             this.NomEnsemble = nomEnsemble;
+        }
+
+        public Ensemble(int idEnsemble)
+        {
+            // TODO: Complete member initialization
+            this.IdEnsemble = idEnsemble;
+            this.NomEnsemble = "Inconnu";
         }
     }
 }

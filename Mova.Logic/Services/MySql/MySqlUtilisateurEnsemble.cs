@@ -76,8 +76,11 @@ namespace Mova.Logic.Services.MySql
             // TODO: THIS PART
             return new UtilisateurEnsemble()
             {
-                /*IdTemperature = (int)row["idTemperature"],
-                NomClimat = (string)row["nomClimat"]*/
+                Ensemble = new Ensemble((int)row["idEnsemble"]),
+                Utilisateur = Listes.UtilisateurConnecte,
+                DateCreation = (DateTime)row["dateCreation"],
+                EstFavori = (bool)row["estFavori"],
+                EstDansGardeRobe = (bool)row["estDansGardeRobe"]
             };
 
         }
