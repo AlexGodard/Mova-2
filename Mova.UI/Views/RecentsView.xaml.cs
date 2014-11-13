@@ -46,7 +46,27 @@ namespace Mova.UI.Views
 
             listeEnsembleRecents = ViewModel.ObtenirRecents(maxEnsembleDesire);
 
-            AfficherRecents();
+            if (listeEnsembleRecents.Count != 0)
+            {
+                AfficherRecents(); 
+            }
+            else
+            {
+
+                Button button = new Button();
+
+                button.Content = "Aucun ensemble récent, allez à l'écran styliste";
+
+                Grid.SetColumn(button, nbColumnsDepart);
+                Grid.SetRow(button, nbRowsDepart);
+                // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
+                button.Click += btnStyliste_Click;
+
+                DynamicGrid.Children.Add(button);
+
+            }
+
+            
 
 
         }
@@ -102,6 +122,12 @@ namespace Mova.UI.Views
 
             DynamicGrid.Children.Add(i);
 
+        }
+
+        private void btnStyliste_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
         }
 
     }
