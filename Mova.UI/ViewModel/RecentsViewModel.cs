@@ -48,9 +48,18 @@ namespace Mova.UI.ViewModel
             Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
         }
 
-        public List<EnsembleVetement> ObtenirRecents()
+        public List<EnsembleVetement> ObtenirRecents(int nbMax)
         {
-            return _utilisateurEnsembleService.RetrieveRecents().ToList<EnsembleVetement>();
+            
+            List<EnsembleVetement> listeTemp = _utilisateurEnsembleService.RetrieveRecents().ToList<EnsembleVetement>();
+            List<EnsembleVetement> listeRetour = new List<EnsembleVetement>();
+
+            for (int i = 0; i < listeTemp.Count && i < nbMax; i++)
+			{
+			    listeRetour.Add(listeTemp[i]);
+			}
+
+            return listeRetour;
 
         }
 

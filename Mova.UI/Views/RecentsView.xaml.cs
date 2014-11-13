@@ -29,18 +29,78 @@ namespace Mova.UI.Views
     {
         private RecentsViewModel ViewModel { get { return (RecentsViewModel)DataContext; } }
 
-        private const int nbColumns = 3;
-        private const int nbRows = 3;
+        private const int nbColumnsMax = 3;
+        private const int nbColumnsDepart = 1;
+        private const int nbRowsDepart = 1;
+        private const int maxEnsembleDesire = 3;
 
         List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
         List<string> listeNomsEnsemble = new List<string>();
+        List<EnsembleVetement> listeEnsembleRecents = new List<EnsembleVetement>();
+
         public RecentsView()
         {
             InitializeComponent();
 
             DataContext = new RecentsViewModel();
 
+            listeEnsembleRecents = ViewModel.ObtenirRecents(maxEnsembleDesire);
 
+            AfficherRecents();
+
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        //Pour le moment on affichera seulement 3 ensembles récents maximum
+        private void AfficherRecents()
+        {
+
+            int i = nbColumnsDepart;
+
+            foreach (EnsembleVetement ensemble in listeEnsembleRecents)
+            {
+                EcrireVetementViaListe(ensemble.ListeVetements, i);
+
+                i++;
+            }
+        
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="l"></param>
+        private void EcrireVetementViaListe(List<Vetement> l, int colonne)
+        {
+
+            //Écrire le torso
+            Vetement torso = l[0];
+            Vetement pants = l[1];
+            Vetement shoes = l[2];
+
+            DessinerVetement(torso, colonne, nbRowsDepart);
+            DessinerVetement(pants, colonne, nbRowsDepart + 1);
+            DessinerVetement(shoes, colonne, nbRowsDepart + 2);
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="colonne"></param>
+        /// <param name="rangee"></param>
+        private void DessinerVetement(Vetement v, int colonne, int rangee)
+        {
+            Image i = new Image();
+            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+            Grid.SetColumn(i, colonne);
+            Grid.SetRow(i, rangee);
+
+            DynamicGrid.Children.Add(i);
 
         }
 
