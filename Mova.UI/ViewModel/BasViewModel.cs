@@ -26,10 +26,10 @@ namespace Mova.UI.ViewModel
             {
                 _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
 
-                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(2));
 
                 // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeBasUtilisateurComplet = Vetements.ToList<Vetement>();
+                Listes.ListeBasUtilisateur = Vetements.ToList<Vetement>();
             }
 
             /// <summary>

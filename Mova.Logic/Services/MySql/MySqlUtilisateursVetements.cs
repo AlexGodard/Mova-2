@@ -44,6 +44,27 @@ namespace Mova.Logic.Services.MySql
         }
 
 
+        public void InsertVetementUtilisateur(string imageURL)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "INSERT INTO UtilisateursVetements (idUtilisateur,idVetement) VALUES " +
+                "((SELECT idUtilisateur FROM Utilisateurs WHERE idUtilisateur = " + 
+                Listes.UtilisateurConnecte.IdUtilisateur + ")," +
+                "(SELECT idVetement FROM Vetements WHERE imageURL = '" + imageURL + "'))";
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+        }
+
+
         private UtilisateurVetements ConstructUtilisateurVetement(DataRow row)
         {
             return new UtilisateurVetements()

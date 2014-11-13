@@ -30,8 +30,8 @@ namespace Mova.Logic
         public static List<Vetement> ListeSouliersUtilisateur;
 
         public static List<Vetement> ListeHautsComplet;
-        public static List<Vetement> ListeBasUtilisateurComplet;
-        public static List<Vetement> ListeSouliersUtilisateurComplet;
+        public static List<Vetement> ListeBasComplet;
+        public static List<Vetement> ListeSouliersComplet;
 
 
         //Concernant les choix faits dans l'écran styliste
