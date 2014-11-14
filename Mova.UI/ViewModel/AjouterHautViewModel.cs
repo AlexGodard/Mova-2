@@ -22,7 +22,9 @@ namespace Mova.UI.ViewModel
     {
 
         private IVetementService _vetementService;
+        private IUtilisateurVetementService _utilisateurVetementService;
         private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
+        private ObservableCollection<UtilisateurVetements> _utilisateurVetement = new ObservableCollection<UtilisateurVetements>();
 
         /// <summary>
         /// 
@@ -30,7 +32,7 @@ namespace Mova.UI.ViewModel
         public AjouterHautViewModel()
         {
             _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
-
+            _utilisateurVetementService = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
             Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
 
             // On place dans la liste globale, la liste d'ensembles reçue
@@ -56,6 +58,30 @@ namespace Mova.UI.ViewModel
 
                 _vetements = value;
             }
+        }
+
+        public ObservableCollection<UtilisateurVetements> UtilisateursVetements
+        {
+            get
+            {
+                return _utilisateurVetement;
+            }
+
+            set
+            {
+                if (_utilisateurVetement == value)
+                {
+                    return;
+                }
+
+                _utilisateurVetement = value;
+            }
+        }
+
+
+        public void ajouteVetement(string href)
+        {
+            _utilisateurVetementService.InsertVetementUtilisateur(href);
         }
     }
 }
