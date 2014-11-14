@@ -18,44 +18,54 @@ using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {
-    class AjouterHautViewModel : BaseViewModel
+    class AjouterHautViewModel: BaseViewModel
     {
 
-        private IVetementService _vetementService;
-        private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
+            private IVetementService _vetementService;
+            private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public AjouterHautViewModel()
-        {
-            _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
-
-            Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
-
-            // On place dans la liste globale, la liste d'ensembles reçue
-            Listes.ListeHautsComplet = Vetements.ToList<Vetement>();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public ObservableCollection<Vetement> Vetements
-        {
-            get
+            /// <summary>
+            /// 
+            /// </summary>
+            public AjouterHautViewModel()
             {
-                return _vetements;
+                _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
+
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1));
+
+                // On place dans la liste globale, la liste d'ensembles reçue
+                Listes.ListeHautsComplet = Vetements.ToList<Vetement>();
             }
 
-            set
+            /// <summary>
+            /// 
+            /// </summary>
+            public ObservableCollection<Vetement> Vetements
             {
-                if (_vetements == value)
+                get
                 {
-                    return;
+                    return _vetements;
                 }
 
-                _vetements = value;
+                set
+                {
+                    if (_vetements == value)
+                    {
+                        return;
+                    }
+
+                    _vetements = value;
+                }
             }
-        }
+
+
+            public void ajouterVetetmentGardeRobe(string imageURL)
+            {
+                _vetementService.Create(string imageURL);
+                // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
+                Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
+                Listes.ListeActivites = Activites.ToList<Activite>();
+            }
+
     }
 }
