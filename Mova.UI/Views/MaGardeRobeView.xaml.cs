@@ -60,5 +60,17 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<AjouterHautView>(new AjouterHautView());
         }
+
+        private void ajouterBas_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<AjouterBasView>(new AjouterBasView());
+        }
+
+        private void ajouterSouliers_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<AjouterSoulierView>(new AjouterSoulierView());
+        }
     }
 }

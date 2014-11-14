@@ -32,8 +32,8 @@ namespace Mova.UI.Views
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbActivitePrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran        //Gabriel Piché CLoutier - 2014-11-12
         //Sert à déterminer la position du bouton dans la grid. Celle-ci commence à la colonne 2 et la ligne 2.
-        int iColonne = 2;
-        int iLigne = 2;
+        int iColonne = 0;
+        int iLigne = 0;
 
         public ActiviteView()
         {
@@ -53,17 +53,6 @@ namespace Mova.UI.Views
             //On crée des boutons pour les premiers 12 activités
             foreach (Activite a in Listes.ListeActivites)
             {
-                /*Button btn = new Button();
-                btn.Content = a.NomActivite.ToString();
-                btn.Width = 100;
-                btn.Height = 100;
-                btn.Margin = new Thickness(10, 0, 0, 0);
-                btn.Padding = new Thickness(10, 0, 0, 0);
-                btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn)
-                iNbActiviteCourant++;     //Nombre de activités affichées au total
-                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
-
                 afficherBtnActivite(a);
 
                 if (iNbActiviteCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
@@ -72,7 +61,10 @@ namespace Mova.UI.Views
                 }
             }
 
-            /*Si tous les activités n'ont pas été affichées, on offre un bouton suivant à l'utilisateur*/
+            /*Si toutes les activités n'ont pas été affichées, on offre un bouton suivant à l'utilisateur*/
+            //Gabriel Piché Cloutier - 2014-11-13
+            //Correction des boucle
+
             if (iNbActiviteTotal - iNbActiviteCourant > 0)
             {
                 btnSuivant.Visibility = Visibility.Visible;
@@ -85,11 +77,10 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-
-            iColonne = 2;
-            iLigne = 2;
+            iColonne = 0;
+            iLigne = 0;
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
-            GridActivite.Children.Clear();     //On efface le contenu de l'écran
+            gridActivite.Children.Clear();     //On efface le contenu de l'écran
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
             if (iNbActivitePrecedent != 0)
@@ -108,18 +99,8 @@ namespace Mova.UI.Views
             /*Affiche les activités à partir du point de départ donnée*/
             foreach (Activite a in Listes.ListeActivites.Skip(iActiviteDepart))
             {
-                /*Button btn = new Button();
-                btn.Content = a.NomActivite.ToString();
-                btn.Width = 100;
-                btn.Height = 100;
-                btn.Margin = new Thickness(10, 0, 0, 0);
-                btn.Padding = new Thickness(10, 0, 0, 0);
-                btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn)
-                iNbActiviteCourant++;     //Nombre de activités affichées au total
-                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
-
                 afficherBtnActivite(a);
+                iNombreDeBoutonAfficher++;
 
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
@@ -131,7 +112,6 @@ namespace Mova.UI.Views
             {                                                //On affiche donc le bouton suivant
                 btnSuivant.Visibility = Visibility.Visible;
             }
-
             else
             {
                 btnSuivant.Visibility = Visibility.Hidden;
@@ -141,16 +121,11 @@ namespace Mova.UI.Views
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
             int iNombreDeBoutonAfficher = 0;
-            iColonne = 2;
-            iLigne = 2;
+            iColonne = 0;
+            iLigne = 0;
+            gridActivite.Children.Clear();     //On efface le contenu de l'écran
 
-            GridActivite.Children.Clear();     //On efface le contenu de l'écran
-
-            if (iNbActiviteCourant - iNbActivitePrecedent < iNbActiviteTotal && iNbActiviteCourant - iNbActivitePrecedent - iNbActivitePrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
-            {
-                btnPrecedent.Visibility = Visibility.Visible;
-            }
-            else
+            if (iNbActiviteCourant - iNbActivitePrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
                 btnPrecedent.Visibility = Visibility.Hidden;
             }
@@ -159,7 +134,7 @@ namespace Mova.UI.Views
             {
                 iNbActiviteCourant = iNbActiviteCourant - iNbActivitePrecedent - iNombreDeBoutonsDesires;
             }
-            else 
+            else
             {
                 iNbActiviteCourant = iNbActiviteCourant - iNbActivitePrecedent - iNbActivitePrecedent;
             }
@@ -171,18 +146,8 @@ namespace Mova.UI.Views
             //Affiche le nombre les activités à partir du début proposé
             foreach (Activite a in Listes.ListeActivites.Skip(iActiviteDepart))
             {
-                /*Button btn = new Button();
-                btn.Content = a.NomActivite.ToString();
-                btn.Width = 100;
-                btn.Height = 100;
-                btn.Margin = new Thickness(10, 0, 0, 0);
-                btn.Padding = new Thickness(10, 0, 0, 0);
-                btn.Click += AllerAEnsembles;
-                WrapPanelActivite.Children.Add(btn)
-                iNbActiviteCourant++;     //Nombre de activités affichées au total
-                iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant*/
-
                 afficherBtnActivite(a);
+                iNombreDeBoutonAfficher++;
 
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
@@ -190,11 +155,11 @@ namespace Mova.UI.Views
                 }
             }
 
+            //Est-ce que on est au début de la liste?
             if (iNbActiviteTotal - iNbActiviteCourant > 0)       //S'il reste des activités à afficher
             {
                 btnSuivant.Visibility = Visibility.Visible;
             }
-
             else
             {
                 btnSuivant.Visibility = Visibility.Hidden;
@@ -242,16 +207,17 @@ namespace Mova.UI.Views
 
             Grid.SetColumn(btn, iColonne);
             Grid.SetRow(btn, iLigne);
-            GridActivite.Children.Add(btn);
+            gridActivite.Children.Add(btn);
+            //GridPrincipale.Children.Add(btn);
 
             iNbActiviteCourant++;     //Nombre de activités affichées au total
             iNbActivitePrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
 
             //Gabriel Piché Cloutier - 2014-11-12
             //On change les coordonées de la position du bouton pour le porchain.
-            if (iColonne - 2 >= iNombreDeBoutonsDesires / 4)
+            if (iColonne >= iNombreDeBoutonsDesires / 4)
             {
-                iColonne = 2;
+                iColonne = 0;
                 iLigne++;
             }
             else
@@ -263,5 +229,7 @@ namespace Mova.UI.Views
                 return;
             }
         }
+
+        public UIElement btnActivite { get; set; }
     }
 }

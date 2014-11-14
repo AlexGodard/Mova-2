@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Cstj.MvvmToolkit.Services;
 using Mova.Logic.Models;
 using Mova.Logic.Models.Args;
+using Mova.Logic.Models.Entities;
 using Mova.Logic.Services.Definitions;
 using Mova.Logic.Services.Helpers;
 using MySql.Data.MySqlClient;
@@ -69,17 +70,118 @@ namespace Mova.Logic.Services.MySql
 
             return result;
         }
- 
+
+        public IList<EnsembleVetement> RetrieveRecents()
+        {
+            IList<EnsembleVetement> result = new List<EnsembleVetement>();
+            List<Vetement> listeVetementTemp = new List<Vetement>();
+            //int idEnsembleActuel = 0;
+
+            try
+            {
+                connexion = new MySqlConnexion();
+
+
+                string requete = "SELECT v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
+
+                DataSet dataset = connexion.Query(requete);
+
+                //Ici on a les ensemble récents, en ordre décroissant d'un utilisateur
+                DataTable table = dataset.Tables[0];
+
+                //On reconstruit les ensembles à partir des vêtements
+                //L'algorithme devrait être plus complexe mais pour l'instant cela suffit
+                foreach (DataRow enregistrement in table.Rows)
+                {
+
+                    //On ajoute toujours un vêtement dans cette liste
+                    listeVetementTemp.Add(ConstructVetement(enregistrement));
+
+                    if (listeVetementTemp.Count >= 3)
+                    {
+
+                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp });
+
+                        listeVetementTemp = new List<Vetement>();
+                    }
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        private Vetement ConstructVetement(DataRow row)
+        {
+            return new Vetement()
+            {
+                IdVetement = (int)row["idVetement"],
+                NomVetement = (string)row["nomVetement"],
+                ImageURL = (string)row["imageURL"],
+                Prix = (float)row["prix"],
+                EstHomme = (bool)row["estHomme"],
+                EstFemme = (bool)row["estFemme"],
+                TypeVetement = new TypeVetement((int)row["idTypeVetement"])
+            };
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vetements"></param>
+        /// <returns></returns>
+        private List<EnsembleVetement> ConstructEnsembles(List<Vetement> vetements)
+        {
+            List<EnsembleVetement> listeRetour = new List<EnsembleVetement>();
+            List<Vetement> listeVetements = new List<Vetement>();
+            int idEnsembleActuel = 0;
+
+            //Étant donné que la liste est triée par la BD, il est possible de faire ceci sans vérification
+            foreach (Vetement vetement in vetements)
+            {
+                //Nouvel ensemble
+                if (listeVetements.Count <= 0)
+                {
+                    //idEnsembleActuel = vet
+
+                }
+                //Ensemble complet (3 vetements)
+                else if (listeVetements.Count >= 3)
+                {
+                    listeRetour.Add(new EnsembleVetement() { IdEnsemble = idEnsembleActuel, ListeVetements = listeVetements });
+                    listeVetements = new List<Vetement>();
+                }
+                else
+                {
+
+                }
+
+
+
+            }
+
+
+            return listeRetour;
+        }
+
 
         private UtilisateurEnsemble ConstructUtilisateurEnsemble(DataRow row)
         {
-            // TODO: THIS PART
             return new UtilisateurEnsemble()
             {
                 /*IdTemperature = (int)row["idTemperature"],
                 NomClimat = (string)row["nomClimat"]*/
             };
-
         }
 
         /// <summary>
@@ -89,9 +191,9 @@ namespace Mova.Logic.Services.MySql
         /// <returns></returns>
         public bool Insert(EnsembleVetement ev)
         {
-            
+
             int noEnsembleInsere = ServiceFactory.Instance.GetService<IEnsembleVetementService>().InsererEnsemble(ev);
-            
+
             //Si on obtient un nombre négatif c'est que quelque chose s'est passé
             if (noEnsembleInsere < 0)
             {
@@ -111,7 +213,7 @@ namespace Mova.Logic.Services.MySql
                 throw;
             }
 
-        
+
             return true;
         }
 
@@ -122,7 +224,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO UtilisateursEnsembles (idUtilisateur, idEnsemble, dateCreation, estFavori, estDansGardeRobe) VALUES ";
+                string debutRequete = "INSERT INTO UtilisateursEnsembles (idUtilisateur, idEnsemble, dateCreation, estFavori, estDansGardeRobe) VALUES ";
 
 
                 string valeurs = "(" + utilisateurEnsemble.Utilisateur.IdUtilisateur + ", " + utilisateurEnsemble.Ensemble.IdEnsemble + ", '" + utilisateurEnsemble.DateCreation + "', " + utilisateurEnsemble.EstFavori + ", " + utilisateurEnsemble.EstDansGardeRobe + ");";

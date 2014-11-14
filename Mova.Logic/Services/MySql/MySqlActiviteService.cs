@@ -109,6 +109,46 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public void Update(Activite activite, string newActivite)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Activites (nomActivite) VALUES ";
+
+
+                string valeurs = "('" + activite.NomActivite.Replace("'", "''") + "')";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(Activite activite)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Activites (nomActivite) VALUES ";
+
+
+                string valeurs = "('" + activite.NomActivite.Replace("'", "''") + "')";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 }

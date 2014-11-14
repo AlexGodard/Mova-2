@@ -15,5 +15,7 @@ namespace Mova.Logic.Services.Definitions
         IList<StyleVetement> RetrieveSpecific(InfoStylisteArgs args);
 
         void Create(StyleVetement styleVetement);
+        void Update(StyleVetement styleVetement, string newCouleur);
+        void Delete(StyleVetement styleVetement);
     }
 }

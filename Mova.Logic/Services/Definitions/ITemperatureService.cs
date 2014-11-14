@@ -13,5 +13,7 @@ namespace Mova.Logic.Services.Definitions
     {
         IList<Temperature> RetrieveAll();
         void Create(Temperature temperature);
+        void Update(Temperature temperature, string newTemperature);
+        void Delete(Temperature temperature);
     }
 }

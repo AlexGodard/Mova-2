@@ -28,60 +28,107 @@ namespace Mova.UI.Views
     public partial class RecentsView : UserControl
     {
         private RecentsViewModel ViewModel { get { return (RecentsViewModel)DataContext; } }
-        public static History<UserControl> _historique = new History<UserControl>();
-        public static UserControl derniereFenetre = null;
 
-        private const int nbColumns = 3;
-        private const int nbRows = 3;
+        private const int nbColumnsMax = 3;
+        private const int nbColumnsDepart = 1;
+        private const int nbRowsDepart = 1;
+        private const int maxEnsembleDesire = 3;
 
-        List<UtilisateurEnsemble> listeUtilisateurEnsemblesTrouves = new List<UtilisateurEnsemble>();
+        List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
         List<string> listeNomsEnsemble = new List<string>();
+        List<EnsembleVetement> listeEnsembleRecents = new List<EnsembleVetement>();
+
         public RecentsView()
         {
             InitializeComponent();
 
             DataContext = new RecentsViewModel();
 
-            _historique.Ajouter(this);
+            listeEnsembleRecents = ViewModel.ObtenirRecents(maxEnsembleDesire);
+
+            if (listeEnsembleRecents.Count != 0)
+            {
+                AfficherRecents(); 
+            }
+            else
+            {
+
+                Button button = new Button();
+
+                button.Content = "Aucun ensemble récent, allez à l'écran styliste";
+
+                Grid.SetColumn(button, nbColumnsDepart);
+                Grid.SetRow(button, nbRowsDepart);
+                // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
+                button.Click += btnStyliste_Click;
+
+                DynamicGrid.Children.Add(button);
+
+            }
 
             
-            //listeUtilisateurEnsemblesTrouves = ViewModel.chargerEnsemblesRecents();
 
-            //ViewModel.afficherEnsemblesRecents();
+
         }
 
-        /*internal List<UtilisateurEnsemble> chargerEnsemblesRecents()
+        /// <summary>
+        /// 
+        /// </summary>
+        //Pour le moment on affichera seulement 3 ensembles récents maximum
+        private void AfficherRecents()
         {
-            //On va chercher le numéro de fenêtre que l'on est (toujours le dernier car la fenêtre affichée sera toujours la dernière
-            int noFenetre = _historique.GetNumberOfPage(this);
-            int noPremierEnsembleAPrendre = (noFenetre) * nbColumns;
-            List<EnsembleVetement> listeTemp = new List<EnsembleVetement>();
 
-            // On va chercher tout les ensembles récents de l'utilisateur
+            int i = nbColumnsDepart;
 
-            foreach (UtilisateurEnsemble utilisateurEnsemble in Listes.ListeEnsemblesUtilisateur)
+            foreach (EnsembleVetement ensemble in listeEnsembleRecents)
             {
-                // On crée une liste des noms 
-                List<String> listeNomEnsembles = 
-            }
+                EcrireVetementViaListe(ensemble.ListeVetements, i);
 
-            return listeTemp;
+                i++;
+            }
+        
         }
 
-        internal List<UtilisateurEnsemble> chargerEnsemblesRecents()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="l"></param>
+        private void EcrireVetementViaListe(List<Vetement> l, int colonne)
         {
-            //On va chercher le numéro de fenêtre que l'on est (toujours le dernier car la fenêtre affichée sera toujours la dernière
-            List<string> listeTemp = new List<string>();
 
-            // On va chercher tout les ensembles récents de l'utilisateur
+            //Écrire le torso
+            Vetement torso = l[0];
+            Vetement pants = l[1];
+            Vetement shoes = l[2];
 
-            foreach (UtilisateurEnsemble utilisateurEnsemble in Listes.ListeEnsemblesUtilisateur)
-            {
-                // On crée une liste des noms 
-                listeTemp.Add(utilisateurEnsemble)
-            }
+            DessinerVetement(torso, colonne, nbRowsDepart);
+            DessinerVetement(pants, colonne, nbRowsDepart + 1);
+            DessinerVetement(shoes, colonne, nbRowsDepart + 2);
 
-            return listeTemp;
-        }*/
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="colonne"></param>
+        /// <param name="rangee"></param>
+        private void DessinerVetement(Vetement v, int colonne, int rangee)
+        {
+            Image i = new Image();
+            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+            Grid.SetColumn(i, colonne);
+            Grid.SetRow(i, rangee);
+
+            DynamicGrid.Children.Add(i);
+
+        }
+
+        private void btnStyliste_Click(object sender, RoutedEventArgs e)
+        {
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new StylisteActiviteView());
+        }
+
     }
 }

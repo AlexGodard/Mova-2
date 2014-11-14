@@ -21,39 +21,56 @@ using Mova.UI.ViewModel;
 namespace Mova.UI.Views
 {
     /// <summary>
-    /// Logique d'interaction pour SouliersView.xaml
+    /// Logique d'interaction pour AjouterSoulierView.xaml
     /// </summary>
-    public partial class SouliersView : UserControl
+    public partial class AjouterSoulierView : UserControl
     {
-        private SouliersViewModel ViewModel { get { return (SouliersViewModel)DataContext; } }
+
+        private AjouterSoulierViewModel ViewModel { get { return (AjouterSoulierViewModel)DataContext; } }
         int iNbVetementCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iVetementDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iVetementTotal;       //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 3;       //Combien d'activité on désire afficher à l'écran
         int iNbVetementPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
-        bool bPremiereVueVetement = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
         int iColonne = 1;
         int iRow = 1;
 
-        public SouliersView()
+        public AjouterSoulierView()
         {
             InitializeComponent();
 
-            DataContext = new SouliersViewModel();
+            try
+            {
+                DataContext = new AjouterSoulierViewModel();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-            iVetementTotal = Listes.ListeSouliersUtilisateur.Count();
-
-            bPremiereVueVetement = false;
+            iVetementTotal = Listes.ListeSouliersComplet.Count();
 
             //On crée des boutons pour les premiers 12 activités
-            foreach (Vetement v in Listes.ListeSouliersUtilisateur)
+            foreach (Vetement v in Listes.ListeSouliersComplet)
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
+                GridSoulierVetement.Children.Add(i);
 
-                GridSouliersVetement.Children.Add(i);
+                switch (iColonne)
+                {
+                    case 1:
+                        btn1.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        btn2.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        btn3.Visibility = Visibility.Visible;
+                        break;
+                }
 
                 iColonne++;
 
@@ -75,21 +92,22 @@ namespace Mova.UI.Views
             {
                 btnSuivant.Visibility = Visibility.Hidden;
             }
+
         }
-
-
-
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             iColonne = 1;
 
-            var imageasupprimer = GridSouliersVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            btn1.Visibility = Visibility.Hidden;
+            btn2.Visibility = Visibility.Hidden;
+            btn3.Visibility = Visibility.Hidden;
+
+            var imageasupprimer = GridSoulierVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
-                GridSouliersVetement.Children.Remove(image);
+                GridSoulierVetement.Children.Remove(image);
             }
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
@@ -107,14 +125,26 @@ namespace Mova.UI.Views
             iNbVetementPrecedent = 0;   //On efface le nombre d'activités passées pour garder trace des nouveaux
 
             /*Affiche les activités à partir du point de départ donnée*/
-            foreach (Vetement v in Listes.ListeSouliersUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeSouliersComplet.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
+                GridSoulierVetement.Children.Add(i);
 
-                GridSouliersVetement.Children.Add(i);
+                switch (iColonne)
+                {
+                    case 1:
+                        btn1.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        btn2.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        btn3.Visibility = Visibility.Visible;
+                        break;
+                }
 
                 iColonne++;
 
@@ -143,12 +173,15 @@ namespace Mova.UI.Views
         {
             int iNombreDeBoutonAfficher = 0;
             iColonne = 1;
+            btn1.Visibility = Visibility.Hidden;
+            btn2.Visibility = Visibility.Hidden;
+            btn3.Visibility = Visibility.Hidden;
 
-            var imageasupprimer = GridSouliersVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var imageasupprimer = GridSoulierVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
-                GridSouliersVetement.Children.Remove(image);
+                GridSoulierVetement.Children.Remove(image);
             }
 
             if (iNbVetementCourant - iNbVetementPrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
@@ -174,20 +207,33 @@ namespace Mova.UI.Views
             iVetementDepart = iNbVetementCourant;
 
             //Affiche le nombre les activités à partir du début proposé
-            foreach (Vetement v in Listes.ListeSouliersUtilisateur.Skip(iVetementDepart))
+            foreach (Vetement v in Listes.ListeSouliersComplet.Skip(iVetementDepart))
             {
                 Image i = new Image();
                 i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
+                GridSoulierVetement.Children.Add(i);
 
-                GridSouliersVetement.Children.Add(i);
+                switch (iColonne)
+                {
+                    case 1:
+                        btn1.Visibility = Visibility.Visible;
+                        break;
+                    case 2:
+                        btn2.Visibility = Visibility.Visible;
+                        break;
+                    case 3:
+                        btn3.Visibility = Visibility.Visible;
+                        break;
+                }
 
                 iColonne++;
 
                 iNbVetementCourant++;
                 iNbVetementPrecedent++;
                 iNombreDeBoutonAfficher++;
+
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
                     break;
@@ -212,6 +258,26 @@ namespace Mova.UI.Views
             mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
         }
 
+        private void btnChoisir_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = (Button)sender;
+            int Column = Grid.GetColumn(b);
+            int Row = Grid.GetRow(b);
+            Row = Row - 1;
 
+            var element = GridSoulierVetement.Children.Cast<UIElement>().
+                          First(z => Grid.GetColumn(z) == Column && Grid.GetRow(z) == Row);
+
+            Image i = (Image)element;
+
+            string str = i.Source.ToString();
+
+            string href = str.Substring(7, str.Length - 7);
+
+            ViewModel.ajouteVetement(href);
+
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
+        }
     }
 }

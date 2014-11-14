@@ -127,6 +127,10 @@ namespace Mova.UI.Views
                 Listes.ensembleChoisi.IdEnsemble = idEnsemble;
                 ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
             }
+
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new RecentsView());
+
         }
 
         //Maxime Laramee - 11/11/14
