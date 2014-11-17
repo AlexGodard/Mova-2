@@ -213,13 +213,15 @@ namespace Mova.UI.Views
             button.Content = "Choisir #" + noEnsemble.ToString();
             button.Margin = new Thickness(20);
             Grid.SetColumn(button,colonne);
-            Grid.SetRow(button,5);
+            Grid.SetRow(button,1);
             // On ajoute un nom au bouton
             button.Name = "btnChoisir" + noEnsemble.ToString();
             // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
             button.Click += new RoutedEventHandler(btnChoisir_Click);
 
             DynamicGrid.Children.Add(button);
+
+
         }
         /// <summary>
         /// Méthode qui change la view pour un écran styliste
