@@ -84,9 +84,8 @@ namespace Mova.UI
 
         private void MenuFavoris_Click(object sender, RoutedEventArgs e)
         {
-            //À faire...
-            //IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            //mainVM.ChangeView<StylisteView>(new StylisteView());
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+            mainVM.ChangeView<UserControl>(new FavorisView());
         }
 
         private void MenuMaGardeRobe_Click(object sender, RoutedEventArgs e)
@@ -141,7 +140,7 @@ namespace Mova.UI
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<AdminView>(new AdminView());
+            mainVM.ChangeView<MenuAdminView>(new MenuAdminView());
         }
     }
 }

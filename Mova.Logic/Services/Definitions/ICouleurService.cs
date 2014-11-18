@@ -13,5 +13,7 @@ namespace Mova.Logic.Services.Definitions
     {
         IList<Couleur> RetrieveAll();
         void Create(Couleur couleur);
+        void Update(Couleur couleur, string newCouleur);
+        void Delete(Couleur couleur);
     }
 }

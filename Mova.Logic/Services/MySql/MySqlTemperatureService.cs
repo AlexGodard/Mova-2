@@ -69,5 +69,37 @@ namespace Mova.Logic.Services.MySql
                 throw;
             }
         }
+
+        public void Update(Temperature temperature, string newTemperature)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "UPDATE Temperatures SET nomClimat = '" + newTemperature.Replace("'", "''") + "' WHERE nomClimat = '" + temperature.NomClimat.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(Temperature temperature)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "DELETE FROM Temperatures WHERE nomClimat = '" + temperature.NomClimat.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
     }
 }

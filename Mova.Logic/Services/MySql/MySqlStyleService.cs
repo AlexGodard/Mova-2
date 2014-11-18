@@ -91,6 +91,38 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public void Update(StyleVetement styleVetement, string newStyleVetement)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "UPDATE Styles SET nomStyle = '" + newStyleVetement.Replace("'", "''") + "' WHERE nomStyle = '" + styleVetement.NomStyle.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public void Delete(StyleVetement styleVetement)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "DELETE FROM Styles WHERE nomStyle = '" + styleVetement.NomStyle.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>

@@ -152,7 +152,7 @@ namespace Mova.UI.Views
                 GridHautVetement.Children.Remove(image);
             }
 
-            if (iNbVetementCourant - iNbVetementPrecedent < iVetementTotal && iNbVetementCourant - iNbVetementPrecedent - iNbVetementPrecedent != 0)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
+            if (iNbVetementCourant - iNbVetementPrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
                 btnPrecedent.Visibility = Visibility.Visible;
             }
