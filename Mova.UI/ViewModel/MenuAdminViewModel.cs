@@ -158,31 +158,43 @@ namespace Mova.UI.ViewModel
 
         public void modifierActivite(string nomActivite, string newActivite)
         {
-            _activiteService.Update(new Activite(nomActivite), newActivite);
-            // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
-            Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
-            Listes.ListeActivites = Activites.ToList<Activite>();
+            if (nomActivite != newActivite && newActivite != "")
+            {
+                _activiteService.Update(new Activite(nomActivite), newActivite);
+                // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
+                Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
+                Listes.ListeActivites = Activites.ToList<Activite>();
+            }
         }
 
         public void modifierStyle(string nomStyle, string newStyle)
         {
-            _styleService.Update(new StyleVetement(nomStyle), newStyle);
-            Styles = new ObservableCollection<StyleVetement>(ServiceFactory.Instance.GetService<IStyleService>().RetrieveAll());
-            Listes.ListeStyles = Styles.ToList<StyleVetement>();
+            if (nomStyle != newStyle && newStyle != "")
+            {
+                _styleService.Update(new StyleVetement(nomStyle), newStyle);
+                Styles = new ObservableCollection<StyleVetement>(ServiceFactory.Instance.GetService<IStyleService>().RetrieveAll());
+                Listes.ListeStyles = Styles.ToList<StyleVetement>();
+            }
         }
 
         public void modifierTemperature(string nomTemperature, string newTemperature)
         {
-            _temperatureService.Update(new Temperature(nomTemperature), newTemperature);
-            Temperatures = new ObservableCollection<Temperature>(ServiceFactory.Instance.GetService<ITemperatureService>().RetrieveAll());
-            Listes.ListeTemperatures = Temperatures.ToList<Temperature>();
+            if (nomTemperature != newTemperature && newTemperature != "")
+            {
+                _temperatureService.Update(new Temperature(nomTemperature), newTemperature);
+                Temperatures = new ObservableCollection<Temperature>(ServiceFactory.Instance.GetService<ITemperatureService>().RetrieveAll());
+                Listes.ListeTemperatures = Temperatures.ToList<Temperature>();
+            }
         }
 
         public void modifierCouleur(string nomCouleur, string newCouleur)
         {
-            _couleurService.Update(new Couleur(nomCouleur), newCouleur);
-            Couleurs = new ObservableCollection<Couleur>(ServiceFactory.Instance.GetService<ICouleurService>().RetrieveAll());
-            Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
+            if (nomCouleur != newCouleur && newCouleur != "")
+            {
+                _couleurService.Update(new Couleur(nomCouleur), newCouleur);
+                Couleurs = new ObservableCollection<Couleur>(ServiceFactory.Instance.GetService<ICouleurService>().RetrieveAll());
+                Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
+            }
         }
 
         public void supprimerActivite(string nomActivite)

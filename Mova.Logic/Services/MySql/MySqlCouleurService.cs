@@ -71,17 +71,13 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
-        public void Update(Couleur couleur, string Couleur)
+        public void Update(Couleur couleur, string newCouleur)
         {
             try
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Couleurs (nomCouleur) VALUES ";
-
-
-                string valeurs = "('" + couleur.NomCouleur.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "UPDATE Couleurs SET nomCouleur = '" + newCouleur.Replace("'", "''") + "' WHERE nomCouleur = '" + couleur.NomCouleur.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }
@@ -97,11 +93,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Couleurs (nomCouleur) VALUES ";
-
-
-                string valeurs = "('" + couleur.NomCouleur.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "DELETE FROM Couleurs WHERE nomCouleur = '" + couleur.NomCouleur.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }

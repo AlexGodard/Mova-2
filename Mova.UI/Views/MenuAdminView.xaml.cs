@@ -93,49 +93,64 @@ namespace Mova.UI.Views
 
         private void btnAjouterStyle_Click(object sender, RoutedEventArgs e)
         {
-
+            // Si le champ est déjà visible, on vérifie s'il a entré quelque chose
+            // On débloque le champ
+            if (txtAjouterStyle.Visibility == Visibility.Visible)
+            {
+                if (txtAjouterStyle.Text != "")
+                {
+                    ViewModel.ajouterStyle(txtAjouterStyle.Text);
+                    lstStyles.Items.Clear();
+                    construireListe("Style");
+                    txtAjouterStyle.Text = "";
+                    txtAjouterStyle.Visibility = Visibility.Hidden;
+                    btnAjouterStyle.Content = "Ajouter";
+                }
+            }
+            else
+            {
+                // On débloque le champ
+                txtAjouterStyle.Visibility = Visibility.Visible;
+                btnAjouterStyle.Content = "Ajouter le nouveau style";
+            }
         }
 
         private void btnModifierStyle_Click(object sender, RoutedEventArgs e)
         {
+            if (txtModifierStyle.Visibility == Visibility.Visible)
+            {
 
+                ViewModel.modifierStyle(lstStyles.SelectedItem.ToString(), txtModifierStyle.Text);
+                lstStyles.Items.Clear();
+                construireListe("Style");
+                txtModifierStyle.Text = "";
+                txtModifierStyle.Visibility = Visibility.Hidden;
+                btnModifierStyle.Content = "Modifier";
+            }
+            else
+            {
+                // On débloque le champ
+                if (lstStyles.SelectedIndex != -1)
+                {
+                    txtModifierStyle.Visibility = Visibility.Visible;
+                    btnModifierStyle.Content = "Enregistrer la modification";
+                    txtModifierStyle.Text = lstStyles.SelectedItem.ToString();
+                }
+                //TODO: Message d'erreur
+            }
         }
 
         private void btnSupprimerStyle_Click(object sender, RoutedEventArgs e)
         {
-
+            if (lstStyles.SelectedIndex != -1)
+            {
+                ViewModel.supprimerStyle(lstStyles.SelectedItem.ToString());
+                lstStyles.Items.Clear();
+                construireListe("Style");
+            }
+            //TODO: Message d'erreur
         }
 
-        private void btnAjouterCouleur_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnModifierCouleur_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSupprimerCouleur_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-    
-        private void btnAjouterTemperature_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-    
-        private void btnModifierTemperature_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnSupprimerTemperature_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-    
         private void btnAjouterActivite_Click(object sender, RoutedEventArgs e)
         {
             // Si le champ est déjà visible, on vérifie s'il a entré quelque chose
@@ -154,20 +169,166 @@ namespace Mova.UI.Views
             }
             else
             {
+                // On débloque le champ
+                txtAjouterActivite.Visibility = Visibility.Visible;
+                btnAjouterActivite.Content = "Ajouter la nouvelle activité";
+            }
+        }
+
+        private void btnModifierCouleur_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtModifierCouleur.Visibility == Visibility.Visible)
+            {
+
+                ViewModel.modifierCouleur(lstCouleurs.SelectedItem.ToString(), txtModifierCouleur.Text);
+                lstCouleurs.Items.Clear();
+                construireListe("Couleur");
+                txtModifierCouleur.Text = "";
+                txtModifierCouleur.Visibility = Visibility.Hidden;
+                btnModifierCouleur.Content = "Modifier";
+            }
+            else
+            {
+                // On débloque le champ
+                if (lstCouleurs.SelectedIndex != -1)
+                {
+                    txtModifierCouleur.Visibility = Visibility.Visible;
+                    btnModifierCouleur.Content = "Enregistrer la modification";
+                    txtModifierCouleur.Text = lstCouleurs.SelectedItem.ToString();
+                }
+                //TODO: Message d'erreur
+            }
+        }
+
+        private void btnSupprimerCouleur_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstCouleurs.SelectedIndex != -1)
+            {
+                ViewModel.supprimerCouleur(lstCouleurs.SelectedItem.ToString());
+                lstCouleurs.Items.Clear();
+                construireListe("Couleur");
+            }
+            //TODO: Message d'erreur
+        }
+    
+        private void btnAjouterTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            // Si le champ est déjà visible, on vérifie s'il a entré quelque chose
+            // On débloque le champ
+            if (txtAjouterTemperature.Visibility == Visibility.Visible)
+            {
+                if (txtAjouterTemperature.Text != "")
+                {
+                    ViewModel.ajouterTemperature(txtAjouterTemperature.Text);
+                    lstTemperatures.Items.Clear();
+                    construireListe("Temperature");
+                    txtAjouterTemperature.Text = "";
+                    txtAjouterTemperature.Visibility = Visibility.Hidden;
+                    btnAjouterTemperature.Content = "Ajouter";
+                }
+            }
+            else
+            {
+                // On débloque le champ
+                txtAjouterTemperature.Visibility = Visibility.Visible;
+                btnAjouterTemperature.Content = "Ajouter la nouvelle température";
+            }
+        }
+    
+        private void btnModifierTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtModifierTemperature.Visibility == Visibility.Visible)
+            {
+
+                ViewModel.modifierTemperature(lstTemperatures.SelectedItem.ToString(), txtModifierTemperature.Text);
+                lstTemperatures.Items.Clear();
+                construireListe("Temperature");
+                txtModifierTemperature.Text = "";
+                txtModifierTemperature.Visibility = Visibility.Hidden;
+                btnModifierTemperature.Content = "Modifier";
+            }
+            else
+            {
+                // On débloque le champ
+                if (lstTemperatures.SelectedIndex != -1)
+                {
+                    txtModifierTemperature.Visibility = Visibility.Visible;
+                    btnModifierTemperature.Content = "Enregistrer la modification";
+                    txtModifierTemperature.Text = lstTemperatures.SelectedItem.ToString();
+                }
+                //TODO: Message d'erreur
+            }
+        }
+
+        private void btnSupprimerTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstTemperatures.SelectedIndex != -1)
+            {
+                ViewModel.supprimerTemperature(lstTemperatures.SelectedItem.ToString());
+                lstTemperatures.Items.Clear();
+                construireListe("Temperature");
+            }
+            //TODO: Message d'erreur
+        }
+    
+        private void btnAjouterCouleur_Click(object sender, RoutedEventArgs e)
+        {
+            // Si le champ est déjà visible, on vérifie s'il a entré quelque chose
+            // On débloque le champ
+            if (txtAjouterCouleur.Visibility == Visibility.Visible)
+            {
+                if (txtAjouterCouleur.Text != "")
+                {
+                    ViewModel.ajouterCouleur(txtAjouterCouleur.Text);
+                    lstCouleurs.Items.Clear();
+                    construireListe("Couleur");
+                    txtAjouterCouleur.Text = "";
+                    txtAjouterCouleur.Visibility = Visibility.Hidden;
+                    btnAjouterCouleur.Content = "Ajouter";
+                }
+            }
+            else
+            {
                  // On débloque le champ
-                 txtAjouterActivite.Visibility = Visibility.Visible;
-                 btnAjouterActivite.Content = "Ajouter la nouvelle activité";
+                 txtAjouterCouleur.Visibility = Visibility.Visible;
+                 btnAjouterCouleur.Content = "Ajouter la nouvelle couleur";
             }
         }
 
         private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
         {
+            if (txtModifierActivite.Visibility == Visibility.Visible)
+            {
 
+                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtModifierActivite.Text);
+                lstActivites.Items.Clear();
+                construireListe("Activite");
+                txtModifierActivite.Text = "";
+                txtModifierActivite.Visibility = Visibility.Hidden;
+                btnModifierActivite.Content = "Modifier";
+            }
+            else
+            {
+                // On débloque le champ
+                if (lstActivites.SelectedIndex != -1)
+                {
+                    txtModifierActivite.Visibility = Visibility.Visible;
+                    btnModifierActivite.Content = "Enregistrer la modification";
+                    txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
+                }
+                //TODO: Message d'erreur
+            }
         }
 
         private void btnSupprimerActivite_Click(object sender, RoutedEventArgs e)
         {
-
+            if (lstActivites.SelectedIndex != -1)
+            {
+                ViewModel.supprimerActivite(lstActivites.SelectedItem.ToString());
+                lstActivites.Items.Clear();
+                construireListe("Activites");
+            }
+            //TODO: Message d'erreur
         }
     }
 }

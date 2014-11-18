@@ -76,10 +76,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Temperatures (nomClimat) VALUES ";
-
-                string valeurs = "('" + temperature.NomClimat.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "UPDATE Temperatures SET nomClimat = '" + newTemperature.Replace("'", "''") + "' WHERE nomClimat = '" + temperature.NomClimat.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }
@@ -95,10 +92,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Temperatures (nomClimat) VALUES ";
-
-                string valeurs = "('" + temperature.NomClimat.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "DELETE FROM Temperatures WHERE nomClimat = '" + temperature.NomClimat.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }

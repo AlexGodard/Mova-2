@@ -97,11 +97,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Styles (nomStyle) VALUES ";
-
-
-                string valeurs = "('" + styleVetement.NomStyle.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "UPDATE Styles SET nomStyle = '" + newStyleVetement.Replace("'", "''") + "' WHERE nomStyle = '" + styleVetement.NomStyle.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }
@@ -117,11 +113,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Styles (nomStyle) VALUES ";
-
-
-                string valeurs = "('" + styleVetement.NomStyle.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "DELETE FROM Styles WHERE nomStyle = '" + styleVetement.NomStyle.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }

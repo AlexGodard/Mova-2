@@ -115,11 +115,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Activites (nomActivite) VALUES ";
-
-
-                string valeurs = "('" + activite.NomActivite.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "UPDATE Activites SET nomActivite = '" + newActivite.Replace("'", "''") + "' WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }
@@ -135,11 +131,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string debutRequete = "INSERT IGNORE INTO Activites (nomActivite) VALUES ";
-
-
-                string valeurs = "('" + activite.NomActivite.Replace("'", "''") + "')";
-                string requete = debutRequete + valeurs;
+                string requete = "DELETE FROM Activites WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
             }

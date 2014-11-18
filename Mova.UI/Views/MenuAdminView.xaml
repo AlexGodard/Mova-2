@@ -17,23 +17,23 @@
         <Label x:Name="lblStyles" Content="Styles" Margin="49,212,0,342" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label x:Name="lblTemperature" Content="Température" Margin="49,333,0,221" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label x:Name="lblCouleur" Content="Couleur" Margin="51,455,0,90" HorizontalAlignment="Left" RenderTransformOrigin="0.451,-0.484"/>
-        <ListBox x:Name="lstActivites" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="154" Margin="51,63,0,0" SelectionMode="Multiple"/>
-        <ListBox x:Name="lstStyles" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="154" Margin="51,238,0,0" SelectionMode="Multiple"/>
-        <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,364,0,0" SelectionMode="Multiple"/>
+        <ListBox x:Name="lstActivites" HorizontalAlignment="Left" Height="144" VerticalAlignment="Top" Width="154" Margin="51,63,0,0"/>
+        <ListBox x:Name="lstStyles" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="154" Margin="51,238,0,0"/>
+        <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,364,0,0"/>
         <TextBlock x:Name="txbErreurType" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="430,370,212,198" TextWrapping="Wrap"><Run Text="Vous devez choisir le type de vêtement"/></TextBlock>
         <TextBlock x:Name="txbErreurSexe" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="49,391,593,166" TextWrapping="Wrap"><Run Text="Vous devez choisir au moins un sexe qui peut porter le vêtement"/></TextBlock>
         <Button x:Name="btnAjouterStyle" Margin="223,227,449,327" FontSize="10"  Content="Ajouter" Click="btnAjouterStyle_Click"/>
-        <TextBox x:Name="txtAjouterTemperature" FontSize="9" Margin="336,348,0,213" Width="125" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtAjouterTemperature" FontSize="9" Margin="336,348,0,213" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <Button x:Name="btnAjouterTemperature" Margin="223,341,449,207" FontSize="10" Content="Ajouter" Click="btnAjouterTemperature_Click"/>
         <Button x:Name="btnModifierStyle" Margin="223,258,449,296" FontSize="10"  Content="Modifier" Click="btnModifierStyle_Click"/>
         <Button x:Name="btnSupprimerStyle" Margin="223,289,449,265" FontSize="10"  Content="Supprimer" Click="btnSupprimerStyle_Click"/>
         <Button x:Name="btnModifierTemperature" Margin="223,378,449,170" FontSize="10" Content="Modifier" Click="btnModifierTemperature_Click"/>
         <Button x:Name="btnSupprimerTemperature" Margin="223,415,449,133" FontSize="10" Content="Supprimer" Click="btnSupprimerTemperature_Click"/>
-        <TextBox x:Name="txtModifierTemperature" FontSize="9" Margin="336,382,0,179" Width="125" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtAjouterStyle" FontSize="9" Margin="336,238,0,323" Width="125" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtModifierStyle" FontSize="9" Margin="336,272,0,289" Width="125" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtModifierTemperature" FontSize="9" Margin="336,382,0,179" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBox x:Name="txtAjouterStyle" FontSize="9" Margin="336,238,0,323" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBox x:Name="txtModifierStyle" FontSize="9" Margin="336,272,0,289" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <ListBox x:Name="lstCouleurs" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,484,0,0"/>
-        <TextBox x:Name="txtAjouterCouleur" FontSize="9" Margin="336,470,0,91" Width="125" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtAjouterCouleur" FontSize="9" Margin="336,470,0,91" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <Button x:Name="btnAjouterCouleur" Margin="223,463,449,85" FontSize="10" Content="Ajouter" Click="btnAjouterCouleur_Click"/>
         <Button x:Name="btnModifierCouleur" Margin="223,500,449,48" FontSize="10" Content="Modifier" Click="btnModifierCouleur_Click"/>
         <Button x:Name="btnSupprimerCouleur" Margin="223,537,449,11" FontSize="10" Content="Supprimer" Click="btnSupprimerCouleur_Click"/>
