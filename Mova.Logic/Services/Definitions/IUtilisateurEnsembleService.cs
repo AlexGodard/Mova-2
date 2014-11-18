@@ -14,6 +14,7 @@ namespace Mova.Logic.Services.Definitions
         IList<UtilisateurEnsemble> RetrieveEnsembleUtilisateurPrecis();
 
         IList<EnsembleVetement> RetrieveRecents();
+        IList<EnsembleVetement> RetrieveFavoris();
 
         int Create(UtilisateurEnsemble utilisateurEnsemble);
         bool Insert(EnsembleVetement ev);
