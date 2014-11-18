@@ -19,6 +19,7 @@ using Mova.Logic.Models;
 using Mova.Logic.Services.Definitions;
 using Mova.Logic.Models.Entities;
 using Mova.Logic;
+using System.Timers;
 
 namespace Mova.UI.Views
 {
@@ -28,12 +29,24 @@ namespace Mova.UI.Views
     public partial class ConnexionView : UserControl
     {
         private ConnexionViewModel ViewModel {get{return (ConnexionViewModel)DataContext;}}
-
+        
         public ConnexionView()
         {
             InitializeComponent();
 
             DataContext = new ConnexionViewModel();
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.Focusable = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.IsEnabled = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.Foreground = Brushes.White;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.Focusable = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.IsEnabled = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.Foreground = Brushes.White;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.Focusable = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.IsEnabled = true;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.Foreground = Brushes.White;
         }
 
 		private void btnConnexion_Click(object sender, RoutedEventArgs e)
@@ -103,11 +116,22 @@ namespace Mova.UI.Views
 
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.Focusable = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.IsEnabled = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnRecent.Foreground = Brushes.Gray;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.Focusable = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.IsEnabled = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnFavoris.Foreground = Brushes.Gray;
+
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.Focusable = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.IsEnabled = false;
+            ((MainWindow)System.Windows.Application.Current.MainWindow).btnGardeRobe.Foreground = Brushes.Gray;
+
 			//Gabriel Piché Cloutier - 2014/10/25
 			//Avant de passer à l'écran Styliste, on vérifie si la BD est disponiblie
 			try
 			{
-
                 mainVM.ChangeView<StylisteActiviteView>(new StylisteActiviteView());
 			}
 			catch(Exception)

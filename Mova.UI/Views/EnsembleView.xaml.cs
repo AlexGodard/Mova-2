@@ -60,6 +60,18 @@ namespace Mova.UI.Views
         }
 
         /// <summary>
+        /// Gabriel Piché Cloutier - 2014-11-18
+        /// Essaie de progress bar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EnsembleView_Load(object sender, System.EventArgs e)
+        {
+            MessageBox.Show("en chargement","",MessageBoxButton.OK);
+            
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         private void AfficherBoutonsAppropries()
