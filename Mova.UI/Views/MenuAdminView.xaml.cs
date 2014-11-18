@@ -326,7 +326,7 @@ namespace Mova.UI.Views
             {
                 ViewModel.supprimerActivite(lstActivites.SelectedItem.ToString());
                 lstActivites.Items.Clear();
-                construireListe("Activites");
+                construireListe("Activite");
             }
             //TODO: Message d'erreur
         }
