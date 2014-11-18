@@ -1,4 +1,4 @@
-﻿using System;
+﻿                                          using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +33,8 @@ namespace Mova.Logic
         public static List<Vetement> ListeBasComplet;
         public static List<Vetement> ListeSouliersComplet;
 
+        public static List<string> ListeEnsembleAjouter = new List<string>();
+
 
         //Concernant les choix faits dans l'écran styliste
         public static List<int> ChoixStyliste;
@@ -50,6 +52,8 @@ namespace Mova.Logic
         public static int NbHauts;
         public static int NbBas;
         public static int NbSouliers;
+
+        public static bool AjouterEnsemble = false;
 
         public static List<T> RetourneAleatoire<T>(int nombreMaxRandom, List<T> listeSource)
         {

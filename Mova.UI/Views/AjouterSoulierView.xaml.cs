@@ -260,6 +260,31 @@ namespace Mova.UI.Views
 
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
         {
+          if(Listes.AjouterEnsemble == true)
+          {
+              Button b = (Button)sender;
+              int Column = Grid.GetColumn(b);
+              int Row = Grid.GetRow(b);
+              Row = Row - 1;
+
+              var element = GridSoulierVetement.Children.Cast<UIElement>().
+                            First(z => Grid.GetColumn(z) == Column && Grid.GetRow(z) == Row);
+
+              Image i = (Image)element;
+
+              string http = i.Source.ToString();
+
+              string href = http.Substring(7, http.Length - 7);
+
+              Listes.ListeEnsembleAjouter.Add(http);
+              Listes.ListeEnsembleAjouter.Add(href);
+
+              IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+              mainVM.ChangeView<AjouterEnsembleView>(new AjouterEnsembleView());
+
+          }
+          else
+          { 
             Button b = (Button)sender;
             int Column = Grid.GetColumn(b);
             int Row = Grid.GetRow(b);
@@ -270,14 +295,15 @@ namespace Mova.UI.Views
 
             Image i = (Image)element;
 
-            string str = i.Source.ToString();
+            string http = i.Source.ToString();
 
-            string href = str.Substring(7, str.Length - 7);
+            string href = http.Substring(7, http.Length - 7);
 
-            ViewModel.ajouteVetement(href);
-
+            ViewModel.ajouteVetement(href);          
+            
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
+          }
         }
     }
 }

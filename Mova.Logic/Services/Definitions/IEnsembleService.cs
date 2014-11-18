@@ -11,7 +11,6 @@ namespace Mova.Logic.Services.Definitions
 {
     public interface IEnsembleService
     {
-
         int Create(Ensemble ensemble);
         IList<Ensemble> RetrieveAll();
     }

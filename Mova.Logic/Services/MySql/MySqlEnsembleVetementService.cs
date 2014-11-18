@@ -209,9 +209,7 @@ namespace Mova.Logic.Services.MySql
                 EstFemme = (bool)vetement["estFemme"],
                 TypeVetement = new TypeVetement(){
                     IdType = (int)vetement["idTypeVetement"]
-                }
-
-            
+                }   
             };
 
 

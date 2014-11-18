@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModel\ActiviteViewModel.cs" />
     <Compile Include="ViewModel\FavorisViewModel.cs" />
+    <Compile Include="ViewModel\AjouterEnsembleViewModel.cs" />
     <Compile Include="ViewModel\MenuAdminViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\AjouterBasViewModel.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="ViewModel\SouliersViewModel.cs" />
     <Compile Include="Views\AjouterBasView.xaml.cs">
       <DependentUpon>AjouterBasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AjouterEnsembleView.xaml.cs">
+      <DependentUpon>AjouterEnsembleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AjouterHautView.xaml.cs">
       <DependentUpon>AjouterHautView.xaml</DependentUpon>
@@ -157,6 +161,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AjouterBasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AjouterEnsembleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -28,7 +28,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="ajouterEnsemble" Content="ajouter" HorizontalAlignment="Left"  Height="62" Margin="27,130,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button Name="ajouterEnsemble" Content="ajouter" HorizontalAlignment="Left"  Height="62" Margin="27,130,0,0" VerticalAlignment="Top" Width="64" Click="ajouterEnsemble_Click"/>
         <Button Name="ajouterHaut" Content="ajouter" HorizontalAlignment="Left"  Height="50" Margin="301,43,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.564,0.988" Click="ajouterHaut_Click" />
         <Button Name="ajouterBas" Content="ajouter" HorizontalAlignment="Left"  Height="52" Margin="301,140,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.419,-1.03" Click="ajouterBas_Click"/>
         <Button Name="ajouterSouliers" Content="ajouter" HorizontalAlignment="Left"  Height="47" Margin="301,237,0,0" VerticalAlignment="Top" Width="51" Click="ajouterSouliers_Click"/>

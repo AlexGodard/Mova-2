@@ -44,6 +44,29 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public int Create()
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Ensembles (nomEnsemble) VALUES ";
+
+
+                /*string valeurs = "('" + ensemble.NomEnsemble.Replace("'", "''") + "');";*/
+                string requete = debutRequete; /*+ valeurs;*/
+
+                connexion.Query(requete);
+                DataSet dataset = connexion.Query("SELECT MAX(idEnsemble) FROM Ensembles");
+
+                return (int)dataset.Tables[0].Rows[0].ItemArray[0];
+            }
+            catch (MySqlException e)
+            {
+                throw e;
+            }
+        }
+
         public IList<Ensemble> RetrieveAll()
         {
             IList<Ensemble> result = new List<Ensemble>();

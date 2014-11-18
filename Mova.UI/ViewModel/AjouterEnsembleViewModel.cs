@@ -13,32 +13,29 @@ using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {
-    class AjouterSoulierViewModel : BaseViewModel
+    class AjouterEnsembleViewModel : BaseViewModel
     {
-        private IVetementService _vetementService;
-        private IUtilisateurVetementService _utilisateurVetementService;
+        private IUtilisateurEnsembleService _utilisateurService;
         private IEnsembleService _ensembleService;
-        private ObservableCollection<Vetement> _vetements = new ObservableCollection<Vetement>();
+
+        private IUtilisateurVetementService _utilisateurVetementService;
+
+        private ObservableCollection<UtilisateurEnsemble> _vetements = new ObservableCollection<UtilisateurEnsemble>();
         private ObservableCollection<UtilisateurVetements> _utilisateurVetement = new ObservableCollection<UtilisateurVetements>();
         private ObservableCollection<Ensemble> _ensemble = new ObservableCollection<Ensemble>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public AjouterSoulierViewModel()
+        public AjouterEnsembleViewModel()
         {
-            _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
+            _utilisateurService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
             _utilisateurVetementService = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
-            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
-            Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(3));
+            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();  
             // On place dans la liste globale, la liste d'ensembles reçue
-            Listes.ListeSouliersComplet = Vetements.ToList<Vetement>();
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public ObservableCollection<Vetement> Vetements
+        public ObservableCollection<UtilisateurEnsemble> UtilisateursEnsembles
         {
             get
             {
@@ -92,10 +89,10 @@ namespace Mova.UI.ViewModel
             }
         }
 
-
-        public void ajouteVetement(string href)
+        public void ajouterEnsemble(string nomEnsemble)
         {
-           _utilisateurVetementService.InsertVetementUtilisateur(href);
+           Ensemble NouvelleEnsemble = new Ensemble(nomEnsemble);
+           int idNouvelEnsemble = _ensembleService.Create(NouvelleEnsemble); 
         }
     }
 }

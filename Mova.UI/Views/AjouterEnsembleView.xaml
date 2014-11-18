@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Mova.UI.Views.AjouterEnsembleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Width="541.224" Height="322.041">
+    <Grid>
+        <Image Name="imgHautsEnseble" HorizontalAlignment="Left" Height="100" Margin="223,0,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.47,0.464"/>
+        <Image Name="imgBasEnsebles" HorizontalAlignment="Left" Height="100" Margin="223,105,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.47,0.464"/>
+        <Image Name="imgSouliersEnsemble" HorizontalAlignment="Left" Height="100" Margin="223,210,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.47,0.464"/>
+        <Label Content="Donner un nom a votre ensemble" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="191"/>
+        <TextBox Name="txtNomEsemble" HorizontalAlignment="Left" Margin="10,153,0,0" VerticalAlignment="Top" Height="28" Width="162" TextChanged="txtNomEnsemble_Change"/>
+        <Button Name="btnAjouterEnsemble" IsEnabled="False" Content="Ajouter" HorizontalAlignment="Left" Margin="456,244,0,0" VerticalAlignment="Top" Width="75" Height="66" Click="btnAjouterEnsemble_Click"/>
+    </Grid>
+</UserControl>
