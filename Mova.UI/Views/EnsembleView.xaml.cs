@@ -225,7 +225,7 @@ namespace Mova.UI.Views
             button.Content = "Choisir #" + noEnsemble.ToString();
             button.Margin = new Thickness(20);
             Grid.SetColumn(button,colonne);
-            Grid.SetRow(button,1);
+            Grid.SetRow(button,5);
             // On ajoute un nom au bouton
             button.Name = "btnChoisir" + noEnsemble.ToString();
             // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)

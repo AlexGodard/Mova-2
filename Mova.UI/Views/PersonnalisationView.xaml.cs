@@ -36,6 +36,16 @@ namespace Mova.UI.Views
             InitializeComponent();
             DataContext = new PersonnalisationViewModel();
 
+            if (Listes.UtilisateurConnecte.IdUtilisateur == null) {
+                txtNomEnsemble.IsEnabled = false;
+                btnFavori.IsEnabled = false;
+                btnChoisir.IsEnabled = false;
+            } else {
+                txtNomEnsemble.IsEnabled = true;
+                btnFavori.IsEnabled = true;
+                btnFavori.IsEnabled = true;
+            }
+
             // On retourne la liste d'images à afficher
             listeImages = ViewModel.afficherEnsemble();
 
@@ -44,16 +54,6 @@ namespace Mova.UI.Views
             Torse.Source = listeImages[0].Source;
             Bas.Source = listeImages[1].Source;
             Chaussures.Source = listeImages[2].Source;
-
-            //Grid.SetRow(listeImages[0], 2);
-            //Grid.SetColumn(listeImages[0], 2);
-            //Grid.SetRow(listeImages[1], 3);
-            //Grid.SetColumn(listeImages[1], 2);
-            //Grid.SetRow(listeImages[2], 4);
-            //Grid.SetColumn(listeImages[2], 2);
-            //DynamicGrid.Children.Add(listeImages[0]);
-            //DynamicGrid.Children.Add(listeImages[1]);
-            //DynamicGrid.Children.Add(listeImages[2]);
 
         }
 

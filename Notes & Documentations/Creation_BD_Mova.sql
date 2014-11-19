@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS Utilisateurs
 /* Table Ensembles */
 CREATE TABLE IF NOT EXISTS Ensembles
 ( idEnsemble INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+, nomEnsemble VARCHAR(50) NOT NULL
 );
 
 /* Table Couleurs */
@@ -96,6 +97,7 @@ CREATE TABLE IF NOT EXISTS UtilisateursEnsembles
 , idEnsemble INT NOT NULL
 , dateCreation DATETIME NOT NULL
 , estFavori BOOL NOT NULL
+, estDansGardeRobe BOOL NOT NULL
 );
 
 /* Table UtilisateursVetements */
