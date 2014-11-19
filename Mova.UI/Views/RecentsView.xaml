@@ -25,5 +25,8 @@
         <Label x:Name="lblNomEnsemble1" Height="30" Grid.Column="1" Margin="31,23"/>
         <Label x:Name="lblNomEnsemble2" Height="30" Grid.Column="2" Margin="31,23"/>
         <Label x:Name="lblNomEnsemble3" Height="30" Grid.Column="3" Margin="31,23,32,23"/>
+        <Button x:Name="btnSuivant" Content="Suivant" Grid.Column="4" HorizontalAlignment="Left" Margin="40,50,0,0" Grid.Row="2" VerticalAlignment="Top" Width="115" RenderTransformOrigin="-0.774,-0.931" Height="44" Click="btnSuivant_Click"/>
+        <Button x:Name="btnPrecedent" Content="Précédent" HorizontalAlignment="Left" Margin="29,50,0,0" Grid.Row="2" VerticalAlignment="Top" Width="117" Height="44" Click="btnPrecedent_Click"/>
+
     </Grid>
 </UserControl>

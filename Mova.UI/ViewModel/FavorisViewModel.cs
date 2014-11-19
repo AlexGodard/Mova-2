@@ -20,7 +20,7 @@ namespace Mova.UI.ViewModel
         private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private ObservableCollection<UtilisateurEnsemble> _utilisateursEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
-        public int i = 0, j = 0, k = 0;
+        public int i = 0, j = 0, k = 0, nbMaxFavorisAAfficher = 100;
 
         // On ajoute tout les vêtements dans des listes de vêtements temporaires
         List<Vetement> listeHauts = new List<Vetement>();
@@ -40,13 +40,13 @@ namespace Mova.UI.ViewModel
             Listes.ListeEnsemblesUtilisateur = UtilisateursEnsembles.ToList<UtilisateurEnsemble>();
         }
 
-        public List<EnsembleVetement> ObtenirFavoris(int nbMax)
+        public List<EnsembleVetement> ObtenirFavoris()
         {
 
             List<EnsembleVetement> listeTemp = _utilisateurEnsembleService.RetrieveFavoris().ToList<EnsembleVetement>();
             List<EnsembleVetement> listeRetour = new List<EnsembleVetement>();
 
-            for (int i = 0; i < listeTemp.Count && i < nbMax; i++)
+            for (int i = 0; i < listeTemp.Count && i < nbMaxFavorisAAfficher; i++)
 			{
 			    listeRetour.Add(listeTemp[i]);
 			}

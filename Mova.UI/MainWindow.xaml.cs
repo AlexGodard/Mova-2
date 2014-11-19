@@ -78,12 +78,18 @@ namespace Mova.UI
 
         private void MenuRecents_Click(object sender, RoutedEventArgs e)
         {
+            //On clear l'historique
+            RecentsView._historique.Reset();
+
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<RecentsView>(new RecentsView());
         }
 
         private void MenuFavoris_Click(object sender, RoutedEventArgs e)
         {
+            //On clear l'historique
+            FavorisView._historique.Reset();
+
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<UserControl>(new FavorisView());
         }
