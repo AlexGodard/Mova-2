@@ -105,6 +105,8 @@ namespace Mova.UI.Views
                     txtAjouterStyle.Text = "";
                     txtAjouterStyle.Visibility = Visibility.Hidden;
                     btnAjouterStyle.Content = "Ajouter";
+                    btnModifierStyle.IsEnabled = true;
+                    btnSupprimerStyle.IsEnabled = true;
                 }
             }
             else
@@ -112,6 +114,9 @@ namespace Mova.UI.Views
                 // On débloque le champ
                 txtAjouterStyle.Visibility = Visibility.Visible;
                 btnAjouterStyle.Content = "Ajouter le nouveau style";
+                // On bloque les autres boutons
+                btnModifierStyle.IsEnabled = false;
+                btnSupprimerStyle.IsEnabled = false;
             }
         }
 
@@ -126,6 +131,8 @@ namespace Mova.UI.Views
                 txtModifierStyle.Text = "";
                 txtModifierStyle.Visibility = Visibility.Hidden;
                 btnModifierStyle.Content = "Modifier";
+                btnModifierStyle.IsEnabled = true;
+                btnSupprimerStyle.IsEnabled = true;
             }
             else
             {
@@ -135,6 +142,8 @@ namespace Mova.UI.Views
                     txtModifierStyle.Visibility = Visibility.Visible;
                     btnModifierStyle.Content = "Enregistrer la modification";
                     txtModifierStyle.Text = lstStyles.SelectedItem.ToString();
+                    btnAjouterStyle.IsEnabled = false;
+                    btnSupprimerStyle.IsEnabled = false;
                 }
                 //TODO: Message d'erreur
             }
@@ -165,6 +174,8 @@ namespace Mova.UI.Views
                     txtAjouterActivite.Text = "";
                     txtAjouterActivite.Visibility = Visibility.Hidden;
                     btnAjouterActivite.Content = "Ajouter";
+                    btnModifierActivite.IsEnabled = true;
+                    btnSupprimerActivite.IsEnabled = true;
                 }
             }
             else
@@ -172,6 +183,8 @@ namespace Mova.UI.Views
                 // On débloque le champ
                 txtAjouterActivite.Visibility = Visibility.Visible;
                 btnAjouterActivite.Content = "Ajouter la nouvelle activité";
+                btnModifierActivite.IsEnabled = false;
+                btnSupprimerActivite.IsEnabled = false;
             }
         }
 
@@ -186,6 +199,8 @@ namespace Mova.UI.Views
                 txtModifierCouleur.Text = "";
                 txtModifierCouleur.Visibility = Visibility.Hidden;
                 btnModifierCouleur.Content = "Modifier";
+                btnAjouterCouleur.IsEnabled = true;
+                btnSupprimerCouleur.IsEnabled = true;
             }
             else
             {
@@ -195,6 +210,8 @@ namespace Mova.UI.Views
                     txtModifierCouleur.Visibility = Visibility.Visible;
                     btnModifierCouleur.Content = "Enregistrer la modification";
                     txtModifierCouleur.Text = lstCouleurs.SelectedItem.ToString();
+                    btnAjouterCouleur.IsEnabled = false;
+                    btnSupprimerCouleur.IsEnabled = false;
                 }
                 //TODO: Message d'erreur
             }
@@ -225,6 +242,8 @@ namespace Mova.UI.Views
                     txtAjouterTemperature.Text = "";
                     txtAjouterTemperature.Visibility = Visibility.Hidden;
                     btnAjouterTemperature.Content = "Ajouter";
+                    btnModifierTemperature.IsEnabled = true;
+                    btnSupprimerTemperature.IsEnabled = true;
                 }
             }
             else
@@ -232,6 +251,8 @@ namespace Mova.UI.Views
                 // On débloque le champ
                 txtAjouterTemperature.Visibility = Visibility.Visible;
                 btnAjouterTemperature.Content = "Ajouter la nouvelle température";
+                btnModifierTemperature.IsEnabled = false;
+                btnSupprimerTemperature.IsEnabled = false;
             }
         }
     
@@ -246,6 +267,8 @@ namespace Mova.UI.Views
                 txtModifierTemperature.Text = "";
                 txtModifierTemperature.Visibility = Visibility.Hidden;
                 btnModifierTemperature.Content = "Modifier";
+                btnAjouterTemperature.IsEnabled = true;
+                btnSupprimerTemperature.IsEnabled = true;
             }
             else
             {
@@ -255,6 +278,8 @@ namespace Mova.UI.Views
                     txtModifierTemperature.Visibility = Visibility.Visible;
                     btnModifierTemperature.Content = "Enregistrer la modification";
                     txtModifierTemperature.Text = lstTemperatures.SelectedItem.ToString();
+                    btnAjouterTemperature.IsEnabled = false;
+                    btnSupprimerTemperature.IsEnabled = false;
                 }
                 //TODO: Message d'erreur
             }
@@ -285,6 +310,8 @@ namespace Mova.UI.Views
                     txtAjouterCouleur.Text = "";
                     txtAjouterCouleur.Visibility = Visibility.Hidden;
                     btnAjouterCouleur.Content = "Ajouter";
+                    btnModifierCouleur.IsEnabled = true;
+                    btnSupprimerCouleur.IsEnabled = true;
                 }
             }
             else
@@ -292,6 +319,8 @@ namespace Mova.UI.Views
                  // On débloque le champ
                  txtAjouterCouleur.Visibility = Visibility.Visible;
                  btnAjouterCouleur.Content = "Ajouter la nouvelle couleur";
+                 btnModifierCouleur.IsEnabled = false;
+                 btnSupprimerCouleur.IsEnabled = false;
             }
         }
 
@@ -306,6 +335,8 @@ namespace Mova.UI.Views
                 txtModifierActivite.Text = "";
                 txtModifierActivite.Visibility = Visibility.Hidden;
                 btnModifierActivite.Content = "Modifier";
+                btnAjouterActivite.IsEnabled = true;
+                btnSupprimerActivite.IsEnabled = true;
             }
             else
             {
@@ -315,6 +346,8 @@ namespace Mova.UI.Views
                     txtModifierActivite.Visibility = Visibility.Visible;
                     btnModifierActivite.Content = "Enregistrer la modification";
                     txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
+                    btnAjouterActivite.IsEnabled = false;
+                    btnSupprimerActivite.IsEnabled = false;
                 }
                 //TODO: Message d'erreur
             }
