@@ -214,6 +214,47 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
+        public IList<Vetement> RetrieveVetementAvecURl(List<string> URL)
+        {
+            IList<Vetement> result = new List<Vetement>();
+            string requete;
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                for (int i = 1; i <= 3; i++)
+                { 
+                  if(i == 2)
+                  { 
+                     requete = "SELECT * FROM Vetements WHERE imageURL = '" + URL[i + 1] + "'";
+                  }
+                  else if(i == 3)
+                  {
+                      requete = "SELECT * FROM Vetements WHERE imageURL = '" + URL[i + 2] + "'";
+                  }
+                  else 
+                  {
+                     requete = "SELECT * FROM Vetements WHERE imageURL = '" + URL[i] + "'";
+                  }
+                  
+                  DataSet dataset = connexion.Query(requete);
+                  DataTable table = dataset.Tables[0];
+                  foreach (DataRow vetement in table.Rows)
+                  {
+                    result.Add(ConstructVetement(vetement));
+                  }
+
+                }
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            //Si on se rend ici, on retourne un utilisateur vide
+            return result;
+        }
+
         private Vetement ConstructVetement(DataRow row)
         {
             return new Vetement()

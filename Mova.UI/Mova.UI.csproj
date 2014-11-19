@@ -65,8 +65,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\ActiviteViewModel.cs" />
-    <Compile Include="ViewModel\FavorisViewModel.cs" />
     <Compile Include="ViewModel\AjouterEnsembleViewModel.cs" />
+    <Compile Include="ViewModel\FavorisViewModel.cs" />
     <Compile Include="ViewModel\MenuAdminViewModel.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
     <Compile Include="ViewModel\AjouterBasViewModel.cs" />

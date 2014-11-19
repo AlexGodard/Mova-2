@@ -19,5 +19,6 @@ namespace Mova.Logic.Services.Definitions
         IList<int> RetrieveIdTypeAll();
         IList<Vetement> RetrieveVetementTypeSpecific(int type);
         IList<Vetement> RetrieveVetementTypeSpecificUtilisateur(int type);
+        IList<Vetement> RetrieveVetementAvecURl(List<string> URL);
     }
 }

@@ -95,5 +95,10 @@ namespace Mova.UI.ViewModel
 
         }
 
+        public void test()
+        { 
+           int i = 9;
+        }
+
     }
 }

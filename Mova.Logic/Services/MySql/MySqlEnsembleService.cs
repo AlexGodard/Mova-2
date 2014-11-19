@@ -52,7 +52,6 @@ namespace Mova.Logic.Services.MySql
 
                 string debutRequete = "INSERT IGNORE INTO Ensembles (nomEnsemble) VALUES ";
 
-
                 /*string valeurs = "('" + ensemble.NomEnsemble.Replace("'", "''") + "');";*/
                 string requete = debutRequete; /*+ valeurs;*/
 

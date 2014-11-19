@@ -18,5 +18,6 @@ namespace Mova.Logic.Services.Definitions
 
         int Create(UtilisateurEnsemble utilisateurEnsemble);
         bool Insert(EnsembleVetement ev);
+        bool InsertAvecId(int id);
     }
 }

@@ -285,7 +285,24 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public bool InsertAvecId(int id)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+                string query = "INSERT INTO UtilisateursEnsembles (idUtilisateur,idEnsemble,dateCreation,estFavori,estDansGardeRobe) VALUES(" + Listes.UtilisateurConnecte.IdUtilisateur + "," + id + ",NOW(),FALSE,TRUE)";
 
+                //On ajoute un Ensemble normal sans rien parce qu'on a pas le choix
+                DataSet dataset = connexion.Query(query);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+
+            return true;
+        }
 
     }
 }

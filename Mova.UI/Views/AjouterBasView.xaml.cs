@@ -25,7 +25,7 @@ namespace Mova.UI.Views
     /// </summary>
     public partial class AjouterBasView : UserControl
     {
-         private AjouterBasViewModel ViewModel { get { return (AjouterBasViewModel)DataContext; } }
+        private AjouterBasViewModel ViewModel { get { return (AjouterBasViewModel)DataContext; } }
         int iNbVetementCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iVetementDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iVetementTotal;       //Le nombre total d'activités

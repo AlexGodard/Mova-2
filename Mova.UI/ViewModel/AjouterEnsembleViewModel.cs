@@ -15,21 +15,22 @@ namespace Mova.UI.ViewModel
 {
     class AjouterEnsembleViewModel : BaseViewModel
     {
-        private IUtilisateurEnsembleService _utilisateurService;
+        private IUtilisateurEnsembleService _utilisateurEnsembleService;
         private IEnsembleService _ensembleService;
-
-        private IUtilisateurVetementService _utilisateurVetementService;
+        private IEnsembleVetementService _ensembleVetementService;
+        private IVetementService _vetementService;
 
         private ObservableCollection<UtilisateurEnsemble> _vetements = new ObservableCollection<UtilisateurEnsemble>();
-        private ObservableCollection<UtilisateurVetements> _utilisateurVetement = new ObservableCollection<UtilisateurVetements>();
         private ObservableCollection<Ensemble> _ensemble = new ObservableCollection<Ensemble>();
+        private ObservableCollection<EnsembleVetement> _ensembleVetement = new ObservableCollection<EnsembleVetement>();
+        private ObservableCollection<Vetement> _vetement = new ObservableCollection<Vetement>();
 
         public AjouterEnsembleViewModel()
         {
-            _utilisateurService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
-            _utilisateurVetementService = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
-            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();  
-            // On place dans la liste globale, la liste d'ensembles reçue
+            _utilisateurEnsembleService = ServiceFactory.Instance.GetService<IUtilisateurEnsembleService>();
+            _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
+            _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
+            _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
         }
 
         /// <summary>
@@ -53,24 +54,6 @@ namespace Mova.UI.ViewModel
             }
         }
 
-        public ObservableCollection<UtilisateurVetements> UtilisateursVetements
-        {
-            get
-            {
-                return _utilisateurVetement;
-            }
-
-            set
-            {
-                if (_utilisateurVetement == value)
-                {
-                    return;
-                }
-
-                _utilisateurVetement = value;
-            }
-        }
-
         public ObservableCollection<Ensemble> Ensembles
         {
             get
@@ -89,10 +72,53 @@ namespace Mova.UI.ViewModel
             }
         }
 
+        public ObservableCollection<EnsembleVetement> EnsemblesVetements
+        {
+            get
+            {
+                return _ensembleVetement;
+            }
+
+            set
+            {
+                if (_ensembleVetement == value)
+                {
+                    return;
+                }
+
+                _ensembleVetement = value;
+            }
+        }
+
+        public ObservableCollection<Vetement> Vetements
+        {
+            get
+            {
+                return _vetement;
+            }
+
+            set
+            {
+                if (_vetement == value)
+                {
+                    return;
+                }
+
+                _vetement = value;
+            }
+        }
         public void ajouterEnsemble(string nomEnsemble)
         {
-           Ensemble NouvelleEnsemble = new Ensemble(nomEnsemble);
-           int idNouvelEnsemble = _ensembleService.Create(NouvelleEnsemble); 
-        }
+            IList<Vetement> ListeVetementAjouter = new List<Vetement>();
+            Ensemble NouvelEnsemble = new Ensemble(nomEnsemble);
+            NouvelEnsemble.NomEnsemble = nomEnsemble;
+            int idNouvelEnsemble = _ensembleService.Create(NouvelEnsemble);
+            _utilisateurEnsembleService.InsertAvecId(idNouvelEnsemble);
+            ListeVetementAjouter = _vetementService.RetrieveVetementAvecURl(Listes.ListeEnsembleAjouter);  
+            _ensembleVetementService.CreateEnsemble(ListeVetementAjouter,idNouvelEnsemble);
+            Listes.ListeEnsembleAjouter.Clear();
+            Listes.AjouterEnsemble = false;
+        } 
+
     }
 }

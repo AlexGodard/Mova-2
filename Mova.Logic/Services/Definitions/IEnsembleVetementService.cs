@@ -17,5 +17,6 @@ namespace Mova.Logic.Services.Definitions
 
         void Create(EnsembleVetement ensembleVetement);
         int InsererEnsemble(EnsembleVetement ev);
+        void CreateEnsemble(IList<Vetement> v,int idEnsemble);
     }
 }

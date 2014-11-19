@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Cstj.MvvmToolkit;
 using Cstj.MvvmToolkit.Services;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Mova.Logic;
@@ -29,6 +30,15 @@ namespace Mova.UI.Views
         public AjouterEnsembleView()
         {
             InitializeComponent();
+
+            try
+            {
+                DataContext = new AjouterEnsembleViewModel();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
             BitmapImage img1 = new BitmapImage();
             img1.BeginInit();

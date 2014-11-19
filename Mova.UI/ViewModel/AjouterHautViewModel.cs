@@ -6,15 +6,9 @@ using Mova.Logic.Services.Definitions;
 using System.Collections.ObjectModel;
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Cstj.MvvmToolkit;
-using Cstj.MvvmToolkit.Services;
-using Mova.Logic;
-using Mova.Logic.Models.Entities;
-using Mova.Logic.Services.Definitions;
 
 namespace Mova.UI.ViewModel
 {

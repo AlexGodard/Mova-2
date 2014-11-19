@@ -22,31 +22,6 @@ namespace Mova.Logic.Services.MySql
 
         private MySqlConnexion connexion;
 
-        /*public IList<EnsembleVetement> RetrieveAll()
-        {
-            IList<EnsembleVetement> result = new List<EnsembleVetement>();
-            try
-            {
-                connexion = new MySqlConnexion();
-
-                string requete = "SELECT * FROM EnsemblesVetements";
-
-                DataSet dataset = connexion.Query(requete);
-                DataTable table = dataset.Tables[0];
-
-                foreach (DataRow ensembleVetement in table.Rows)
-                {
-                    result.Add(ConstructEnsembleVetement(ensembleVetement));
-                }
-            }
-            catch (MySqlException)
-            {
-                throw;
-            }
-
-            return result;
-        }*/
-
         public IList<EnsembleVetement> RetrieveSelection(InfoStylisteArgs args)
         {
 
@@ -153,14 +128,7 @@ namespace Mova.Logic.Services.MySql
 
             return noEnsemble;
         }
-        /*
-        private int FindIDEnsemble(EnsembleVetement ev)
-        {
-        
-            string select = "SELECT DISTINCT(idEnsemble) FROM EnsemblesVetements WHERE idVetement IN"
 
-        }
-        */
         public void Create(EnsembleVetement ensembleVetement)
         {
             connexion = new MySqlConnexion();
@@ -175,6 +143,23 @@ namespace Mova.Logic.Services.MySql
                 DataSet dataset = connexion.Query(requete);
             }
         }
+
+        public void CreateEnsemble(IList<Vetement> lv, int idEnsemble)
+        {
+            connexion = new MySqlConnexion();
+
+            foreach (Vetement v in lv)
+            {
+                //On commence par créer un ensemble vide (pour avoir le ID)
+                string debutRequete = "INSERT IGNORE INTO EnsemblesVetements (idEnsemble, idVetement) VALUES ";
+                string valeurs = "(" + idEnsemble + ", " + v.IdVetement + ")";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+            }
+        }
+
+
 
         /// <summary>
         /// 
@@ -212,9 +197,7 @@ namespace Mova.Logic.Services.MySql
                 }   
             };
 
-
-            return v;
-        
+            return v;        
         }
 
         /// <summary>
