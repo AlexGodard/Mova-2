@@ -40,7 +40,6 @@ namespace Mova.Logic.Models
         /// <returns>String</returns>
         public static string GetStringTime()
         {
-
             Moment momentActuel = GetMomentOfTheDay();
 
             return GetStringDayOfWeek() + " " + momentActuel.NomMoment.ToString();
@@ -114,6 +113,34 @@ namespace Mova.Logic.Models
         public static int GetIDMomentNow()
         {
             return GetMomentOfTheDay().IdMoment;
+        }
+
+        /// <summary>
+        /// Gabriel Piché Cloutier - 2014-11-19
+        /// </summary>
+        /// <returns></returns>
+        public static bool GetEstOuvrable()
+        {
+            DateTime dt = DateTime.Now;
+
+            switch (dt.DayOfWeek.ToString())
+            {
+                case "Sunday":
+                    return false;
+                case "Monday":
+                    return true;
+                case "Tuesday":
+                    return true;
+                case "Wednesday":
+                    return true;
+                case "Thursday":
+                    return true;
+                case "Friday":
+                    return false;
+                default:
+                    return false;
+
+            }
         }
 
         /// <summary>

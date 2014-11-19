@@ -13,7 +13,7 @@ namespace Mova.Logic.Services.Definitions
     {
        IList<Activite> RetrieveAll();
 
-       IList<Activite> RetrievePourMoment(int idMoment);
+       IList<Activite> RetrievePourMoment(int idMoment, bool estOuvrable);
 
        void Create(Activite activite);
        void Update(Activite activite, string newActivite);

@@ -63,14 +63,18 @@ namespace Mova.Logic.Services.MySql
         /// 
         /// </summary>
         /// <returns></returns>
-        public IList<Activite> RetrievePourMoment(int idMoment)
+        public IList<Activite> RetrievePourMoment(int idMoment, bool estOuvrable)
         {
             IList<Activite> result = new List<Activite>();
             try
             {
                 connexion = new MySqlConnexion();
+                string requete;
 
-                string requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment;
+                if(estOuvrable)
+                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estOuvrable = TRUE";
+                else
+                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estConge = TRUE";
 
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];

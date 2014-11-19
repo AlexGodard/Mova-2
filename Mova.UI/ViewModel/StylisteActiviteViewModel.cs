@@ -27,7 +27,7 @@ namespace Mova.UI.ViewModel
         {
 			try
 			{
-				Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrievePourMoment(Moment.GetIDMomentNow()));
+                Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrievePourMoment(Moment.GetIDMomentNow(), Moment.GetEstOuvrable()));
 			}
 			catch(Exception)
 			{
@@ -62,8 +62,7 @@ namespace Mova.UI.ViewModel
                     return;
                 }
 
-                _activites
-                 = value;
+                _activites = value;
             }
         }
 

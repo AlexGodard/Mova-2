@@ -73,6 +73,8 @@ CREATE TABLE IF NOT EXISTS Couleurs
 CREATE TABLE IF NOT EXISTS Activites
 ( idActivite INT NOT NULL PRIMARY KEY AUTO_INCREMENT
 , nomActivite VARCHAR(50) NOT NULL UNIQUE
+, estOuvrable BOOL NOT NULL
+, estConge BOOL NOT NULL
 );
 
 /* Table Vetements */
@@ -426,115 +428,147 @@ VALUES
 
 /* Insertion dans la table Activites *************************************************************************/
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Courir à l'extérieur"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Faire un sport d'équipe"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Faire un sport intérieur"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Jouer au golf"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller se muscler"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller à l'école"
+  , TRUE
+  , FALSE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller travailler"
+  , TRUE
+  , FALSE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller à l'aventure"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
-  "Aller à chez le dentiste"
+  "Aller chez le dentiste"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Faire l'épicerie"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller manger"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller à un rendez-vous"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller fêter"
+  , FALSE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller au cinéma"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Aller à la plage"
+  , TRUE
+  , TRUE
 );
 
 INSERT INTO Activites
-(nomActivite)
+(nomActivite,estOuvrable,estConge)
 VALUES
 (
   "Jouer aux jeux vidéo"
+  , TRUE
+  , TRUE
 );
 
 /* Insertion dans la table Moments *************************************************************************/
@@ -714,13 +748,6 @@ INSERT INTO ActivitesMoments
 VALUES
 ( (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
 , (SELECT idMoment FROM Moments WHERE nomMoment = "Après-midi")
-);
-
-INSERT INTO ActivitesMoments
-(idActivite, idMoment)
-VALUES
-( (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
-, (SELECT idMoment FROM Moments WHERE nomMoment = "Soir")
 );
 
 INSERT INTO ActivitesMoments
