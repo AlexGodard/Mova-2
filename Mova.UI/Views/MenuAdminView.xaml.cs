@@ -131,7 +131,7 @@ namespace Mova.UI.Views
                 txtModifierStyle.Text = "";
                 txtModifierStyle.Visibility = Visibility.Hidden;
                 btnModifierStyle.Content = "Modifier";
-                btnModifierStyle.IsEnabled = true;
+                btnAjouterStyle.IsEnabled = true;
                 btnSupprimerStyle.IsEnabled = true;
             }
             else
@@ -362,6 +362,15 @@ namespace Mova.UI.Views
                 construireListe("Activite");
             }
             //TODO: Message d'erreur
+        }
+
+        private void btnAjouterVetement_Click(object sender, RoutedEventArgs e)
+        {
+            // On switch la view vers la page de l'ajout de vêtement
+       
+            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+
+            mainVM.ChangeView<UserControl>(new AdminView());
         }
     }
 }

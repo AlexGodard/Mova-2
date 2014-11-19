@@ -21,6 +21,7 @@ using Mova.Logic;
 using System.Text.RegularExpressions;
 using System.Net;
 using Mova.Logic.Models.Args;
+using Microsoft.Win32;
 
 namespace Mova.UI.Views
 {
@@ -179,11 +180,29 @@ namespace Mova.UI.Views
                 bContinuer = false;
             }
 
-            if (!RemoteFileExists(txtImageURL.Text))
+            // On regarde si c'est un URI
+            if (!IsLocalPath(txtImageURL.Text))
             {
-                txbErreurImageURL.Visibility = Visibility.Visible;
-                lblImageURL.Foreground = System.Windows.Media.Brushes.Red;
-                bContinuer = false;
+                if (!RemoteFileExists(txtImageURL.Text))
+                {
+                    txbErreurImageURL.Visibility = Visibility.Visible;
+                    lblImageURL.Foreground = System.Windows.Media.Brushes.Red;
+                    bContinuer = false;
+                }
+            }   // On regarde si c'est un lien local
+            else if (IsLocalPath(txtImageURL.Text))
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.Credentials = new NetworkCredential("1237596", "31amQmXKQ2");
+                    // On regarde quel type de vêtement c'est
+                    if (cboTypes.SelectedItem.ToString() == "Bas")
+                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/bas/", "STOR", txtImageURL.Text);
+                    if (cboTypes.SelectedItem.ToString() == "Haut")
+                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/hauts/", "STOR", txtImageURL.Text);
+                    if (cboTypes.SelectedItem.ToString() == "Chaussures")
+                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/chaussures/", "STOR", txtImageURL.Text);
+                }
             }
 
 
@@ -238,69 +257,66 @@ namespace Mova.UI.Views
 
         }
 
+        private static bool IsLocalPath(string p)
+        {
+            if (p.StartsWith("http:\\"))
+            {
+                return false;
+            }
+
+            p = p.Replace("\\", "/");
+            if (Uri.IsWellFormedUriString(p, UriKind.Absolute))
+                return new Uri(p).IsFile;
+            else 
+                return false;
+        }
+
         private bool RemoteFileExists(string url)
-            {
-                try
-                {
-                    //Creating the HttpWebRequest
-                    HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
-                    //Setting the Request method HEAD, you can also use GET too.
-                    request.Method = "HEAD";
-                    //Getting the Web Response.
-                    HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-                    //Returns TRUE if the Status code == 200
-                    return (response.StatusCode == HttpStatusCode.OK);
-
-                }
-                catch
-                {
-                    //Any exception will returns false.
-                    return false;
-                }
-            }
-
-        private void btnAjouterActivite_Click(object sender, RoutedEventArgs e)
         {
-            if (txtAjouterActivite.Text != "")
+            try
             {
-                ViewModel.ajouterActivite(txtAjouterActivite.Text);
-                lstActivites.Items.Clear();
-                construireListe("Activite");
-                txtAjouterActivite.Text = "";
+                //Creating the HttpWebRequest
+                HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+                //Setting the Request method HEAD, you can also use GET too.
+                request.Method = "HEAD";
+                //Getting the Web Response.
+                HttpWebResponse response = request.GetResponse() as HttpWebResponse;
+                //Returns TRUE if the Status code == 200
+                return (response.StatusCode == HttpStatusCode.OK);
+
+            }
+            catch
+            {
+                //Any exception will returns false.
+                return false;
             }
         }
 
-        private void btnAjouterStyle_Click(object sender, RoutedEventArgs e)
+        private void btnSelectionnerToutTemperatures_Click(object sender, RoutedEventArgs e)
         {
-            if (txtAjouterStyle.Text != "")
-            {
-                ViewModel.ajouterStyle(txtAjouterStyle.Text);
-                lstStyles.Items.Clear();
-                construireListe("Style");
-                txtAjouterStyle.Text = "";
-            }
+            lstTemperatures.SelectAll();
         }
 
-        private void btnAjouterTemperature_Click(object sender, RoutedEventArgs e)
+        private void btnSelectionnerToutStyles_Click(object sender, RoutedEventArgs e)
         {
-            if (txtAjouterTemperature.Text != "")
-            {
-                ViewModel.ajouterTemperature(txtAjouterTemperature.Text);
-                lstTemperatures.Items.Clear();
-                construireListe("Temperature");
-                txtAjouterTemperature.Text = "";
-            }
+            lstStyles.SelectAll();
         }
 
-        private void btnAjouterCouleur_Click(object sender, RoutedEventArgs e)
+        private void btnSelectionnerToutActivites_Click(object sender, RoutedEventArgs e)
         {
-            if (txtAjouterCouleur.Text != "")
-            {
-                ViewModel.ajouterCouleur(txtAjouterCouleur.Text);
-                cboCouleurs.Items.Clear();
-                construireListe("Couleur");
-                txtAjouterCouleur.Text = "";
-            }
+            lstActivites.SelectAll();
+        }
+
+        private void btnParcourir_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+
+            open.ShowDialog();
+            //if (open.ShowDialog() == DialogResult.OK)
+            //{
+                txtImageURL.Text = open.FileName;
+            //} 
         }
     }
 }
