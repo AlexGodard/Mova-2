@@ -3,10 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="572" Width="946" >
+             mc:Ignorable="d" >
 
 
     <UserControl.Resources>
+        <!-- Style des messages d'erreurs situés à droite -->
+        <Style TargetType="TextBlock" x:Key="txbErreurDroite">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/bulle_droite.png" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Grid.Column" Value="4" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+            <Setter Property="Grid.RowSpan" Value="2" />
+            <Setter Property="Visibility" Value="Hidden" />
+            <Setter Property="Width" Value="375" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Padding" Value="47,5,0,0" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+
+        <!-- Style des messages d'erreurs situés à gauche -->
+        <Style TargetType="TextBlock" x:Key="txbErreurGauche">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="pack://application:,,,/Resources/bulle_gauche.png" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Grid.Column" Value="0" />
+            <Setter Property="Grid.ColumnSpan" Value="2" />
+            <Setter Property="Grid.RowSpan" Value="2" />
+            <Setter Property="Visibility" Value="Hidden" />
+            <Setter Property="Width" Value="375" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Padding" Value="10,5,47,0" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="TextWrapping" Value="WrapWithOverflow" />
+        </Style>
+
         <Style TargetType="Button" x:Key="btnVert" x:Name="btnVert">
             <Setter Property="Background" Value="#70ad47" />
             <Setter Property="FontFamily" Value="Calibri" />
@@ -57,9 +99,6 @@
     </UserControl.Resources>
 
     <Grid>
-
-        
-
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="125" />
@@ -78,8 +117,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
@@ -103,14 +142,15 @@
         <Label Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" x:Name="lblCourriel" Content="Courriel" FontFamily="Calibri" FontSize="20" Foreground="White" HorizontalAlignment="Center" />
         <TextBox Grid.Row="9" Grid.Column="2" Margin="0,5,0,5" Grid.ColumnSpan="2" x:Name="txtCourriel" Text="{Binding RetrieveArgs.Courriel}" FontFamily="Calibri" FontSize="20" TextAlignment="Center" />
 
+        <!-- Messages d'erreurs -->
+        <TextBlock Grid.Row="3" x:Name="txbErreurNom" Style="{StaticResource txbErreurDroite}" Text="Le nom et le prénom doivent contenir entre 1 et 50 caractères (lettres, chiffre et traits d'union acceptés)." />
+        <TextBlock Grid.Row="5" x:Name="txbErreurIdentifiant" Style="{StaticResource txbErreurGauche}" Text="L'identifiant doit contenir entre 5 et 24 caractères (lettres et chiffres acceptés)." />
+        <TextBlock Grid.Row="5" x:Name="txbErreurCorrespondanceIdentifiant" Style="{StaticResource txbErreurGauche}" Text="L'identifiant existe déjà." />
+        <TextBlock Grid.Row="7" x:Name="txbErreurMotDePasse" Style="{StaticResource txbErreurGauche}" Text="Le mot de passe doit contenir entre 5 et 24 caractères." />
+        <TextBlock Grid.Row="7" x:Name="txbErreurCorrespondanceMotDePasse" Style="{StaticResource txbErreurDroite}" Text="Les mots de passe doivent correspondre." />
 
-        <TextBlock Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" Margin="5,5,0,5" x:Name="txbErreurNom" Visibility="Hidden" FontSize="12" Foreground="Red" ><Run Text="Le nom et le prénom doivent contenir entre 1 et 50"/><LineBreak/><Run Language="fr-ca" Text="caractères (lettres, chiffres et traits d'union acceptés)"/></TextBlock>
-        <TextBlock x:Name="txbErreurIdentifiant" FontSize="8" Foreground="Red" Visibility="Hidden" Margin="383,112,26,187" TextWrapping="Wrap"><Run Text="L'identifiant doit contenir entre 5 et 24 "/><Run Language="fr-ca" Text="caractères (lettres et chiffres acceptés)"/></TextBlock>
-        <TextBlock x:Name="txbErreurCorrespondanceIdentifiant" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="383,144,59,196" TextWrapping="Wrap"><Run Text="L'identifiant existe déjà"/></TextBlock>
-        <TextBlock x:Name="txbErreurMotDePasse" Visibility="Hidden" Text="Le mot de passe doit contenir entre 5 et 24 caractères" FontSize="8" Foreground="Red" Margin="383,159,26,164" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txbErreurCourriel" Text="Le courriel doit être de format xxx@xx.xxx" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="383,213,26,112" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txbErreurCorrespondanceMotDePasse" Text="Les mots de passe doivent correspondre" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="383,186,26,137" TextWrapping="Wrap"/>
-        <TextBlock x:Name="txbErreurCorrespondanceCourriel" Text="Le courriel est déjà utilisé" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="383,237,26,86" TextWrapping="Wrap"/>
+        <TextBlock Grid.Row="9" x:Name="txbErreurCourriel" Style="{StaticResource txbErreurGauche}" Text="Le courriel doit être de format xxx@xx.xxx" />
+        <TextBlock Grid.Row="9" x:Name="txbErreurCorrespondanceCourriel" Style="{StaticResource txbErreurGauche}" Text="Ce courriel est déjà utilisé." />
 
         <Button Grid.Row="10" Grid.Column="2" Margin="0,15,5,5" x:Name="btnAnnuler" Content="Annuler" Click="btnAnnuler_Click" Style="{StaticResource btnOrange}" />
         <Button Grid.Row="10" Grid.Column="3" Margin="5,15,0,5" x:Name="btnConfirmer" Content="S'inscrire" Click="btnConfirmer_Click" Style="{StaticResource btnVert}" />

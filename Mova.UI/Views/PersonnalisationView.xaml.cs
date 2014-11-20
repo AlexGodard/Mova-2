@@ -36,19 +36,18 @@ namespace Mova.UI.Views
             InitializeComponent();
             DataContext = new PersonnalisationViewModel();
 
-            if (Listes.UtilisateurConnecte.IdUtilisateur == null) {
-                txtNomEnsemble.IsEnabled = false;
-                btnFavori.IsEnabled = false;
-                btnChoisir.IsEnabled = false;
-            } else {
-                txtNomEnsemble.IsEnabled = true;
-                btnFavori.IsEnabled = true;
-                btnFavori.IsEnabled = true;
-            }
-
             // On retourne la liste d'images à afficher
             listeImages = ViewModel.afficherEnsemble();
 
+            //Si l'utilisateur n'est pas connecté, on désactive le champ texte du nom de l'ensemble.
+            if (Listes.UtilisateurConnecte.IdUtilisateur == null)
+            {
+                txtNomEnsemble.IsEnabled = false;
+            }
+            else
+            {
+                txtNomEnsemble.IsEnabled = true;
+            }
             //Gabriel Piché Cloutier - 2014-11-11
             //On affiche les vêtements dans les bonnes images déjà dans la grid.
             Torse.Source = listeImages[0].Source;
@@ -118,26 +117,44 @@ namespace Mova.UI.Views
 
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
         {
-            // On vérifie si l'utilisateur a entrer un nom à son ensemble
-
-            if (txtNomEnsemble.Text != "")
+            //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
+            if (Listes.UtilisateurConnecte.IdUtilisateur != null)
             {
-                int idEnsemble = ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
-                int idUtilisateur = ViewModel.ajouterUtilisateurEnsemble(idEnsemble, estFavori);
-                Listes.ensembleChoisi.IdEnsemble = idEnsemble;
-                ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
+                // On vérifie si l'utilisateur a entrer un nom à son ensemble, sinon, on en met un par défaut.
+                if (txtNomEnsemble.Text != "")
+                {
+                    int idEnsemble = ViewModel.ajouterEnsemble(txtNomEnsemble.Text);
+                    int idUtilisateur = ViewModel.ajouterUtilisateurEnsemble(idEnsemble, estFavori);
+                    Listes.ensembleChoisi.IdEnsemble = idEnsemble;
+                    ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
+                }
+                else
+                {
+
+                }
+
+                IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+                mainVM.ChangeView<UserControl>(new RecentsView());
+
             }
-
-            IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
-            mainVM.ChangeView<UserControl>(new RecentsView());
-
+            else
+            {
+                txbErreurNom.Visibility = Visibility.Visible;
+            }
         }
 
         //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
-
-           estFavori = true;
+            //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
+            if (Listes.UtilisateurConnecte.IdUtilisateur != null)
+            {
+                estFavori = true;
+            }
+            else
+            {
+                txbErreurNom.Visibility = Visibility.Visible;
+            }
         }
 
         private EnsembleVetement GetEnsemble()

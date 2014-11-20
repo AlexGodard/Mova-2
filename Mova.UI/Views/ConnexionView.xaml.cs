@@ -55,6 +55,8 @@ namespace Mova.UI.Views
 			if (txtNomUtilisateur.Text == string.Empty || txtMotDePasse.Password == string.Empty)
 			{
 				lblErreur.Content = "Vous devez remplir tous les champs.";
+                lblErreur.Padding = new Thickness(40,2,0,0);
+                lblErreur.Visibility = Visibility.Visible;
 				return;
 			}
 
@@ -67,7 +69,9 @@ namespace Mova.UI.Views
 			catch (Exception)
 			{
 				//Envoyer un message d'erreur au View
-				lblErreur.Content = "Connexion impossible. Réessayez plus tard";
+                lblErreur.Content = "Connexion impossible. Réessayez plus tard";
+                lblErreur.Padding = new Thickness(15, 2, 0, 0);
+                lblErreur.Visibility = Visibility.Visible;
 				return;
 			}
 
@@ -78,7 +82,9 @@ namespace Mova.UI.Views
 
 			if (ViewModel.UtilisateurConnecte.IdUtilisateur == null)
 			{
-				lblErreur.Content = "Nom d'utilisateur ou mot de passe invalide.";
+                lblErreur.Content = "Nom d'utilisateur ou mot de passe invalide.";
+                lblErreur.Padding = new Thickness(10, 2, 0, 0);
+                lblErreur.Visibility = Visibility.Visible;
 				return;
 			}
 
@@ -136,7 +142,9 @@ namespace Mova.UI.Views
 			}
 			catch(Exception)
 			{
-				lblErreur.Content = "Connexion impossible. Réessayez plus tard";
+                lblErreur.Content = "Connexion impossible. Réessayez plus tard";
+                lblErreur.Padding = new Thickness(10, 2, 0, 0);
+                lblErreur.Visibility = Visibility.Visible;
 			}
         }
 

@@ -115,7 +115,7 @@
         <Image Grid.RowSpan="3" Grid.ColumnSpan="3" Stretch="None" Source="pack://application:,,,/./Resources/fond.jpg" VerticalAlignment="Top" HorizontalAlignment="Center"/>
 
         <Menu Grid.Row="0" Grid.RowSpan="2" IsMainMenu="True" Visibility="{Binding MenuVisibility}" Height="50" Width="1000" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Transparent" FontFamily="Calibri" >
-            <MenuItem x:Name="menuMova" Header="Mova" FontSize="40" >
+            <MenuItem x:Name="menuMova" Header="Menu" FontSize="40" >
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/Resources/barresMenu.png" />
                 </MenuItem.Icon>

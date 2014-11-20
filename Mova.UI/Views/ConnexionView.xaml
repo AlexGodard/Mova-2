@@ -61,7 +61,7 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="85"></RowDefinition>
+            <RowDefinition Height="95"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
@@ -78,12 +78,12 @@
         <Label Grid.Column="1" Grid.Row="4" x:Name="lblMotDePasse" Content="Mot de passe" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontFamily="Calibri" FontSize="20" />
         <TextBox Grid.Column="1" Grid.Row="3" Margin="5" x:Name="txtNomUtilisateur" TextWrapping="Wrap" Text="{Binding RetrieveArgs.NomUtilisateur}" FontFamily="Calibri" FontSize="20" TextAlignment="Center" />
         <PasswordBox Grid.Column="1" Grid.Row="5" Margin="5" x:Name="txtMotDePasse" FontFamily="Calibri" FontSize="20" TextBlock.TextAlignment="Center" />
-        <Label Grid.Column="1" Grid.Row="6" Margin="5" x:Name="lblErreur" Content="" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Calibri" FontSize="20" Foreground="Red">
+        <Label Grid.Column="1" Grid.Row="6" Margin="5" x:Name="lblErreur" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="Calibri" FontSize="20" Foreground="Red" Visibility="Hidden" Width="375" Height="50">
             <Label.Background>
                 <ImageBrush ImageSource="pack://application:,,,/Resources/bulle.png" />
             </Label.Background>
         </Label>
-        <Button Grid.Column="1" Grid.Row="6" Margin="5,50,5,5" IsDefault="True" x:Name="btnConnexion" Content="Connexion" Click="btnConnexion_Click" Style="{StaticResource btnVert}" />
+        <Button Grid.Column="1" Grid.Row="6" Margin="5,60,5,5" IsDefault="True" x:Name="btnConnexion" Content="Connexion" Click="btnConnexion_Click" Style="{StaticResource btnVert}" />
         <Button Grid.Column="1" Grid.Row="7" Margin="5" x:Name="btnCreationCompte" Content="Créer un compte" Click="btnCreationCompte_Click" Style="{StaticResource btnVert}" />
         <Button Grid.Column="1" Grid.Row="8" Margin="5" x:Name="btnInvite" Content="Invité" Click="btnInvite_Click" Style="{StaticResource btnOrange}" />
         <Button Grid.Column="1" Grid.Row="9" Margin="5,15,5,5" Content="Quitter" Click="Quitter" Style="{StaticResource btnVert}" />
