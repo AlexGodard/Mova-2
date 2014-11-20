@@ -22,6 +22,7 @@ namespace Mova.Logic
         public static List<UtilisateurVetements> ListeVetementsUtilisateur;
         public static List<Ensemble> ListeEnsembles;
         public static List<EnsembleVetement> ListeEnsemblesVetements;
+        public static List<EnsembleVetement> ListesEnsembleUtilisateur;
 
         public static Utilisateur UtilisateurConnecte;
 

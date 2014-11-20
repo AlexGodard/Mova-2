@@ -16,6 +16,8 @@ namespace Mova.Logic.Models
 
         public virtual int? IdUtilisateurEnsemble { get; set; }
 
+        public virtual int idEnsemble { get; set; }
+
         /// <summary>
         /// La date de création d'un ensemble par un utilisateur ou la date où l'utilisateur a choisi l'ensemble pour l'ajouter aux récents.
         /// </summary>

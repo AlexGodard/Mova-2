@@ -12,8 +12,10 @@ namespace Mova.Logic.Services.Definitions
     {
         IList<UtilisateurEnsemble> RetrieveEnsembleUtilisateur(RetrieveUtilisateurEnsembleArgs args);   //Classe qui englobe tous les paramêtres nécessaire à un méthode
         IList<UtilisateurEnsemble> RetrieveEnsembleUtilisateurPrecis();
+        IList<UtilisateurEnsemble> RetrieveidEnsemblesUtilisateur();
 
         IList<EnsembleVetement> RetrieveRecents();
+        IList<EnsembleVetement> RetrieveEnsembleVetement();
         IList<EnsembleVetement> RetrieveFavoris();
 
         int Create(UtilisateurEnsemble utilisateurEnsemble);

@@ -78,6 +78,7 @@
     <Compile Include="ViewModel\HautsViewModel.cs" />
     <Compile Include="ViewModel\RecentsViewModel.cs" />
     <Compile Include="ViewModel\SouliersViewModel.cs" />
+    <Compile Include="ViewModel\VoirEnsembleViewModel.cs" />
     <Compile Include="Views\AjouterBasView.xaml.cs">
       <DependentUpon>AjouterBasView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +148,9 @@
     </Compile>
     <Compile Include="Views\StylisteStyleView.xaml.cs">
       <DependentUpon>StylisteStyleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoirEnsembleView.xaml.cs">
+      <DependentUpon>VoirEnsembleView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -241,6 +245,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StylisteStyleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoirEnsembleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

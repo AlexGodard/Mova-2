@@ -71,6 +71,48 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
+        public IList<EnsembleVetement> RetrieveEnsembleVetement()
+        {
+            IList<EnsembleVetement> result = new List<EnsembleVetement>();
+            List<Vetement> listeVetementTemp = new List<Vetement>();
+            //int idEnsembleActuel = 0;
+
+            try
+            {
+                connexion = new MySqlConnexion();
+
+
+                string requete = "SELECT v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
+
+                DataSet dataset = connexion.Query(requete);
+
+                //Ici on a les ensemble récents, en ordre décroissant d'un utilisateur
+                DataTable table = dataset.Tables[0];
+
+                //On reconstruit les ensembles à partir des vêtements
+                //L'algorithme devrait être plus complexe mais pour l'instant cela suffit
+                foreach (DataRow enregistrement in table.Rows)
+                {
+                    //On ajoute toujours un vêtement dans cette liste
+                    listeVetementTemp.Add(ConstructVetement(enregistrement));
+                    if (listeVetementTemp.Count >= 3)
+                    {
+
+                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp });
+
+                        listeVetementTemp = new List<Vetement>();
+                    }
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         public IList<EnsembleVetement> RetrieveRecents()
         {
             IList<EnsembleVetement> result = new List<EnsembleVetement>();
@@ -159,6 +201,32 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
+        public IList<UtilisateurEnsemble> RetrieveidEnsemblesUtilisateur()
+        {
+            IList<UtilisateurEnsemble> result = new List<UtilisateurEnsemble>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "SELECT idEnsemble FROM UtilisateursEnsembles WHERE idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow utilisateurEnsemble in table.Rows)
+                {
+                    result.Add(ConstructIdEnsemble(utilisateurEnsemble));
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
 
         /// <summary>
         /// 
@@ -178,6 +246,15 @@ namespace Mova.Logic.Services.MySql
                 TypeVetement = new TypeVetement((int)row["idTypeVetement"])
             };
         }
+
+        private UtilisateurEnsemble ConstructIdEnsemble(DataRow row)
+        {
+            return new UtilisateurEnsemble()
+            {
+                idEnsemble = (int)row["idEnsemble"]
+            };
+        }
+
 
         /// <summary>
         /// 

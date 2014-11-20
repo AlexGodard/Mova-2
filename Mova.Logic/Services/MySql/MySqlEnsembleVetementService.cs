@@ -159,6 +159,35 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public IList<Vetement> RetrieveVetementsEnsembles(IList<UtilisateurEnsemble> listeEnsembles)
+        {
+            IList<Vetement> result = new List<Vetement>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                foreach (UtilisateurEnsemble e in listeEnsembles)
+                {
+                    string requete = "SELECT v.*,ev.idEnsemble FROM Vetements v INNER JOIN EnsemblesVetements ev ON " +
+                                   "v.idVetement = ev.idVetement WHERE ev.idEnsemble = " + e.idEnsemble;
+
+                    DataSet dataset = connexion.Query(requete);
+                    DataTable table = dataset.Tables[0];
+
+                    foreach (DataRow vetement in table.Rows)
+                    {
+                        result.Add(ConstructVetement(vetement));
+                    }
+                }
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
 
 
         /// <summary>
@@ -192,12 +221,34 @@ namespace Mova.Logic.Services.MySql
                 //Prix = (double)vetement["prix"],
                 EstHomme = (bool)vetement["estHomme"],
                 EstFemme = (bool)vetement["estFemme"],
+                
                 TypeVetement = new TypeVetement(){
-                    IdType = (int)vetement["idTypeVetement"]
+                IdType = (int)vetement["idTypeVetement"]
                 }   
             };
 
             return v;        
+        }
+
+        private Vetement ConstructVetementEnsemble(DataRow vetement)
+        {
+
+            Vetement v = new Vetement()
+            {
+
+                IdVetement = (int)vetement["idVetement"],
+                NomVetement = (string)vetement["nomVetement"],
+                ImageURL = (string)vetement["imageURL"],
+                //Prix = (double)vetement["prix"],
+                EstHomme = (bool)vetement["estHomme"],
+                EstFemme = (bool)vetement["estFemme"],
+                TypeVetement = new TypeVetement()
+                {
+                    IdType = (int)vetement["idTypeVetement"]
+                }
+            };
+
+            return v;
         }
 
         /// <summary>
