@@ -16,6 +16,8 @@ namespace Mova.Logic.Models
 
         public int? IdEnsembleVetement { get; set; }
 
+        public DateTime? DateAjout { get; set; }
+
         /// <summary>
         /// Permet de savoir à quel ensemble les vêtements appartiennent.
         /// </summary>

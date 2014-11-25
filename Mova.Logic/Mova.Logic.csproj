@@ -80,6 +80,7 @@
     <Compile Include="Models\Entities\UtilisateurVetements.cs" />
     <Compile Include="Models\Entities\Validation.cs" />
     <Compile Include="Models\Entities\History.cs" />
+    <Compile Include="Models\Helpers\HelperDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Entities\Vetement.cs" />
     <Compile Include="Services\Definitions\IActiviteService.cs" />

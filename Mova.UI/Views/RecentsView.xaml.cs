@@ -19,6 +19,7 @@ using Mova.Logic.Models.Entities;
 using System.Threading;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
+using Mova.Logic.Models.Helpers;
 
 namespace Mova.UI.Views
 {
@@ -111,8 +112,18 @@ namespace Mova.UI.Views
             {
                 EcrireVetementViaListe(ensemble.ListeVetements, i);
 
+                //On affiche la date dans un label
+                Label date = new Label();
+                date.Content = HelperDate.GetDayFromDate((DateTime)ensemble.DateAjout);
+                Grid.SetColumn(date, i);
+                Grid.SetRow(date, 4);
+
+                DynamicGrid.Children.Add(date);
+
                 i++;
             }
+
+            
         
         }
 
