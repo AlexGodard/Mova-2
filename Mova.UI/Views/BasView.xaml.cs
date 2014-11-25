@@ -154,14 +154,9 @@ namespace Mova.UI.Views
 
             if (iNbVetementCourant - iNbVetementPrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
             {
-                btnPrecedent.Visibility = Visibility.Visible;
-            }
-            else
-            {
                 btnPrecedent.Visibility = Visibility.Hidden;
             }
-
-            if (iNbVetementCourant == iVetementTotal)  //Nous sommes à la fin de notre liste
+            if (iNbVetementCourant == iVetementTotal)
             {
                 iNbVetementCourant = iNbVetementCourant - iNbVetementPrecedent - iNombreDeBoutonsDesires;
             }

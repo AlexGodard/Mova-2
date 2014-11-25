@@ -190,19 +190,40 @@ namespace Mova.Logic.Services.MySql
         public IList<Vetement> RetrieveVetementTypeSpecific(int type)
         {
             IList<Vetement> result = new List<Vetement>();
+            IList<UtilisateurVetements> temp = new List<UtilisateurVetements>();
+            string requete;
+            string bonus = "";
+
             try
             {
                 connexion = new MySqlConnexion();
 
-                //string requete = "SELECT * FROM UtilisateursVetements WHERE idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
-                string requete = "SELECT * FROM Vetements WHERE idTypeVetement = " + type;
+                requete = "SELECT DISTINCT(idVetement) FROM UtilisateursVetements";
+
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];
 
+                foreach (DataRow uv in table.Rows)
+                {
+                    temp.Add(ConstructUtilisateurVetement(uv));
+                }
+
+                foreach(UtilisateurVetements uv in temp)
+                {
+                    bonus += " AND idVetement != " + uv.IdVetement;
+                }
+
+                requete = "SELECT * FROM Vetements v WHERE idTypeVetement = " + type;
+                requete += bonus;
+
+                dataset = connexion.Query(requete);
+                table = dataset.Tables[0];
+
                 foreach (DataRow vetement in table.Rows)
                 {
-                    result.Add(ConstructVetement(vetement));
+                        result.Add(ConstructVetement(vetement));
                 }
+
 
             }
             catch (MySqlException)
@@ -267,10 +288,20 @@ namespace Mova.Logic.Services.MySql
                 Prix = (float)row["prix"],
                 EstHomme = (bool)row["estHomme"],
                 EstFemme = (bool)row["estFemme"]
-                /*ListeTemperatures = null,
-                ListeStyles = null,
-                ListeActivites = null*/
             };
         }
+
+
+        private UtilisateurVetements ConstructUtilisateurVetement(DataRow row)
+        {
+            return new UtilisateurVetements()
+            {
+                IdVetement = (int)row["idVetement"]
+            };
+        }
+
+
+
+
     }
 }
