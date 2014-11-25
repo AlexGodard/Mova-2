@@ -167,7 +167,12 @@ namespace Mova.UI.Views
         private void DessinerVetement(Vetement v, int colonne, int rangee)
         {
             Image i = new Image();
-            i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+            string uri;
+            if (v.ImageURL.ToString().Contains("http://"))
+                uri = v.ImageURL.ToString();
+            else
+                uri = "http://" + v.ImageURL.ToString();
+            i.Source = new BitmapImage(new Uri(uri));
             Grid.SetColumn(i, colonne);
             Grid.SetRow(i, rangee);
 

@@ -49,16 +49,29 @@ namespace Mova.UI.Views
             foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur)
             {
                 Image i = new Image();
+                string uri;
+                if (v.ListeVetements[0].ImageURL.ToString().Contains("http://"))
+                    uri = v.ListeVetements[0].ImageURL.ToString();
+                else
+                    uri = "http://" + v.ListeVetements[0].ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri("http://" + v.ListeVetements[0].ImageURL.ToString()));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridEnsembles.Children.Add(i);
                 Image i2 = new Image();
+                if (v.ListeVetements[1].ImageURL.ToString().Contains("http://"))
+                    uri = v.ListeVetements[1].ImageURL.ToString();
+                else
+                    uri = "http://" + v.ListeVetements[1].ImageURL.ToString();
                 i2.Source = new BitmapImage(new Uri("http://" + v.ListeVetements[1].ImageURL.ToString()));
                 Grid.SetColumn(i2, iColonne + 1);
                 Grid.SetRow(i2, iRow);
                 GridEnsembles.Children.Add(i2);
                 Image i3 = new Image();
+                if (v.ListeVetements[2].ImageURL.ToString().Contains("http://"))
+                    uri = v.ListeVetements[2].ImageURL.ToString();
+                else
+                    uri = "http://" + v.ListeVetements[2].ImageURL.ToString();
                 i3.Source = new BitmapImage(new Uri("http://" + v.ListeVetements[2].ImageURL.ToString()));
                 Grid.SetColumn(i3, iColonne + 2);
                 Grid.SetRow(i3, iRow);

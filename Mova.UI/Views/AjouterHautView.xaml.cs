@@ -54,7 +54,12 @@ namespace Mova.UI.Views
             foreach (Vetement v in Listes.ListeHautsComplet)
             {
                 Image i = new Image();
-                i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+                string uri;
+                if (v.ImageURL.ToString().Contains("http://"))
+                    uri = v.ImageURL.ToString();
+                else
+                    uri = "http://" + v.ImageURL.ToString();
+                i.Source = new BitmapImage(new Uri(uri));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridHautVetement.Children.Add(i);
@@ -130,7 +135,13 @@ namespace Mova.UI.Views
             foreach (Vetement v in Listes.ListeHautsComplet.Skip(iVetementDepart))
             {
                 Image i = new Image();
-                i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+                // Si l'url de l'image commence par un HTTP, on l'enleve pour pas qu'on aille http://http://
+                string uri;
+                if (v.ImageURL.ToString().Contains("http://"))
+                    uri = v.ImageURL.ToString();
+                else
+                    uri = "http://" + v.ImageURL.ToString();
+                i.Source = new BitmapImage(new Uri(uri));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridHautVetement.Children.Add(i);
@@ -207,7 +218,12 @@ namespace Mova.UI.Views
             foreach (Vetement v in Listes.ListeHautsComplet.Skip(iVetementDepart))
             {
                 Image i = new Image();
-                i.Source = new BitmapImage(new Uri("http://" + v.ImageURL.ToString()));
+                string uri;
+                if (v.ImageURL.ToString().Contains("http://"))
+                    uri = v.ImageURL.ToString();
+                else
+                    uri = "http://" + v.ImageURL.ToString();
+                i.Source = new BitmapImage(new Uri(uri));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridHautVetement.Children.Add(i);
