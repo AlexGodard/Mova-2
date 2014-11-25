@@ -31,6 +31,7 @@ namespace Mova.UI.Views
     {
         private MenuAdminViewModel ViewModel { get { return (MenuAdminViewModel)DataContext; } }
         private History<UserControl> _historique = new History<UserControl>();
+        private bool estModifie = false;
 
         public MenuAdminView()
         {
@@ -162,30 +163,56 @@ namespace Mova.UI.Views
 
         private void btnAjouterActivite_Click(object sender, RoutedEventArgs e)
         {
+            if (txtNomActivite.Text != "" && !estModifie)
+            {
+                ViewModel.ajouterActivite(txtNomActivite.Text);
+                lstActivites.Items.Clear();
+                construireListe("Activite");
+                txtNomActivite.Text = string.Empty;
+                btnAjouterActivite.Content = "Ajouter";
+                estModifie = false;
+            }
+
+            //Si on a cliqué sur le bouton modifier, on exécute ceci.
+            if (estModifie)
+            {
+                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text);
+                lstActivites.Items.Clear();
+                construireListe("Activite");
+                txtNomActivite.Text = string.Empty;
+                btnAjouterActivite.Content = "Ajouter";
+                estModifie = false;
+            }
+
+            btnModifierActivite.IsEnabled = true;
+            btnSupprimerActivite.IsEnabled = true;
+            lstActivites.IsEnabled = true;
+            lblOu.Content = "-OU-";
+
             // Si le champ est déjà visible, on vérifie s'il a entré quelque chose
             // On débloque le champ
-            if (txtAjouterActivite.Visibility == Visibility.Visible)
-            {
-                if (txtAjouterActivite.Text != "")
-                {
-                    ViewModel.ajouterActivite(txtAjouterActivite.Text);
-                    lstActivites.Items.Clear();
-                    construireListe("Activite");
-                    txtAjouterActivite.Text = "";
-                    txtAjouterActivite.Visibility = Visibility.Hidden;
-                    btnAjouterActivite.Content = "Ajouter";
-                    btnModifierActivite.IsEnabled = true;
-                    btnSupprimerActivite.IsEnabled = true;
-                }
-            }
-            else
-            {
-                // On débloque le champ
-                txtAjouterActivite.Visibility = Visibility.Visible;
-                btnAjouterActivite.Content = "Ajouter la nouvelle activité";
-                btnModifierActivite.IsEnabled = false;
-                btnSupprimerActivite.IsEnabled = false;
-            }
+            //if (txtAjouterActivite.Visibility == Visibility.Visible)
+            //{
+            //    if (txtAjouterActivite.Text != "")
+            //    {
+            //        ViewModel.ajouterActivite(txtAjouterActivite.Text);
+            //        lstActivites.Items.Clear();
+            //        construireListe("Activite");
+            //        txtAjouterActivite.Text = "";
+            //        txtAjouterActivite.Visibility = Visibility.Hidden;
+            //        btnAjouterActivite.Content = "Ajouter";
+            //        btnModifierActivite.IsEnabled = true;
+            //        btnSupprimerActivite.IsEnabled = true;
+            //    }
+            //}
+            //else
+            //{
+            //    // On débloque le champ
+            //    txtAjouterActivite.Visibility = Visibility.Visible;
+            //    btnAjouterActivite.Content = "Ajouter la nouvelle activité";
+            //    btnModifierActivite.IsEnabled = false;
+            //    btnSupprimerActivite.IsEnabled = false;
+            //}
         }
 
         private void btnModifierCouleur_Click(object sender, RoutedEventArgs e)
@@ -326,31 +353,43 @@ namespace Mova.UI.Views
 
         private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
         {
-            if (txtModifierActivite.Visibility == Visibility.Visible)
+            // On débloque le champ
+            if (lstActivites.SelectedIndex != -1)
             {
+                btnAjouterActivite.Content = "Enregistrer";
+                txtNomActivite.Text = lstActivites.SelectedItem.ToString();
+                estModifie = true;
+                btnModifierActivite.IsEnabled = false;
+                btnSupprimerActivite.IsEnabled = false;
+                lstActivites.IsEnabled = false;
+                lblOu.Content = "-ET-";
+            }
 
-                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtModifierActivite.Text);
-                lstActivites.Items.Clear();
-                construireListe("Activite");
-                txtModifierActivite.Text = "";
-                txtModifierActivite.Visibility = Visibility.Hidden;
-                btnModifierActivite.Content = "Modifier";
-                btnAjouterActivite.IsEnabled = true;
-                btnSupprimerActivite.IsEnabled = true;
-            }
-            else
-            {
-                // On débloque le champ
-                if (lstActivites.SelectedIndex != -1)
-                {
-                    txtModifierActivite.Visibility = Visibility.Visible;
-                    btnModifierActivite.Content = "Enregistrer la modification";
-                    txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
-                    btnAjouterActivite.IsEnabled = false;
-                    btnSupprimerActivite.IsEnabled = false;
-                }
-                //TODO: Message d'erreur
-            }
+            //if (txtModifierActivite.Visibility == Visibility.Visible)
+            //{
+
+            //    ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtModifierActivite.Text);
+            //    lstActivites.Items.Clear();
+            //    construireListe("Activite");
+            //    txtModifierActivite.Text = "";
+            //    txtModifierActivite.Visibility = Visibility.Hidden;
+            //    btnModifierActivite.Content = "Modifier";
+            //    btnAjouterActivite.IsEnabled = true;
+            //    btnSupprimerActivite.IsEnabled = true;
+            //}
+            //else
+            //{
+            //    // On débloque le champ
+            //    if (lstActivites.SelectedIndex != -1)
+            //    {
+            //        txtModifierActivite.Visibility = Visibility.Visible;
+            //        btnModifierActivite.Content = "Enregistrer la modification";
+            //        txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
+            //        btnAjouterActivite.IsEnabled = false;
+            //        btnSupprimerActivite.IsEnabled = false;
+            //    }
+            //    //TODO: Message d'erreur
+            //}
         }
 
         private void btnSupprimerActivite_Click(object sender, RoutedEventArgs e)
@@ -371,6 +410,21 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
             mainVM.ChangeView<UserControl>(new AdminView());
+        }
+
+        private void btnAnnulerActivite_Click(object sender, RoutedEventArgs e)
+        {
+            txtNomActivite.Text = string.Empty;
+            btnModifierActivite.IsEnabled = true;
+            btnSupprimerActivite.IsEnabled = true;
+            lstActivites.IsEnabled = true;
+        }
+
+        private void txtNomActivite_GotFocus(object sender, RoutedEventArgs e)
+        {
+            btnModifierActivite.IsEnabled = false;
+            btnSupprimerActivite.IsEnabled = false;
+            lstActivites.IsEnabled = false;
         }
     }
 }

@@ -5,6 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" SnapsToDevicePixels="True">
 
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="btnVert" x:Name="btnVert">
+            <Setter Property="Background" Value="#70ad47" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="20" />
+
+            <!-- Change le comportement du bouton lorsqu'on passe la souris dessus -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#9bbb59" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="Button" x:Key="btnOrange">
+            <Setter Property="Background" Value="#c55a11" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="20" />
+
+            <!-- Change le comportement du bouton lorsqu'on passe la souris dessus -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#f79545" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
 
 
     <Grid>
@@ -12,9 +59,9 @@
             <ColumnDefinition />
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="75" />
             <ColumnDefinition Width="150" />
-            <ColumnDefinition />
+            <ColumnDefinition Width="150" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -22,19 +69,21 @@
             <RowDefinition Height=" 50" />
             <RowDefinition Height="100" />
             <RowDefinition />
+            <RowDefinition Height="35" />
+            <!-- Section des activités -->
             <RowDefinition Height="50" />
-            <RowDefinition Height="75" />
-            <RowDefinition />
+            <RowDefinition Height="30" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <!-- Section des styles -->
             <RowDefinition Height="50" />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
@@ -46,23 +95,41 @@
         <!-- Section des vêtements -->
         <Label Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="2" x:Name="lblVetement" Content="Vêtements" FontFamily="Calibri" FontSize="24" />
         <Border Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="2" BorderBrush="Black" BorderThickness="0,0,0,1" />
-        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" x:Name="btnAjouterVetement" FontSize="10" Content="Ajouter un vêtement" Click="btnAjouterVetement_Click" />
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" x:Name="btnAjouterVetement" Content="Ajouter un vêtement" Click="btnAjouterVetement_Click" Style="{StaticResource btnVert}" Margin="5,5,0,0" />
 
 
         <!-- Section des activités -->
         <Label Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="4" x:Name="lblActivite" Content="Activités" FontFamily="Calibri" FontSize="24" VerticalAlignment="Bottom" />
         <Border Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="4" BorderBrush="Black" BorderThickness="0,0,0,1" />
-        <Label Grid.Column="1" Grid.Row="5" Content="Sélectionner une activité" />
-        <ListBox Grid.Column="1" Grid.Row="6" Grid.RowSpan="3" x:Name="lstActivites" />
-        <Button Grid.Column="2" Grid.Row="6" x:Name="btnModifierActivite" FontSize="10" Content="Modifier" Click="btnModifierActivite_Click"/>
-        <Button Grid.Column="2" Grid.Row="7" x:Name="btnSupprimerActivite" FontSize="10" Content="Supprimer" Click="btnSupprimerActivite_Click"/>
-        <!-- label content=OU -->
-        <Label Grid.Column="3" Grid.Row="6" Grid.RowSpan="2" VerticalAlignment="Center" Content="OU" x:Name="lblOu" />
-        <Label Grid.Column="4" Grid.Row="6" HorizontalAlignment="Left" Content="Nom :" />
-        <TextBox Grid.Column="4" Grid.Row="6" HorizontalAlignment="Right" x:Name="txtAjouterActivite" FontSize="9" Visibility="Hidden" TextWrapping="Wrap" />
-        <TextBox Grid.Column="4" Grid.Row="6" HorizontalAlignment="Right" x:Name="txtModifierActivite" FontSize="9" Visibility="Hidden" />
-        <Button Grid.Column="4" Grid.Row="8" x:Name="btnAjouterActivite" FontSize="10" Content="Ajouter" Click="btnAjouterActivite_Click" />
-        <!-- buuton annuler -->
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Sélectionner une activité :" VerticalAlignment="Bottom" FontSize="16" />
+        <ListBox Grid.Column="1" Grid.Row="6" Grid.RowSpan="4" x:Name="lstActivites" />
+        <Button Grid.Column="2" Grid.Row="6" x:Name="btnModifierActivite" Content="Modifier" Click="btnModifierActivite_Click" Style="{StaticResource btnVert}" Margin="5,0,0,0" />
+        <Button Grid.Column="2" Grid.Row="8" x:Name="btnSupprimerActivite" Content="Supprimer" Click="btnSupprimerActivite_Click" Style="{StaticResource btnOrange}" Margin="5,0,0,0" />
+        <!-- Sous-section Ajout/Modification d'une activité -->
+        <Label Grid.Column="3" Grid.Row="6" Grid.RowSpan="3" VerticalAlignment="Center" Content="-OU-" x:Name="lblOu" FontSize="30" />
+        <Label Grid.Column="4" Grid.Row="5" VerticalAlignment="Bottom" Content="Nom de l'activité :" />
+        <TextBox Grid.Column="4" Grid.Row="6" x:Name="txtNomActivite" GotFocus="txtNomActivite_GotFocus" />
+        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Left" Content="Ouvrable" x:Name="chkOuvrable" />
+        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Right" Content="Congé" x:Name="chkConge" />
+        <Label Grid.Column="5" Grid.Row="5" VerticalAlignment="Bottom" Content="Moment de l'activité :" />
+        <ListBox Grid.Column="5" Grid.Row="6" Grid.RowSpan="3" x:Name="lstMoment" />
+
+        <Button Grid.Column="4" Grid.Row="9" x:Name="btnAjouterActivite" Content="Ajouter" Click="btnAjouterActivite_Click" Style="{StaticResource btnVert}"  Margin="0,5,0,0" FontSize="15" />
+        <Button Grid.Column="5" Grid.Row="9" Content="Annuler" x:Name="btnAnnulerActivite" Click="btnAnnulerActivite_Click" Style="{StaticResource btnOrange}" Margin="0,5,0,0" FontSize="15" />
+
+
+        <!-- Section des styles -->
+        <Label Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="10" x:Name="lblStyles" Content="Styles" FontFamily="Calibri" FontSize="24" VerticalAlignment="Bottom"  />
+        <Border Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="10" BorderBrush="Black" BorderThickness="0,0,0,1" />
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="11" Content="Sélectionner un style :" VerticalAlignment="Bottom" FontSize="16" />
+        <ListBox Grid.Column="1" Grid.Row="12" Grid.RowSpan="4" x:Name="lstStyles" />
+        <Button x:Name="btnAjouterStyle" Margin="223,227,449,327" FontSize="10"  Content="Ajouter" Click="btnAjouterStyle_Click"/>
+        <Button x:Name="btnModifierStyle" Margin="223,258,449,296" FontSize="10"  Content="Modifier" Click="btnModifierStyle_Click"/>
+        <Button x:Name="btnSupprimerStyle" Margin="223,289,449,265" FontSize="10"  Content="Supprimer" Click="btnSupprimerStyle_Click"/>
+        <TextBox x:Name="txtAjouterStyle" FontSize="9" Margin="336,238,0,323" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
+        <TextBox x:Name="txtModifierStyle" FontSize="9" Margin="336,272,0,289" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
+
+
 
 
         <!-- Messages d'erreurs -->
@@ -79,23 +146,16 @@
 
 
 
-        <Label x:Name="lblStyles" Content="Styles" Margin="49,212,0,342" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label x:Name="lblTemperature" Content="Température" Margin="49,333,0,221" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <Label x:Name="lblCouleur" Content="Couleur" Margin="51,455,0,90" HorizontalAlignment="Left" RenderTransformOrigin="0.451,-0.484"/>
-        <ListBox x:Name="lstStyles" HorizontalAlignment="Left" Height="77" VerticalAlignment="Top" Width="154" Margin="51,238,0,0"/>
         <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,364,0,0"/>
         <TextBlock x:Name="txbErreurType" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="430,370,212,198" TextWrapping="Wrap"><Run Text="Vous devez choisir le type de vêtement"/></TextBlock>
         <TextBlock x:Name="txbErreurSexe" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="49,391,593,166" TextWrapping="Wrap"><Run Text="Vous devez choisir au moins un sexe qui peut porter le vêtement"/></TextBlock>
-        <Button x:Name="btnAjouterStyle" Margin="223,227,449,327" FontSize="10"  Content="Ajouter" Click="btnAjouterStyle_Click"/>
         <TextBox x:Name="txtAjouterTemperature" FontSize="9" Margin="336,348,0,213" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <Button x:Name="btnAjouterTemperature" Margin="223,341,449,207" FontSize="10" Content="Ajouter" Click="btnAjouterTemperature_Click"/>
-        <Button x:Name="btnModifierStyle" Margin="223,258,449,296" FontSize="10"  Content="Modifier" Click="btnModifierStyle_Click"/>
-        <Button x:Name="btnSupprimerStyle" Margin="223,289,449,265" FontSize="10"  Content="Supprimer" Click="btnSupprimerStyle_Click"/>
         <Button x:Name="btnModifierTemperature" Margin="223,378,449,170" FontSize="10" Content="Modifier" Click="btnModifierTemperature_Click"/>
         <Button x:Name="btnSupprimerTemperature" Margin="223,415,449,133" FontSize="10" Content="Supprimer" Click="btnSupprimerTemperature_Click"/>
         <TextBox x:Name="txtModifierTemperature" FontSize="9" Margin="336,382,0,179" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
-        <TextBox x:Name="txtAjouterStyle" FontSize="9" Margin="336,238,0,323" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
-        <TextBox x:Name="txtModifierStyle" FontSize="9" Margin="336,272,0,289" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <ListBox x:Name="lstCouleurs" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,484,0,0"/>
         <TextBox x:Name="txtAjouterCouleur" FontSize="9" Margin="336,470,0,91" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <Button x:Name="btnAjouterCouleur" Margin="223,463,449,85" FontSize="10" Content="Ajouter" Click="btnAjouterCouleur_Click"/>
