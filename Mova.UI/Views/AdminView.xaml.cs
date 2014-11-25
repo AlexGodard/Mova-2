@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.IO;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Cstj.MvvmToolkit.Services.Definitions;
@@ -181,33 +182,46 @@ namespace Mova.UI.Views
             }
 
             // On regarde si c'est un URI
-            if (!IsLocalPath(txtImageURL.Text))
-            {
-                if (!RemoteFileExists(txtImageURL.Text))
+                string typePath = obtenirTypePath(txtImageURL.Text);
+                if (typePath == "Lien invalide")
                 {
                     txbErreurImageURL.Visibility = Visibility.Visible;
                     lblImageURL.Foreground = System.Windows.Media.Brushes.Red;
                     bContinuer = false;
                 }
-            }   // On regarde si c'est un lien local
-            else if (IsLocalPath(txtImageURL.Text))
-            {
-                using (WebClient client = new WebClient())
-                {
-                    client.Credentials = new NetworkCredential("1237596", "31amQmXKQ2");
-                    // On regarde quel type de vêtement c'est
-                    if (cboTypes.SelectedItem.ToString() == "Bas")
-                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/bas/", "STOR", txtImageURL.Text);
-                    if (cboTypes.SelectedItem.ToString() == "Haut")
-                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/hauts/", "STOR", txtImageURL.Text);
-                    if (cboTypes.SelectedItem.ToString() == "Chaussures")
-                        client.UploadFile("ftp://420.cstj.qc.ca/images_mova/chaussures/", "STOR", txtImageURL.Text);
-                }
-            }
-
+            
 
             if (bContinuer)
             {
+                string imageURL = "";
+
+                // On upload le fichier si c'est un lien local
+                if (typePath == "Lien local")
+                {
+                    using (WebClient client = new WebClient())
+                    {
+                        client.Credentials = new NetworkCredential("1237596", "31amQmXKQ2");
+                        
+                        // On regarde quel type de vêtement c'est
+                        if (cboTypes.SelectedItem.ToString() == "Bas")
+                        {
+                            client.UploadFile("ftp://420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                            imageURL = "420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                        }
+                        else if (cboTypes.SelectedItem.ToString() == "Haut")
+                        {
+                            client.UploadFile("ftp://420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                            imageURL = "420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                        }
+                        else if (cboTypes.SelectedItem.ToString() == "Chaussures")
+                        {
+                            client.UploadFile("ftp://420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                            imageURL = "420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                        }
+                    }
+                }
+                else if (typePath == "Lien internet")
+                    imageURL = txtImageURL.Text;
 
                 bool estHomme = false;
                 bool estFemme = false;
@@ -242,7 +256,7 @@ namespace Mova.UI.Views
                     estFemme = true;
 
                 // On ajoute le vêtement à la BD. 
-                ViewModel.ajouterVetement(typeVetement, estHomme, estFemme, couleur, listeActivites, listeStyles, listeTemperatures);
+                ViewModel.ajouterVetement(typeVetement, estHomme, estFemme, couleur, listeActivites, listeStyles, listeTemperatures, imageURL);
 
 
                 // On affiche "Inscription réussie" et on connecte l'utilisateur
@@ -257,6 +271,15 @@ namespace Mova.UI.Views
 
         }
 
+        private static string obtenirTypePath(string p)
+        {
+            if (RemoteFileExists(p))
+                return "Lien internet";
+            if (IsLocalPath(p))
+                return "Lien local";
+            return "Lien invalide";
+
+        }
         private static bool IsLocalPath(string p)
         {
             if (p.StartsWith("http:\\"))
@@ -265,13 +288,19 @@ namespace Mova.UI.Views
             }
 
             p = p.Replace("\\", "/");
-            if (Uri.IsWellFormedUriString(p, UriKind.Absolute))
+
+            try
+            {
+                new System.IO.FileInfo(p);
                 return new Uri(p).IsFile;
-            else 
+            }
+            catch
+            {
                 return false;
+            }
         }
 
-        private bool RemoteFileExists(string url)
+        private static bool RemoteFileExists(string url)
         {
             try
             {

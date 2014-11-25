@@ -156,7 +156,7 @@ namespace Mova.UI.ViewModel
             Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
         }
 
-        public void ajouterVetement(TypeVetement typeVetement, bool estHomme, bool estFemme, Couleur couleur, List<Activite> listeActivites, List<StyleVetement> listeStyles, List<Temperature> listeTemperatures)
+        public void ajouterVetement(TypeVetement typeVetement, bool estHomme, bool estFemme, Couleur couleur, List<Activite> listeActivites, List<StyleVetement> listeStyles, List<Temperature> listeTemperatures, string imageURL)
         {
             RetrieveArgs.Type = typeVetement;
             RetrieveArgs.CouleurVetement = couleur;
@@ -165,6 +165,7 @@ namespace Mova.UI.ViewModel
             RetrieveArgs.ListeActivites = listeActivites;
             RetrieveArgs.ListeStyles = listeStyles;
             RetrieveArgs.ListeTemperatures = listeTemperatures;
+            RetrieveArgs.ImageURL = imageURL;
 
             Vetement vetementAAjouter = new Vetement(RetrieveArgs.Type, RetrieveArgs.CouleurVetement, RetrieveArgs.NomVetement, RetrieveArgs.ImageURL, RetrieveArgs.Prix, RetrieveArgs.EstHomme, RetrieveArgs.EstFemme, RetrieveArgs.ListeActivites, RetrieveArgs.ListeStyles, RetrieveArgs.ListeTemperatures);
 
