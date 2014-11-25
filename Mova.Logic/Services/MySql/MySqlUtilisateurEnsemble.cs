@@ -59,7 +59,7 @@ namespace Mova.Logic.Services.MySql
 
                 foreach (DataRow utilisateurEnsemble in table.Rows)
                 {
-                    result.Add(ConstructUtilisateurEnsemble(utilisateurEnsemble));
+                   result.Add(ConstructUtilisateurEnsemble(utilisateurEnsemble));
                 }
 
             }

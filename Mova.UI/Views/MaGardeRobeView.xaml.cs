@@ -35,6 +35,42 @@ namespace Mova.UI.Views
             lblNbBas.Content = "Vous avez " + Listes.NbBas + " bas";
             lblNbSouliers.Content = "Vous avez " + Listes.NbSouliers + " souliers";
 
+
+            if(Listes.NbEnsembleUtilisateur == 0)
+            {
+              voirEnsembles.IsEnabled = false;
+            }
+            else
+            {
+              voirEnsembles.IsEnabled = true;
+            }
+
+            if(Listes.NbHauts == 0)
+            { 
+              voirHauts.IsEnabled = false;
+            }
+            else 
+            {
+              voirHauts.IsEnabled = true;
+            }
+
+            if(Listes.NbBas == 0)
+            { 
+              voirBas.IsEnabled = false;
+            }
+            else
+            {
+              voirBas.IsEnabled = true;
+            }
+
+            if(Listes.NbSouliers == 0)
+            {
+              voirSouliers.IsEnabled = false;
+            }
+            else 
+            {
+              voirSouliers.IsEnabled = true;
+            }
         }
 
         private void btnvoirHauts_Click(object sender, RoutedEventArgs e)
@@ -80,7 +116,7 @@ namespace Mova.UI.Views
             mainVM.ChangeView<AjouterHautView>(new AjouterHautView());
         }
 
-        private void VoirEnsembles_Click(object sender, RoutedEventArgs e)
+        private void voirEnsembles_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<VoirEnsembleView>(new VoirEnsembleView());

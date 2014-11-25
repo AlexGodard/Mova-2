@@ -6,21 +6,21 @@
              xmlns:local="clr-namespace:Mova.UI.Views" x:Class="Mova.UI.Views.MaGardeRobeView" 
              mc:Ignorable="d" Width="559.591" Height="336.735">
     <Grid Margin="10,0,0,0">
-        <Button Name="VoirEnsembles" HorizontalAlignment="Left" Height="223" Margin="96,43,0,0" VerticalAlignment="Top" Width="143" Click="VoirEnsembles_Click">
+        <Button Name="voirEnsembles" HorizontalAlignment="Left" Height="223" Margin="96,43,0,0" VerticalAlignment="Top" Width="143" Click="voirEnsembles_Click">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/StickMan.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="120" Margin="357,18,0,0" VerticalAlignment="Top" Width="143" Name="voirHauts" Click="btnvoirHauts_Click" >
+        <Button HorizontalAlignment="Left" Height="140" Margin="369,18,0,0" VerticalAlignment="Top" Width="131" Name="voirHauts" Click="btnvoirHauts_Click" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/Haut.png" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button HorizontalAlignment="Left" Height="99" Margin="357,107,0,0" VerticalAlignment="Top" Width="143" Name="voirBas" Click="btnvoirBas_Click" RenderTransformOrigin="0.36,0.289" >
+        <Button HorizontalAlignment="Left" Height="99" Margin="370,107,0,0" VerticalAlignment="Top" Width="143" Name="voirBas" Click="btnvoirBas_Click" RenderTransformOrigin="0.36,0.289" >
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="pack://application:,,,/../Resources/Bas.png" />
@@ -39,7 +39,7 @@
         <Button Name="ajouterBas" Content="ajouter" HorizontalAlignment="Left"  Height="52" Margin="301,140,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.419,-1.03" Click="ajouterBas_Click"/>
         <Button Name="ajouterSouliers" Content="ajouter" HorizontalAlignment="Left"  Height="47" Margin="301,237,0,0" VerticalAlignment="Top" Width="51" Click="ajouterSouliers_Click"/>
         <Label Name="lblNbEnsemble" Content="Vous avez 0 ensembles" HorizontalAlignment="Left" Margin="96,294,0,0" VerticalAlignment="Top" Width="166"/>
-        <Label Name="lblNbHauts" Content="Vous avez 0 hauts" HorizontalAlignment="Left" Margin="387,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.053,0.731" Width="153"/>
+        <Label Name="lblNbHauts" Content="Vous avez 0 hauts" HorizontalAlignment="Left" Margin="369,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.053,0.731" Width="171"/>
         <Label Name="lblNbBas" Content="Vous avez 0 bas" HorizontalAlignment="Left" Margin="369,206,0,0" VerticalAlignment="Top" Width="153"/>
         <Label Name="lblNbSouliers" Content="Vous avez 0 souliers" HorizontalAlignment="Left" Margin="370,301,0,0" VerticalAlignment="Top" Width="153"/>
     </Grid>

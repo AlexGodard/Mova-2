@@ -30,7 +30,14 @@ namespace Mova.UI.ViewModel
             _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
             _utilisateurVetementService = ServiceFactory.Instance.GetService<IUtilisateurVetementService>();
             _ensembleService = ServiceFactory.Instance.GetService<IEnsembleService>();
-            Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(3));
+            if (Listes.AjouterEnsemble == true)
+            {
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(2, true));
+            }
+            else
+            {
+                Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(3, false));
+            }
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeSouliersComplet = Vetements.ToList<Vetement>();
         }

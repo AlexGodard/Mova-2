@@ -187,7 +187,7 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
-        public IList<Vetement> RetrieveVetementTypeSpecific(int type)
+        public IList<Vetement> RetrieveVetementTypeSpecific(int type,bool allOrNot)
         {
             IList<Vetement> result = new List<Vetement>();
             IList<UtilisateurVetements> temp = new List<UtilisateurVetements>();
@@ -196,6 +196,8 @@ namespace Mova.Logic.Services.MySql
 
             try
             {
+               if(allOrNot == false)
+               { 
                 connexion = new MySqlConnexion();
 
                 requete = "SELECT DISTINCT(idVetement) FROM UtilisateursVetements";
@@ -212,17 +214,20 @@ namespace Mova.Logic.Services.MySql
                 {
                     bonus += " AND idVetement != " + uv.IdVetement;
                 }
-
+               }
+               else
+               { 
                 requete = "SELECT * FROM Vetements v WHERE idTypeVetement = " + type;
                 requete += bonus;
 
-                dataset = connexion.Query(requete);
-                table = dataset.Tables[0];
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
 
                 foreach (DataRow vetement in table.Rows)
                 {
-                        result.Add(ConstructVetement(vetement));
+                   result.Add(ConstructVetement(vetement));
                 }
+               }
 
 
             }
