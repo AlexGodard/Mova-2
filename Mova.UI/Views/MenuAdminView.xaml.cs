@@ -338,15 +338,18 @@ namespace Mova.UI.Views
                     btnAjouterTemperature.Content = "Ajouter";
                     btnModifierTemperature.IsEnabled = true;
                     btnSupprimerTemperature.IsEnabled = true;
+                    btnAnnulerAjoutTemperature.Visibility = Visibility.Hidden;
                 }
             }
             else
             {
                 // On débloque le champ
                 txtAjouterTemperature.Visibility = Visibility.Visible;
-                btnAjouterTemperature.Content = "Ajouter la nouvelle température";
+                btnAjouterTemperature.Content = "Ajouter la température";
                 btnModifierTemperature.IsEnabled = false;
                 btnSupprimerTemperature.IsEnabled = false;
+                btnAnnulerAjoutTemperature.Visibility = Visibility.Visible;
+
             }
         }
     
@@ -363,6 +366,7 @@ namespace Mova.UI.Views
                 btnModifierTemperature.Content = "Modifier";
                 btnAjouterTemperature.IsEnabled = true;
                 btnSupprimerTemperature.IsEnabled = true;
+                btnAnnulerModifTemperature.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -370,10 +374,11 @@ namespace Mova.UI.Views
                 if (lstTemperatures.SelectedIndex != -1)
                 {
                     txtModifierTemperature.Visibility = Visibility.Visible;
-                    btnModifierTemperature.Content = "Enregistrer la modification";
+                    btnModifierTemperature.Content = "Enregistrer";
                     txtModifierTemperature.Text = lstTemperatures.SelectedItem.ToString();
                     btnAjouterTemperature.IsEnabled = false;
                     btnSupprimerTemperature.IsEnabled = false;
+                    btnAnnulerModifTemperature.Visibility = Visibility.Visible;
                 }
                 //TODO: Message d'erreur
             }
@@ -388,6 +393,28 @@ namespace Mova.UI.Views
                 construireListe("Temperature");
             }
             //TODO: Message d'erreur
+        }
+
+        private void btnAnnulerAjoutTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            txtAjouterTemperature.Text = string.Empty;
+            txtAjouterTemperature.Visibility = Visibility.Hidden;
+            btnAnnulerAjoutTemperature.Visibility = Visibility.Hidden;
+            btnModifierTemperature.IsEnabled = true;
+            btnSupprimerTemperature.IsEnabled = true;
+            lstTemperatures.IsEnabled = true;
+            btnAjouterTemperature.Content = "Ajouter";
+        }
+
+        private void btnAnnulerModifTemperature_Click(object sender, RoutedEventArgs e)
+        {
+            txtModifierTemperature.Text = string.Empty;
+            txtModifierTemperature.Visibility = Visibility.Hidden;
+            btnAnnulerModifTemperature.Visibility = Visibility.Hidden;
+            btnAjouterTemperature.IsEnabled = true;
+            btnSupprimerTemperature.IsEnabled = true;
+            lstTemperatures.IsEnabled = true;
+            btnModifierTemperature.Content = "Modifier";
         }
 
         #endregion
@@ -471,6 +498,8 @@ namespace Mova.UI.Views
             btnSupprimerActivite.IsEnabled = false;
             lstActivites.IsEnabled = false;
         }
+
+        
 
         
 

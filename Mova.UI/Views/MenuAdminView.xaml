@@ -66,34 +66,35 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height=" 50" />
-            <RowDefinition Height="100" />
-            <RowDefinition />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="35" />
             <!-- Section des activités (commence à row = 4) -->
-            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="30" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <RowDefinition Height="25" />
             <!-- Section des styles (commence à row = 10) -->
-            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="30" />
             <RowDefinition Height="33" />
             <RowDefinition Height="33" />
             <RowDefinition Height="33" />
             <!-- Section des couleurs (commence à row = 15) -->
-            <RowDefinition Height="50" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="30" />
             <RowDefinition Height="33" />
             <RowDefinition Height="33" />
             <RowDefinition Height="33" />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <!-- Section des températures (commence à row = 20) -->
+            <RowDefinition Height="40" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
+            <RowDefinition Height="33" />
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Margin="100,0,0,0" x:Name="lblTitre" Content="Administrateur" FontFamily="Calibri" FontSize="62" />
@@ -152,6 +153,22 @@
         <Button Grid.Column="5" Grid.Row="18" x:Name="btnAnnulerModifCouleur" Content="Annuler" Visibility="Hidden" Style="{StaticResource btnOrange}" Margin="5,0,0,5" Click="btnAnnulerModifCouleur_Click" />
 
 
+        <!-- Section des températures -->
+        <Label Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="20" x:Name="lblTemperatures" Content="Températures" FontFamily="Calibri" FontSize="24" VerticalAlignment="Bottom"  />
+        <Border Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="20" BorderBrush="Black" BorderThickness="0,0,0,1" />
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="21" Content="Sélectionner une couleur :" VerticalAlignment="Bottom" FontSize="16" />
+        <ListBox Grid.Column="1" Grid.Row="22" Grid.RowSpan="3" x:Name="lstTemperatures" />
+        <Button Grid.Column="2" Grid.Row="22" x:Name="btnAjouterTemperature" Content="Ajouter" Click="btnAjouterTemperature_Click" Style="{StaticResource btnVert}" Margin="5,0,0,5" />
+        <Button Grid.Column="2" Grid.Row="23" x:Name="btnModifierTemperature" Content="Modifier" Click="btnModifierTemperature_Click" Style="{StaticResource btnVert}" Margin="5,0,0,5" />
+        <Button Grid.Column="2" Grid.Row="24" x:Name="btnSupprimerTemperature" Content="Supprimer" Click="btnSupprimerTemperature_Click" Style="{StaticResource btnOrange}" Margin="5,0,0,5"/>
+        <TextBox Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="22" x:Name="txtAjouterTemperature" Visibility="Hidden" Margin="5,0,0,5" FontSize="16" />
+        <TextBox Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="23" x:Name="txtModifierTemperature" Visibility="Hidden" Margin="5,0,0,5" FontSize="16" />
+        <Button Grid.Column="5" Grid.Row="22" x:Name="btnAnnulerAjoutTemperature" Content="Annuler" Visibility="Hidden" Style="{StaticResource btnOrange}" Margin="5,0,0,5" Click="btnAnnulerAjoutTemperature_Click" />
+        <Button Grid.Column="5" Grid.Row="23" x:Name="btnAnnulerModifTemperature" Content="Annuler" Visibility="Hidden" Style="{StaticResource btnOrange}" Margin="5,0,0,5" Click="btnAnnulerModifTemperature_Click" />
+
+
+
+
         <!-- Messages d'erreurs -->
         <TextBlock x:Name="txbErreurNom" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="38,50,639,520" TextWrapping="Wrap"><Run Text="Vous devez entrer un nom"/></TextBlock>
         <TextBlock x:Name="txbErreurPrix" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="305,36,337,521" TextWrapping="Wrap"><Run Text="Vous devez entrer un prix valide (nombre entier seulement)"/></TextBlock>
@@ -166,15 +183,8 @@
 
 
 
-        <Label x:Name="lblTemperature" Content="Température" Margin="49,333,0,221" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-        <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="86" VerticalAlignment="Top" Width="154" Margin="49,364,0,0"/>
         <TextBlock x:Name="txbErreurType" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="430,370,212,198" TextWrapping="Wrap"><Run Text="Vous devez choisir le type de vêtement"/></TextBlock>
         <TextBlock x:Name="txbErreurSexe" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="49,391,593,166" TextWrapping="Wrap"><Run Text="Vous devez choisir au moins un sexe qui peut porter le vêtement"/></TextBlock>
-        <TextBox x:Name="txtAjouterTemperature" FontSize="9" Margin="336,348,0,213" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
-        <Button x:Name="btnAjouterTemperature" Margin="223,341,449,207" FontSize="10" Content="Ajouter" Click="btnAjouterTemperature_Click"/>
-        <Button x:Name="btnModifierTemperature" Margin="223,378,449,170" FontSize="10" Content="Modifier" Click="btnModifierTemperature_Click"/>
-        <Button x:Name="btnSupprimerTemperature" Margin="223,415,449,133" FontSize="10" Content="Supprimer" Click="btnSupprimerTemperature_Click"/>
-        <TextBox x:Name="txtModifierTemperature" FontSize="9" Margin="336,382,0,179" Width="125" HorizontalAlignment="Left" Visibility="Hidden"/>
         <TextBlock x:Name="lblErreur" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="55,4,0,0" Height="36" Width="215"/>
     </Grid>
 </UserControl>

@@ -42,16 +42,10 @@ namespace Mova.UI
         /// <returns>UserControl : Le dernier UserControl</returns>
         public T Last()
         {
-
             DeleteLast();
 
             //S'il y a des éléments dans la liste, on retourne le dernier
-            if (_listeView.Count > 0)
-            {
-                return _listeView[_listeView.Count - 1];
-            }
-
-            return default(T);
+            return _listeView.Count > 0 ? _listeView[_listeView.Count - 1] : default(T);
         }
 
         /// <summary>
@@ -60,14 +54,8 @@ namespace Mova.UI
         /// <returns>UserControl : Le dernier UserControl</returns>
         public T ReturnLast()
         {
-
             //S'il y a des éléments dans la liste, on retourne le dernier
-            if (_listeView.Count > 0)
-            {
-                return _listeView[_listeView.Count - 1];
-            }
-
-            return default(T);
+            return _listeView.Count > 0 ? _listeView[_listeView.Count - 1] : default(T);
         }
 
         /// <summary>
@@ -117,16 +105,13 @@ namespace Mova.UI
         public bool IsLast(T bvm)
         {
             return (_listeView.IndexOf(bvm) >= _listeView.Count-1) ? true : false;
-
         }
 
         public T GetFirst()
         {
-
             T t = _listeView[0];
 
             return t;
-        
         }
 
         public void Reset()
