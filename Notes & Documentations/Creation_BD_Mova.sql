@@ -336,6 +336,58 @@ VALUES
   "Propre"
 );
 
+/*Insertion du 11/16/2014*/
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Hipster"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Gangster"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Punk"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Tous les jours"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Far-West"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Futuristique"
+);
+
+INSERT INTO Styles
+(nomStyle)
+VALUES
+(
+  "Friperie"
+);
+
+
+
 /* Insertion dans la table Couleurs *************************************************************************/
 INSERT INTO Couleurs
 (nomCouleur)
@@ -428,6 +480,28 @@ VALUES
   "Khaki"
 );
 
+/*Insertion du 11/16/2014*/
+INSERT INTO Couleurs
+(nomCouleur)
+VALUES
+(
+  "Or"
+);
+
+INSERT INTO Couleurs
+(nomCouleur)
+VALUES
+(
+  "Argent"
+);
+
+INSERT INTO Couleurs
+(nomCouleur)
+VALUES
+(
+  "Turquoise"
+);
+
 /* Insertion dans la table Activites *************************************************************************/
 INSERT INTO Activites
 (nomActivite,estOuvrable,estConge)
@@ -460,7 +534,7 @@ INSERT INTO Activites
 (nomActivite,estOuvrable,estConge)
 VALUES
 (
-  "Jouer au golf"
+  "Jouer aux golf"
   , TRUE
   , TRUE
 );
@@ -699,14 +773,14 @@ VALUES
 INSERT INTO ActivitesMoments
 (idActivite, idMoment)
 VALUES
-( (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+( (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 , (SELECT idMoment FROM Moments WHERE nomMoment = "Matin")
 );
 
 INSERT INTO ActivitesMoments
 (idActivite, idMoment)
 VALUES
-( (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+( (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 , (SELECT idMoment FROM Moments WHERE nomMoment = "Après-midi")
 );
 
@@ -1317,7 +1391,385 @@ VALUES
 );
 /* TAGS VÊTEMENT EN COURS (ALEX GODARD) */
 
-/*Vêtement 1: pantalons adidas noir */
+/*Insertion du 11/16/2014*/
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Pantalon camouflage"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonCamouflage.jpg"
+, 35
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Bleu")
+, "Jeans 8bit"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/Jeans8bit.jpg"
+, 20
+, TRUE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Bleu")
+, "Jeans"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/JeansNormal.jpg"
+, 30
+, TRUE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Rose")
+, "Jeans rose"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/JeansRose.png"
+, 35
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Rouge")
+, "Jeans rouge"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/JeansRouge.jpg"
+, 35
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Jeans serré"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/JeansSerre.jpg"
+, 45
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Khaki")
+, "Levis 513"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/Levis513.jpg"
+, 30
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Vert")
+, "Pantalon à poches"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonAvecPlusieursPoches.jpg"
+, 20
+, FALSE
+, TRUE
+);
+
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Brun")
+, "Pantalon Ck"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonCk.jpg"
+, 40
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Pantalon de cuir"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonDeCuire.jpg"
+, 70
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Gris")
+, "Pantalon de golf"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonDeGolf.jpg"
+, 50
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Brun")
+, "Pantalon de golf orange"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonDeGolfOrange.jpg"
+, 40
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Gris")
+, "Pantalon Gucci"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonGucci.jpg"
+, 200
+, FALSE
+, TRUE
+);
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Brun")
+, "Pantalon Metal Gear Solid"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonMetalGearSolid.png"
+, 45
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Gris")
+, "Pantalon de compression Nike"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonNikeDeCompression.jpg"
+, 60
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Gris")
+, "Pantalon propre Azad Point"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonPropreAzadPoint.jpg"
+, 100
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Vert")
+, "Pantalon vert"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonVert.jpg"
+, 30
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Bas")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Gris")
+, "Nike5"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/ShortsNike5.jpg"
+, 15
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Bleu")
+, "Chassures bateau 1"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/chaussuresBateau1.jpg"
+, 70
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Chassures bateau 2"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/chaussuresBateau2.jpg"
+, 70
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Brun")
+, "Chassures simple"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/chaussuresSimple.jpg"
+, 40
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Brun")
+, "Chassures cheville haute"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresChevilleHaute.jpg"
+, 80
+, FALSE
+, TRUE
+);
+
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Chaussures Salomon de randonnée"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresDeRandonnee.jpg"
+, 70
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Chaussures Adidas Propre"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresAdidasPropre.jpg"
+, 65
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Blanc")
+, "Chaussures BD"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresBD.jpg"
+, 20
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Vert")
+, "NikeCamo"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresCamo.jpg"
+, 22
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Rouge")
+, "Classic Converse"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresConverse.jpg"
+, 40
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Noir")
+, "Chaussures dangereuse"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresDangereuse.jpg"
+, 12
+, FALSE
+, TRUE
+);
+
+INSERT INTO Vetements
+(idTypeVetement,idCouleur,nomVetement,imageURL,prix,estFemme,estHomme)
+VALUES
+(
+  (SELECT idTypeVetement FROM TypesVetements WHERE nomType = "Chaussures")
+, (SELECT idCouleur FROM Couleurs WHERE nomCouleur = "Blanc")
+, "DC Fresh"
+, "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresDC.jpg"
+, 47
+, FALSE
+, TRUE
+);
 
 /* Styles */
 INSERT INTO StylesVetements
@@ -1596,7 +2048,7 @@ INSERT INTO ActivitesVetements
 (idVetement, idActivite)
 VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Chino")
-, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 );
 
 INSERT INTO ActivitesVetements
@@ -2520,7 +2972,7 @@ INSERT INTO ActivitesVetements
 (idVetement, idActivite)
 VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike Freerun")
-, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 );
 
 INSERT INTO ActivitesVetements
@@ -3259,7 +3711,7 @@ INSERT INTO ActivitesVetements
 (idVetement, idActivite)
 VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Short Khaki")
-, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 );
 
 INSERT INTO ActivitesVetements
@@ -3330,7 +3782,7 @@ INSERT INTO ActivitesVetements
 (idVetement, idActivite)
 VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Short Gris")
-, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 );
 
 INSERT INTO ActivitesVetements
@@ -3583,7 +4035,7 @@ INSERT INTO ActivitesVetements
 (idVetement, idActivite)
 VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Polo rayé")
-, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer au golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
 );
 
 INSERT INTO ActivitesVetements
@@ -4230,5 +4682,2845 @@ VALUES
 ( (SELECT idVetement FROM Vetements WHERE nomVetement = "Adidas Tech Runner")
 , (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
 );
+
+/*Insertion du 11/26/2014*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gangster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Punk")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon camouflage")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Friperie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans 8bit")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Friperie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Far-West")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hippie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rose")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans rouge")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gothique")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Punk")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Jeans serré")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*----------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gangster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Far-West")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Levis 513")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*----------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Friperie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hippie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon à poches")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-------------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Ck")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gothique")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gangster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de cuir")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*--------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-----------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux golf")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de golf orange")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-----------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Gucci")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+/*------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon Metal Gear Solid")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+/*----------------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller se muscler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire un sport intérieur")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Courir à l'extérieur")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon de compression Nike")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+/*-------------------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Pantalon propre Azad Point")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+/*--------------------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gangster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Courir à l'extérieur")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire un sport d'équipe")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire un sport intérieur")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller se muscler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à la plage")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Nike5")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*----------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 1")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+
+/*------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures bateau 2")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures simple")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*---------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Propre")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chassures cheville haute")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Neige")
+);
+
+/*---------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'aventure")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Courir à l'extérieur")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Salomon de randonnée")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+/*------------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Sport")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Tous les jours")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures Adidas Propre")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+/*------------------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gangster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "NikeCamo")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-------------------------------------------------------------------------*/
+
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hippie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Punk")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Friperie")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+);
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Classic Converse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+/*-----------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gothique")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "Chaussures dangereuse")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+
+/*---------------------------------------------------------------------------------*/
+
+######################################################### Styles 
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Gamer")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Hipster")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+);
+
+INSERT INTO StylesVetements
+(idStyle, idVetement)
+VALUES
+( (SELECT idStyle FROM Styles WHERE nomStyle = "Relaxe")
+, (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+);
+
+#################################################### Activités 
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à l'école")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller travailler")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller chez le dentiste")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Faire l'épicerie")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller manger")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller à un rendez-vous")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller au cinéma")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Jouer aux jeux vidéo")
+);
+
+INSERT INTO ActivitesVetements
+(idVetement, idActivite)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idActivite FROM Activites WHERE nomActivite = "Aller fêter")
+);
+
+########################################################### Température
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Pluie")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Venteux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Nuageux")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Ensoleillé")
+);
+
+INSERT INTO VetementsTemperatures
+(idVetement, idTemperature)
+VALUES
+( (SELECT idVetement FROM Vetements WHERE nomVetement = "DC Fresh")
+, (SELECT idTemperature FROM Temperatures WHERE nomClimat = "Froid")
+);
+/*--------------------------------------------------------------------------------*/
 
 COMMIT;

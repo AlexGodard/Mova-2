@@ -214,6 +214,17 @@ namespace Mova.Logic.Services.MySql
                 {
                     bonus += " AND idVetement != " + uv.IdVetement;
                 }
+
+                requete = "SELECT * FROM Vetements v WHERE idTypeVetement = " + type;
+                requete += bonus;
+
+                dataset = connexion.Query(requete);
+                table = dataset.Tables[0];
+
+                foreach (DataRow vetement in table.Rows)
+                {
+                    result.Add(ConstructVetement(vetement));
+                }
                }
                else
                { 

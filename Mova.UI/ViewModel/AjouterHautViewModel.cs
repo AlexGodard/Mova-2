@@ -30,6 +30,7 @@ namespace Mova.UI.ViewModel
             if (Listes.AjouterEnsemble == true)
             {
                 Vetements = new ObservableCollection<Vetement>(ServiceFactory.Instance.GetService<IVetementService>().RetrieveVetementTypeSpecific(1, true));
+               
             }
             else
             {
