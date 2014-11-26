@@ -71,10 +71,12 @@ namespace Mova.Logic.Services.MySql
                 connexion = new MySqlConnexion();
                 string requete;
 
+                //Lors de la semaine, il est possible de vouloir tout faire ce qui n'est pas considéré comme étant congé mais lorsque ce n'est pas un jour ouvrable on ne veut pas avoir les activités habituelles de 9 à 5
                 if(estOuvrable)
-                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estOuvrable = TRUE";
+                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estConge = FALSE";
                 else
-                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estConge = TRUE";
+                    requete = "SELECT DISTINCT(a.idActivite), a.nomActivite FROM Activites a INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN ActivitesVetements av ON av.idActivite = a.idActivite INNER JOIN Vetements v ON v.idVetement = av.idVetement WHERE m.idMoment = " + idMoment + " AND estOuvrable = FALSE";
+                
 
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];

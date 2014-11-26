@@ -95,9 +95,7 @@ namespace Mova.UI
         /// <returns></returns>
         public int GetNumberOfPage(T bvm)
         {
-        
             return _listeView.IndexOf(bvm);
-        
         }
 
         /// <summary>
@@ -133,9 +131,7 @@ namespace Mova.UI
 
         public void Reset()
         {
-
             _listeView = new List<T>();
-
         }
 
     }
