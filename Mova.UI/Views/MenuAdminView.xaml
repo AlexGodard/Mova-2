@@ -112,7 +112,7 @@
         <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Left" Content="Ouvrable" x:Name="chkOuvrable" />
         <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Right" Content="Congé" x:Name="chkConge" />
         <Label Grid.Column="5" Grid.Row="5" VerticalAlignment="Bottom" Content="Moment de l'activité :" />
-        <ListBox Grid.Column="5" Grid.Row="6" Grid.RowSpan="3" x:Name="lstMoment" />
+        <ListBox Grid.Column="5" Grid.Row="6" Grid.RowSpan="3" x:Name="lstMoments" SelectionMode="Multiple" IsEnabled="False" />
 
         <Button Grid.Column="4" Grid.Row="9" x:Name="btnAjouterActivite" Content="Ajouter" Click="btnAjouterActivite_Click" Style="{StaticResource btnVert}"  Margin="0,5,0,0" FontSize="15" />
         <Button Grid.Column="5" Grid.Row="9" Content="Annuler" x:Name="btnAnnulerActivite" Click="btnAnnulerActivite_Click" Style="{StaticResource btnOrange}" Margin="0,5,0,0" FontSize="15" />

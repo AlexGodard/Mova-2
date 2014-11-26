@@ -113,6 +113,38 @@ namespace Mova.Logic.Services.MySql
             }
         }
 
+        public void Create(Activite activite, bool estOuvrable, bool estConge, List<Moment> listeMomentsSelectionnes)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string debutRequete = "INSERT IGNORE INTO Activites (nomActivite, estOuvrable, estConge) VALUES ";
+
+
+                string valeurs = "('" + activite.NomActivite.Replace("'", "''") + "', " + estOuvrable + ", " + estConge + ")";
+                string requete = debutRequete + valeurs;
+
+                DataSet dataset = connexion.Query(requete);
+
+                dataset = connexion.Query("SELECT MAX(idActivite) FROM Activites");
+
+                foreach (Moment moment in listeMomentsSelectionnes)
+                {
+                    string debut = "INSERT IGNORE INTO ActivitesMoments (idActivite, idMoment) VALUES ";
+                    string reste = "( " + (int)dataset.Tables[0].Rows[0].ItemArray[0] + ", " +
+                                   "(SELECT idMoment FROM Moments WHERE nomMoment = '" + moment.NomMoment + "') );";
+
+                    DataSet datasetQuery = connexion.Query(debut + reste);
+                }
+                
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
         public void Update(Activite activite, string newActivite)
         {
             try
@@ -122,6 +154,43 @@ namespace Mova.Logic.Services.MySql
                 string requete = "UPDATE Activites SET nomActivite = '" + newActivite.Replace("'", "''") + "' WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public void Update(Activite activite, string newActivite, bool estOuvrable, bool estConge, List<Moment> listeMomentsSelectionnes)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "UPDATE Activites SET nomActivite = '" + newActivite.Replace("'", "''") + "', estOuvrable = " + estOuvrable +
+                                  ", estOuvrable = " + estOuvrable + " WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+
+                // On doit aller chercher l'id de l'activité qu'on vient de modifier
+                dataset = connexion.Query("SELECT MAX(idActivite) FROM Activites WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "')");
+
+                int idActivite = (int)dataset.Tables[0].Rows[0].ItemArray[0];
+
+                // On update maintenant les moments
+
+                // ON DELETE LES MOMENTS LIÉS À L'ACTIVITÉ POUR ENSUITE LES RÉAJOUTER, CAR IL EST IMPOSSIBLE DE FAIRE UN UPDATE
+                connexion.Query("DELETE FROM Moments WHERE idActivite = " + idActivite + " )");
+
+                // On insert maintenant les bon moments pour cette activité
+                foreach (Moment moment in listeMomentsSelectionnes)
+                {
+                    string debut = "INSERT IGNORE INTO ActivitesMoments (idActivite, idMoment) VALUES ";
+                    string reste = "( " + idActivite + ", " +
+                                   "(SELECT idMoment FROM Moments WHERE nomMoment = '" + moment.NomMoment + "') );";
+
+                    DataSet datasetQuery = connexion.Query(debut + reste);
+                }
             }
             catch (MySqlException)
             {

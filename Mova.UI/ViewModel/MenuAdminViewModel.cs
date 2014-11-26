@@ -21,6 +21,7 @@ namespace Mova.UI.ViewModel
         private IStyleService _styleService;
         private ITemperatureService _temperatureService;
         private ICouleurService _couleurService;
+        private IMomentService _momentService;
 
         public RetrieveVetementArgs RetrieveArgs { get; set; }
 
@@ -30,16 +31,19 @@ namespace Mova.UI.ViewModel
             Styles = new ObservableCollection<StyleVetement>(ServiceFactory.Instance.GetService<IStyleService>().RetrieveAll());
             Temperatures = new ObservableCollection<Temperature>(ServiceFactory.Instance.GetService<ITemperatureService>().RetrieveAll());
             Couleurs = new ObservableCollection<Couleur>(ServiceFactory.Instance.GetService<ICouleurService>().RetrieveAll());
+            Moments = new ObservableCollection<Moment>(ServiceFactory.Instance.GetService<IMomentService>().RetrieveAll());
 
             Listes.ListeActivites = Activites.ToList<Activite>();
             Listes.ListeStyles = Styles.ToList<StyleVetement>();
             Listes.ListeTemperatures = Temperatures.ToList<Temperature>();
             Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
+            Listes.ListeMoments = Moments.ToList<Moment>();
 
             _activiteService = ServiceFactory.Instance.GetService<IActiviteService>();
             _styleService = ServiceFactory.Instance.GetService<IStyleService>();
             _temperatureService = ServiceFactory.Instance.GetService<ITemperatureService>();
             _couleurService = ServiceFactory.Instance.GetService<ICouleurService>();
+            _momentService = ServiceFactory.Instance.GetService<IMomentService>();
             
             _vetementService = ServiceFactory.Instance.GetService<IVetementService>();
             RetrieveArgs = new RetrieveVetementArgs();
@@ -122,14 +126,34 @@ namespace Mova.UI.ViewModel
             }
         }
 
+        public ObservableCollection<Moment> Moments
+        {
+            get
+            {
+                return _moments;
+            }
+
+            set
+            {
+                if (_moments == value)
+                {
+                    return;
+                }
+
+                _moments
+                 = value;
+            }
+        }
+
         private ObservableCollection<StyleVetement> _styles = new ObservableCollection<StyleVetement>();
         private ObservableCollection<Activite> _activites = new ObservableCollection<Activite>();
         private ObservableCollection<Temperature> _temperatures = new ObservableCollection<Temperature>();
         private ObservableCollection<Couleur> _couleurs = new ObservableCollection<Couleur>();
+        private ObservableCollection<Moment> _moments = new ObservableCollection<Moment>();
 
-        public void ajouterActivite(string nomActivite)
+        public void ajouterActivite(string nomActivite, bool estOuvrable, bool estConge, List<Moment> listeMoments)
         {
-            _activiteService.Create(new Activite(nomActivite));
+            _activiteService.Create(new Activite(nomActivite), estOuvrable, estConge, listeMoments);
             // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
             Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
             Listes.ListeActivites = Activites.ToList<Activite>();
@@ -156,11 +180,11 @@ namespace Mova.UI.ViewModel
             Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
         }
 
-        public void modifierActivite(string nomActivite, string newActivite)
+        public void modifierActivite(string nomActivite, string newActivite, bool estOuvrable, bool estConge, List<Moment> listeMoments)
         {
             if (nomActivite != newActivite && newActivite != "")
             {
-                _activiteService.Update(new Activite(nomActivite), newActivite);
+                _activiteService.Update(new Activite(nomActivite), newActivite, estOuvrable, estConge, listeMoments);
                 // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
                 Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
                 Listes.ListeActivites = Activites.ToList<Activite>();

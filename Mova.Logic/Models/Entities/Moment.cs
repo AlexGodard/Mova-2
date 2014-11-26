@@ -174,5 +174,16 @@ namespace Mova.Logic.Models
         }
 
         #endregion;
+
+        public Moment(string nomMoment)
+        {
+            // TODO: Complete member initialization
+            this.NomMoment = nomMoment;
+        }
+
+        public Moment()
+        {
+            
+        }
     }
 }
