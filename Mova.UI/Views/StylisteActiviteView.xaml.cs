@@ -85,7 +85,7 @@ namespace Mova.UI.Views
             //On affiche seulement 4 boutons dans l'écran styliste.
             int col = 2;
             int rangee = 2;
-            for (int i = 1; i <= _maxBoutons; i++)
+            for (int i = 1; i <= _maxBoutons && i <= listeActivites.Count; i++)
             {
                 Button btn = new Button();
                 btn.Content = listeActivites[i - 1].NomActivite.ToString();

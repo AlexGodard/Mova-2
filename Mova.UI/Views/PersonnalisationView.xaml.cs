@@ -134,6 +134,7 @@ namespace Mova.UI.Views
                 }
 
                 IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
+                RecentsView._historique = new History<UserControl>();
                 mainVM.ChangeView<UserControl>(new RecentsView());
 
             }

@@ -128,19 +128,25 @@ namespace Mova.Logic.Models
                 case "Sunday":
                     return false;
                 case "Monday":
-                    return true;
+                    return IsWorkingTime(dt);
                 case "Tuesday":
-                    return true;
+                    return IsWorkingTime(dt);
                 case "Wednesday":
-                    return true;
+                    return IsWorkingTime(dt);
                 case "Thursday":
-                    return true;
+                    return IsWorkingTime(dt);
                 case "Friday":
-                    return false;
+                    return IsWorkingTime(dt);
                 default:
                     return false;
 
             }
+        }
+
+        //Logique derrière tout ça : Tu penses pas aller travailler passé midi et tu peux commencer à penser à travailler à 5 heure du matin
+        private static bool IsWorkingTime(DateTime dt)
+        { 
+            return (dt.Hour >=5 && dt.Hour <= 12)? true : false;
         }
 
         /// <summary>
