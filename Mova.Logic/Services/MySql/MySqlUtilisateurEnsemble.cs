@@ -142,7 +142,7 @@ namespace Mova.Logic.Services.MySql
                     if (listeVetementTemp.Count >= 3)
                     {
 
-                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp , DateAjout = (DateTime)enregistrement["dateCreation"]});
+                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp});
 
                         listeVetementTemp = new List<Vetement>();
                     }
