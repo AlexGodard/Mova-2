@@ -532,6 +532,10 @@ namespace Mova.UI.Views
         #endregion
 
 
+    
+        
+
+<<<<<<< HEAD
         private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
         {
             // On débloque le champ
