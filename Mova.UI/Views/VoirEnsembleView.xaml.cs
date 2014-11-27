@@ -114,7 +114,7 @@ namespace Mova.UI.Views
 
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
-            iColonne = 1;
+            iColonne = 0;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -142,7 +142,7 @@ namespace Mova.UI.Views
 
 
             //On crée des boutons pour les premiers 12 activités
-            foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur)
+            foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur.Skip(iVetementDepart))
             {
                 iColonne++;
 
@@ -207,7 +207,7 @@ namespace Mova.UI.Views
 
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
-            iColonne = 1;
+            iColonne = 0;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -231,7 +231,7 @@ namespace Mova.UI.Views
             iNbVetementPrecedent = 0;   //On efface le nombre d'activités passées pour garder trace des nouveaux
 
             //On crée des boutons pour les premiers 12 activités
-            foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur)
+            foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur.Skip(iVetementDepart))
             {
                 iColonne++;
 

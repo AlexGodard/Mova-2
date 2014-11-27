@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Jeu 27 Novembre 2014 à 10:59
+-- Généré le : Jeu 27 Novembre 2014 à 11:27
 -- Version du serveur: 5.5.8
 -- Version de PHP: 5.3.5
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `activites` (
   `estConge` tinyint(1) NOT NULL,
   PRIMARY KEY (`idActivite`),
   UNIQUE KEY `nomActivite` (`nomActivite`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Contenu de la table `activites`
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `activitesvetements` (
   PRIMARY KEY (`idActiviteVetement`),
   KEY `ActivitesVetements_Vetements_FK` (`idVetement`),
   KEY `ActivitesVetements_Activities_FK` (`idActivite`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=587 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=590 ;
 
 --
 -- Contenu de la table `activitesvetements`
@@ -716,7 +716,10 @@ INSERT INTO `activitesvetements` (`idActiviteVetement`, `idVetement`, `idActivit
 (583, 92, 6),
 (584, 92, 10),
 (585, 92, 16),
-(586, 92, 14);
+(586, 92, 14),
+(587, 93, 7),
+(588, 93, 9),
+(589, 93, 12);
 
 -- --------------------------------------------------------
 
@@ -763,14 +766,17 @@ CREATE TABLE IF NOT EXISTS `ensembles` (
   `idEnsemble` int(11) NOT NULL AUTO_INCREMENT,
   `nomEnsemble` varchar(50) NOT NULL,
   PRIMARY KEY (`idEnsemble`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `ensembles`
 --
 
 INSERT INTO `ensembles` (`idEnsemble`, `nomEnsemble`) VALUES
-(1, 'GameboyGangster');
+(1, 'GameboyGangster'),
+(2, 'running'),
+(3, 'samedi soir'),
+(4, 'gamer');
 
 -- --------------------------------------------------------
 
@@ -785,7 +791,7 @@ CREATE TABLE IF NOT EXISTS `ensemblesvetements` (
   PRIMARY KEY (`idEnsembleVetement`),
   KEY `EnsemblesVetements_Ensembles_FK` (`idEnsemble`),
   KEY `EnsemblesVetements_Vetements_FK` (`idVetement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `ensemblesvetements`
@@ -794,7 +800,16 @@ CREATE TABLE IF NOT EXISTS `ensemblesvetements` (
 INSERT INTO `ensemblesvetements` (`idEnsembleVetement`, `idEnsemble`, `idVetement`) VALUES
 (1, 1, 75),
 (2, 1, 8),
-(3, 1, 13);
+(3, 1, 13),
+(4, 2, 2),
+(5, 2, 1),
+(6, 2, 3),
+(7, 3, 18),
+(8, 3, 8),
+(9, 3, 3),
+(10, 4, 5),
+(11, 4, 4),
+(12, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -866,7 +881,7 @@ CREATE TABLE IF NOT EXISTS `stylesvetements` (
   PRIMARY KEY (`idStyleVetement`),
   KEY `StylesVetements_Styles_FK` (`idStyle`),
   KEY `StylesVetements_Vetements_FK` (`idVetement`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=240 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=241 ;
 
 --
 -- Contenu de la table `stylesvetements`
@@ -1110,7 +1125,8 @@ INSERT INTO `stylesvetements` (`idStyleVetement`, `idStyle`, `idVetement`) VALUE
 (236, 3, 91),
 (237, 7, 91),
 (238, 12, 91),
-(239, 1, 92);
+(239, 1, 92),
+(240, 6, 93);
 
 -- --------------------------------------------------------
 
@@ -1205,14 +1221,17 @@ CREATE TABLE IF NOT EXISTS `utilisateursensembles` (
   PRIMARY KEY (`idUtilisateurEnsemble`),
   KEY `UtilisateursEnsembles_Utilisateurs_FK` (`idUtilisateur`),
   KEY `UtilisateursEnsembles_Ensembles_FK` (`idEnsemble`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `utilisateursensembles`
 --
 
 INSERT INTO `utilisateursensembles` (`idUtilisateurEnsemble`, `idUtilisateur`, `idEnsemble`, `dateCreation`, `estFavori`, `estDansGardeRobe`) VALUES
-(1, 1, 1, '2014-11-27 10:42:28', 0, 1);
+(1, 1, 1, '2014-11-27 10:42:28', 0, 1),
+(2, 1, 2, '2014-11-27 11:11:01', 0, 1),
+(3, 1, 3, '2014-11-27 11:19:33', 0, 1),
+(4, 1, 4, '2014-11-27 11:19:49', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1254,7 +1273,7 @@ CREATE TABLE IF NOT EXISTS `vetements` (
   PRIMARY KEY (`idVetement`),
   KEY `Vetements_TypesVetements_FK` (`idTypeVetement`),
   KEY `Vetements_Couleurs_FK` (`idCouleur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=93 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
 
 --
 -- Contenu de la table `vetements`
@@ -1350,7 +1369,8 @@ INSERT INTO `vetements` (`idVetement`, `idTypeVetement`, `idCouleur`, `nomVeteme
 (89, 3, 4, 'Chaussures à David', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresPropre.jpg', 79, 1, 0),
 (90, 3, 1, 'Puma Originals', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresPuma.jpg', 45, 1, 0),
 (91, 3, 8, 'Nike zelda', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresZelda.jpg', 65, 1, 0),
-(92, 3, 3, 'Nike free run 6.0', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresDeCourse.jpg', 99, 1, 0);
+(92, 3, 3, 'Nike free run 6.0', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresDeCourse.jpg', 99, 1, 0),
+(93, 1, 6, 'Big Boss', '420.cstj.qc.ca/images_mova/hauts/VestonPropre.jpg', 215, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1365,7 +1385,7 @@ CREATE TABLE IF NOT EXISTS `vetementstemperatures` (
   PRIMARY KEY (`idVetementTemperature`),
   KEY `VetementsTemperatures_Vetements_FK` (`idVetement`),
   KEY `VetementsTemperatures_idTemperature_FK` (`idTemperature`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=428 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=434 ;
 
 --
 -- Contenu de la table `vetementstemperatures`
@@ -1792,7 +1812,13 @@ INSERT INTO `vetementstemperatures` (`idVetementTemperature`, `idVetement`, `idT
 (424, 92, 1),
 (425, 92, 3),
 (426, 92, 4),
-(427, 92, 2);
+(427, 92, 2),
+(428, 93, 2),
+(429, 93, 5),
+(430, 93, 6),
+(431, 93, 1),
+(432, 93, 3),
+(433, 93, 4);
 
 --
 -- Contraintes pour les tables exportées
