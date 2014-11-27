@@ -19,6 +19,7 @@
             <RowDefinition Height="20*" />
             <RowDefinition Height="5*" />
         </Grid.RowDefinitions>
+
         <Label x:Name="lblDate1" Height="30" Grid.Column="1" Margin="31,4,31,10" Grid.Row="4"/>
         <Label x:Name="lblDate2" Height="30" Grid.Column="2" Margin="31,4,31,10" Grid.Row="4"/>
         <Label x:Name="lblDate3" Height="30" Grid.Column="3" Margin="31,4,32,10" Grid.Row="4"/>
