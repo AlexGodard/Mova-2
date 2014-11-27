@@ -421,41 +421,53 @@ namespace Mova.Logic.Services.MySql
 
             List<EnsembleVetement> lstEnsembleVetement = new List<EnsembleVetement>();
             List<Vetement> lstTemp = new List<Vetement>();
+            bool match = false;
 
             //Exploded view of the problem
             foreach (Vetement v in l)
             {
+
                 lstTemp.Add(v);
-                int idUn = ((int)(v.TypeVetement.IdType))-1;
-                int idDeux = (int)(lstTemp[lstTemp.Count - 1].TypeVetement.IdType);
 
-                bool match = (idUn == idDeux);
-
-
-                if (lstTemp.Count > 1 && match)
-                {
-
-                    if (lstTemp.Count >= 3) {
-
-                        lstEnsembleVetement.Add(new EnsembleVetement()
-                        {
-
-                            ListeVetements = lstTemp
-
-                        });
-
-                        lstTemp = new List<Vetement>();
-
-                    }
+                switch (lstTemp.Count){
                 
+                    case 1:
+                        match = true;
+                        break;
+
+                    case 2:
+                        match = ((int)(lstTemp[lstTemp.Count - 1].TypeVetement.IdType)) > ((int)(lstTemp[lstTemp.Count - 2].TypeVetement.IdType));
+                        break;
+                    case 3:
+                        match = ((int)(lstTemp[lstTemp.Count - 1].TypeVetement.IdType)) > ((int)(lstTemp[lstTemp.Count - 2].TypeVetement.IdType));
+                        
+                        break;
+                    default:
+                        match = false;
+                        lstTemp = new List<Vetement>();
+                        break;
                 
                 }
-                else if (lstTemp.Count > 1 && !match)
+
+                if (match && lstTemp.Count >= 3)
                 {
+
+                    lstEnsembleVetement.Add(new EnsembleVetement()
+                    {
+
+                        ListeVetements = lstTemp
+
+                    });
 
                     lstTemp = new List<Vetement>();
-                
+
                 }
+                else if(!match){
+                    lstTemp = new List<Vetement>();
+                    lstTemp.Add(v);
+                }
+
+
             }
 
 
