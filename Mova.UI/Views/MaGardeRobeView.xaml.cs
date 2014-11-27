@@ -121,5 +121,15 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<VoirEnsembleView>(new VoirEnsembleView());
         }
+
+        private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void voirEnsembles_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -27,13 +27,19 @@
             </Setter>
         </Style>
 
+        <!-- Style du texte du nombre de vêtements -->
+        <Style TargetType="Label" x:Key="lblNbVetement">
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
     </UserControl.Resources>
 
     <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="150" />
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="200" />
@@ -52,13 +58,26 @@
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Ma garde-robe" FontFamily="Calibri" FontSize="62" />
 
         <!-- Icone des vêtements -->
-        <Button Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" Name="voirEnsembles" Click="voirEnsembles_Click">
+        <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" x:Name="voirEnsembles" VerticalAlignment="Center" HorizontalAlignment="Left" Click="voirEnsembles_Click">
             <Button.Template>
-                <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/stickMan.png" />
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/stickMan.png" Visibility="Visible" Width="250" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/StickMan_hover.png" Visibility="Collapsed" Width="250" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
+
+
+        
         <Button Grid.Column="4" Grid.Row="2" Name="voirHauts" Click="btnvoirHauts_Click" >
             <Button.Template>
                 <ControlTemplate>
@@ -66,32 +85,32 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Column="4" Grid.Row="3" Name="voirBas" Click="btnvoirBas_Click" >
+        <Button Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Name="voirBas" Click="btnvoirBas_Click" >
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/bas.png" />
+                    <Image Source="pack://application:,,,/../Resources/bas.png" Width="115" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Column="4" Grid.Row="4" Name="voirSouliers" Click="btnvoirSouliers_Click" >
+        <Button Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" Name="voirSouliers" Click="btnvoirSouliers_Click" >
             <Button.Template>
                 <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/soulier.png" />
+                    <Image Source="pack://application:,,,/../Resources/soulier.png" Width="115" />
                 </ControlTemplate>
             </Button.Template>
         </Button>
 
         <!-- Boutons pour ajouter un vêtement -->
-        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" Name="ajouterEnsemble" Content="ajouter" Click="ajouterEnsemble_Click" Style="{StaticResource btnAjoute}" />
-        <Button Grid.Column="3" Grid.Row="2" Name="ajouterHaut" Content="ajouter" Click="ajouterHaut_Click" Style="{StaticResource btnAjoute}" />
-        <Button Grid.Column="3" Grid.Row="3" Name="ajouterBas" Content="ajouter" Click="ajouterBas_Click" Style="{StaticResource btnAjoute}" />
-        <Button Grid.Column="3" Grid.Row="4" Name="ajouterSouliers" Content="ajouter" Click="ajouterSouliers_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Name="ajouterEnsemble" Content="ajouter" Click="ajouterEnsemble_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" Name="ajouterHaut" Content="ajouter" Click="ajouterHaut_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" Name="ajouterBas" Content="ajouter" Click="ajouterBas_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="4" VerticalAlignment="Center" Name="ajouterSouliers" Content="ajouter" Click="ajouterSouliers_Click" Style="{StaticResource btnAjoute}" />
         
         <!-- Label sur la quantité de vêtement -->
-        <Label Grid.Column="2" Grid.Row="4" Name="lblNbEnsemble" Content="Vous avez 0 ensembles" />
-        <Label Grid.Column="5" Grid.Row="2" Name="lblNbHauts" Content="Vous avez 0 hauts" />
-        <Label Grid.Column="5" Grid.Row="3" Name="lblNbBas" Content="Vous avez 0 bas" />
-        <Label Grid.Column="5" Grid.Row="4" Name="lblNbSouliers" Content="Vous avez 0 souliers" />
+        <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Center" Name="lblNbEnsemble" Content="Vous avez 0 ensembles" Style="{StaticResource lblNbVetement}" />
+        <Label Grid.Column="5" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblNbHauts" Content="Vous avez 0 hauts" Style="{StaticResource lblNbVetement}" />
+        <Label Grid.Column="5" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblNbBas" Content="Vous avez 0 bas" Style="{StaticResource lblNbVetement}" />
+        <Label Grid.Column="5" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblNbSouliers" Content="Vous avez 0 souliers" Style="{StaticResource lblNbVetement}" />
 
     </Grid>
 </UserControl>
