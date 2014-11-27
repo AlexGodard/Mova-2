@@ -214,28 +214,11 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = false;
             btnSupprimerActivite.IsEnabled = false;
             lstActivites.IsEnabled = false;
+            lstMoments.IsEnabled = true;
             construireListe("Moment");
             //On affiche les champs pour ajouter une activité.
             afficherChampsActivite();
             btnEnregistrerActivite.Content = "Ajouter";
-        }
-
-        private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
-        {
-            // On débloque les champs pour modifier l'activité sélectionnée.
-            if (lstActivites.SelectedIndex != -1)
-            {
-                estModifie = true;          //On enregistre qu'on a cliqué sur le bouton modifié.
-                afficherChampsActivite();
-                btnEnregistrerActivite.Content = "Enregistrer";
-                txtNomActivite.Text = lstActivites.SelectedItem.ToString();
-
-                // On selectionne les bons moments.
-
-                btnModifierActivite.IsEnabled = false;
-                btnSupprimerActivite.IsEnabled = false;
-                lstActivites.IsEnabled = false;
-            }
         }
 
         private void btnSupprimerActivite_Click(object sender, RoutedEventArgs e)
@@ -302,6 +285,9 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = true;
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
+            lstMoments.IsEnabled = false;
+            lstMoments.Items.Clear();
+
             //On cache les champs.
             cacherChampsActivite();
         }
@@ -533,9 +519,6 @@ namespace Mova.UI.Views
 
 
     
-        
-
-<<<<<<< HEAD
         private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
         {
             // On débloque le champ
@@ -551,7 +534,6 @@ namespace Mova.UI.Views
                 listeMomentsASelectionner = (List<Moment>)chargerMomentsPourActivite(txtNomActivite.Text);
 
                 construireListe("Moment");
-                lstMoments.IsEnabled = true;
 
                 // On selectionne les bons moments.
                 /*foreach(Moment moment in listeMomentsASelectionner)
@@ -571,12 +553,12 @@ namespace Mova.UI.Views
                 }*/
                 
                 //lstMoments.SelectedItems()
+                afficherChampsActivite();
 
                 estModifie = true;
                 btnModifierActivite.IsEnabled = false;
                 btnSupprimerActivite.IsEnabled = false;
                 lstActivites.IsEnabled = false;
-                lblOu.Content = "-ET-";
             }
 
             //if (txtModifierActivite.Visibility == Visibility.Visible)
@@ -615,17 +597,6 @@ namespace Mova.UI.Views
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
 
             mainVM.ChangeView<UserControl>(new AdminView());
-        }
-
-
-        private void btnAnnulerActivite_Click(object sender, RoutedEventArgs e)
-        {
-            txtNomActivite.Text = string.Empty;
-            btnModifierActivite.IsEnabled = true;
-            btnSupprimerActivite.IsEnabled = true;
-            lstActivites.IsEnabled = true;
-            lstMoments.IsEnabled = false;
-            lstMoments.Items.Clear();
         }
 
         private void txtNomActivite_GotFocus(object sender, RoutedEventArgs e)
