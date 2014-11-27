@@ -214,7 +214,6 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = false;
             btnSupprimerActivite.IsEnabled = false;
             lstActivites.IsEnabled = false;
-            lstMoments.IsEnabled = true;
             construireListe("Moment");
             //On affiche les champs pour ajouter une activité.
             afficherChampsActivite();
@@ -285,7 +284,6 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = true;
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
-            lstMoments.IsEnabled = false;
             lstMoments.Items.Clear();
 
             //On cache les champs.
@@ -518,7 +516,6 @@ namespace Mova.UI.Views
         #endregion
 
 
-    
         private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
         {
             // On débloque le champ
@@ -605,7 +602,6 @@ namespace Mova.UI.Views
             btnSupprimerActivite.IsEnabled = false;
             lstActivites.IsEnabled = false;
             construireListe("Moment");
-            lstMoments.IsEnabled = true;
 
         }
 
