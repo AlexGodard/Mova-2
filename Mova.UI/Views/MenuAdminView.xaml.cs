@@ -209,8 +209,50 @@ namespace Mova.UI.Views
 
         private void btnAjouterActivite_Click(object sender, RoutedEventArgs e)
         {
+            //On désactive les champs.
+            btnAjouterActivite.IsEnabled = false;
+            btnModifierActivite.IsEnabled = false;
+            btnSupprimerActivite.IsEnabled = false;
+            lstActivites.IsEnabled = false;
+            construireListe("Moment");
+            //On affiche les champs pour ajouter une activité.
+            afficherChampsActivite();
+            btnEnregistrerActivite.Content = "Ajouter";
+        }
+
+        private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
+        {
+            // On débloque les champs pour modifier l'activité sélectionnée.
+            if (lstActivites.SelectedIndex != -1)
+            {
+                estModifie = true;          //On enregistre qu'on a cliqué sur le bouton modifié.
+                afficherChampsActivite();
+                btnEnregistrerActivite.Content = "Enregistrer";
+                txtNomActivite.Text = lstActivites.SelectedItem.ToString();
+
+                // On selectionne les bons moments.
+
+                btnModifierActivite.IsEnabled = false;
+                btnSupprimerActivite.IsEnabled = false;
+                lstActivites.IsEnabled = false;
+            }
+        }
+
+        private void btnSupprimerActivite_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstActivites.SelectedIndex != -1)
+            {
+                ViewModel.supprimerActivite(lstActivites.SelectedItem.ToString());
+                lstActivites.Items.Clear();
+                construireListe("Activite");
+            }
+            //TODO: Message d'erreur
+        }
+
+        private void btnEnregistrerActivite_Click(object sender, RoutedEventArgs e)
+        {
             //Si on a cliqué sur le bouton modifier, on exécute ceci.
-            if(estModifie)
+            if (estModifie)
             {
                 // On doit obtenir la liste des moments sélectionnés
                 List<Moment> listeMomentsSelectionnes = new List<Moment>();
@@ -236,21 +278,58 @@ namespace Mova.UI.Views
 
                 ViewModel.ajouterActivite(txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkOuvrable.IsChecked, listeMomentsSelectionnes);
             }
-            
 
+            //On réinitialise les champs.
             lstMoments.Items.Clear();
             lstActivites.Items.Clear();
             construireListe("Activite");
             txtNomActivite.Text = string.Empty;
-            btnAjouterActivite.Content = "Ajouter";
             estModifie = false;
 
+            btnAjouterActivite.IsEnabled = true;
             btnModifierActivite.IsEnabled = true;
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
-            lstMoments.IsEnabled = false;
-            lblOu.Content = "-OU-";
+
+            cacherChampsActivite();
         }
+
+        private void btnAnnulerActivite_Click(object sender, RoutedEventArgs e)
+        {
+            //On réinitialise les champs.
+            txtNomActivite.Text = string.Empty;
+            btnAjouterActivite.IsEnabled = true;
+            btnModifierActivite.IsEnabled = true;
+            btnSupprimerActivite.IsEnabled = true;
+            lstActivites.IsEnabled = true;
+            //On cache les champs.
+            cacherChampsActivite();
+        }
+
+        private void afficherChampsActivite()
+        {
+            lblNomActivite.Visibility = Visibility.Visible;
+            txtNomActivite.Visibility = Visibility.Visible;
+            chkOuvrable.Visibility = Visibility.Visible;
+            chkConge.Visibility = Visibility.Visible;
+            lblNomMoment.Visibility = Visibility.Visible;
+            lstMoments.Visibility = Visibility.Visible;
+            btnEnregistrerActivite.Visibility = Visibility.Visible;
+            btnAnnulerActivite.Visibility = Visibility.Visible;
+        }
+
+        private void cacherChampsActivite()
+        {
+            lblNomActivite.Visibility = Visibility.Hidden;
+            txtNomActivite.Visibility = Visibility.Hidden;
+            chkOuvrable.Visibility = Visibility.Hidden;
+            chkConge.Visibility = Visibility.Hidden;
+            lblNomMoment.Visibility = Visibility.Hidden;
+            lstMoments.Visibility = Visibility.Hidden;
+            btnEnregistrerActivite.Visibility = Visibility.Hidden;
+            btnAnnulerActivite.Visibility = Visibility.Hidden;
+        }
+
 
         #endregion
 
@@ -456,61 +535,9 @@ namespace Mova.UI.Views
     
         
 
-        private void btnModifierActivite_Click(object sender, RoutedEventArgs e)
-        {
-            // On débloque le champ
-            if (lstActivites.SelectedIndex != -1)
-            {
-                btnAjouterActivite.Content = "Enregistrer";
-                txtNomActivite.Text = lstActivites.SelectedItem.ToString();
+        
 
-                // On selectionne les bons moments.
-                
-                
-                estModifie = true;
-                btnModifierActivite.IsEnabled = false;
-                btnSupprimerActivite.IsEnabled = false;
-                lstActivites.IsEnabled = false;
-                lblOu.Content = "-ET-";
-            }
-
-            //if (txtModifierActivite.Visibility == Visibility.Visible)
-            //{
-
-            //    ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtModifierActivite.Text);
-            //    lstActivites.Items.Clear();
-            //    construireListe("Activite");
-            //    txtModifierActivite.Text = "";
-            //    txtModifierActivite.Visibility = Visibility.Hidden;
-            //    btnModifierActivite.Content = "Modifier";
-            //    btnAjouterActivite.IsEnabled = true;
-            //    btnSupprimerActivite.IsEnabled = true;
-            //}
-            //else
-            //{
-            //    // On débloque le champ
-            //    if (lstActivites.SelectedIndex != -1)
-            //    {
-            //        txtModifierActivite.Visibility = Visibility.Visible;
-            //        btnModifierActivite.Content = "Enregistrer la modification";
-            //        txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
-            //        btnAjouterActivite.IsEnabled = false;
-            //        btnSupprimerActivite.IsEnabled = false;
-            //    }
-            //    //TODO: Message d'erreur
-            //}
-        }
-
-        private void btnSupprimerActivite_Click(object sender, RoutedEventArgs e)
-        {
-            if (lstActivites.SelectedIndex != -1)
-            {
-                ViewModel.supprimerActivite(lstActivites.SelectedItem.ToString());
-                lstActivites.Items.Clear();
-                construireListe("Activite");
-            }
-            //TODO: Message d'erreur
-        }
+        
 
         private void btnAjouterVetement_Click(object sender, RoutedEventArgs e)
         {
@@ -520,24 +547,6 @@ namespace Mova.UI.Views
 
             mainVM.ChangeView<UserControl>(new AdminView());
         }
-
-        private void btnAnnulerActivite_Click(object sender, RoutedEventArgs e)
-        {
-            txtNomActivite.Text = string.Empty;
-            btnModifierActivite.IsEnabled = true;
-            btnSupprimerActivite.IsEnabled = true;
-            lstActivites.IsEnabled = true;
-        }
-
-        private void txtNomActivite_GotFocus(object sender, RoutedEventArgs e)
-        {
-            btnModifierActivite.IsEnabled = false;
-            btnSupprimerActivite.IsEnabled = false;
-            lstActivites.IsEnabled = false;
-            lstMoments.IsEnabled = true;
-            construireListe("Moment");
-        }
-
         
 
         
