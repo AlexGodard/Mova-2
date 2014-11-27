@@ -6,7 +6,28 @@
              xmlns:local="clr-namespace:Mova.UI.Views" x:Class="Mova.UI.Views.MaGardeRobeView" 
              mc:Ignorable="d" SnapsToDevicePixels="True">
 
+    <UserControl.Resources>
+        <!-- Image du bouton suivant -->
+        <Style TargetType="Button" x:Key="btnAjoute">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <Image Name="fond1" Source="pack://application:,,,/../Resources/plusBlack.png" Width="100" Visibility="Visible" />
+                            <Image Name="fond2" Source="pack://application:,,,/../Resources/plusWhite.png" Width="100" Visibility="Collapsed" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
+    </UserControl.Resources>
 
     <Grid>
 
@@ -61,10 +82,10 @@
         </Button>
 
         <!-- Boutons pour ajouter un vêtement -->
-        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" Name="ajouterEnsemble" Content="ajouter" Click="ajouterEnsemble_Click"/>
-        <Button Grid.Column="3" Grid.Row="2" Name="ajouterHaut" Content="ajouter" Click="ajouterHaut_Click" />
-        <Button Grid.Column="3" Grid.Row="3" Name="ajouterBas" Content="ajouter" Click="ajouterBas_Click"/>
-        <Button Grid.Column="3" Grid.Row="4" Name="ajouterSouliers" Content="ajouter" Click="ajouterSouliers_Click"/>
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" VerticalAlignment="Center" Name="ajouterEnsemble" Content="ajouter" Click="ajouterEnsemble_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="2" Name="ajouterHaut" Content="ajouter" Click="ajouterHaut_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="3" Name="ajouterBas" Content="ajouter" Click="ajouterBas_Click" Style="{StaticResource btnAjoute}" />
+        <Button Grid.Column="3" Grid.Row="4" Name="ajouterSouliers" Content="ajouter" Click="ajouterSouliers_Click" Style="{StaticResource btnAjoute}" />
         
         <!-- Label sur la quantité de vêtement -->
         <Label Grid.Column="2" Grid.Row="4" Name="lblNbEnsemble" Content="Vous avez 0 ensembles" />
