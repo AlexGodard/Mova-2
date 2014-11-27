@@ -28,15 +28,55 @@ namespace Mova.UI.ViewModel
         /// </summary>
         public EnsembleVetementViewModel()
         {
-            if (EnsembleView._historique.IsEmpty()){
+            if (EnsembleView._historique.IsEmpty())
+            {
 
                 _ensembleVetementService = ServiceFactory.Instance.GetService<IEnsembleVetementService>();
 
-                EnsemblesVetements = new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste));
+                EnsemblesVetements = new ObservableCollection<EnsembleVetement>(_ensembleVetementService.RetrieveSelection(Listes.InfoStyliste));
 
-                // On place dans la liste globale, la liste d'ensembles reçue
-                Listes.ListeEnsemblesVetements = EnsemblesVetements.ToList<EnsembleVetement>();
+                List<EnsembleVetement> listeEnsembles = EnsemblesVetements.ToList<EnsembleVetement>();
+
+                Listes.UtilisateurConnecte.ListeEnsembles =  new List<EnsembleVetement>(_ensembleVetementService.RetrieveEnsemblesUtilisateur(Listes.InfoStyliste));
+
+                Listes.ListeEnsemblesVetements.AddRange(Listes.UtilisateurConnecte.ListeEnsembles);
+
+                Listes.ListeEnsemblesVetements.AddRange(EnsemblesVetements);
+
+                //Listes.ListeEnsemblesVetements = FiltrerEnsembles(listeEnsembles);
             }
+        }
+
+        private List<EnsembleVetement> FiltrerEnsembles(List<EnsembleVetement> liste)
+        {
+
+            List<EnsembleVetement> listeTemp = new List<EnsembleVetement>();
+
+            //On va tester les matchs
+            foreach (EnsembleVetement ev in liste)
+            {
+                //Si les vêtements ne sont pas considérés comme étant matchable
+                if (ValiderMatchListeVetement(ev.ListeVetements))
+                {
+                    listeTemp.Add(ev);
+                    
+                    //liste.Remove(ev);
+
+                }
+
+            }
+
+            return listeTemp;
+
+        }
+
+        private bool ValiderMatchListeVetement(List<Vetement> listeVetements)
+        {
+
+            //Sachant qu'on a toujours 3 vêtements
+
+            return (listeVetements[0].CouleurVetement.IdCouleur == listeVetements[1].CouleurVetement.IdCouleur && listeVetements[1].CouleurVetement.IdCouleur == listeVetements[2].CouleurVetement.IdCouleur) ? true : false;
+
         }
 
         /// <summary>

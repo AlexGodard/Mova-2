@@ -29,68 +29,159 @@ namespace Mova.Logic.Services.MySql
             IList<EnsembleVetement> result = new List<EnsembleVetement>();
             int nbArgumentsValides = 0;
 
-                try
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append("SELECT DISTINCT(v.idVetement), v.idTypeVetement, v.nomVetement, v.imageURL, v.estHomme, v.estFemme, v.prix, v.idCouleur FROM Vetements v INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement INNER JOIN Activites a ON a.idActivite = av.idActivite INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN StylesVetements sv ON sv.idVetement = v.idVetement INNER JOIN Styles s ON s.idStyle = sv.idStyle INNER JOIN VetementsTemperatures vt ON vt.idVetement = v.idVetement INNER JOIN Temperatures t ON t.idTemperature ");
+
+                //Pour Activité
+                if (args.IdActivite > 0)
                 {
-                    connexion = new MySqlConnexion();
-
-                    StringBuilder sb = new StringBuilder();
-
-                    sb.Append("SELECT DISTINCT(v.idVetement), v.idTypeVetement, v.nomVetement, v.imageURL, v.estHomme, v.estFemme, v.prix FROM Vetements v INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement INNER JOIN Activites a ON a.idActivite = av.idActivite INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN StylesVetements sv ON sv.idVetement = v.idVetement INNER JOIN Styles s ON s.idStyle = sv.idStyle INNER JOIN VetementsTemperatures vt ON vt.idVetement = v.idVetement INNER JOIN Temperatures t ON t.idTemperature ");
-
-                    //Pour Activité
-                    if (args.IdActivite > 0){
-                        sb.Append("WHERE a.idActivite=");
-                        sb.Append(args.IdActivite.ToString());
-                        nbArgumentsValides++;
-                    }
-
-                    //Pour Style
-                    if (args.IdStyle > 0 && nbArgumentsValides == 0){
-                        sb.Append(" WHERE s.idStyle=");
-                        sb.Append(args.IdStyle.ToString());
-                        nbArgumentsValides++;
-                    }
-                    else if (args.IdStyle > 0)
-                    {
-                        sb.Append(" AND s.idStyle=");
-                        sb.Append(args.IdStyle.ToString());
-                        nbArgumentsValides++;
-                    }
-                    
-                    //Pour Moment
-                    if (args.IdMoment > 0 && nbArgumentsValides == 0)
-                    {
-                        sb.Append(" WHERE m.idMoment=");
-                        sb.Append(args.IdStyle.ToString());
-                    }
-                    else if (args.IdMoment > 0)
-                    {
-                        sb.Append(" AND m.idMoment=");
-                        sb.Append(args.IdStyle.ToString());
-                    }
-                    string requete = sb.ToString();
-	                                
-
-                    DataSet dataset = connexion.Query(requete);
-                    DataTable table = dataset.Tables[0];
-
-                    foreach (DataRow vetement in table.Rows)
-                    {
-                        lstVetements.Add(ConstructVetement(vetement));
-                    }
-                }
-                catch (MySqlException)
-                {
-                    throw;
+                    sb.Append("WHERE a.idActivite=");
+                    sb.Append(args.IdActivite.ToString());
+                    nbArgumentsValides++;
                 }
 
+                //Pour Style
+                if (args.IdStyle > 0 && nbArgumentsValides == 0)
+                {
+                    sb.Append(" WHERE s.idStyle=");
+                    sb.Append(args.IdStyle.ToString());
+                    nbArgumentsValides++;
+                }
+                else if (args.IdStyle > 0)
+                {
+                    sb.Append(" AND s.idStyle=");
+                    sb.Append(args.IdStyle.ToString());
+                    nbArgumentsValides++;
+                }
 
-                //On construit des ensembles avec la liste de vêtements
-                result = CreerEnsemblesVetements(lstVetements);
+                //Pour Moment
+                if (args.IdMoment > 0 && nbArgumentsValides == 0)
+                {
+                    sb.Append(" WHERE m.idMoment=");
+                    sb.Append(args.IdStyle.ToString());
+                }
+                else if (args.IdMoment > 0)
+                {
+                    sb.Append(" AND m.idMoment=");
+                    sb.Append(args.IdStyle.ToString());
+                }
+                string requete = sb.ToString();
 
 
-                //return result;
-                return result;
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow vetement in table.Rows)
+                {
+                    lstVetements.Add(ConstructVetement(vetement));
+                }
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+
+            //On construit des ensembles avec la liste de vêtements
+            result = CreerEnsemblesVetements(lstVetements);
+
+
+            //return result;
+            return result;
+
+        }
+
+        public IList<EnsembleVetement> RetrieveEnsemblesUtilisateur(InfoStylisteArgs args)
+        {
+
+            List<Vetement> lstVetements = new List<Vetement>();
+            IList<EnsembleVetement> result = new List<EnsembleVetement>();
+            int nbArgumentsValides = 0;
+
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append("SELECT DISTINCT(v.idVetement), v.idTypeVetement, v.nomVetement, v.imageURL, v.estHomme, v.estFemme, v.prix, v.idCouleur FROM Vetements v INNER JOIN EnsemblesVetements ev ON ev.idVetement=v.idVetement INNER JOIN UtilisateursEnsembles ue ON ue.idEnsemble=ev.idEnsemble INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement INNER JOIN Activites a ON a.idActivite = av.idActivite INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite INNER JOIN Moments m ON m.idMoment = am.idMoment INNER JOIN StylesVetements sv ON sv.idVetement = v.idVetement INNER JOIN Styles s ON s.idStyle = sv.idStyle INNER JOIN VetementsTemperatures vt ON vt.idVetement = v.idVetement INNER JOIN Temperatures t ON t.idTemperature ");
+
+                //Pour Activité
+                if (args.IdActivite > 0)
+                {
+                    sb.Append("WHERE a.idActivite=");
+                    sb.Append(args.IdActivite.ToString());
+                    nbArgumentsValides++;
+                }
+
+                //Pour Style
+                if (args.IdStyle > 0 && nbArgumentsValides == 0)
+                {
+                    sb.Append(" WHERE s.idStyle=");
+                    sb.Append(args.IdStyle.ToString());
+                    nbArgumentsValides++;
+                }
+                else if (args.IdStyle > 0)
+                {
+                    sb.Append(" AND s.idStyle=");
+                    sb.Append(args.IdStyle.ToString());
+                    nbArgumentsValides++;
+                }
+
+                //Pour Moment
+                if (args.IdMoment > 0 && nbArgumentsValides == 0)
+                {
+                    sb.Append(" WHERE m.idMoment=");
+                    sb.Append(args.IdStyle.ToString());
+                }
+                else if (args.IdMoment > 0)
+                {
+                    sb.Append(" AND m.idMoment=");
+                    sb.Append(args.IdStyle.ToString());
+                }
+
+                //Pour Moment
+                if (Listes.UtilisateurConnecte.IdUtilisateur > 0 && nbArgumentsValides == 0)
+                {
+                    sb.Append(" WHERE ue.idUtilisateur=");
+                    sb.Append(Listes.UtilisateurConnecte.IdUtilisateur.ToString());
+                }
+                else if (Listes.UtilisateurConnecte.IdUtilisateur > 0)
+                {
+                    sb.Append(" AND ue.idUtilisateur=");
+                    sb.Append(Listes.UtilisateurConnecte.IdUtilisateur.ToString());
+                }
+
+                sb.Append(" ORDER BY ev.idEnsemble ASC, v.idTypeVetement ASC");
+
+                string requete = sb.ToString();
+
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow vetement in table.Rows)
+                {
+                    lstVetements.Add(ConstructVetement(vetement));
+                }
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+
+            //On construit des ensembles avec la liste de vêtements
+            result = CreerEnsemblesVetementsUtilisateur(lstVetements);
+
+
+            //return result;
+            return result;
 
         }
 
@@ -117,7 +208,7 @@ namespace Mova.Logic.Services.MySql
 
                 //Maintenant qu'on a le numéro d'ensemble, on est heureux
                 //On insère maintenant les EnsemblesVetements
-                
+
                 string query3 = new StringBuilder().Append("INSERT INTO EnsemblesVetements(idEnsemble,idVetement) VALUES (").Append(noEnsemble).Append(",").Append(ev.ListeVetements[0].IdVetement).Append("),(").Append(noEnsemble).Append(",").Append(ev.ListeVetements[1].IdVetement).Append("),(").Append(noEnsemble).Append(",").Append(ev.ListeVetements[2].IdVetement).Append(")").ToString();
                 dataset = connexion.Query(query3);
             }
@@ -133,7 +224,7 @@ namespace Mova.Logic.Services.MySql
         {
             connexion = new MySqlConnexion();
 
-            foreach(Vetement vetement in ensembleVetement.ListeVetements)
+            foreach (Vetement vetement in ensembleVetement.ListeVetements)
             {
                 //On commence par créer un ensemble vide (pour avoir le ID)
                 string debutRequete = "INSERT IGNORE INTO EnsemblesVetements (idEnsemble, idVetement) VALUES ";
@@ -212,22 +303,24 @@ namespace Mova.Logic.Services.MySql
         /// <returns></returns>
         private Vetement ConstructVetement(DataRow vetement)
         {
-            
-            Vetement v =  new Vetement(){
-            
+
+            Vetement v = new Vetement()
+            {
+
                 IdVetement = (int)vetement["idVetement"],
                 NomVetement = (string)vetement["nomVetement"],
                 ImageURL = (string)vetement["imageURL"],
                 //Prix = (double)vetement["prix"],
                 EstHomme = (bool)vetement["estHomme"],
                 EstFemme = (bool)vetement["estFemme"],
-                
-                TypeVetement = new TypeVetement(){
-                IdType = (int)vetement["idTypeVetement"]
-                }   
+                CouleurVetement = new Couleur((int)vetement["idCouleur"]),
+                TypeVetement = new TypeVetement()
+                {
+                    IdType = (int)vetement["idTypeVetement"]
+                }
             };
 
-            return v;        
+            return v;
         }
 
         private Vetement ConstructVetementEnsemble(DataRow vetement)
@@ -252,13 +345,13 @@ namespace Mova.Logic.Services.MySql
         }
 
         /// <summary>
-        /// Meilleure façon de faire
+        /// 
         /// </summary>
         /// <param name="l"></param>
         /// <returns></returns>
         private List<EnsembleVetement> CreerEnsemblesVetements(List<Vetement> l)
         {
-        
+
             //Les listes suivantes sont utiles
             List<Vetement> lstChest = new List<Vetement>();
             List<Vetement> lstLeg = new List<Vetement>();
@@ -284,37 +377,91 @@ namespace Mova.Logic.Services.MySql
                 }
             }
 
-            
-           foreach(Vetement vc in lstChest)
-           { 
-              foreach(Vetement vb in lstLeg)
-              { 
-                 foreach(Vetement vs in lstFeet)
-                 { 
-                    
-                    List<Vetement> lstTemp = new List<Vetement>();
-                    lstTemp.Add(vc);
-                    lstTemp.Add(vb);
-                    lstTemp.Add(vs);
 
-                    //On ajoute un nouvel EnsembleVetement à la liste
-                    lstEnsembleVetement.Add(new EnsembleVetement(){
-                    
-                        ListeVetements = lstTemp
+            foreach (Vetement vc in lstChest)
+            {
+                foreach (Vetement vb in lstLeg)
+                {
+                    foreach (Vetement vs in lstFeet)
+                    {
 
-                    });
-                 
-                 }             
-              }
-           }
+                        List<Vetement> lstTemp = new List<Vetement>();
+                        lstTemp.Add(vc);
+                        lstTemp.Add(vb);
+                        lstTemp.Add(vs);
 
-           List<EnsembleVetement> source = lstEnsembleVetement;
-           var rnd = new Random();
-           var result = source.OrderBy(item => rnd.Next());
-           lstEnsembleVetement = result.ToList<EnsembleVetement>();
+                        //On ajoute un nouvel EnsembleVetement à la liste
+                        lstEnsembleVetement.Add(new EnsembleVetement()
+                        {
 
-           return lstEnsembleVetement;
+                            ListeVetements = lstTemp
+
+                        });
+
+                    }
+                }
+            }
+
+            List<EnsembleVetement> source = lstEnsembleVetement;
+            var rnd = new Random();
+            var result = source.OrderBy(item => rnd.Next());
+            lstEnsembleVetement = result.ToList<EnsembleVetement>();
+
+            return lstEnsembleVetement;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="l"></param>
+        /// <returns></returns>
+        private List<EnsembleVetement> CreerEnsemblesVetementsUtilisateur(List<Vetement> l)
+        {
+
+            List<EnsembleVetement> lstEnsembleVetement = new List<EnsembleVetement>();
+            List<Vetement> lstTemp = new List<Vetement>();
+
+            //Exploded view of the problem
+            foreach (Vetement v in l)
+            {
+                lstTemp.Add(v);
+                int idUn = ((int)(v.TypeVetement.IdType))-1;
+                int idDeux = (int)(lstTemp[lstTemp.Count - 1].TypeVetement.IdType);
+
+                bool match = (idUn == idDeux);
+
+
+                if (lstTemp.Count > 1 && match)
+                {
+
+                    if (lstTemp.Count >= 3) {
+
+                        lstEnsembleVetement.Add(new EnsembleVetement()
+                        {
+
+                            ListeVetements = lstTemp
+
+                        });
+
+                        lstTemp = new List<Vetement>();
+
+                    }
+                
+                
+                }
+                else if (lstTemp.Count > 1 && !match)
+                {
+
+                    lstTemp = new List<Vetement>();
+                
+                }
+            }
+
+
+            return lstEnsembleVetement;
+        }
+
 
     }
 }

@@ -55,6 +55,8 @@ namespace Mova.Logic.Models.Entities
         /// </summary>
         public virtual List<Vetement> ListeVetements { get; set; }
 
+        public List<EnsembleVetement> ListeEnsembles { get; set; }
+
         #endregion
 
         #region Constructeurs

@@ -13,6 +13,7 @@ namespace Mova.Logic.Services.Definitions
     {
 
         IList<EnsembleVetement> RetrieveSelection(InfoStylisteArgs args);
+        IList<EnsembleVetement> RetrieveEnsemblesUtilisateur(InfoStylisteArgs args);
         IList<Vetement> RetrieveVetementsEnsembles(IList<UtilisateurEnsemble> listeEnsembles);
 
         void Create(EnsembleVetement ensembleVetement);
