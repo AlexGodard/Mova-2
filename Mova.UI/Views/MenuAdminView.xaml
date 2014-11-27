@@ -67,7 +67,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="75" />
+            <RowDefinition Height="40" />
             <RowDefinition Height="40" />
             <RowDefinition Height="35" />
             <!-- Section des activités (commence à row = 4) -->
@@ -97,7 +97,7 @@
             <RowDefinition Height="33" />
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5" Margin="100,0,0,0" x:Name="lblTitre" Content="Administrateur" FontFamily="Calibri" FontSize="62" />
+        <Label Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="5" Margin="100,0,0,0" x:Name="lblTitre" Content="Administrateur" FontFamily="Calibri" FontSize="45" />
 
         <!-- Section des vêtements -->
         <Label Grid.Column="1" Grid.ColumnSpan="5" Grid.Row="2" x:Name="lblVetement" Content="Vêtements" FontFamily="Calibri" FontSize="24" />
@@ -110,20 +110,20 @@
         <Border Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="4" BorderBrush="Black" BorderThickness="0,0,0,1" />
         <Label Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="5" Content="Sélectionner une activité :" VerticalAlignment="Bottom" FontSize="16" />
         <ListBox Grid.Column="1" Grid.Row="6" Grid.RowSpan="4" x:Name="lstActivites" />
-        <Button Grid.Column="2" Grid.Row="6" x:Name="btnModifierActivite" Content="Modifier" Click="btnModifierActivite_Click" Style="{StaticResource btnVert}" Margin="5,0,0,0" />
-        <Button Grid.Column="2" Grid.Row="8" x:Name="btnSupprimerActivite" Content="Supprimer" Click="btnSupprimerActivite_Click" Style="{StaticResource btnOrange}" Margin="5,0,0,0" />
+        <Button Grid.Column="2" Grid.Row="6" x:Name="btnAjouterActivite" Content="Ajouter" Click="btnAjouterActivite_Click" Style="{StaticResource btnVert}" Margin="5,0,0,5" />
+        <Button Grid.Column="2" Grid.Row="7" x:Name="btnModifierActivite" Content="Modifier" Click="btnModifierActivite_Click" Style="{StaticResource btnVert}" Margin="5,0,0,5" />
+        <Button Grid.Column="2" Grid.Row="8" x:Name="btnSupprimerActivite" Content="Supprimer" Click="btnSupprimerActivite_Click" Style="{StaticResource btnOrange}" Margin="5,0,0,5" />
         <!-- Sous-section Ajout/Modification d'une activité -->
-        <Label Grid.Column="3" Grid.Row="6" Grid.RowSpan="3" VerticalAlignment="Center" Content="-OU-" x:Name="lblOu" FontSize="30" />
-        <Label Grid.Column="4" Grid.Row="5" VerticalAlignment="Bottom" Content="Nom de l'activité :" />
-        <TextBox Grid.Column="4" Grid.Row="6" x:Name="txtNomActivite" GotFocus="txtNomActivite_GotFocus" FontSize="16" />
-        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Left" Content="Ouvrable" x:Name="chkOuvrable" />
-        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Right" Content="Congé" x:Name="chkConge" Margin="0,0,5,0" />
-        <Label Grid.Column="5" Grid.Row="5" VerticalAlignment="Bottom" Content="Moment de l'activité :" />
+        <Label Grid.Column="4" Grid.Row="5" VerticalAlignment="Bottom" x:Name="lblNomActivite" Content="Nom de l'activité :" Visibility="Hidden" />
+        <TextBox Grid.Column="4" Grid.Row="6" x:Name="txtNomActivite" FontSize="16" Visibility="Hidden" />
+        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Left" Content="Ouvrable" x:Name="chkOuvrable" Visibility="Hidden" />
+        <CheckBox Grid.Column="4" Grid.Row="8" HorizontalAlignment="Right" Content="Congé" x:Name="chkConge" Margin="0,0,5,0" Visibility="Hidden" />
+        <Label Grid.Column="5" Grid.Row="5" x:Name="lblNomMoment" VerticalAlignment="Bottom" Content="Moment de l'activité :" Visibility="Hidden" />
 
-        <ListBox Grid.Column="5" Grid.Row="6" Grid.RowSpan="3" x:Name="lstMoments" SelectionMode="Multiple" IsEnabled="False" Margin="5,0,0,5" />
+        <ListBox Grid.Column="5" Grid.Row="6" Grid.RowSpan="3" x:Name="lstMoments" SelectionMode="Multiple" Margin="5,0,0,5" Visibility="Hidden" />
 
-        <Button Grid.Column="4" Grid.Row="9" x:Name="btnAjouterActivite" Content="Ajouter" Click="btnAjouterActivite_Click" Style="{StaticResource btnVert}"  Margin="0,5,0,0" FontSize="15" />
-        <Button Grid.Column="5" Grid.Row="9" Content="Annuler" x:Name="btnAnnulerActivite" Click="btnAnnulerActivite_Click" Style="{StaticResource btnOrange}" Margin="5,5,0,0" FontSize="15" />
+        <Button Grid.Column="4" Grid.Row="9" x:Name="btnEnregistrerActivite" Content="Ajouter" Click="btnEnregistrerActivite_Click" Style="{StaticResource btnVert}"  Margin="0,5,0,0" FontSize="15" Visibility="Hidden" />
+        <Button Grid.Column="5" Grid.Row="9" Content="Annuler" x:Name="btnAnnulerActivite" Click="btnAnnulerActivite_Click" Style="{StaticResource btnOrange}" Margin="5,5,0,0" FontSize="15" Visibility="Hidden" />
 
 
         <!-- Section des styles -->
