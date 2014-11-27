@@ -112,6 +112,7 @@ namespace Mova.UI.Views
             {
                 EcrireVetementViaListe(ensemble.ListeVetements, i);
 
+                try { 
                 //On affiche la date dans un label
                 Label date = new Label();
                 date.Content = HelperDate.GetDayFromDate((DateTime)ensemble.DateAjout);
@@ -119,7 +120,8 @@ namespace Mova.UI.Views
                 Grid.SetRow(date, 4);
 
                 DynamicGrid.Children.Add(date);
-
+                }
+                catch (Exception e) { }
                 i++;
             }
 
