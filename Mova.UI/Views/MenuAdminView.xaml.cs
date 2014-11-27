@@ -209,7 +209,21 @@ namespace Mova.UI.Views
 
         private void btnAjouterActivite_Click(object sender, RoutedEventArgs e)
         {
-            if (txtNomActivite.Text != string.Empty)
+            //Si on a cliqué sur le bouton modifier, on exécute ceci.
+            if(estModifie)
+            {
+                // On doit obtenir la liste des moments sélectionnés
+                List<Moment> listeMomentsSelectionnes = new List<Moment>();
+                // Insertion des items de la listbox dans la liste.
+                foreach (string nomMoment in lstMoments.SelectedItems)
+                {
+                    Moment moment = new Moment(nomMoment);
+                    listeMomentsSelectionnes.Add(moment);
+                }
+                // On doit aller chercher les moments liés à l'activité
+                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkOuvrable.IsChecked, listeMomentsSelectionnes);
+            }
+            else
             {
                 // On doit obtenir la liste des moments sélectionnés
                 List<Moment> listeMomentsSelectionnes = new List<Moment>();
@@ -220,34 +234,11 @@ namespace Mova.UI.Views
                     listeMomentsSelectionnes.Add(moment);
                 }
 
-                ViewModel.ajouterActivite(txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkConge.IsChecked, listeMomentsSelectionnes);
-                lstActivites.Items.Clear();
-                lstMoments.Items.Clear();
-                construireListe("Activite");
-                txtNomActivite.Text = string.Empty;
-                btnAjouterActivite.Content = "Ajouter";
-                estModifie = false;
+                ViewModel.ajouterActivite(txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkOuvrable.IsChecked, listeMomentsSelectionnes);
             }
+            
 
-            //Si on a cliqué sur le bouton modifier, on exécute ceci.
-            if (estModifie)
-            {
-                // On doit aller chercher les moments liés à l'activité
-
-                //ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkOuvrable.IsChecked, listeMoments);
-                lstActivites.Items.Clear();
-                lstMoments.Items.Clear();
-                construireListe("Activite");
-                txtNomActivite.Text = string.Empty;
-                btnAjouterActivite.Content = "Ajouter";
-                estModifie = false;
-            }
-                if(estModifie)
-                    ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text);
-                else
-                    ViewModel.ajouterActivite(txtNomActivite.Text);
-            }
-
+            lstMoments.Items.Clear();
             lstActivites.Items.Clear();
             construireListe("Activite");
             txtNomActivite.Text = string.Empty;
@@ -257,7 +248,7 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = true;
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
-            lstMoments.IsEnabld = false;
+            lstMoments.IsEnabled = false;
             lblOu.Content = "-OU-";
         }
 
