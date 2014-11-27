@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Mer 26 Novembre 2014 à 12:59
+-- Généré le : Jeu 27 Novembre 2014 à 10:59
 -- Version du serveur: 5.5.8
 -- Version de PHP: 5.3.5
 
@@ -625,9 +625,6 @@ INSERT INTO `activitesvetements` (`idActiviteVetement`, `idVetement`, `idActivit
 (489, 79, 12),
 (490, 79, 7),
 (491, 79, 9),
-(492, 81, 7),
-(493, 81, 9),
-(494, 81, 12),
 (495, 82, 7),
 (496, 82, 6),
 (497, 82, 9),
@@ -766,12 +763,14 @@ CREATE TABLE IF NOT EXISTS `ensembles` (
   `idEnsemble` int(11) NOT NULL AUTO_INCREMENT,
   `nomEnsemble` varchar(50) NOT NULL,
   PRIMARY KEY (`idEnsemble`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `ensembles`
 --
 
+INSERT INTO `ensembles` (`idEnsemble`, `nomEnsemble`) VALUES
+(1, 'GameboyGangster');
 
 -- --------------------------------------------------------
 
@@ -786,12 +785,16 @@ CREATE TABLE IF NOT EXISTS `ensemblesvetements` (
   PRIMARY KEY (`idEnsembleVetement`),
   KEY `EnsemblesVetements_Ensembles_FK` (`idEnsemble`),
   KEY `EnsemblesVetements_Vetements_FK` (`idVetement`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `ensemblesvetements`
 --
 
+INSERT INTO `ensemblesvetements` (`idEnsembleVetement`, `idEnsemble`, `idVetement`) VALUES
+(1, 1, 75),
+(2, 1, 8),
+(3, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -1079,7 +1082,6 @@ INSERT INTO `stylesvetements` (`idStyleVetement`, `idStyle`, `idVetement`) VALUE
 (207, 10, 78),
 (208, 5, 78),
 (209, 6, 79),
-(210, 6, 81),
 (211, 5, 82),
 (212, 10, 82),
 (213, 3, 82),
@@ -1203,12 +1205,14 @@ CREATE TABLE IF NOT EXISTS `utilisateursensembles` (
   PRIMARY KEY (`idUtilisateurEnsemble`),
   KEY `UtilisateursEnsembles_Utilisateurs_FK` (`idUtilisateur`),
   KEY `UtilisateursEnsembles_Ensembles_FK` (`idEnsemble`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `utilisateursensembles`
 --
 
+INSERT INTO `utilisateursensembles` (`idUtilisateurEnsemble`, `idUtilisateur`, `idEnsemble`, `dateCreation`, `estFavori`, `estDansGardeRobe`) VALUES
+(1, 1, 1, '2014-11-27 10:42:28', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1223,12 +1227,14 @@ CREATE TABLE IF NOT EXISTS `utilisateursvetements` (
   PRIMARY KEY (`idUtilisateurVetement`),
   KEY `UtilisateursVetements_Utilisateurs_FK` (`idUtilisateur`),
   KEY `UtilisateursVetements_Vetements_FK` (`idVetement`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `utilisateursvetements`
 --
 
+INSERT INTO `utilisateursvetements` (`idUtilisateurVetement`, `idUtilisateur`, `idVetement`) VALUES
+(1, 1, 79);
 
 -- --------------------------------------------------------
 
@@ -1259,7 +1265,7 @@ INSERT INTO `vetements` (`idVetement`, `idTypeVetement`, `idCouleur`, `nomVeteme
 (2, 1, 1, 'Chandail du FC Bayern', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailDuFCBayern.png', 50, 1, 1),
 (3, 3, 1, 'Chaussures Adidas', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresAdidas.png', 70, 1, 1),
 (4, 2, 10, 'Pantalon Chino', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/PantalonChino.png', 40, 1, 0),
-(5, 1, 9, 'Chandail à manches longues Kirby', 'defaut.png', 40, 1, 1),
+(5, 1, 9, 'Chandail à manches longues Kirby', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailAManchesLonguesKirby.png', 40, 1, 1),
 (6, 3, 2, 'Chaussures Mario', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresMario.png', 30, 1, 1),
 (7, 3, 4, 'Bottes de combat', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/BottesDeCombat.png', 50, 1, 1),
 (8, 2, 4, 'Jeans cargo', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/JeansCargo.png', 40, 1, 0),
@@ -1320,7 +1326,7 @@ INSERT INTO `vetements` (`idVetement`, `idTypeVetement`, `idCouleur`, `nomVeteme
 (63, 1, 4, 'Volcome Tye dye', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailNoirSale.jpg', 32, 1, 0),
 (64, 1, 4, 'Polo rayé Old Navy', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailPropre.jpg', 23, 1, 0),
 (65, 1, 4, 'Chandail Titanfall', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailTitanfall.jpg', 12, 1, 0),
-(66, 1, 2, 'Chandail Trop lavé', '420.cstj.qc.ca/gabrielpichecloutier//hauts/ChandailTropLave.jpg', 60, 1, 0),
+(66, 1, 2, 'Chandail Trop lavé', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChandailTropLave.jpg', 60, 1, 0),
 (67, 1, 10, 'Chemise de chasse', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChemiseDeChasse.jpg', 50, 1, 0),
 (68, 1, 2, 'Chemise propre', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChemisePropre.jpg', 70, 1, 0),
 (69, 1, 16, 'Manteau année 70', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ManteauAnnee70.jpg', 100, 1, 0),
@@ -1334,9 +1340,7 @@ INSERT INTO `vetements` (`idVetement`, `idTypeVetement`, `idCouleur`, `nomVeteme
 (77, 1, 6, 'Nike runner hoodie', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/VesteNike.jpg', 69, 1, 0),
 (78, 1, 4, 'Razer hoodie', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/VesteRazer.jpg', 69, 1, 0),
 (79, 1, 11, 'Veston de travail', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/VestonDeTravail.jpg', 110, 1, 0),
-(80, 1, 6, 'Veston de propre', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/VestonPropre.jpg', 215, 1, 0),
-(81, 1, 6, 'Big fancy man', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/VestonPropre.jpg', 215, 1, 0),
-(82, 2, 1, 'Nike Bowser', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChaussuresBowser.jpg', 59, 1, 0),
+(82, 3, 1, 'Nike Bowser', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/ChaussuresBowser.jpg', 59, 1, 0),
 (83, 3, 4, 'Monster platforms', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresPlatforme.jpg', 49, 1, 0),
 (84, 3, 10, 'Soulier à Emmanuel', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/ChaussuresPropre2.jpg', 100, 1, 0),
 (85, 3, 10, 'Grosses bottes', '420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/GrosseBottes.jpg', 89, 1, 0),
@@ -1736,12 +1740,6 @@ INSERT INTO `vetementstemperatures` (`idVetementTemperature`, `idVetement`, `idT
 (366, 79, 1),
 (367, 79, 3),
 (368, 79, 4),
-(369, 81, 2),
-(370, 81, 5),
-(371, 81, 6),
-(372, 81, 1),
-(373, 81, 3),
-(374, 81, 4),
 (375, 82, 2),
 (376, 82, 5),
 (377, 82, 6),
