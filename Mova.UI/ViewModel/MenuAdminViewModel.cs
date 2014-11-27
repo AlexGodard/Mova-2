@@ -182,13 +182,10 @@ namespace Mova.UI.ViewModel
 
         public void modifierActivite(string nomActivite, string newActivite, bool estOuvrable, bool estConge, List<Moment> listeMoments)
         {
-            if (nomActivite != newActivite && newActivite != "")
-            {
-                _activiteService.Update(new Activite(nomActivite), newActivite, estOuvrable, estConge, listeMoments);
-                // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
-                Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
-                Listes.ListeActivites = Activites.ToList<Activite>();
-            }
+            _activiteService.Update(new Activite(nomActivite), newActivite, estOuvrable, estConge, listeMoments);
+            // On doit reloader la liste un coup que la nouvelle activité est ajoutée.
+            Activites = new ObservableCollection<Activite>(ServiceFactory.Instance.GetService<IActiviteService>().RetrieveAll());
+            Listes.ListeActivites = Activites.ToList<Activite>();
         }
 
         public void modifierStyle(string nomStyle, string newStyle)
@@ -253,6 +250,11 @@ namespace Mova.UI.ViewModel
         public IList<Moment> chargerMomentsPourActivite(string nomActivite)
         {
             return _momentService.RetrieveSpecified(nomActivite);
+        }
+
+        public Activite chargerDetailsActivite(string nomActivite)
+        {
+            return _activiteService.RetrieveDetailsActivite(nomActivite);
         }
     }
 }

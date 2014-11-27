@@ -198,26 +198,33 @@ namespace Mova.UI.Views
                 // On upload le fichier si c'est un lien local
                 if (typePath == "Lien local")
                 {
-                    using (WebClient client = new WebClient())
+                    try
                     {
-                        client.Credentials = new NetworkCredential("1237596", "31amQmXKQ2");
+                        using (WebClient client = new WebClient())
+                        {
+                            client.Credentials = new NetworkCredential("1237596", "31amQmXKQ2");
                         
-                        // On regarde quel type de vêtement c'est
-                        if (cboTypes.SelectedItem.ToString() == "Bas")
-                        {
-                            client.UploadFile("ftp://420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                            imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                            // On regarde quel type de vêtement c'est
+                            if (cboTypes.SelectedItem.ToString() == "Bas")
+                            {
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                            }
+                            else if (cboTypes.SelectedItem.ToString() == "Haut")
+                            {
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                            }
+                            else if (cboTypes.SelectedItem.ToString() == "Chaussures")
+                            {
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                            }
                         }
-                        else if (cboTypes.SelectedItem.ToString() == "Haut")
-                        {
-                            client.UploadFile("ftp://420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                            imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text);
-                        }
-                        else if (cboTypes.SelectedItem.ToString() == "Chaussures")
-                        {
-                            client.UploadFile("ftp://420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                            imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text);
-                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
                     }
                 }
                 else if (typePath == "Lien internet")

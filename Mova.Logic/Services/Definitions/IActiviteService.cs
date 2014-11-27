@@ -20,5 +20,7 @@ namespace Mova.Logic.Services.Definitions
        void Update(Activite activite, string newActivite);
        void Update(Activite activite, string newActivite, bool estOuvrable, bool estConge, List<Moment> listeMomentsSelectionnes);
        void Delete(Activite activite);
+
+       Activite RetrieveDetailsActivite(string nomActivite);
     }
 }

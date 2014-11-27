@@ -25,6 +25,15 @@ namespace Mova.Logic.Models
         /// </summary>
         public virtual List<Moment> ListeMoments { get; set; }
 
+        /// <summary>
+        /// Permet de savoir les moments où l'on peut pratiquer l'activité.
+        /// </summary>
+        public virtual bool EstOuvrable { get; set; }
+
+        /// <summary>
+        /// Permet de savoir les moments où l'on peut pratiquer l'activité.
+        /// </summary>
+        public virtual bool EstConge { get; set; }
         #endregion
 
         //Commentaire activite

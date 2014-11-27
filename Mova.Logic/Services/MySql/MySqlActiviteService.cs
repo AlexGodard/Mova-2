@@ -42,17 +42,29 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="row"></param>
-        /// <returns></returns>
         private Activite ConstructActivite(DataRow row)
         {
             return new Activite()
             {
                 IdActivite = (int)row["idActivite"],
                 NomActivite = (string)row["nomActivite"]
+            };
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        private Activite ConstructActiviteNew(DataRow row)
+        {
+            return new Activite()
+            {
+                IdActivite = (int)row["idActivite"],
+                NomActivite = (string)row["nomActivite"],
+                EstOuvrable = (bool)row["estOuvrable"],
+                EstConge = (bool)row["estConge"]
             };
 
         }
@@ -170,19 +182,21 @@ namespace Mova.Logic.Services.MySql
                 connexion = new MySqlConnexion();
 
                 string requete = "UPDATE Activites SET nomActivite = '" + newActivite.Replace("'", "''") + "', estOuvrable = " + estOuvrable +
-                                  ", estOuvrable = " + estOuvrable + " WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
+                                  ", estConge = " + estConge + " WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
 
                 // On doit aller chercher l'id de l'activité qu'on vient de modifier
-                dataset = connexion.Query("SELECT MAX(idActivite) FROM Activites WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "')");
+
+                requete = "SELECT MAX(idActivite) FROM Activites WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
+                dataset = connexion.Query(requete);
 
                 int idActivite = (int)dataset.Tables[0].Rows[0].ItemArray[0];
 
                 // On update maintenant les moments
 
                 // ON DELETE LES MOMENTS LIÉS À L'ACTIVITÉ POUR ENSUITE LES RÉAJOUTER, CAR IL EST IMPOSSIBLE DE FAIRE UN UPDATE
-                connexion.Query("DELETE FROM Moments WHERE idActivite = " + idActivite + " )");
+                connexion.Query("DELETE FROM ActivitesMoments WHERE idActivite = " + idActivite);
 
                 // On insert maintenant les bon moments pour cette activité
                 foreach (Moment moment in listeMomentsSelectionnes)
@@ -209,6 +223,26 @@ namespace Mova.Logic.Services.MySql
                 string requete = "DELETE FROM Activites WHERE nomActivite = '" + activite.NomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+        }
+
+        public Activite RetrieveDetailsActivite(string nomActivite)
+        {
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                string requete = "SELECT * FROM Activites WHERE nomActivite = '" + nomActivite.Replace("'", "''") + "'";
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                return ConstructActiviteNew(table.Rows[0]);
+                
             }
             catch (MySqlException)
             {

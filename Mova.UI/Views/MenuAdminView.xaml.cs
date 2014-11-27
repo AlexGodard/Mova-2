@@ -213,6 +213,8 @@ namespace Mova.UI.Views
             btnAjouterActivite.IsEnabled = false;
             btnModifierActivite.IsEnabled = false;
             btnSupprimerActivite.IsEnabled = false;
+            chkConge.IsChecked = false;
+            chkOuvrable.IsChecked = false;
             lstActivites.IsEnabled = false;
             construireListe("Moment");
             //On affiche les champs pour ajouter une activité.
@@ -245,7 +247,7 @@ namespace Mova.UI.Views
                     listeMomentsSelectionnes.Add(moment);
                 }
                 // On doit aller chercher les moments liés à l'activité
-                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkOuvrable.IsChecked, listeMomentsSelectionnes);
+                ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtNomActivite.Text, (bool)chkOuvrable.IsChecked, (bool)chkConge.IsChecked, listeMomentsSelectionnes);
             }
             else
             {
@@ -285,7 +287,7 @@ namespace Mova.UI.Views
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
             lstMoments.Items.Clear();
-
+            btnAjouterActivite.Content = "Ajouter";
             //On cache les champs.
             cacherChampsActivite();
         }
@@ -521,9 +523,8 @@ namespace Mova.UI.Views
             // On débloque le champ
             if (lstActivites.SelectedIndex != -1)
             {
-                btnAjouterActivite.Content = "Enregistrer";
                 txtNomActivite.Text = lstActivites.SelectedItem.ToString();
-
+                btnEnregistrerActivite.Content = "Enregistrer";
                 // On selectionne les bons moments.
 
 
@@ -533,23 +534,28 @@ namespace Mova.UI.Views
                 construireListe("Moment");
 
                 // On selectionne les bons moments.
-                /*foreach(Moment moment in listeMomentsASelectionner)
+                foreach(Moment moment in listeMomentsASelectionner)
                 {
-                    for (int i=0; i < lstMoments.Items.Count(); i++)
+                    foreach(string item in lstMoments.Items)
                     {
-
-
-                    }
-                    foreach(ListItem item in lstMoments.Items)
-                    {
-                        if (moment.NomMoment == item.ToString())
+                        if (moment.NomMoment == item)
                         {
-                            
+                            lstMoments.SelectedItems.Add(moment.NomMoment);
+                            break;
                         }
                     }
-                }*/
+                }
                 
-                //lstMoments.SelectedItems()
+                // On check les bonnes checkbox
+                
+                // On va chercher les informations de l'activité en question
+                Activite a = new Activite();
+                a = chargerDetailsActivite(txtNomActivite.Text);
+                if (a.EstConge)
+                    chkConge.IsChecked = true;
+                if (a.EstOuvrable)
+                    chkOuvrable.IsChecked = true;
+
                 afficherChampsActivite();
 
                 estModifie = true;
@@ -557,32 +563,11 @@ namespace Mova.UI.Views
                 btnSupprimerActivite.IsEnabled = false;
                 lstActivites.IsEnabled = false;
             }
+        }
 
-            //if (txtModifierActivite.Visibility == Visibility.Visible)
-            //{
-
-            //    ViewModel.modifierActivite(lstActivites.SelectedItem.ToString(), txtModifierActivite.Text);
-            //    lstActivites.Items.Clear();
-            //    construireListe("Activite");
-            //    txtModifierActivite.Text = "";
-            //    txtModifierActivite.Visibility = Visibility.Hidden;
-            //    btnModifierActivite.Content = "Modifier";
-            //    btnAjouterActivite.IsEnabled = true;
-            //    btnSupprimerActivite.IsEnabled = true;
-            //}
-            //else
-            //{
-            //    // On débloque le champ
-            //    if (lstActivites.SelectedIndex != -1)
-            //    {
-            //        txtModifierActivite.Visibility = Visibility.Visible;
-            //        btnModifierActivite.Content = "Enregistrer la modification";
-            //        txtModifierActivite.Text = lstActivites.SelectedItem.ToString();
-            //        btnAjouterActivite.IsEnabled = false;
-            //        btnSupprimerActivite.IsEnabled = false;
-            //    }
-            //    //TODO: Message d'erreur
-            //}
+        private Activite chargerDetailsActivite(string nomActivite)
+        {
+            return ViewModel.chargerDetailsActivite(nomActivite);
         }
 
         
