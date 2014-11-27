@@ -298,18 +298,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\fond.jpg" />
-    <Resource Include="Resources\StickMan.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bas.png" />
-    <Resource Include="Resources\Haut.png" />
-    <Resource Include="Resources\Soulier.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Plus.png" />
@@ -361,6 +355,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\bulle_droite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bas.png" />
+    <Resource Include="Resources\haut.png" />
+    <Resource Include="Resources\soulier.png" />
+    <Resource Include="Resources\stickMan.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
