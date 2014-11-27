@@ -12,5 +12,7 @@ namespace Mova.Logic.Services.Definitions
 
         IList<Moment> RetrieveAll();
 
+
+        IList<Moment> RetrieveSpecified(string nomActivite);
     }
 }

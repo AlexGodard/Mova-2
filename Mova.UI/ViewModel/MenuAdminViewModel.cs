@@ -249,5 +249,10 @@ namespace Mova.UI.ViewModel
             Couleurs = new ObservableCollection<Couleur>(ServiceFactory.Instance.GetService<ICouleurService>().RetrieveAll());
             Listes.ListeCouleurs = Couleurs.ToList<Couleur>();
         }
+
+        public IList<Moment> chargerMomentsPourActivite(string nomActivite)
+        {
+            return _momentService.RetrieveSpecified(nomActivite);
+        }
     }
 }

@@ -465,8 +465,33 @@ namespace Mova.UI.Views
                 txtNomActivite.Text = lstActivites.SelectedItem.ToString();
 
                 // On selectionne les bons moments.
+
+
+                List<Moment> listeMomentsASelectionner = new List<Moment>();
+                listeMomentsASelectionner = (List<Moment>)chargerMomentsPourActivite(txtNomActivite.Text);
+
+                construireListe("Moment");
+                lstMoments.IsEnabled = true;
+
+                // On selectionne les bons moments.
+                /*foreach(Moment moment in listeMomentsASelectionner)
+                {
+                    for (int i=0; i < lstMoments.Items.Count(); i++)
+                    {
+
+
+                    }
+                    foreach(ListItem item in lstMoments.Items)
+                    {
+                        if (moment.NomMoment == item.ToString())
+                        {
+                            
+                        }
+                    }
+                }*/
                 
-                
+                //lstMoments.SelectedItems()
+
                 estModifie = true;
                 btnModifierActivite.IsEnabled = false;
                 btnSupprimerActivite.IsEnabled = false;
@@ -527,6 +552,8 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = true;
             btnSupprimerActivite.IsEnabled = true;
             lstActivites.IsEnabled = true;
+            lstMoments.IsEnabled = false;
+            lstMoments.Items.Clear();
         }
 
         private void txtNomActivite_GotFocus(object sender, RoutedEventArgs e)
@@ -534,14 +561,15 @@ namespace Mova.UI.Views
             btnModifierActivite.IsEnabled = false;
             btnSupprimerActivite.IsEnabled = false;
             lstActivites.IsEnabled = false;
-            lstMoments.IsEnabled = true;
             construireListe("Moment");
+            lstMoments.IsEnabled = true;
+
         }
 
-        
-
-        
-
-        
+        private IList<Moment> chargerMomentsPourActivite(string nomActivite)
+        {
+            // On crée la liste de moments
+            return ViewModel.chargerMomentsPourActivite(nomActivite);
+        }
     }
 }

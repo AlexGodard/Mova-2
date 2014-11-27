@@ -42,6 +42,39 @@ namespace Mova.Logic.Services.MySql
             return result;
         }
 
+        public IList<Moment> RetrieveSpecified(string nomActivite)
+        {
+            IList<Moment> result = new List<Moment>();
+            try
+            {
+                connexion = new MySqlConnexion();
+
+                // On doit maintenant aller chercher les bons idMoments
+
+
+
+                string requete = "SELECT m.idmoment, m.nomMoment FROM Moments AS m " +
+                                 "INNER JOIN ActivitesMoments AS am ON m.idMoment = am.idMoment " +
+                                 "INNER JOIN Activites AS a ON am.idActivite = a.idActivite " +
+                                 "WHERE a.nomActivite = '" + nomActivite + "'";
+
+                DataSet dataset = connexion.Query(requete);
+                DataTable table = dataset.Tables[0];
+
+                foreach (DataRow moment in table.Rows)
+                {
+                    result.Add(ConstructMoment(moment));
+                }
+
+            }
+            catch (MySqlException)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
