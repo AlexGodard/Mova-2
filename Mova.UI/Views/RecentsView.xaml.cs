@@ -34,7 +34,7 @@ namespace Mova.UI.Views
 
         private const int nbColumnsMax = 3;
         private const int nbColumnsDepart = 1;
-        private const int nbRowsDepart = 1;
+        private const int nbRowsDepart = 2;
         private const int maxEnsembleDesire = 7;
 
         List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
@@ -106,11 +106,11 @@ namespace Mova.UI.Views
         private void AfficherEnsembles(List<EnsembleVetement> liste)
         {
 
-            int i = nbColumnsDepart;
+            int i = 0;
 
             foreach (EnsembleVetement ensemble in liste)
             {
-                EcrireVetementViaListe(ensemble.ListeVetements, i);
+				EcrireVetementViaListe(ensemble.ListeVetements, i + (2 + (1 * i)));
 
                 try { 
                 //On affiche la date dans un label
@@ -143,9 +143,9 @@ namespace Mova.UI.Views
             Vetement pants = EnOrdre[1];
             Vetement shoes = EnOrdre[2];
 
-            DessinerVetement(torso, colonne, nbRowsDepart);
-            DessinerVetement(pants, colonne, nbRowsDepart + 1);
-            DessinerVetement(shoes, colonne, nbRowsDepart + 2);
+            DessinerVetement(torso, colonne, 2);
+            DessinerVetement(pants, colonne, 3);
+            DessinerVetement(shoes, colonne, 4);
 
         }
 
