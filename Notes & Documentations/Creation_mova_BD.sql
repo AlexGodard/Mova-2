@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `activitesvetements` (
   `idActivite` int(11) NOT NULL,
   PRIMARY KEY (`idActiviteVetement`),
   KEY `ActivitesVetements_Vetements_FK` (`idVetement`),
-  KEY `ActivitesVetements_Activities_FK` (`idActivite`)
+  KEY `ActivitesVetements_Activities_FK` (`idActivite`),
   ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=590 ;
 
@@ -874,7 +874,7 @@ CREATE TABLE IF NOT EXISTS `stylesvetements` (
   `idVetement` int(11) NOT NULL,
   PRIMARY KEY (`idStyleVetement`),
   KEY `StylesVetements_Styles_FK` (`idStyle`),
-  KEY `StylesVetements_Vetements_FK` (`idVetement`)
+  KEY `StylesVetements_Vetements_FK` (`idVetement`),
   ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=241 ;
 
@@ -1302,7 +1302,7 @@ CREATE TABLE IF NOT EXISTS `vetementstemperatures` (
   `idTemperature` int(11) NOT NULL,
   PRIMARY KEY (`idVetementTemperature`),
   KEY `VetementsTemperatures_Vetements_FK` (`idVetement`),
-  KEY `VetementsTemperatures_idTemperature_FK` (`idTemperature`)
+  KEY `VetementsTemperatures_idTemperature_FK` (`idTemperature`),
   ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=434 ;
 
