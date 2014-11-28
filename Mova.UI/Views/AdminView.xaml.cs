@@ -207,18 +207,18 @@ namespace Mova.UI.Views
                             // On regarde quel type de vêtement c'est
                             if (cboTypes.SelectedItem.ToString() == "Bas")
                             {
-                                client.UploadFile("ftp://420.cstj.qc.ca/1237596/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                                imageURL = "420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/bas/" + System.IO.Path.GetFileName(txtImageURL.Text);
                             }
                             else if (cboTypes.SelectedItem.ToString() == "Haut")
                             {
-                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/haut/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                                imageURL = "420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/hauts/" + System.IO.Path.GetFileName(txtImageURL.Text);
                             }
                             else if (cboTypes.SelectedItem.ToString() == "Chaussures")
                             {
-                                client.UploadFile("ftp://420.cstj.qc.ca/1237596/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
-                                imageURL = "420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text);
+                                client.UploadFile("ftp://420.cstj.qc.ca/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text), "STOR", txtImageURL.Text);
+                                imageURL = "420.cstj.qc.ca/gabrielpichecloutier/images_mova/chaussures/" + System.IO.Path.GetFileName(txtImageURL.Text);
                             }
                         }
                     }
