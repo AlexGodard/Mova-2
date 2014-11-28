@@ -860,7 +860,7 @@ INSERT INTO `styles` (`idStyle`, `nomStyle`) VALUES
 (4, 'Hippie'),
 (6, 'Propre'),
 (5, 'Relaxe'),
-(1, 'Sport'),
+(1, 'Sport');
 
 -- --------------------------------------------------------
 
