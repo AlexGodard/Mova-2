@@ -29,11 +29,11 @@ namespace Mova.UI.ViewModel
         int iNbVetementCourant = 0;              //Nombre d'activite ayant été afficher au total
         int iVetementDepart = 0;                 //On affiche des activités à partir de cette valeur
         int iVetementTotal;       //Le nombre total d'activités
-        int iNombreDeBoutonsDesires = 3;       //Combien d'activité on désire afficher à l'écran
+        int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbVetementPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
         bool bPremiereVueVetement = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
         int iColonne = 1;
-        int iRow = 1;
+        int iRow = 0;
 
         public HautsView()
         {
@@ -58,12 +58,19 @@ namespace Mova.UI.ViewModel
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
-                
-                iColonne++;           
+                gridHauts.Children.Add(i);
+                   
 
                 iNbVetementCourant++;     //Nombre de activités affichées au total
                 iNbVetementPrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
+
+                if (iColonne == 4)
+                {
+                    iColonne = 0;
+                    iRow++;
+                }
+
+                iColonne++;   
 
                 if (iNbVetementCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
                 {
@@ -89,13 +96,13 @@ namespace Mova.UI.ViewModel
      
             int iNombreDeBoutonAfficher = 0;   // Garde une trace sur le nombre de bouton courant sur l'écran
             iColonne = 1;
-            iRow = 1;
+            iRow = 0;
 
-            var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var imageasupprimer = gridHauts.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach(var image in imageasupprimer.ToList())
-            { 
-               GridHautVetement.Children.Remove(image);
+            {
+                gridHauts.Children.Remove(image);
             }
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
@@ -125,13 +132,20 @@ namespace Mova.UI.ViewModel
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
+                gridHauts.Children.Add(i);
 
-                iColonne++;
 
                 iNbVetementCourant++;
                 iNbVetementPrecedent++;
                 iNombreDeBoutonAfficher++;
+
+                if (iColonne == 4)
+                {
+                    iColonne = 0;
+                    iRow++;
+                }
+
+                iColonne++;   
 
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
@@ -154,13 +168,13 @@ namespace Mova.UI.ViewModel
         {
             int iNombreDeBoutonAfficher = 0;
             iColonne = 1;
-            iRow = 1;
+            iRow = 0;
 
-            var imageasupprimer = GridHautVetement.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var imageasupprimer = gridHauts.Children.OfType<Image>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
-                GridHautVetement.Children.Remove(image);
+                gridHauts.Children.Remove(image);
             }
 
             if (iNbVetementCourant - iNbVetementPrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
@@ -193,13 +207,21 @@ namespace Mova.UI.ViewModel
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
-                GridHautVetement.Children.Add(i);
+                gridHauts.Children.Add(i);
 
-                iColonne++;   
 
                 iNbVetementCourant++;
                 iNbVetementPrecedent++;
                 iNombreDeBoutonAfficher++;
+
+                if (iColonne == 4)
+                {
+                    iColonne = 0;
+                    iRow++;
+                }
+
+                iColonne++;   
+
                 if (iNombreDeBoutonAfficher == iNombreDeBoutonsDesires)
                 {
                     break;
