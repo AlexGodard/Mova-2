@@ -79,7 +79,7 @@
 		</Grid.RowDefinitions>
 
 		<Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Favoris" FontFamily="Calibri" FontSize="62" />
-
+        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous avez aucun ensemble récent" FontFamily="Calibri" FontSize="32" />
 		<!-- Label des dates des ensembles. -->
 		<Label x:Name="lblDate1" Grid.Column="2" Style="{StaticResource lblDate}" />
 		<Label x:Name="lblDate2" Grid.Column="4" Style="{StaticResource lblDate}" />
@@ -91,11 +91,11 @@
 		<Label x:Name="lblNomEnsemble3" Height="30" Grid.Column="3" Margin="31,23,32,23"/>
 
 		<!-- Fond blanc derrière les ensembles. -->
-		<Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" />
-		<Label Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" />
-		<Label Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" />
+        <Label x:Name="lblBackgroundRow1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
 
-		<!-- Boutons de navigation vers les ensembles suivants/précédents. -->
+        <!-- Boutons de navigation vers les ensembles suivants/précédents. -->
 		<Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Style="{StaticResource btnSuivant}" Content="Suivant" Click="btnSuivant_Click"/>
 		<Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Content="Précédent" Click="btnPrecedent_Click" />
     </Grid>

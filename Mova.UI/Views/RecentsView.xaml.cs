@@ -55,7 +55,7 @@ namespace Mova.UI.Views
 
             if (listeEnsembleRecents.Count != 0)
             {
-
+                
 
                 List<EnsembleVetement> listeAAfficher = new List<EnsembleVetement>();
 
@@ -63,12 +63,21 @@ namespace Mova.UI.Views
                 int noPage = _historique.GetNumberOfPage(this);
                 int indexDepart = noPage*3;
                 int indexDernierAffiché = 0;
-
+                int compteurBackground = 0;
                 //On en affiche un maximum de 3 par page
                 for (int i = indexDepart; i < (indexDepart + nbColumnsMax) && i < listeEnsembleRecents.Count; i++)
                 {
                     listeAAfficher.Add(listeEnsembleRecents[i]);
 
+                    // On doit afficher le bon nombre de background blanc
+                    if (compteurBackground == 0)
+                        lblBackgroundRow1.Visibility = Visibility.Visible;
+                    if (compteurBackground == 1)
+                        lblBackgroundRow2.Visibility = Visibility.Visible;
+                    if (compteurBackground == 2)
+                        lblBackgroundRow3.Visibility = Visibility.Visible;
+
+                    compteurBackground++;
                     indexDernierAffiché = i + 1;
                 }
                 
@@ -83,14 +92,21 @@ namespace Mova.UI.Views
 
                 Button button = new Button();
 
-                button.Content = "Aucun ensemble récent, allez à l'écran styliste";
+                lblMessage.Visibility = Visibility.Visible;
+                btnPrecedent.Visibility = Visibility.Hidden;
+                btnSuivant.Visibility = Visibility.Hidden;
+
+                lblBackgroundRow1.Visibility = Visibility.Hidden;
+                lblBackgroundRow2.Visibility = Visibility.Hidden;
+                lblBackgroundRow3.Visibility = Visibility.Hidden;
+                /*button.Content = "Aucun ensemble récent, allez à l'écran styliste";
 
                 Grid.SetColumn(button, nbColumnsDepart);
                 Grid.SetRow(button, nbRowsDepart);
                 // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
                 button.Click += btnStyliste_Click;
 
-                DynamicGrid.Children.Add(button);
+                DynamicGrid.Children.Add(button);*/
 
             }
 
