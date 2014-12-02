@@ -31,7 +31,6 @@ namespace Mova.UI.ViewModel
         int iVetementTotal;       //Le nombre total d'activités
         int iNombreDeBoutonsDesires = 12;       //Combien d'activité on désire afficher à l'écran
         int iNbVetementPrecedent = 0;           //Le nombre d'activité affiché sur seulement le dernier écran
-        bool bPremiereVueVetement = true;       //Si l'utilisateur ouvre ActiviteView pour la premiere fois
         int iColonne = 1;
         int iRow = 0;
 
@@ -43,11 +42,21 @@ namespace Mova.UI.ViewModel
 
             iVetementTotal = Listes.ListeHautsUtilisateur.Count();
 
-            bPremiereVueVetement = false;
 
             //On crée des boutons pour les premiers 12 activités
             foreach (Vetement v in Listes.ListeHautsUtilisateur)
             {
+                Label l = new Label();
+                l.Background = Brushes.White;
+                l.Padding = new Thickness(10, 10, 10, 10);
+                l.Margin = new Thickness(10, 10, 10, 10);
+                l.Width = 152;
+
+                Grid.SetColumn(l, iColonne);
+                Grid.SetRow(l, iRow);
+
+                gridHauts.Children.Add(l);
+
                 Image i = new Image();
                 string uri;
                 if (v.ImageURL.ToString().Contains("http://"))
@@ -55,6 +64,8 @@ namespace Mova.UI.ViewModel
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Width = 148;
+                i.Height = 178;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
@@ -99,10 +110,15 @@ namespace Mova.UI.ViewModel
             iRow = 0;
 
             var imageasupprimer = gridHauts.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var labelasupprimer = gridHauts.Children.OfType<Label>();     //On efface le contenu de l'écran
 
-            foreach(var image in imageasupprimer.ToList())
+            foreach (var image in imageasupprimer.ToList())
             {
                 gridHauts.Children.Remove(image);
+            }
+            foreach (var label in labelasupprimer.ToList())
+            {
+                gridHauts.Children.Remove(label);
             }
 
             /*S'il avait des activités sur l'écran précedent, on n'offre la possibilité à l'utilisateur d'y revenir*/
@@ -122,6 +138,17 @@ namespace Mova.UI.ViewModel
             /*Affiche les activités à partir du point de départ donnée*/
             foreach (Vetement v in Listes.ListeHautsUtilisateur.Skip(iVetementDepart))
             {
+                Label l = new Label();
+                l.Background = Brushes.White;
+                l.Padding = new Thickness(10, 10, 10, 10);
+                l.Margin = new Thickness(10, 10, 10, 10);
+                l.Width = 152;
+
+                Grid.SetColumn(l, iColonne);
+                Grid.SetRow(l, iRow);
+
+                gridHauts.Children.Add(l);
+
                 Image i = new Image();
                 string uri;
                 if (v.ImageURL.ToString().Contains("http://"))
@@ -129,6 +156,8 @@ namespace Mova.UI.ViewModel
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Width = 148;
+                i.Height = 178;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
@@ -171,10 +200,15 @@ namespace Mova.UI.ViewModel
             iRow = 0;
 
             var imageasupprimer = gridHauts.Children.OfType<Image>();     //On efface le contenu de l'écran
+            var labelasupprimer = gridHauts.Children.OfType<Label>();     //On efface le contenu de l'écran
 
             foreach (var image in imageasupprimer.ToList())
             {
                 gridHauts.Children.Remove(image);
+            }
+            foreach (var label in labelasupprimer.ToList())
+            {
+                gridHauts.Children.Remove(label);
             }
 
             if (iNbVetementCourant - iNbVetementPrecedent <= iNombreDeBoutonsDesires)    //Nous offre la possibilité de revenir voir les activités précedent si nous sommes à la fin de la liste
@@ -197,6 +231,17 @@ namespace Mova.UI.ViewModel
             //Affiche le nombre les activités à partir du début proposé
             foreach (Vetement v in Listes.ListeHautsUtilisateur.Skip(iVetementDepart))
             {
+                Label l = new Label();
+                l.Background = Brushes.White;
+                l.Padding = new Thickness(10, 10, 10, 10);
+                l.Margin = new Thickness(10, 10, 10, 10);
+                l.Width = 152;
+
+                Grid.SetColumn(l, iColonne);
+                Grid.SetRow(l, iRow);
+
+                gridHauts.Children.Add(l);
+
                 Image i = new Image();
                 string uri;
                 if (v.ImageURL.ToString().Contains("http://"))
@@ -204,6 +249,8 @@ namespace Mova.UI.ViewModel
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Width = 148;
+                i.Height = 178;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
 
