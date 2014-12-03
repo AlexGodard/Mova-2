@@ -288,7 +288,7 @@ namespace Mova.UI.ViewModel
         }
 
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click_1(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<MaGardeRobeView>(new MaGardeRobeView());
