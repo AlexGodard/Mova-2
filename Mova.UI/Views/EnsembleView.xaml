@@ -69,16 +69,16 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Choisis un ensemble" FontFamily="Calibri" FontSize="62" />
-
+        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Aucun ensemble trouvé" FontFamily="Calibri" FontSize="32" />
         <!-- Bouton pour afficher les ensembles suivants qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Style="{StaticResource btnSuivant}" Visibility="Hidden" Content="Suivant"  Click="btnSuivant_Click" />
 
         <!-- Bouton pour afficher les ensembles précédents qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Visibility="Hidden" Content="Précédent" Click="btnPrecedent_Click" />
 
-        <Label Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" />
-        <Label Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" />
-        <Label Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" />
+        <Label x:Name="lblBackground1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackground2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackground3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
 
         <!-- Bouton pour revenir à l'écran précédent qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Row="5" Grid.Column="1" x:Name="btnEcranPrecedent" Click="btnEcranPrecedent_Click" VerticalAlignment="top" Width="100">

@@ -159,7 +159,15 @@ namespace Mova.UI.Views
                 MessageBox.Show("Aucun ensemble n'a été trouvé");
                 
                 //RetournerEcranStyliste();
-                
+
+                lblMessage.Visibility = Visibility.Visible;
+                btnPrecedent.Visibility = Visibility.Hidden;
+                btnSuivant.Visibility = Visibility.Hidden;
+
+                lblBackground1.Visibility = Visibility.Hidden;
+                lblBackground2.Visibility = Visibility.Hidden;
+                lblBackground3.Visibility = Visibility.Hidden;
+
                 Button but = new Button();
                 but.Content = "Retourner à l'écran styliste";
                 but.Width = 150;
@@ -187,7 +195,14 @@ namespace Mova.UI.Views
 
             for (int i = 0; i < nbEnsemblesMax; i++)
             {
-                
+
+                if (i == 0)
+                    lblBackground1.Visibility = Visibility.Visible;
+                if (i == 1)
+                    lblBackground2.Visibility = Visibility.Visible;
+                if (i == 2)
+                    lblBackground3.Visibility = Visibility.Visible;
+
                 // Pour chaque EnsembleVetement, on extract la liste de Vetements
                 listeVetements = l[i].ListeVetements;
                 
