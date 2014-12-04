@@ -36,6 +36,7 @@ namespace Mova.UI.Views
         private const int nbColumnsDepart = 1;
         private const int nbRowsDepart = 2;
         private const int maxEnsembleDesire = 7;
+        private const int fontSizeDate = 40;
 
         List<UtilisateurEnsemble> listeUtilisateurEnsembles = new List<UtilisateurEnsemble>();
         List<string> listeNomsEnsemble = new List<string>();
@@ -126,14 +127,17 @@ namespace Mova.UI.Views
 
             foreach (EnsembleVetement ensemble in liste)
             {
-				EcrireVetementViaListe(ensemble.ListeVetements, i + (2 + (1 * i)));
+                int colonne = i + (2 + (1 * i));
+
+                EcrireVetementViaListe(ensemble.ListeVetements, colonne);
 
                 try { 
                 //On affiche la date dans un label
                 Label date = new Label();
+                date.FontSize = fontSizeDate;
                 date.Content = HelperDate.GetDayFromDate((DateTime)ensemble.DateAjout);
-                Grid.SetColumn(date, i);
-                Grid.SetRow(date, 4);
+                Grid.SetColumn(date, colonne);
+                Grid.SetRow(date, 1);
 
                 DynamicGrid.Children.Add(date);
                 }
