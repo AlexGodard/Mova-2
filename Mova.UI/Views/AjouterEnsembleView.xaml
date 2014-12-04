@@ -48,6 +48,6 @@
         <Label Background="White" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="200" Width="202" Grid.ColumnSpan="2"/>
         <Label Background="White" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Height="200" Width="202" Grid.ColumnSpan="2"/>
         <Label Background="White" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Height="200" Width="202" Grid.ColumnSpan="2"/>
-        <Label Content="Votre &#xD;&#xA;ensemble" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="411" Height="148" FontFamily="Calibri" FontSize="62" Grid.ColumnSpan="2"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Votre ensemble" HorizontalAlignment="Left" Margin="-40,10,0,0" VerticalAlignment="Top" Width="411" Height="148" FontFamily="Calibri" FontSize="62"/>
     </Grid>
 </UserControl>
