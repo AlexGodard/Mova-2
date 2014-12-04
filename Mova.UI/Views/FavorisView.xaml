@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" SnapsToDevicePixels="True" Name="ucRecents">
+             mc:Ignorable="d" SnapsToDevicePixels="True" Name="ucFavoris">
 
 	<UserControl.Resources>
 		<!-- Style des label des dates. -->
@@ -79,7 +79,7 @@
 		</Grid.RowDefinitions>
 
 		<Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Favoris" FontFamily="Calibri" FontSize="62" />
-        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous avez aucun ensemble récent" FontFamily="Calibri" FontSize="32" />
+        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous avez aucun ensemble favori" FontFamily="Calibri" FontSize="32" />
 		<!-- Label des dates des ensembles. -->
 		<Label x:Name="lblDate1" Grid.Column="2" Style="{StaticResource lblDate}" />
 		<Label x:Name="lblDate2" Grid.Column="4" Style="{StaticResource lblDate}" />
