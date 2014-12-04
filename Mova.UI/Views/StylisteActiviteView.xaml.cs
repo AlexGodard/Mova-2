@@ -81,12 +81,18 @@ namespace Mova.UI.Views
             //4 éléments maximum dans la liste
             List<Activite> listeActivites = Listes.RetourneAleatoire<Activite>(4, Listes.ListeActivites.ToList<Activite>());
 
+
+
             //Gabriel Piché Cloutier - 2014-10-23
             //On affiche seulement 4 boutons dans l'écran styliste.
             int col = 2;
             int rangee = 2;
             for (int i = 1; i <= _maxBoutons && i <= listeActivites.Count; i++)
             {
+
+                //On nettoie les boutons au cas ou
+                NettoyerBoutons(rangee, col);
+
                 Button btn = new Button();
                 btn.Content = listeActivites[i - 1].NomActivite.ToString();
                 btn.Click += btn_Click;
@@ -105,6 +111,19 @@ namespace Mova.UI.Views
 
             }
 
+        }
+
+        private void NettoyerBoutons(int row, int col) {
+
+            foreach (UIElement control in gridPrincipale.Children)
+            {
+                if (Grid.GetRow(control) == row && Grid.GetColumn(control) == col)
+                {
+
+                    gridPrincipale.Children.Remove(control);
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -145,6 +164,11 @@ namespace Mova.UI.Views
             registerButtonInput(sender);
 
             ChangeView();
+        }
+
+        private void btnRandom_Click(object sender, RoutedEventArgs e)
+        {
+            setButtonsContentActivites();
         }
 
 
