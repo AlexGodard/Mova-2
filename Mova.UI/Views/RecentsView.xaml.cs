@@ -137,8 +137,14 @@ namespace Mova.UI.Views
 
                 DynamicGrid.Children.Add(date);
                 }
-                catch (Exception e) { }
-                i++;
+                catch (Exception e)
+                {
+                
+                }
+                finally {
+                    i++;
+                }
+                
             }
 
             
