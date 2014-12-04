@@ -29,6 +29,8 @@ namespace Mova.UI.Views
         public MaGardeRobeView()
         {        
             InitializeComponent();
+            Listes.ListeEnsembleAjouter.Clear();
+            Listes.AjouterEnsemble = false;
             DataContext = new MaGardeRobeViewModel();
             lblNbEnsemble.Content = "Vous avez " + Listes.NbEnsembleUtilisateur + " ensembles";
             lblNbHauts.Content = "Vous avez " + Listes.NbHauts + " hauts";

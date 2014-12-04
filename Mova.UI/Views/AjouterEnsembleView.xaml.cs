@@ -39,23 +39,49 @@ namespace Mova.UI.Views
             {
                 throw;
             }
-
+            /*Height="163" Margin="323,193,0,0" VerticalAlignment="Top" Width="185"
             BitmapImage img1 = new BitmapImage();
             img1.BeginInit();
             img1.UriSource = new Uri(Listes.ListeEnsembleAjouter.ElementAt(0).ToString());
-            img1.EndInit();
-            BitmapImage img2 = new BitmapImage();
+            img1.EndInit();*/
+
+            Image i = new Image();
+            string uri;
+            uri = Listes.ListeEnsembleAjouter.ElementAt(0).ToString();
+            i.Source = new BitmapImage(new Uri(uri));
+            i.Width = 195;
+            i.Height = 195;
+            Grid.SetColumn(i, 1);
+            Grid.SetRow(i, 0);
+            ajoutEnsemble.Children.Add(i);
+
+            /*BitmapImage img2 = new BitmapImage();
             img2.BeginInit();
             img2.UriSource = new Uri(Listes.ListeEnsembleAjouter.ElementAt(2).ToString());
-            img2.EndInit();
-            BitmapImage img3 = new BitmapImage();
+            img2.EndInit();*/
+
+            Image i2 = new Image();
+            uri = Listes.ListeEnsembleAjouter.ElementAt(2).ToString();
+            i2.Source = new BitmapImage(new Uri(uri));
+            i2.Width = 195;
+            i2.Height = 195;
+            Grid.SetColumn(i2, 1);
+            Grid.SetRow(i2, 1);
+            ajoutEnsemble.Children.Add(i2);
+
+            /*BitmapImage img3 = new BitmapImage();
             img3.BeginInit();
             img3.UriSource = new Uri(Listes.ListeEnsembleAjouter.ElementAt(4).ToString());
-            img3.EndInit();
+            img3.EndInit();*/
 
-            imgHautsEnseble.Source = img1;
-            imgBasEnsebles.Source = img2;
-            imgSouliersEnsemble.Source = img3;
+            Image i3 = new Image();
+            uri = Listes.ListeEnsembleAjouter.ElementAt(4).ToString();
+            i3.Source = new BitmapImage(new Uri(uri));
+            i3.Width = 195;
+            i3.Height = 195;
+            Grid.SetColumn(i3, 1);
+            Grid.SetRow(i3, 2);
+            ajoutEnsemble.Children.Add(i3);
         }
 
         private void txtNomEnsemble_Change(object sender, TextChangedEventArgs e)
