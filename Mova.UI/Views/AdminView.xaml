@@ -23,22 +23,22 @@
         <Label x:Name="lblSexe" Content="Sexe" Margin="38,362,0,194" HorizontalAlignment="Left" RenderTransformOrigin="0.353,-0.452"/>
         <TextBox x:Name="txtNomVetement" Margin="141,65,0,494" Width="154" HorizontalAlignment="Left" Text="{Binding RetrieveArgs.NomVetement}"/>
         <TextBox x:Name="txtPrix" Margin="346,64,0,494" Width="74" HorizontalAlignment="Left" Text="{Binding RetrieveArgs.Prix}"/>
-        <CheckBox x:Name="chbHomme" Content="Homme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="78,370,0,0" Height="16"/>
-        <CheckBox x:Name="chbFemme" Content="Femme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="154,370,0,0" RenderTransformOrigin="0.914,0.533" Height="16" />
+        <CheckBox x:Name="chbHomme" Content="Homme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="78,370,0,0" Height="16" ToolTip="Le vêtement pourra être porté par un homme"/>
+        <CheckBox x:Name="chbFemme" Content="Femme" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="154,370,0,0" RenderTransformOrigin="0.914,0.533" Height="16" ToolTip="Le vêtement pourra être porté par une femme" />
         <ListBox x:Name="lstActivites" HorizontalAlignment="Left" Height="166" VerticalAlignment="Top" Width="154" Margin="49,125,0,0" SelectionMode="Multiple"/>
         <ListBox x:Name="lstStyles" HorizontalAlignment="Left" Height="166" VerticalAlignment="Top" Width="154" Margin="223,125,0,0" SelectionMode="Multiple"/>
         <ListBox x:Name="lstTemperatures" HorizontalAlignment="Left" Height="166" VerticalAlignment="Top" Width="154" Margin="387,125,0,0" SelectionMode="Multiple"/>
-        <ComboBox x:Name="cboTypes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="270,364,0,0"/>
-        <Button x:Name="btnSoumettre" Width="200" Height="100" Margin="270,395,310,85" Click="btnSoumettre_Click">Soumettre</Button>
+        <ComboBox x:Name="cboTypes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="270,364,0,0" ToolTip="Type du vêtement"/>
+        <Button x:Name="btnSoumettre" Width="200" Height="100" Margin="270,395,310,85" Click="btnSoumettre_Click" ToolTip="Valider les informations et ajouter le vêtement">Soumettre</Button>
         <TextBlock x:Name="txbErreurType" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="430,370,212,198" TextWrapping="Wrap"><Run Text="Vous devez choisir le type de vêtement"/></TextBlock>
         <TextBlock x:Name="txbErreurSexe" Visibility="Hidden" FontSize="8" Foreground="Red" Margin="49,391,593,166" TextWrapping="Wrap"><Run Text="Vous devez choisir au moins un sexe qui peut porter le vêtement"/></TextBlock>
         <Label x:Name="lblImageURL" Content="Lien vers image" Margin="560,94,0,460" VerticalAlignment="Center" HorizontalAlignment="Left"/>
         <TextBox x:Name="txtImageURL" Margin="559,125,0,289" Width="139" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding RetrieveArgs.ImageURL}"/>
-        <ComboBox x:Name="cboCouleurs" FontSize="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="486,63,0,0" Height="19"/>
+        <ComboBox x:Name="cboCouleurs" FontSize="9" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="486,63,0,0" Height="19" ToolTip="Couleur du vêtement"/>
 
-        <Button x:Name="btnSelectionnerToutActivites" Content="Appliquer à tout les activités" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,304,0,0" Click="btnSelectionnerToutActivites_Click"/>
-        <Button x:Name="btnSelectionnerToutStyles" Content="Appliquer à tout les styles" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,304,0,0" Click="btnSelectionnerToutStyles_Click"/>
-        <Button x:Name="btnSelectionnerToutTemperatures" Content="Appliquer à tout les températures" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="387,304,0,0" Click="btnSelectionnerToutTemperatures_Click"/>
-        <Button x:Name="btnParcourir" Content="Parcourir" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="623,304,0,0" Click="btnParcourir_Click" Width="75"/>
+        <Button x:Name="btnSelectionnerToutActivites" Content="Appliquer à tout les activités" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="47,304,0,0" Click="btnSelectionnerToutActivites_Click" ToolTip="Selectionner tout les activités"/>
+        <Button x:Name="btnSelectionnerToutStyles" Content="Appliquer à tout les styles" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="223,304,0,0" Click="btnSelectionnerToutStyles_Click" ToolTip="Sélectionner tout les styles"/>
+        <Button x:Name="btnSelectionnerToutTemperatures" Content="Appliquer à tout les températures" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="387,304,0,0" Click="btnSelectionnerToutTemperatures_Click" ToolTip="Sélectionner tout les températures"/>
+        <Button x:Name="btnParcourir" Content="Parcourir" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="623,304,0,0" Click="btnParcourir_Click" Width="75" ToolTip="Aller chercher un image sur l'ordinateur"/>
     </Grid>
 </UserControl>

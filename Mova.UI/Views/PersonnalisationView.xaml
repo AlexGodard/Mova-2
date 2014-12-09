@@ -182,8 +182,8 @@
         <Button x:Name="btnPrecedentShoes" Style="{StaticResource btnPrecedent}" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Click="btnPrecedent_Click"/>
 
         <TextBox Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3" Margin="5" x:Name="txtNomEnsemble" Text="Nomme ton ensemble !" FontFamily="Calibri" FontSize="20" BorderBrush="Transparent" TextAlignment="Center" GotFocus="txtNomEnsemble_GotFocus" />
-        <Button x:Name="btnFavori" Content="Favori" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnOrange}" Click="btnFavori_Click"/>
-        <Button x:Name="btnChoisir" Content="Choisir" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnVert}" Click="btnChoisir_Click"/>
+        <Button x:Name="btnFavori" Content="Favori" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnOrange}" Click="btnFavori_Click" ToolTip="Ajoute cet ensemble dans vos favoris si vous le choisissez"/>
+        <Button x:Name="btnChoisir" Content="Choisir" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Margin="5" Style="{StaticResource btnVert}" Click="btnChoisir_Click" ToolTip="Ajoute l'ensemble dans la liste de vos ensembles récents"/>
 
         <!-- Messages d'erreurs disant qu'il faut se connecter -->
         <TextBlock Grid.Row="6" x:Name="txbErreurNom" Style="{StaticResource txbErreurDroite}" Text="Il faut se connecter pour accéder à cette fonctionnalité." />

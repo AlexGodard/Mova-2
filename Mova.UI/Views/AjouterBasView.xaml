@@ -18,8 +18,24 @@
             <RowDefinition Height="176" />
             <RowDefinition Height="108" />
         </Grid.RowDefinitions>
-        <Button Name="btnSuivant" Visibility="Hidden" Content="Suivant" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Height="156" Grid.Column="4"  Click="btnSuivant_Click"/>
-        <Button Name="btnPrecedent" Visibility="Hidden" Content="Precedent" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="156"  Click="btnPrecedent_Click"/>
+        <Button Name="btnSuivant" Visibility="Hidden" Content="Suivant" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Height="156" Grid.Column="4"  Click="btnSuivant_Click">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock>Afficher les bas suivants</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
+        <Button Name="btnPrecedent" Visibility="Hidden" Content="Precedent" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="156"  Click="btnPrecedent_Click">
+            <Button.ToolTip>
+                <ToolTip>
+                    <StackPanel>
+                        <TextBlock>Afficher les bas précédents</TextBlock>
+                    </StackPanel>
+                </ToolTip>
+            </Button.ToolTip>
+        </Button>
         <Button Grid.Row="2" x:Name="btnBack" Click="btnBack_Click" VerticalAlignment="Bottom" Height="75" Margin="0,0,10,10" HorizontalAlignment="Right" Width="80" RenderTransformOrigin="0.509,0.632">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
@@ -36,8 +52,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="btn1" Content="Choisir" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click" />
-        <Button Name="btn2" Content="Choisir" Visibility="Hidden" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click"/>
-        <Button Name="btn3" Content="Choisir" Visibility="Hidden" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click"/>
+        <Button Name="btn1" Content="Choisir" Visibility="Hidden" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click" ToolTip="Choisir ce bas" />
+        <Button Name="btn2" Content="Choisir" Visibility="Hidden" Grid.Column="2" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click" ToolTip="Choisir ce bas"/>
+        <Button Name="btn3" Content="Choisir" Visibility="Hidden" Grid.Column="3" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="150" Height="108" Click="btnChoisir_Click" ToolTip="Choisir ce bas"/>
     </Grid>
 </UserControl>

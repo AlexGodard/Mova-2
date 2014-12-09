@@ -56,7 +56,7 @@
 
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblMoment" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Top" />
         <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" x:Name="lblShabiller" FontFamily="Calibri" FontSize="62" Content="" VerticalAlignment="Center" />
-        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="btnRandom" FontFamily="Calibri" FontSize="20" Content="Vous ne trouvrez pas votre activité?" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,10,95,10" Click="btnRandom_Click" />
+        <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="btnRandom" FontFamily="Calibri" FontSize="20" Content="Vous ne trouvez pas votre activité?" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,10,95,10" Click="btnRandom_Click" ToolTip="Affiche d'autres activités" />
 
     </Grid>
 </UserControl>
