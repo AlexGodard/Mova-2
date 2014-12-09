@@ -16,7 +16,7 @@ namespace Mova.UI.ViewModel
     class StylisteStyleViewModel : BaseViewModel
     {
         private IStyleService _styleService;
-
+        private IEnsembleVetementService _ensembleVetementService;
         private ObservableCollection<StyleVetement> _styles = new ObservableCollection<StyleVetement>();
 
         /// <summary>
@@ -42,6 +42,11 @@ namespace Mova.UI.ViewModel
 
             _styleService = ServiceFactory.Instance.GetService<IStyleService>();
 
+        }
+
+        public bool ensemblesFound()
+        {
+            return (new ObservableCollection<EnsembleVetement>(ServiceFactory.Instance.GetService<IEnsembleVetementService>().RetrieveSelection(Listes.InfoStyliste)).Count <= 0) ? false : true;
         }
 
         /// <summary>

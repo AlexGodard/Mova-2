@@ -134,7 +134,18 @@ namespace Mova.UI.Views
             //On signale qu'on est le delegate du EnsembleView
             EnsembleView.derniereFenetre = this;
 
-            mainVM.ChangeView<UserControl>(new EnsembleView());
+            //Si on trouve des ensembles, on peut passer à la fenêtre suivante
+            if (ViewModel.ensemblesFound())
+            {
+                mainVM.ChangeView<UserControl>(new EnsembleView());
+            
+            }
+            //Sinon on revient à la page précédente pour offrir d'autres choix à l'utilisateur
+            else {
+                MessageBox.Show("Aucun ensemble n'a été trouvé");
+                mainVM.ChangeView<UserControl>(new StylisteActiviteView());
+            }
+            
 
         }
 
