@@ -37,7 +37,7 @@ namespace Mova.Logic.Models.Helpers
                     retour = "Vendredi";
                     break;
                 case "Saturday":
-                    retour = "SAmedi";
+                    retour = "Samedi";
                     break;
             }
         

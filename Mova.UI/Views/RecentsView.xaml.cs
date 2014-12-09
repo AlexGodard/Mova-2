@@ -166,6 +166,7 @@ namespace Mova.UI.Views
             lbl.Content = nom;
             Grid.SetColumn(lbl, colonne);
             Grid.SetRow(lbl, row);
+            lbl.HorizontalAlignment = HorizontalAlignment.Center;
 
             DynamicGrid.Children.Add(lbl);
 
