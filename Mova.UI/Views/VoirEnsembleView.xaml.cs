@@ -115,6 +115,7 @@ namespace Mova.UI.Views
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
             iColonne = 0;
+            int iCompteur = 0;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -184,10 +185,11 @@ namespace Mova.UI.Views
 
                 iRow = 0;
 
+                iCompteur++;
                 iNbVetementCourant++;     //Nombre de activités affichées au total
                 iNbVetementPrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
 
-                if (iNbVetementCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
+                if (iCompteur == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
                 {
                     break;
                 }
@@ -208,6 +210,7 @@ namespace Mova.UI.Views
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
             iColonne = 0;
+            int iCompteur = 0;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -234,6 +237,7 @@ namespace Mova.UI.Views
             foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur.Skip(iVetementDepart))
             {
                 iColonne++;
+             
 
                 Image i = new Image();
                 string uri;
@@ -273,10 +277,11 @@ namespace Mova.UI.Views
 
                 iRow = 0;
 
+                iCompteur++;
                 iNbVetementCourant++;     //Nombre de activités affichées au total
                 iNbVetementPrecedent++;   //Enregistre le nombre d'activités sur l'écran precedant
 
-                if (iNbVetementCourant == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
+                if (iCompteur == iNombreDeBoutonsDesires)   //Lorsque nous avons 12 boutons on arrête   
                 {
                     break;
                 }
