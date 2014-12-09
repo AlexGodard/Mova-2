@@ -131,15 +131,17 @@ namespace Mova.UI.Views
 
                 EcrireVetementViaListe(ensemble.ListeVetements, colonne);
 
-                try { 
-                //On affiche la date dans un label
-                Label date = new Label();
-                date.FontSize = fontSizeDate;
-                date.Content = HelperDate.GetDayFromDate((DateTime)ensemble.DateAjout);
-                Grid.SetColumn(date, colonne);
-                Grid.SetRow(date, 1);
+                EcrireLabelNom(ensemble.Nom, colonne, 5);
 
-                DynamicGrid.Children.Add(date);
+                try { 
+                    //On affiche la date dans un label
+                    Label date = new Label();
+                    date.FontSize = fontSizeDate;
+                    date.Content = HelperDate.GetDayFromDate((DateTime)ensemble.DateAjout);
+                    Grid.SetColumn(date, colonne);
+                    Grid.SetRow(date, 1);
+
+                    DynamicGrid.Children.Add(date);
                 }
                 catch (Exception e)
                 {
@@ -150,9 +152,23 @@ namespace Mova.UI.Views
                 }
                 
             }
+        }
 
-            
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="colonne"></param>
+        private void EcrireLabelNom(string nom, int colonne, int row)
+        {
+            Label lbl = new Label();
+
+            lbl.Content = nom;
+            Grid.SetColumn(lbl, colonne);
+            Grid.SetRow(lbl, row);
+
+            DynamicGrid.Children.Add(lbl);
+
         }
 
         /// <summary>

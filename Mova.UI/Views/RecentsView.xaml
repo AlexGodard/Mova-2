@@ -5,99 +5,100 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" SnapsToDevicePixels="True" Name="ucRecents">
 
-	<UserControl.Resources>
-		<!-- Style des label des dates. -->
-		<Style TargetType="Label" x:Key="lblDate">
-			<Setter Property="Grid.Row" Value="1" />
-			<Setter Property="HorizontalAlignment" Value="Center" />
-			<Setter Property="VerticalAlignment" Value="Bottom" />
-			<Setter Property="FontFamily" Value="Calibri" />
-			<Setter Property="FontSize" Value="20" />
-			<Setter Property="Foreground" Value="White" />
-		</Style>
-		
-		<!-- Image du bouton suivant -->
-		<Style TargetType="Button" x:Key="btnSuivant">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="Button">
-						<StackPanel>
-							<Image Name="fond1" Source="pack://application:,,,/../Resources/suivant.png" Width="100" Visibility="Visible" />
-							<Image Name="fond2" Source="pack://application:,,,/../Resources/suivantHover.png" Width="100" Visibility="Collapsed" />
-						</StackPanel>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="True">
-								<Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
-								<Setter TargetName="fond2" Property="Visibility" Value="Visible" />
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
+    <UserControl.Resources>
+        <!-- Style des label des dates. -->
+        <Style TargetType="Label" x:Key="lblDate">
+            <Setter Property="Grid.Row" Value="1" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
 
-		<!-- Image du bouton précédent -->
-		<Style TargetType="Button" x:Key="btnPrecedent">
-			<Setter Property="Template">
-				<Setter.Value>
-					<ControlTemplate TargetType="Button">
-						<StackPanel>
-							<Image Name="fond1" Source="pack://application:,,,/../Resources/precedent.png" Width="100" Visibility="Visible" />
-							<Image Name="fond2" Source="pack://application:,,,/../Resources/precedentHover.png" Width="100" Visibility="Collapsed" />
-						</StackPanel>
-						<ControlTemplate.Triggers>
-							<Trigger Property="IsMouseOver" Value="True">
-								<Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
-								<Setter TargetName="fond2" Property="Visibility" Value="Visible" />
-							</Trigger>
-						</ControlTemplate.Triggers>
-					</ControlTemplate>
-				</Setter.Value>
-			</Setter>
-		</Style>
-	</UserControl.Resources>
+        <!-- Image du bouton suivant -->
+        <Style TargetType="Button" x:Key="btnSuivant">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <Image Name="fond1" Source="pack://application:,,,/../Resources/suivant.png" Width="100" Visibility="Visible" />
+                            <Image Name="fond2" Source="pack://application:,,,/../Resources/suivantHover.png" Width="100" Visibility="Collapsed" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-	<Grid x:Name="DynamicGrid">
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="150" />
-			<ColumnDefinition Width="200" />
-			<ColumnDefinition Width="25" />
-			<ColumnDefinition Width="200" />
-			<ColumnDefinition Width="25" />
-			<ColumnDefinition Width="200" />
-			<ColumnDefinition Width="150" />
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="50" />
-			<RowDefinition Height="100" />
-			<RowDefinition Height="200" />
-			<RowDefinition Height="250" />
-			<RowDefinition Height="100" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
+        <!-- Image du bouton précédent -->
+        <Style TargetType="Button" x:Key="btnPrecedent">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <StackPanel>
+                            <Image Name="fond1" Source="pack://application:,,,/../Resources/precedent.png" Width="100" Visibility="Visible" />
+                            <Image Name="fond2" Source="pack://application:,,,/../Resources/precedentHover.png" Width="100" Visibility="Collapsed" />
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                                <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
 
-		<Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Récents" FontFamily="Calibri" FontSize="62" />
+    <Grid x:Name="DynamicGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Récents" FontFamily="Calibri" FontSize="62" />
         <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous avez aucun ensemble récent" FontFamily="Calibri" FontSize="32" />
-		<!-- Label des dates des ensembles. -->
-        <Label x:Name="lblDate1" Grid.Column="2" Style="{StaticResource lblDate}" />
-		<Label x:Name="lblDate2" Grid.Column="4" Style="{StaticResource lblDate}" />
-		<Label x:Name="lblDate3" Grid.Column="6" Style="{StaticResource lblDate}" />
-		
-		<!-- Label des noms des ensembles. -->
-        <Label x:Name="lblNomEnsemble1" Height="30" Grid.Column="1" Margin="31,23"/>
-        <Label x:Name="lblNomEnsemble2" Height="30" Grid.Column="2" Margin="31,23"/>
-        <Label x:Name="lblNomEnsemble3" Height="30" Grid.Column="3" Margin="31,23,32,23"/>
+        <!-- Label des dates des ensembles. -->
+        <Label x:Name="lblDate1" Grid.Column="2" Style="{StaticResource lblDate}" Margin="95,0" />
+        <Label x:Name="lblDate2" Grid.Column="4" Style="{StaticResource lblDate}" Margin="95,0" />
+        <Label x:Name="lblDate3" Grid.Column="6" Style="{StaticResource lblDate}" Margin="95,0" />
 
-		<!-- Fond blanc derrière les ensembles. -->
-		<Label x:Name="lblBackgroundRow1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
-		<Label x:Name="lblBackgroundRow2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
-		<Label x:Name="lblBackgroundRow3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <!-- Label des noms des ensembles. -->
+        <Label x:Name="lblNomEnsemble1" Height="30" Grid.Column="1" Margin="31,23,31,97" Grid.RowSpan="2"/>
+        <Label x:Name="lblNomEnsemble2" Height="30" Grid.Column="2" Margin="31,23,31,97" Grid.RowSpan="2"/>
+        <Label x:Name="lblNomEnsemble3" Height="30" Grid.Column="4" Margin="6,23,194,97" Grid.RowSpan="2"/>
 
-		<!-- Boutons de navigation vers les ensembles suivants/précédents. -->
-		<Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Style="{StaticResource btnSuivant}" Content="Suivant" Click="btnSuivant_Click"/>
-		<Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Content="Précédent" Click="btnPrecedent_Click" />
+        <!-- Fond blanc derrière les ensembles. -->
+        <Label x:Name="lblBackgroundRow1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="4" Background="White" Visibility="Hidden" />
 
-	</Grid>
+        <!-- Boutons de navigation vers les ensembles suivants/précédents. -->
+        <Button Grid.Column="7" Grid.Row="2" Grid.RowSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnSuivant" Style="{StaticResource btnSuivant}" Content="Suivant" Click="btnSuivant_Click" Margin="0,25"/>
+        <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Content="Précédent" Click="btnPrecedent_Click" Margin="0,75,0,24.254" />
+
+    </Grid>
 </UserControl>

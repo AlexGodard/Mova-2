@@ -16,6 +16,8 @@ namespace Mova.Logic.Models
 
         public int? IdEnsembleVetement { get; set; }
 
+        public string Nom { get; set; }
+
         public DateTime? DateAjout { get; set; }
 
         /// <summary>
@@ -34,6 +36,7 @@ namespace Mova.Logic.Models
         {
             IdEnsembleVetement = 0;
             IdEnsemble = 0;
+            Nom = "";
             ListeVetements = new List<Vetement>();
         }
     }

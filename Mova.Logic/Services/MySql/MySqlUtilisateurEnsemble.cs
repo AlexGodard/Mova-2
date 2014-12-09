@@ -124,7 +124,7 @@ namespace Mova.Logic.Services.MySql
                 connexion = new MySqlConnexion();
 
 
-                string requete = "SELECT v.*, ev.idEnsemble, ue.dateCreation FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.dateCreation > DATE_SUB(NOW(), INTERVAL 1 WEEK) AND ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
+                string requete = "SELECT e.nomEnsemble, v.*, ev.idEnsemble, ue.dateCreation FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Ensembles e ON e.idEnsemble = ev.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.dateCreation > DATE_SUB(NOW(), INTERVAL 1 WEEK) AND ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
 
                 DataSet dataset = connexion.Query(requete);
 
@@ -143,9 +143,17 @@ namespace Mova.Logic.Services.MySql
                     {
 
                         DateTime dt = new DateTime();
+                        string nomEnsembleTemp = "";
+
                         dt = (DateTime)enregistrement["dateCreation"];
 
-                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp, DateAjout = dt});
+
+                        if (((string)enregistrement["nomEnsemble"].ToString()).Length > 0)
+                        {
+                            nomEnsembleTemp = ((string)enregistrement["nomEnsemble"].ToString());
+                        }
+
+                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp, DateAjout = dt, Nom = nomEnsembleTemp });
 
                         listeVetementTemp = new List<Vetement>();
                     }
@@ -171,7 +179,7 @@ namespace Mova.Logic.Services.MySql
                 connexion = new MySqlConnexion();
 
 
-                string requete = "SELECT v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.estFavori = TRUE AND ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
+                string requete = "SELECT e.nomEnsemble, v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Ensembles e ON e.idEnsemble = ev.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.estFavori = TRUE AND ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
 
                 DataSet dataset = connexion.Query(requete);
 
@@ -189,7 +197,13 @@ namespace Mova.Logic.Services.MySql
                     if (listeVetementTemp.Count >= 3)
                     {
 
-                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp});
+                        string nomEnsembleTemp = "";
+
+                        if (((string)enregistrement["nomEnsemble"].ToString()).Length > 0) {
+                            nomEnsembleTemp = ((string)enregistrement["nomEnsemble"].ToString());
+                        }
+
+                        result.Add(new EnsembleVetement() { IdEnsemble = (int)enregistrement["idEnsemble"], ListeVetements = listeVetementTemp, Nom = nomEnsembleTemp});
 
                         listeVetementTemp = new List<Vetement>();
                     }

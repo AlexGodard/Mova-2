@@ -121,14 +121,37 @@ namespace Mova.UI.Views
         {
 
             int i = 0;
+            int colonne = 0;
 
             foreach (EnsembleVetement ensemble in liste)
             {
-				EcrireVetementViaListe(ensemble.ListeVetements, i + (2 + (1 * i)));
+                
+                colonne = i + (2 + (1 * i));
+
+				EcrireVetementViaListe(ensemble.ListeVetements, colonne);
+
+                EcrireLabelNom(ensemble.Nom, colonne, 5);
 
                 i++;
             }
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="colonne"></param>
+        private void EcrireLabelNom(string nom, int colonne, int row)
+        {
+            Label lbl = new Label();
+
+            lbl.Content = nom;
+            Grid.SetColumn(lbl,colonne);
+            Grid.SetRow(lbl, row);
+
+            DynamicGrid.Children.Add(lbl);
+        
         }
 
         /// <summary>
