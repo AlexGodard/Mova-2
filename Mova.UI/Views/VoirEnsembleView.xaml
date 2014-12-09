@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <Button Name="btnSuivant"  Visibility="Hidden" Content="Suivant" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="79" Height="156" Grid.Column="4"  Click="btnSuivant_Click" Grid.RowSpan="2"/>
         <Button Name="btnPrecedent" Visibility="Hidden" Content="Precedent" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="156"  Click="btnPrecedent_Click" Grid.RowSpan="2"/>
-        <Button Grid.Row="2" x:Name="btnBack" Click="btnBack_Click" VerticalAlignment="Bottom" Margin="10,0" Height="88">
+        <Button Grid.Row="2" x:Name="btnBack" Click="btnBack_Click" VerticalAlignment="Bottom" Margin="10,0,26,10" Height="63">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <StackPanel>
