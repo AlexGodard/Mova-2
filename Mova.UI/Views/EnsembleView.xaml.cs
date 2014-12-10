@@ -406,5 +406,21 @@ namespace Mova.UI.Views
         
         }
 
+        private void lblBackground1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblBackground1.Background = Brushes.BlanchedAlmond;
+        }
+
+        private void lblBackground2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblBackground2.Background = Brushes.BlanchedAlmond;
+        }
+
+        private void lblBackground3_MouseEnter(object sender, MouseEventArgs e)
+        {
+            lblBackground3.Background = Brushes.BlanchedAlmond;
+        }
     }
+
+    
 }
