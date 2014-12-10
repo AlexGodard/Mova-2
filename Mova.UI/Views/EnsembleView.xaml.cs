@@ -115,7 +115,8 @@ namespace Mova.UI.Views
 
                 nombreDeVetementAfficheJusquaDate = i + 1;
 
-                if (listeTemp.Count >= nbColumns){
+                if (listeTemp.Count >= nbColumns)
+                {
 
                     nombreDeVetementAfficheJusquaDate = i+1;
                     
@@ -193,7 +194,7 @@ namespace Mova.UI.Views
             int nbEnsemblesMax = nbColumns;
             List<Vetement> listeVetements;
 
-            for (int i = 0; i < nbEnsemblesMax; i++)
+            for (int i = 0; i < l.Count; i++)
             {
 
                 if (i == 0)
@@ -207,7 +208,7 @@ namespace Mova.UI.Views
                 listeVetements = l[i].ListeVetements;
                 
                 // Et on ajoute l'ensemble à la liste d'ensemble qu'on a AFFICHÉ
-                listeEnsemblesTrouves.Add(l[i]);
+                //listeEnsemblesTrouves.Add(l[i]);
 
                 //On dessine le vetement
                 EcrireVetementViaListe(listeVetements, i + (2 + (1*i))); //On a un maximum de 3 ensembles par pages et nous avons 5 colonnes, nous voulons écrire les ensembles dans les 3 du milieu
