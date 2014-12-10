@@ -56,7 +56,7 @@ namespace Mova.Logic.Services.MySql
                 string requete = "SELECT m.idmoment, m.nomMoment FROM Moments AS m " +
                                  "INNER JOIN ActivitesMoments AS am ON m.idMoment = am.idMoment " +
                                  "INNER JOIN Activites AS a ON am.idActivite = a.idActivite " +
-                                 "WHERE a.nomActivite = '" + nomActivite + "'";
+                                 "WHERE a.nomActivite = '" + nomActivite.Replace("'", "''") + "'";
 
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];
