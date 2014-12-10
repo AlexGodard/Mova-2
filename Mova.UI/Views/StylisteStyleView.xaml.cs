@@ -77,6 +77,10 @@ namespace Mova.UI.Views
             var result = listeStyles.OrderBy(item => rnd.Next());
             foreach (StyleVetement s in result) //(int i = 1; i <= _maxBoutons && listeStyles.Count > i; i++)
             {
+
+                //On nettoie les emplacements qui contiennent les boutons au cas où il y en aurait déjà
+                NettoyerBoutons(rangee, col);
+
                 Button btn = new Button();
                 iCompteur++;
                 btn.Content = s.NomStyle.ToString();
@@ -102,6 +106,20 @@ namespace Mova.UI.Views
             }
 
 
+        }
+
+        private void NettoyerBoutons(int row, int col)
+        {
+
+            foreach (UIElement control in gridPrincipale.Children)
+            {
+                if (Grid.GetRow(control) == row && Grid.GetColumn(control) == col)
+                {
+
+                    gridPrincipale.Children.Remove(control);
+                    break;
+                }
+            }
         }
 
         /// <summary>
@@ -175,6 +193,11 @@ namespace Mova.UI.Views
             registerButtonInput(sender);
 
             ChangeView();
+        }
+
+        private void btnRandom_Click(object sender, RoutedEventArgs e)
+        {
+            setButtonsContentStyles();
         }
     }
 }
