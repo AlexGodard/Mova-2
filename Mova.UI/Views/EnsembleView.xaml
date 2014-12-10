@@ -76,9 +76,9 @@
         <!-- Bouton pour afficher les ensembles précédents qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Column="1" Grid.Row="2" Grid.RowSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" x:Name="btnPrecedent" Style="{StaticResource btnPrecedent}" Visibility="Hidden" Content="Précédent" Click="btnPrecedent_Click" />
 
-        <Label x:Name="lblBackground1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
-        <Label x:Name="lblBackground2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
-        <Label x:Name="lblBackground3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackground1" Grid.Column="2" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" MouseEnter="lblBackground1_MouseEnter"/>
+        <Label x:Name="lblBackground2" Grid.Column="4" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" MouseEnter="lblBackground2_MouseEnter"/>
+        <Label x:Name="lblBackground3" Grid.Column="6" Grid.Row="2" Grid.RowSpan="3" Background="White" Visibility="Hidden" MouseEnter="lblBackground3_MouseEnter"/>
 
         <!-- Bouton pour revenir à l'écran précédent qui change lorsqu'on passe la souris dessus. -->
         <Button Grid.Row="5" Grid.Column="1" x:Name="btnEcranPrecedent" Click="btnEcranPrecedent_Click" VerticalAlignment="top" Width="100">
