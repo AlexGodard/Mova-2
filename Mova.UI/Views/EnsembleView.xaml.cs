@@ -239,15 +239,27 @@ namespace Mova.UI.Views
             //On ajoute le bouton Choisir en bas de l'ensemble
             Button button = new Button();
             button.Content = "Choisir #" + noEnsemble.ToString();
-            button.Margin = new Thickness(20);
-            Grid.SetColumn(button,colonne);
-            Grid.SetRow(button,5);
-            // On ajoute un nom au bouton
             button.Name = "btnChoisir" + noEnsemble.ToString();
-            // On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
+            button.Background = Brushes.Transparent;
             button.Click += new RoutedEventHandler(btnChoisir_Click);
-
+            Grid.SetColumn(button, colonne);
+            Grid.SetRow(button,2);
+            Grid.SetRowSpan(button,3);
             DynamicGrid.Children.Add(button);
+
+
+
+
+            //button.Content = "Choisir #" + noEnsemble.ToString();
+            //button.Margin = new Thickness(20);
+            //Grid.SetColumn(button,colonne);
+            //Grid.SetRow(button,5);
+            //// On ajoute un nom au bouton
+            //button.Name = "btnChoisir" + noEnsemble.ToString();
+            //// On ajoute l'event qui se passe lorsqu'on clique sur le bouton (choisir le vêtement)
+            //button.Click += new RoutedEventHandler(btnChoisir_Click);
+
+            //DynamicGrid.Children.Add(button);
 
 
         }
@@ -274,7 +286,7 @@ namespace Mova.UI.Views
 
 
             //On veut obtenir la colonne dans laquelle le bouton a été choisi
-            int numero = GetFirstIntInString(bTemp.Content.ToString());
+            int numero = GetFirstIntInString(bTemp.Name.ToString());
 
             //Listes.ensembleChoisi = ListeslisteEnsemblesTrouves[numero-1];
 
