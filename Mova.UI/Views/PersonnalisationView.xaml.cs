@@ -20,6 +20,7 @@ using System.Threading;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
 using Mova.Logic.Services.Definitions;
+using System.Windows.Media;
 
 namespace Mova.UI.Views
 {
@@ -147,6 +148,9 @@ namespace Mova.UI.Views
         //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
+            //On change la couleur du bouton
+            btnFavori.Background = Brushes.Orange;
+            
             //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
             if (Listes.UtilisateurConnecte.IdUtilisateur != null)
             {
