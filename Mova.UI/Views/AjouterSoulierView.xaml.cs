@@ -53,16 +53,25 @@ namespace Mova.UI.Views
             //On crée des boutons pour les premiers 12 activités
             foreach (Vetement v in Listes.ListeSouliersComplet)
             {
+                 Label l = new Label();
+                 l.Background = Brushes.White;
+                 Grid.SetColumn(l, iColonne);
+                 Grid.SetRow(l, iRow);
+                 GridSoulierVetement.Children.Add(l);
+
                 Image i = new Image();
                 string uri;
                 if (v.ImageURL.ToString().Contains("http://"))
                     uri = v.ImageURL.ToString();
                 else
                     uri = "http://" + v.ImageURL.ToString();
-                i.Source = new BitmapImage(new Uri(uri));
+
+                i.Source = new BitmapImage(new Uri(uri));                
+                i.Stretch = Stretch.Uniform;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridSoulierVetement.Children.Add(i);
+
 
                 switch (iColonne)
                 {
@@ -138,6 +147,8 @@ namespace Mova.UI.Views
                     uri = v.ImageURL.ToString();
                 else
                     uri = "http://" + v.ImageURL.ToString();
+                i.Height = 250;
+                i.Width = 177;
                 i.Source = new BitmapImage(new Uri(uri));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
@@ -220,6 +231,8 @@ namespace Mova.UI.Views
                     uri = v.ImageURL.ToString();
                 else
                     uri = "http://" + v.ImageURL.ToString();
+                i.Height = 250;
+                i.Width = 177;
                 i.Source = new BitmapImage(new Uri(uri));
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);

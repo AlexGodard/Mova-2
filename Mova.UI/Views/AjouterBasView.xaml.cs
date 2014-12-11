@@ -52,6 +52,12 @@ namespace Mova.UI.Views
             //On crée des boutons pour les premiers 12 activités
             foreach (Vetement v in Listes.ListeBasComplet)
             {
+                Label l = new Label();
+                l.Background = Brushes.White;
+                Grid.SetColumn(l, iColonne);
+                Grid.SetRow(l, iRow);
+                GridBasVetement.Children.Add(l);
+
                 Image i = new Image();
                 string uri;
                 if (v.ImageURL.ToString().Contains("http://"))
