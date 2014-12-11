@@ -38,18 +38,13 @@ namespace Mova.UI.Views
         {
             InitializeComponent();
             DataContext = new AdminViewModel();
-            _historique.Ajouter(this); 
-
-            
+            _historique.Ajouter(this);        
 
             // Construction des listbox (activités, styles, températures)
             construireListe("Couleur");
             construireListe("Temperature");
             construireListe("Activite");
             construireListe("Style");
-
-            
-
 
             // Construction du comboBox Types et Couleurs
 

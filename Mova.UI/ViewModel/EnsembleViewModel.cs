@@ -42,8 +42,6 @@ namespace Mova.UI.ViewModel
                 Listes.ListeEnsemblesVetements= (Listes.UtilisateurConnecte.ListeEnsembles);
 
                 Listes.ListeEnsemblesVetements.AddRange(FiltrerEnsembles(EnsemblesVetements.ToList<EnsembleVetement>()));
-
-                //Listes.ListeEnsemblesVetements = FiltrerEnsembles(listeEnsembles);
             }
         }
 

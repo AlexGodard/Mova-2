@@ -49,26 +49,6 @@ namespace Mova.UI.ViewModel
             }
         }
 
-        /*public ObservableCollection<Utilisateur> usagers
-        {
-            get
-            {
-                return _utilisateurs;
-            }
-
-            set
-            {
-                if (_utilisateurs == value)
-                {
-                    return;
-                }
-
-                RaisePropertyChanging();
-                _utilisateurs = value;
-                RaisePropertyChanged();
-            }
-        }*/
-
         public bool verifierIdentifiant()
         {
             if (_utilisateurService.RetrieveIdentifiant(RetrieveArgs) != null)
