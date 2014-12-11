@@ -6,6 +6,24 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="580" Margin="10" Width="780">
+        <Button Name="btnAide" Content="Aide" HorizontalAlignment="Right" VerticalAlignment="Top"  Click="btnAide_Click" Width="100" >
+            <!--<Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/aide.png" Visibility="Visible" Width="100" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/aide_hover.png" Visibility="Collapsed" Width="100" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>-->
+        </Button>
+
+
         <TextBlock x:Name="txbErreurNom" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="38,50,639,520" TextWrapping="Wrap"><Run Text="Vous devez entrer un nom"/></TextBlock>
         <TextBlock x:Name="txbErreurPrix" FontSize="8" Visibility="Hidden" Foreground="Red" Margin="305,36,337,521" TextWrapping="Wrap"><Run Text="Vous devez entrer un prix valide (nombre entier seulement)"/></TextBlock>
         <TextBlock x:Name="txbErreurCouleur" FontSize="8" Foreground="Red" Margin="443,50,199,507" TextWrapping="Wrap" Visibility="Hidden"><Run Text="Vous devez entrer une couleur"/></TextBlock>

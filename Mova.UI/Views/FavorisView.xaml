@@ -79,6 +79,23 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
+        <Button Grid.Row="1" Grid.Column="8" Name="btnAide" Content="Aide" HorizontalAlignment="Left" VerticalAlignment="Top"  Click="btnAide_Click" Width="100" >
+            <!--<Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/aide.png" Visibility="Visible" Width="100" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/aide_hover.png" Visibility="Collapsed" Width="100" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>-->
+        </Button>
+
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Favoris" FontFamily="Calibri" FontSize="62" />
         <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous n'avez aucun ensemble favori" FontFamily="Calibri" FontSize="32" />
         <!-- Label des dates des ensembles. -->

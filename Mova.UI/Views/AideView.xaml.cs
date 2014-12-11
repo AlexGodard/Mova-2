@@ -22,6 +22,7 @@ namespace Mova.UI.Views
         public AideView()
         {
             InitializeComponent();
+
         }
     }
 }

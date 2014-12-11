@@ -595,5 +595,12 @@ namespace Mova.UI.Views
             // On crée la liste de moments
             return ViewModel.chargerMomentsPourActivite(nomActivite);
         }
+
+        private void btnAide_Click(object sender, RoutedEventArgs e)
+        {
+            var aide = new AideView();
+            aide.Show();
+            aide.aideBrowser.Navigate("http://420.cstj.qc.ca/gabrielpichecloutier/Administrateur.pdf");
+        }
     }
 }

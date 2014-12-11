@@ -124,14 +124,12 @@ namespace Mova.UI.Views
             mainVM.ChangeView<VoirEnsembleView>(new VoirEnsembleView());
         }
 
-        private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
+        private void btnAide_Click(object sender, RoutedEventArgs e)
         {
-
+            var aide = new AideView();
+            aide.Show();
+            aide.aideBrowser.Navigate("http://420.cstj.qc.ca/gabrielpichecloutier/GardeRobe.pdf");
         }
 
-        private void voirEnsembles_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

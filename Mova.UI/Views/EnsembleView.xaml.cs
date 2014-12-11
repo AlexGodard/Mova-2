@@ -404,6 +404,13 @@ namespace Mova.UI.Views
             return -1;
         
         }
+
+        private void btnAide_Click(object sender, RoutedEventArgs e)
+        {
+            var aide = new AideView();
+            aide.Show();
+            aide.aideBrowser.Navigate("http://420.cstj.qc.ca/gabrielpichecloutier/Styliste.pdf");
+        }
     }
 
     
