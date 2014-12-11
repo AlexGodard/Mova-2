@@ -148,5 +148,11 @@ namespace Mova.UI
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
             mainVM.ChangeView<MenuAdminView>(new MenuAdminView());
         }
+
+        private void MenuAide_Click(object sender, RoutedEventArgs e)
+        {
+            var aide = new AideView();
+            aide.Show();
+        }
     }
 }

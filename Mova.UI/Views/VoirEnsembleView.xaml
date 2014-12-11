@@ -104,6 +104,11 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <!-- Fond blanc derrière les ensembles. -->
+        <Label x:Name="lblBackgroundRow1" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow2" Grid.Column="2" Grid.Row="0" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+        <Label x:Name="lblBackgroundRow3" Grid.Column="3" Grid.Row="0" Grid.RowSpan="3" Background="White" Visibility="Hidden" />
+
         <Label Grid.ColumnSpan="3" Margin="-154,-100,83,183" x:Name="lblTitre" Content="Vos Ensembles" FontFamily="Calibri" FontSize="62" />
     </Grid>
 </UserControl>

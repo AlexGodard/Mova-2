@@ -79,6 +79,9 @@
     <Compile Include="ViewModel\RecentsViewModel.cs" />
     <Compile Include="ViewModel\SouliersViewModel.cs" />
     <Compile Include="ViewModel\VoirEnsembleViewModel.cs" />
+    <Compile Include="Views\AideView.xaml.cs">
+      <DependentUpon>AideView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AjouterBasView.xaml.cs">
       <DependentUpon>AjouterBasView.xaml</DependentUpon>
     </Compile>
@@ -164,6 +167,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AideView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AjouterBasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
