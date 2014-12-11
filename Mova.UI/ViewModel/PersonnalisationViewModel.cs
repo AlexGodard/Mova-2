@@ -190,9 +190,9 @@ namespace Mova.UI.ViewModel
                         }
                 }
             }
-            else
+            else      // On affiche un vêtement précédent
             {
-                switch (rangee)
+                switch (rangee) // On affiche un vêtement précédent
                 {
                     case 2: i--;        // On décrémente le compteur des hauts pour la liste
                         if (i != -1)
@@ -205,7 +205,7 @@ namespace Mova.UI.ViewModel
                         {
                             i++;
                             break;
-                        }        // On disable le bouton précédent des hauts
+                        }        
                     case 3: j--;
                         if (j != -1)
                         {

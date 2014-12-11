@@ -47,7 +47,10 @@ namespace Mova.UI.Views
             }
             iVetementTotal = Listes.ListesEnsembleUtilisateur.Count();
 
-            //On crée des boutons pour les premiers 12 activités
+            lblBackgroundRow1.Visibility = Visibility.Hidden;
+            lblBackgroundRow2.Visibility = Visibility.Hidden;
+            lblBackgroundRow3.Visibility = Visibility.Hidden;
+
             foreach (EnsembleVetement v in Listes.ListesEnsembleUtilisateur)
             {
                 iColonne++;
@@ -97,15 +100,28 @@ namespace Mova.UI.Views
                     break;
                 }
 
+                
+
             }
 
             /*Si tous les activités n'ont pas été affichées, on offre un bouton suivant à l'utilisateur*/
             if (iVetementTotal - iNbVetementCourant > 0)
             {
+                lblBackgroundRow1.Visibility = Visibility.Visible;
+                lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow3.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Visible;
             }
             else
             {
+                if (iNbVetementCourant % 3 == 0)
+                {
+                    lblBackgroundRow3.Visibility = Visibility.Visible;
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                }
+                if (iNbVetementCourant % 3 == 2)
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow1.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Hidden;
             }
 
@@ -115,6 +131,10 @@ namespace Mova.UI.Views
         {
             iColonne = 0;
             int iCompteur = 0;
+
+            lblBackgroundRow1.Visibility = Visibility.Hidden;
+            lblBackgroundRow2.Visibility = Visibility.Hidden;
+            lblBackgroundRow3.Visibility = Visibility.Hidden;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -198,10 +218,21 @@ namespace Mova.UI.Views
             if (iVetementTotal - iNbVetementCourant > 0)       //S'il reste des activités à afficher
             {
                 btnSuivant.Visibility = Visibility.Visible;
+                lblBackgroundRow1.Visibility = Visibility.Visible;
+                lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow3.Visibility = Visibility.Visible;
             }
 
             else
             {
+                if (iNbVetementCourant % 3 == 0)
+                {
+                    lblBackgroundRow3.Visibility = Visibility.Visible;
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                }
+                if (iNbVetementCourant % 3 == 2)
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow1.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Hidden;
             }
         }
@@ -210,6 +241,10 @@ namespace Mova.UI.Views
         {
             iColonne = 0;
             int iCompteur = 0;
+
+            lblBackgroundRow1.Visibility = Visibility.Hidden;
+            lblBackgroundRow2.Visibility = Visibility.Hidden;
+            lblBackgroundRow3.Visibility = Visibility.Hidden;
 
             var imageasupprimer = GridEnsembles.Children.OfType<Image>();     //On efface le contenu de l'écran
 
@@ -290,10 +325,23 @@ namespace Mova.UI.Views
             /*Si tous les activités n'ont pas été affichées, on offre un bouton suivant à l'utilisateur*/
             if (iVetementTotal - iNbVetementCourant > 0)
             {
+                lblBackgroundRow1.Visibility = Visibility.Visible;
+                lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow3.Visibility = Visibility.Visible;
                 btnSuivant.Visibility = Visibility.Visible;
             }
             else
             {
+
+                if (iNbVetementCourant%3==0)
+                {
+                    lblBackgroundRow3.Visibility = Visibility.Visible;
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                }
+                if (iNbVetementCourant%3==2)
+                    lblBackgroundRow2.Visibility = Visibility.Visible;
+                lblBackgroundRow1.Visibility = Visibility.Visible;
+                
                 btnSuivant.Visibility = Visibility.Hidden;
             }
         }
