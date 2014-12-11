@@ -42,7 +42,7 @@
             <ColumnDefinition Width="150" />
             <ColumnDefinition Width="300" />
             <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
@@ -75,27 +75,53 @@
             </Button.Template>
         </Button>
 
-
-
-        
         <Button Grid.Column="4" Grid.Row="2" Name="voirHauts" Click="btnvoirHauts_Click" ToolTip="Affiche vos hauts" >
             <Button.Template>
-                <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/haut.png" />
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/Haut.png" Visibility="Visible" Width="199" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/Haut_hover.png" Visibility="Collapsed" Width="199" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
         <Button Grid.Column="4" Grid.Row="3" HorizontalAlignment="Center" Name="voirBas" Click="btnvoirBas_Click" ToolTip="Affiche vos bas" >
             <Button.Template>
-                <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/bas.png" Width="115" />
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/Bas.png" Visibility="Visible" Width="175" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/Bas_hover.png" Visibility="Collapsed" Width="175" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" Name="voirSouliers" Click="btnvoirSouliers_Click" ToolTip="Affiche vos chaussures" >
+
+        <Button Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Name="voirSouliers" Click="btnvoirSouliers_Click" ToolTip="Affiche vos chaussures" >
             <Button.Template>
-                <ControlTemplate>
-                    <Image Source="pack://application:,,,/../Resources/soulier.png" Width="115" />
+                <ControlTemplate TargetType="Button">
+                    <StackPanel>
+                        <Image Name="fond1" Source="pack://application:,,,/../Resources/Soulier.png" Visibility="Visible" Width="175" />
+                        <Image Name="fond2" Source="pack://application:,,,/../Resources/Soulier_hover.png" Visibility="Collapsed" Width="175" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="fond1" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="fond2" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
         </Button>

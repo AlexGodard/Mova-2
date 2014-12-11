@@ -80,7 +80,7 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6" Margin="100,0,0,0" x:Name="lblTitre" Content="Favoris" FontFamily="Calibri" FontSize="62" />
-        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous avez aucun ensemble favori" FontFamily="Calibri" FontSize="32" />
+        <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="6" Margin="100,0,0,0" Visibility="Hidden" x:Name="lblMessage" Content="Vous n'avez aucun ensemble favori" FontFamily="Calibri" FontSize="32" />
         <!-- Label des dates des ensembles. -->
         <Label x:Name="lblDate1" Grid.Column="2" Style="{StaticResource lblDate}" Margin="95,0" />
         <Label x:Name="lblDate2" Grid.Column="4" Style="{StaticResource lblDate}" Margin="95,0" />

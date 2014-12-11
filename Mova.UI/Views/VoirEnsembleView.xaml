@@ -75,6 +75,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
         <!-- Image du bouton suivant -->
         <Button Grid.Column="4" Grid.RowSpan="3" Name="btnSuivant" Visibility="Visible" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" Height="406" />
         <Button Name="btnPrecedent" Visibility="Visible" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" Margin="1,77,3,96" RenderTransformOrigin="0.5,0.5" Height="379" Grid.RowSpan="3" >
