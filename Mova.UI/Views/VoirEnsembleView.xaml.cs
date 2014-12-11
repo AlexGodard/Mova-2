@@ -62,10 +62,10 @@ namespace Mova.UI.Views
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridEnsembles.Children.Add(i);
-                Image i2 = new Image();
 
                 iRow++;
 
+                Image i2 = new Image();
                 if (v.ListeVetements[1].ImageURL.ToString().Contains("http://"))
                     uri = v.ListeVetements[1].ImageURL.ToString();
                 else
@@ -74,11 +74,10 @@ namespace Mova.UI.Views
                 Grid.SetColumn(i2, iColonne);
                 Grid.SetRow(i2, iRow);
                 GridEnsembles.Children.Add(i2);
-                Image i3 = new Image();
 
                 iRow++;
 
-
+                Image i3 = new Image();
                 if (v.ListeVetements[2].ImageURL.ToString().Contains("http://"))
                     uri = v.ListeVetements[2].ImageURL.ToString();
                 else

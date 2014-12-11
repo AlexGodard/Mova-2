@@ -260,7 +260,7 @@ namespace Mova.Logic.Services.MySql
                 foreach (UtilisateurEnsemble e in listeEnsembles)
                 {
                     string requete = "SELECT v.*,ev.idEnsemble FROM Vetements v INNER JOIN EnsemblesVetements ev ON " +
-                                   "v.idVetement = ev.idVetement WHERE ev.idEnsemble = " + e.idEnsemble;
+                                   "v.idVetement = ev.idVetement WHERE ev.idEnsemble = " + e.idEnsemble + "ORDER BY idTypeVetement ASC";
 
                     DataSet dataset = connexion.Query(requete);
                     DataTable table = dataset.Tables[0];

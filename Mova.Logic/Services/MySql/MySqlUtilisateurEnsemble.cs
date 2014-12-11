@@ -82,7 +82,7 @@ namespace Mova.Logic.Services.MySql
                 connexion = new MySqlConnexion();
 
 
-                string requete = "SELECT v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur + " ORDER BY ue.dateCreation DESC";
+                string requete = "SELECT v.*, ev.idEnsemble FROM UtilisateursEnsembles ue INNER JOIN EnsemblesVetements ev ON ev.idEnsemble=ue.idEnsemble INNER JOIN Vetements v ON v.idVetement=ev.idVetement WHERE ue.idUtilisateur = " + Listes.UtilisateurConnecte.IdUtilisateur;
 
                 DataSet dataset = connexion.Query(requete);
 
