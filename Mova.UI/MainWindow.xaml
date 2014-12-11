@@ -119,30 +119,30 @@
                 <MenuItem.Icon>
                     <Image Source="pack://application:,,,/Resources/barresMenu.png" />
                 </MenuItem.Icon>
-                <MenuItem Header="Styliste" Click="MenuStyliste_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" >
+                <MenuItem Header="Styliste" Click="MenuStyliste_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" ToolTip="Laissez vous habiller par le styliste" >
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/miroir.png" Width="40" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Récents" Name="btnRecent" Click="MenuRecents_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="0,8,0,0" >
+                <MenuItem Header="Récents" Name="btnRecent" Click="MenuRecents_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="0,8,0,0" ToolTip="Afficher vos ensembles des 7 derniers jours" >
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/clock.png" Width="30" Margin="10" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Favoris" Name="btnFavoris" Click="MenuFavoris_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="0,8,0,0" >
+                <MenuItem Header="Favoris" Name="btnFavoris" Click="MenuFavoris_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="0,8,0,0" ToolTip="Afficher vos ensembles favoris" >
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/thumbsUp.png" Width="35" Margin="8" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Ma garde-robe" Name="btnGardeRobe" Click="MenuMaGardeRobe_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" >
+                <MenuItem Header="Ma garde-robe" Name="btnGardeRobe" Click="MenuMaGardeRobe_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" ToolTip="Ajoutez des vêments et créez des ensembles personnalisés" >
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/wardrobe.png" Width="40" Margin="10" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Style="{StaticResource petitItem}" Height="40" Focusable="False" IsEnabled="False" />
                 <MenuItem Header="Parcourir" Style="{StaticResource petitItem}" Focusable="False" IsEnabled="False" />
-                <MenuItem Header="Activités" Click="MenuActivites_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="50,0,0,0" />
-                <MenuItem Header="Styles" Click="MenuStyles_Click" Style="{StaticResource petitItem}" Padding="50,0,0,0"  />
+                <MenuItem Header="Activités" Click="MenuActivites_Click" Style="{StaticResource petitItem}" BorderBrush="#3b3838" BorderThickness="2" Padding="50,0,0,0" ToolTip="Choisissez une activité et laissez un ensemble se générer" />
+                <MenuItem Header="Styles" Click="MenuStyles_Click" Style="{StaticResource petitItem}" Padding="50,0,0,0" ToolTip="Choisissez un style et laissez un ensemble se générer"  />
                 <MenuItem Header="" x:Name="btnAdmin" Style="{StaticResource petitItem}" Height="50" IsEnabled="False" Click="btnAdmin_Click" />
                 <MenuItem Header="Connexion / Déconnexion" Click="MenuConnDeconn_Click" Style="{StaticResource petitItem}" />
                 <MenuItem Header="Quitter" Click="MenuItem_Click" Style="{StaticResource petitItem}" Padding="0,0,0,20" />
