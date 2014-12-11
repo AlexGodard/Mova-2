@@ -130,7 +130,7 @@
 
 
         <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,5,40,610" x:Name="lblTitre" Content="Vos bas" FontFamily="Calibri" FontSize="62" Grid.RowSpan="2" />
-        <Button Grid.Column="3" Grid.Row="2" Name="btnSuivant" Visibility="Hidden" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" Height="400" Margin="0,118,0,97" />
-        <Button Grid.Column="1" Grid.Row="2" Name="btnPrecedent" Visibility="Hidden" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" Height="400" Margin="0,148,0,67" />
+        <Button Grid.Column="2" Grid.Row="2" Name="btnSuivant" Visibility="Visible" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" Height="400" Margin="900,55,0,160" />
+        <Button Grid.Column="2" Grid.Row="2" Name="btnPrecedent" Visibility="Visible" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" Height="400" Margin="0,55,899,160" />
     </Grid>
 </UserControl>

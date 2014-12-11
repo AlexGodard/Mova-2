@@ -104,5 +104,6 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Label Grid.ColumnSpan="3" Margin="-154,-100,83,183" x:Name="lblTitre" Content="Vos Ensembles" FontFamily="Calibri" FontSize="62" />
     </Grid>
 </UserControl>
