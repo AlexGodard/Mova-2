@@ -205,6 +205,6 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Image Grid.Column="4" Name="imgChecked" Visibility="Hidden" Source="pack://application:,,,/../Resources/checked.png" HorizontalAlignment="Left" Margin="5,0,0,0" Grid.Row="6" Width="48" Height="40" VerticalAlignment="Top"/>
     </Grid>
-
 </UserControl>

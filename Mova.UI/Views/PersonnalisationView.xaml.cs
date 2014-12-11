@@ -145,6 +145,9 @@ namespace Mova.UI.Views
         {
             //On change la couleur du bouton
             btnFavori.Background = Brushes.Orange;
+
+            imgChecked.Visibility = Visibility.Visible;
+
             
             //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
             if (Listes.UtilisateurConnecte.IdUtilisateur != null)
