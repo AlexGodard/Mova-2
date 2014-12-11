@@ -65,6 +65,10 @@ namespace Mova.UI.Views
             //Maxime Laramee - 2014-10-02
             lblMoment.Content = "Choisi un style";
 
+            //On place de l'informations supplémentaires dans le "bundle" InfoStylise (moment et jour)
+            Listes.InfoStyliste.IdMoment = Moment.GetIDMomentNow();
+            
+
             //Éléments de la liste
             List<StyleVetement> listeStyles = Listes.RetourneAleatoire<StyleVetement>(4, ServiceFactory.Instance.GetService<IStyleService>().RetrieveSpecific(Listes.InfoStyliste).ToList<StyleVetement>());
 

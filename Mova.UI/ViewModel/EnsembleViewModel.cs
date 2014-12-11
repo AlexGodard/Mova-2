@@ -39,9 +39,13 @@ namespace Mova.UI.ViewModel
 
                 Listes.UtilisateurConnecte.ListeEnsembles =  new List<EnsembleVetement>(_ensembleVetementService.RetrieveEnsemblesUtilisateur(Listes.InfoStyliste));
 
+                //On ajoutê les vêtements de l'utilisateur connecté dans la liste
                 Listes.ListeEnsemblesVetements= (Listes.UtilisateurConnecte.ListeEnsembles);
 
-                Listes.ListeEnsemblesVetements.AddRange(FiltrerEnsembles(EnsemblesVetements.ToList<EnsembleVetement>()));
+                //On affiche tout ce qu'on a trouvé dans la BD
+                Listes.ListeEnsemblesVetements.AddRange(EnsemblesVetements.ToList<EnsembleVetement>());
+
+                //Listes.ListeEnsemblesVetements.AddRange(FiltrerEnsembles(EnsemblesVetements.ToList<EnsembleVetement>()));
             }
         }
 

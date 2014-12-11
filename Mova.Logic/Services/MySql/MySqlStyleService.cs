@@ -135,7 +135,7 @@ namespace Mova.Logic.Services.MySql
             {
                 connexion = new MySqlConnexion();
 
-                string requete = "SELECT DISTINCT(s.idStyle), s.nomStyle  FROM Styles s INNER JOIN StylesVetements sv ON sv.idStyle = s.idStyle INNER JOIN Vetements v ON v.idVetement = sv.idVetement INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement WHERE av.idActivite = " + args.IdActivite.ToString();
+                string requete = "SELECT DISTINCT(s.idStyle), s.nomStyle  FROM Styles s INNER JOIN StylesVetements sv ON sv.idStyle = s.idStyle INNER JOIN Vetements v ON v.idVetement = sv.idVetement INNER JOIN ActivitesVetements av ON av.idVetement = v.idVetement INNER JOIN Activites a ON a.idActivite = av.idActivite INNER JOIN ActivitesMoments am ON am.idActivite = a.idActivite WHERE av.idActivite = " + args.IdActivite.ToString() + " AND am.idMoment = " + args.IdMoment;
                 
                 DataSet dataset = connexion.Query(requete);
                 DataTable table = dataset.Tables[0];

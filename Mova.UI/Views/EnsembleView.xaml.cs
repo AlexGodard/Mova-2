@@ -153,7 +153,6 @@ namespace Mova.UI.Views
                 //On écrit les ensembles trouvés
                 EcrireEnsembleViaListe(listesTemp);
 
-
             }
             catch
             { 
