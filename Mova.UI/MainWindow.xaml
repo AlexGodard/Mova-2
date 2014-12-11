@@ -134,7 +134,7 @@
                         <Image Source="pack://application:,,,/Resources/thumbsUp.png" Width="35" Margin="8" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Ma garde-robe" Name="btnGardeRobe" Click="MenuMaGardeRobe_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" ToolTip="Ajoutez des vêments et créez des ensembles personnalisés" >
+                <MenuItem Header="Ma garde-robe" Name="btnGardeRobe" Click="MenuMaGardeRobe_Click" Style="{StaticResource petitItem}" Padding="0,10,0,0" ToolTip="Ajoutez des vêtements et créez des ensembles personnalisés" >
                     <MenuItem.Icon>
                         <Image Source="pack://application:,,,/Resources/wardrobe.png" Width="40" Margin="10" />
                     </MenuItem.Icon>

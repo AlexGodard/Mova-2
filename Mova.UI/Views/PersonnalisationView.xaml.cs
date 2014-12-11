@@ -20,7 +20,6 @@ using System.Threading;
 using Cstj.MvvmToolkit.Services.Definitions;
 using Cstj.MvvmToolkit.Services;
 using Mova.Logic.Services.Definitions;
-using System.Windows.Media;
 
 namespace Mova.UI.Views
 {
