@@ -59,6 +59,8 @@ namespace Mova.UI.Views
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Height = 250;
+                i.Width = 177;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridBasVetement.Children.Add(i);
@@ -138,6 +140,8 @@ namespace Mova.UI.Views
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Height = 250;
+                i.Width = 177;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridBasVetement.Children.Add(i);
@@ -219,6 +223,8 @@ namespace Mova.UI.Views
                 else
                     uri = "http://" + v.ImageURL.ToString();
                 i.Source = new BitmapImage(new Uri(uri));
+                i.Height = 250;
+                i.Width = 177;
                 Grid.SetColumn(i, iColonne);
                 Grid.SetRow(i, iRow);
                 GridBasVetement.Children.Add(i);
