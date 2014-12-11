@@ -32,7 +32,7 @@ namespace Mova.UI.ViewModel
         private ObservableCollection<EnsembleVetement> _ensemblesVetements = new ObservableCollection<EnsembleVetement>();
         private ObservableCollection<UtilisateurEnsemble> _utilisateurEnsembles = new ObservableCollection<UtilisateurEnsemble>();
 
-        public int i = 0, j = 0, k = 0;
+        public int i = 0, j = 0, k = 0;     // Compteurs de hauts, bas, chaussures
 
         // On ajoute tout les vêtements dans des listes de vêtements temporaires
         List<Vetement> listeHauts = new List<Vetement>();
@@ -55,15 +55,6 @@ namespace Mova.UI.ViewModel
 
             // On place dans la liste globale, la liste d'ensembles reçue
             Listes.ListeEnsembles = Ensembles.ToList<Ensemble>();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="ev"></param>
-        public void AjouterEnsemble(EnsembleVetement ev)
-        {
-            //_utilisateurEnsembleService.AjouterFavori(ev);
         }
 
         /// <summary>
@@ -101,7 +92,7 @@ namespace Mova.UI.ViewModel
             listeImages.Add(DessinerVetement(pants, 1));
             listeImages.Add(DessinerVetement(shoes, 2));
 
-            // Avant de commencer, on ajoute les vêtements qu'on a choisi pour qu'ils soient en premier de liste.
+            // Avant de commencer, on ajoute les vêtements qu'on a originalement choisi pour qu'ils soient en premier de liste.
 
             listeHauts.Add(Listes.ensembleChoisi.ListeVetements[0]);
             listeBas.Add(Listes.ensembleChoisi.ListeVetements[1]);
@@ -111,22 +102,22 @@ namespace Mova.UI.ViewModel
             foreach (EnsembleVetement ensembleVetement in Listes.ListeEnsemblesVetements)
             {
                 // On doit trouver un moyen de vérifier si le haut est déjà dedans la liste, il ne faut pas l'ajouter.
-                bool hautExiste = false, basExiste = false, chaussureExiste = false;
+                bool hautExiste = false, basExiste = false, chaussureExiste = false;        // Au départ, les vêtements n'existent pas
 
                 foreach (Vetement haut in listeHauts)
-                    if (haut.IdVetement == ensembleVetement.ListeVetements[0].IdVetement)
+                    if (haut.IdVetement == ensembleVetement.ListeVetements[0].IdVetement)       // Si on détecte le même haut
                         hautExiste = true;
                 if (!hautExiste)
                     listeHauts.Add(ensembleVetement.ListeVetements[0]);
 
                 foreach (Vetement bas in listeBas)
-                    if (bas.IdVetement == ensembleVetement.ListeVetements[1].IdVetement)
+                    if (bas.IdVetement == ensembleVetement.ListeVetements[1].IdVetement)        // Si on détecte le même bas
                         basExiste = true;
                 if (!basExiste)
                     listeBas.Add(ensembleVetement.ListeVetements[1]);
 
                 foreach (Vetement chaussure in listeChaussures)
-                    if (chaussure.IdVetement == ensembleVetement.ListeVetements[2].IdVetement)
+                    if (chaussure.IdVetement == ensembleVetement.ListeVetements[2].IdVetement)      // Si on détecte la même chaussure
                         chaussureExiste = true;
                 if (!chaussureExiste)
                     listeChaussures.Add(ensembleVetement.ListeVetements[2]);
@@ -171,10 +162,9 @@ namespace Mova.UI.ViewModel
                             return DessinerVetement(listeHauts[i], 2);
                         }
                         else
-                        {
+                        {       // Si notre compteur dépasse le nombre de hauts qu'on a, on doit le décrémenter pour éviter un erreur
                             i--;
-                            // On disable le bouton suivant des hauts
-                           break; 
+                            break; 
                         }
                     case 3: j++;        // On est dans la rangée des bas
                         if (j < listeBas.Count())
@@ -187,7 +177,7 @@ namespace Mova.UI.ViewModel
                             j--;
                             break;
                         }
-                    case 4: k++;        // On est dans la rangée des chaussurse
+                    case 4: k++;        // On est dans la rangée des chaussures
                         if (k < listeChaussures.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
@@ -204,10 +194,10 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 2: i--;
+                    case 2: i--;        // On décrémente le compteur des hauts pour la liste
                         if (i != -1)
                         {
-                             // On décrémente le compteur des hauts pour la liste
+                             // On change le haut de l'ensemble choisi pour le nouveau qu'on va afficher
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
                             return DessinerVetement(listeHauts[i], 2);
                         }
@@ -240,8 +230,8 @@ namespace Mova.UI.ViewModel
                         }
                 }
             }
-
-            // On retourne un image vide (null)
+            // Si on arrive la, c'est qu'on ne change PAS de vêtement
+            // On retourne un image vide (null), avec la visibility collapsed pour pouvoir faire une comparaison après
             Image image = new Image();
             image.Visibility = Visibility.Collapsed;
             return image;

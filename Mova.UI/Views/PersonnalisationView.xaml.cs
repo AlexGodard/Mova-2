@@ -97,8 +97,8 @@ namespace Mova.UI.Views
             Image i = new Image();
             i = ViewModel.changerVetement(rangee, "Suivant");
 
-            // LE PIRE CODE EVER BY GODARD
-
+            
+            // LE PIRE CODE EVER BY GODARD, mais c'est le seul moyen que j'ai trouvé et ça marche
             if (i.Visibility != Visibility.Collapsed)   // Si on affiche une nouvelle image
             {   
                 // On efface l'image
