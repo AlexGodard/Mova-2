@@ -75,8 +75,8 @@
             <RowDefinition Height="250" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Button Grid.Column="4" Name="btnSuivant" Visibility="visible" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" Height="453" Margin="0,48,0,51" Grid.RowSpan="3" />
-        <Button Grid.RowSpan="3" Name="btnPrecedent" Visibility="visible" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" Margin="0,48,10,90" Height="414" />
+        <Button Grid.Column="4" Name="btnSuivant" Visibility="Hidden" Click="btnSuivant_Click" VerticalAlignment="Center" Style="{StaticResource btnSuivant}" Height="453" Margin="0,48,0,51" Grid.RowSpan="3" />
+        <Button Grid.RowSpan="3" Name="btnPrecedent" Visibility="Hidden" Click="btnPrecedent_Click" VerticalAlignment="Center" Style="{StaticResource btnPrecedent}" Margin="0,48,10,90" Height="414" />
         <Button Grid.Row="2" x:Name="btnBack" Click="btnBack_Click" VerticalAlignment="Bottom" Height="75" Margin="0,0,60,10" HorizontalAlignment="Right" Width="80" RenderTransformOrigin="0.509,0.52">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
