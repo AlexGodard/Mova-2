@@ -143,20 +143,43 @@ namespace Mova.UI.Views
         //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
-            //On change la couleur du bouton
-            btnFavori.Background = Brushes.Orange;
-
-            imgChecked.Visibility = Visibility.Visible;
-
-            
-            //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
-            if (Listes.UtilisateurConnecte.IdUtilisateur != null)
+            if(btnFavori.Background == Brushes.Green)
             {
-                estFavori = true;
+                //On change la couleur du bouton
+                btnFavori.Background = Brushes.Orange;
+
+                imgChecked.Visibility = Visibility.Hidden;
+
+
+                //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
+                if (Listes.UtilisateurConnecte.IdUtilisateur != null)
+                {
+                    estFavori = false;
+                }
+                else
+                {
+                    txbErreurNom.Visibility = Visibility.Hidden;
+                }
+
             }
+
             else
             {
-                txbErreurNom.Visibility = Visibility.Visible;
+                //On change la couleur du bouton
+                btnFavori.Background = Brushes.Green;
+
+                imgChecked.Visibility = Visibility.Visible;
+
+
+                //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
+                if (Listes.UtilisateurConnecte.IdUtilisateur != null)
+                {
+                    estFavori = true;
+                }
+                else
+                {
+                    txbErreurNom.Visibility = Visibility.Visible;
+                }
             }
         }
 

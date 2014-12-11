@@ -69,7 +69,7 @@
 
         <!-- Bouton vert -->
         <Style TargetType="Button" x:Key="btnVert" x:Name="btnVert">
-            <Setter Property="Background" Value="#70ad47" />
+            <Setter Property="Background" Value="#E8D128" />
             <Setter Property="FontFamily" Value="Calibri" />
             <Setter Property="FontSize" Value="20" />
 
@@ -86,14 +86,14 @@
 
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#9bbb59" />
+                    <Setter Property="Background" Value="#E8E219" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <!-- Bouton orange -->
         <Style TargetType="Button" x:Key="btnOrange">
-            <Setter Property="Background" Value="#c55a11" />
+            <Setter Property="Background" Value="Orange" />
             <Setter Property="FontFamily" Value="Calibri" />
             <Setter Property="FontSize" Value="20" />
 
@@ -107,12 +107,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#f79545" />
-                </Trigger>
-            </Style.Triggers>
         </Style>
 
         <!-- Style du txtNomEnsemble -->
