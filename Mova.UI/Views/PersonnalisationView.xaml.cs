@@ -31,7 +31,6 @@ namespace Mova.UI.Views
         private PersonnalisationViewModel ViewModel { get { return (PersonnalisationViewModel)DataContext; } }
         private List<Image> listeImages;
         private bool estFavori = false;
-
         public PersonnalisationView()
         {
             InitializeComponent();
@@ -50,18 +49,13 @@ namespace Mova.UI.Views
                 txtNomEnsemble.IsEnabled = true;
             }
             //Gabriel Piché Cloutier - 2014-11-11
-            //On affiche les vêtements dans les bonnes images déjà dans le grid.
+            //On affiche les vêtements dans les bonnes images déjà dans la grid.
             Torse.Source = listeImages[0].Source;
             Bas.Source = listeImages[1].Source;
             Chaussures.Source = listeImages[2].Source;
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnPrecedent_Click(object sender, RoutedEventArgs e)
         {
             //On commence par obtenir l'objet
@@ -91,11 +85,6 @@ namespace Mova.UI.Views
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
             //On commence par obtenir l'objet
@@ -126,11 +115,6 @@ namespace Mova.UI.Views
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnChoisir_Click(object sender, RoutedEventArgs e)
         {
             //Si l'utilisateur est connecté, on procède, sinon, on lui dit qu'il faut se connecter.
@@ -144,10 +128,6 @@ namespace Mova.UI.Views
                     Listes.ensembleChoisi.IdEnsemble = idEnsemble;
                     ViewModel.ajouterEnsembleVetement(Listes.ensembleChoisi);
                 }
-                else
-                {
-
-                }
 
                 IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();
                 RecentsView._historique = new History<UserControl>();
@@ -160,11 +140,7 @@ namespace Mova.UI.Views
             }
         }
 
-        /// <summary>
-        /// Maxime Laramee - 11/11/14
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //Maxime Laramee - 11/11/14
         private void btnFavori_Click(object sender, RoutedEventArgs e)
         {
             //On change la couleur du bouton
@@ -181,12 +157,9 @@ namespace Mova.UI.Views
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         private EnsembleVetement GetEnsemble()
         {
+
             EnsembleVetement v;
 
             try
@@ -201,11 +174,6 @@ namespace Mova.UI.Views
             return v;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnEcranPrecedent_Click(object sender, RoutedEventArgs e)
         {
             IApplicationService mainVM = ServiceFactory.Instance.GetService<IApplicationService>();

@@ -164,7 +164,7 @@ namespace Mova.UI.ViewModel
             {
                 switch (rangee)
                 {
-                    case 2: i++;
+                    case 2: i++;        // On est dans la rangée des hauts
                         if (i < listeHauts.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[0] = listeHauts[i];
@@ -176,7 +176,7 @@ namespace Mova.UI.ViewModel
                             // On disable le bouton suivant des hauts
                            break; 
                         }
-                    case 3: j++;
+                    case 3: j++;        // On est dans la rangée des bas
                         if (j < listeBas.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[1] = listeBas[j];
@@ -187,7 +187,7 @@ namespace Mova.UI.ViewModel
                             j--;
                             break;
                         }
-                    case 4: k++;
+                    case 4: k++;        // On est dans la rangée des chaussurse
                         if (k < listeChaussures.Count())
                         {
                             Listes.ensembleChoisi.ListeVetements[2] = listeChaussures[k];
